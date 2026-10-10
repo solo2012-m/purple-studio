@@ -33,7 +33,7 @@
     ctx.shadowColor = '#a46dff'; ctx.shadowBlur = blur;
     ctx.stroke();
   }
-  function schedule(delay = random(12000, 22000)) {
+  function schedule(delay = random(7000, 12000)) {
     clearTimeout(timer);
     if (!reduced.matches && !document.hidden) timer = setTimeout(strike, delay);
   }
