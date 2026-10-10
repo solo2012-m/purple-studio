@@ -10,7 +10,7 @@ body{isolation:isolate}.storm-background{position:fixed;inset:0;width:100%;heigh
 .faq details{border-radius:6px}
 @media(hover:hover) and (pointer:fine){
 .service:hover,.faq details:hover{border-color:#9865c6;box-shadow:0 0 18px #a366ed16,inset 0 0 16px #a366ed08;animation:electric-nudge .38s ease-out 1}
-.service:hover::after,.faq details:hover::after{opacity:.85;animation:electric-current 2.8s ease-in-out infinite}
+.service:hover::after,.faq details:hover::after{opacity:.35;animation:none}
 }
 .faq details:focus-within::after{opacity:.85}
 @keyframes electric-current{0%,100%{filter:hue-rotate(0deg);opacity:.55}50%{filter:hue-rotate(18deg);opacity:1}}
@@ -18,11 +18,11 @@ body{isolation:isolate}.storm-background{position:fixed;inset:0;width:100%;heigh
 @media(prefers-reduced-motion:reduce){.service:hover,.faq details:hover,.service::after,.faq details::after{animation:none!important;transform:none!important}}
 
 /* Visible branching discharges outside the card; center stays clear. */
-.service::before,.faq details::before{content:"";position:absolute;inset:-15px;pointer-events:none;z-index:2;background:url("card-electric.svg") center/100% 100% no-repeat;opacity:0;transition:opacity .2s}
+.service::before,.faq details::before{content:"";position:absolute;inset:-15px;pointer-events:none;z-index:2;background:url("card-electric.svg?v=4") center/100% 100% no-repeat;opacity:0;transition:opacity .2s}
 @media(hover:hover) and (pointer:fine){
-.service:hover::before,.faq details:hover::before{animation:card-discharge 2.8s ease-out infinite}
-.service:hover,.faq details:hover{box-shadow:0 0 28px #a366ed30,inset 0 0 18px #a366ed12}
+.service:hover::before,.faq details:hover::before{animation:card-discharge .65s ease-out 1 both}
+.service:hover,.faq details:hover{box-shadow:0 0 16px #a366ed18,inset 0 0 12px #a366ed08}
 }
 .faq details:focus-within::before{opacity:.6}
-@keyframes card-discharge{0%{opacity:0}8%,20%{opacity:1}48%{opacity:.55}75%,100%{opacity:.12}}
+@keyframes card-discharge{0%{opacity:0}7%{opacity:.85}22%{opacity:.55}55%{opacity:.15}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.service:hover::before,.faq details:hover::before{animation:none!important;opacity:.5}}
