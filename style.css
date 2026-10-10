@@ -16,3 +16,13 @@ body{isolation:isolate}.storm-background{position:fixed;inset:0;width:100%;heigh
 @keyframes electric-current{0%,100%{filter:hue-rotate(0deg);opacity:.55}50%{filter:hue-rotate(18deg);opacity:1}}
 @keyframes electric-nudge{0%,100%{transform:translate(0,0)}22%{transform:translate(.65px,-.35px)}42%{transform:translate(-.55px,.25px)}64%{transform:translate(.3px,0)}82%{transform:translate(-.2px,0)}}
 @media(prefers-reduced-motion:reduce){.service:hover,.faq details:hover,.service::after,.faq details::after{animation:none!important;transform:none!important}}
+
+/* Visible branching discharges outside the card; center stays clear. */
+.service::before,.faq details::before{content:"";position:absolute;inset:-15px;pointer-events:none;z-index:2;background:url("card-electric.svg") center/100% 100% no-repeat;opacity:0;transition:opacity .2s}
+@media(hover:hover) and (pointer:fine){
+.service:hover::before,.faq details:hover::before{animation:card-discharge 2.8s ease-out infinite}
+.service:hover,.faq details:hover{box-shadow:0 0 28px #a366ed30,inset 0 0 18px #a366ed12}
+}
+.faq details:focus-within::before{opacity:.6}
+@keyframes card-discharge{0%{opacity:0}8%,20%{opacity:1}48%{opacity:.55}75%,100%{opacity:.12}}
+@media(prefers-reduced-motion:reduce){.service:hover::before,.faq details:hover::before{animation:none!important;opacity:.5}}
