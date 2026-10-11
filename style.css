@@ -51,3 +51,17 @@ body{isolation:isolate}.storm-background{position:fixed;inset:0;width:100%;heigh
 @media(max-width:1100px){.pricing-grid,.care-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.stats-grid,.why-grid,.pricing-grid,.care-grid,.offers-grid{grid-template-columns:1fr}.stat b{font-size:26px}.plan .price{font-size:32px}}
 
+
+/* PURPLE BLITZ typography: display face for headings, Manrope for text. */
+body{font-family:Manrope,Arial,Helvetica,sans-serif}
+h1,h2,h3,.brand,.price,.eyebrow,.stat b{font-family:Unbounded,Manrope,Arial,sans-serif}
+h1{letter-spacing:-.03em;font-weight:600}
+h2{letter-spacing:-.02em;font-weight:600}
+h3{letter-spacing:-.01em;font-weight:600}
+.eyebrow{font-weight:500;letter-spacing:1.6px}
+.price{font-weight:600}
+.brand{align-items:center}
+.brand-logo{display:block;height:56px;width:auto;max-width:210px}
+.brand-logo.foot{height:40px;opacity:.95}
+.plan .price{font-size:30px}
+@media(max-width:760px){.brand-logo{height:40px;max-width:150px}.brand-logo.foot{height:30px}h1,h2{letter-spacing:-.02em}}
