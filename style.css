@@ -30,3 +30,24 @@ body{isolation:isolate}.storm-background{position:fixed;inset:0;width:100%;heigh
 /* Real extruded mesh rotates in WebGL, not as a flat CSS plane. */
 .bolt.bolt-3d{width:405px;height:540px;transform:none;animation:none!important;filter:drop-shadow(0 0 22px #811cce40)}
 @media(max-width:760px){.bolt.bolt-3d{width:255px;height:340px}}
+
+/* PURPLE BLITZ — blocks for the expanded content. Same visual language as the base. */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:26px;background:linear-gradient(125deg,#141119,#0f0d13)}
+.stat b{display:block;font-size:32px;line-height:1.1;letter-spacing:-1.5px;margin-bottom:10px;color:var(--ink)}
+.stat span{font-size:11px;color:var(--muted);letter-spacing:.4px}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.why-grid .service p{font-size:13px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan .price{display:block;font-size:38px;font-weight:700;letter-spacing:-2px;margin:14px 0 16px;color:var(--purple)}
+.plan .price small{font-size:12px;font-weight:400;letter-spacing:0;color:var(--muted);margin-left:4px}
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.care-grid .plan .price{font-size:30px}
+.offers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.bullets{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px;max-width:760px}
+.bullets li{position:relative;padding-left:24px;font-size:13px;color:var(--muted);line-height:1.7}
+.bullets li::before{content:"\03df";position:absolute;left:0;top:-1px;color:var(--purple);font-size:16px}
+.plan-note{font-size:11px;color:var(--muted);margin-top:18px}
+@media(max-width:1100px){.pricing-grid,.care-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.stats-grid,.why-grid,.pricing-grid,.care-grid,.offers-grid{grid-template-columns:1fr}.stat b{font-size:26px}.plan .price{font-size:32px}}
+
