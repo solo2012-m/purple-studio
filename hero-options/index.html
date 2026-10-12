@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PURPLE BLITZ — варианты для первого экрана</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#09080d;color:#f6f3fa;font:15px/1.6 Manrope,system-ui,sans-serif}
+main{max-width:1280px;margin:auto;padding:34px 26px 70px}
+h1{font-family:Unbounded,Manrope,sans-serif;font-size:clamp(24px,3vw,38px);letter-spacing:-.02em;margin:26px 0 8px}
+h2{font-family:Unbounded,Manrope,sans-serif;font-size:17px;letter-spacing:0;margin:0 0 6px}
+p.lead{color:#b6a9c4;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
+.card{border:1px solid #2a2136;border-radius:14px;padding:20px;background:#0d0a13}
+.meta{font-size:12px;color:#9d90ab;margin:0 0 14px}
+.tag{display:inline-block;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#c79dff;border:1px solid #47305e;border-radius:5px;padding:4px 8px;margin-bottom:10px}
+.stage{border:1px solid #241b30;border-radius:12px;background:radial-gradient(ellipse at 60% 20%,#150c22,#08060d 70%);padding:20px;min-height:330px;display:flex;align-items:center;justify-content:center}
+.pro{color:#8fe0a8}.con{color:#f0a0a0}
+ul.m{list-style:none;padding:0;margin:12px 0 0;font-size:13px}
+ul.m li{position:relative;padding-left:20px;margin-bottom:6px;color:#b6a9c4}
+ul.m li:before{content:"ϟ";position:absolute;left:0;color:#b26bff}
+/* V1 timeline */
+.tl{width:100%;max-width:400px}
+.tl .step{display:flex;gap:14px;align-items:flex-start;position:relative;padding-bottom:18px}
+.tl .step:last-child{padding-bottom:0}
+.tl .dot{width:26px;height:26px;flex:0 0 26px;border-radius:50%;border:1px solid #6a3f92;display:grid;place-items:center;font-size:11px;color:#d9b6ff;background:#140d1f}
+.tl .step:not(:last-child) .dot:after{content:"";position:absolute;left:12px;top:26px;bottom:0;width:1px;background:linear-gradient(#5c3680,transparent)}
+.tl b{font-weight:600;font-size:14px;display:block}
+.tl span{font-size:12px;color:#a294b1}
+.badge{margin-top:16px;display:inline-flex;gap:8px;align-items:center;font-size:12px;color:#e3d2ff;border:1px solid #4a2f66;background:#170f22;border-radius:20px;padding:7px 12px}
+/* V2 checklist */
+.give{width:100%;max-width:400px}
+.give .row{display:flex;gap:12px;align-items:center;border-bottom:1px solid #241b30;padding:11px 0;font-size:13px}
+.give .row:last-child{border-bottom:0}
+.give .ic{width:28px;height:28px;flex:0 0 28px;border-radius:8px;border:1px solid #563a76;display:grid;place-items:center;font-size:13px;color:#cfa8ff}
+.give small{color:#a294b1;display:block;font-size:11px}
+/* V3 before/after */
+.ba{width:100%;font-size:13px}
+.ba .h{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9d90ab}
+.ba .r{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid #241b30;padding:9px 0}
+.ba .old{color:#b09a9a}.ba .new{color:#cbb4ea}
+/* V4 packages */
+.pick{width:100%;max-width:400px}
+.pick .p{display:flex;justify-content:space-between;align-items:center;border:1px solid #2a2136;border-radius:10px;padding:12px 14px;margin-bottom:10px;cursor:pointer;transition:.2s;background:#100b17}
+.pick .p:hover{border-color:#6a3f92;background:#170f22}
+.pick .p b{font-family:Unbounded,Manrope,sans-serif;font-size:14px;font-weight:600}
+.pick .p small{display:block;color:#a294b1;font-size:11px;margin-top:3px}
+.pick .price{font-family:Unbounded,Manrope,sans-serif;font-size:17px;color:#c79dff}
+footer{margin-top:44px;padding-top:22px;border-top:1px solid #241b30;color:#9d90ab;font-size:13px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<h1>Что поставить в первый экран</h1>
+<p class="lead">Правая часть главного экрана. Все варианты — статичные и «полезные»: показывают процесс или выгоду, без декоративных анимаций. Выбери один — внедрю.</p>
+<div class="grid">
+
+  <section class="card">
+    <span class="tag">Вариант 1 · рекомендую</span>
+    <h2>Схема процесса</h2>
+    <p class="meta">Клиент сразу видит, как всё устроено и что всё без звонков.</p>
+    <div class="stage"><div class="tl">
+      <div class="step"><div class="dot">01</div><div><b>Заявка в сообщении</b><span>WhatsApp, Telegram или почта</span></div></div>
+      <div class="step"><div class="dot">02</div><div><b>Собираем задание</b><span>вопросы, материалы, языки</span></div></div>
+      <div class="step"><div class="dot">03</div><div><b>Готовим сайт</b><span>2–3 рабочих дня</span></div></div>
+      <div class="step"><div class="dot">04</div><div><b>Правки по ссылке</b><span>обсуждаем в переписке</span></div></div>
+      <div class="step"><div class="dot">05</div><div><b>Оплата и запуск</b><span>домен и доступы — ваши</span></div></div>
+    </div></div>
+    <ul class="m">
+      <li class="pro">Отвечает на главный страх: «что от меня потребуется»</li>
+      <li class="pro">Подчёркивает работу без звонков</li>
+      <li class="pro">Сложность низкая, риск перегруза минимальный</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="tag">Вариант 2</span>
+    <h2>«Что вы получаете»</h2>
+    <p class="meta">Список активов, которые остаются у клиента.</p>
+    <div class="stage"><div class="give">
+      <div class="row"><div class="ic">◆</div><div>Сайт и домен<small>права передаём после оплаты</small></div></div>
+      <div class="row"><div class="ic">✦</div><div>Редактирование через Telegram<small>меняете текст и фото сами</small></div></div>
+      <div class="row"><div class="ic">↗</div><div>Запуск рекламы<small>чтобы приходили заявки</small></div></div>
+      <div class="row"><div class="ic">∞</div><div>Поддержка<small>от 29 € в месяц</small></div></div>
+    </div></div>
+    <ul class="m">
+      <li class="pro">Сразу видно ценность и «что останется мне»</li>
+      <li class="con">Не объясняет процесс</li>
+      <li class="pro">Сложность низкая</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="tag">Вариант 3</span>
+    <h2>Обычно / У нас</h2>
+    <p class="meta">Честное сравнение с привычным подходом.</p>
+    <div class="stage"><div class="ba">
+      <div class="h"><span>Обычно</span><span>У нас</span></div>
+      <div class="r"><span class="old">Предоплата 30–50 %</span><span class="new">0 € предоплаты</span></div>
+      <div class="r"><span class="old">2–6 недель ожидания</span><span class="new">2–3 рабочих дня</span></div>
+      <div class="r"><span class="old">Много звонков и встреч</span><span class="new">Всё в переписке</span></div>
+      <div class="r"><span class="old">Правки за отдельные деньги</span><span class="new">2–3 круга включены</span></div>
+      <div class="r"><span class="old">Сайт привязан к студии</span><span class="new">Права и доступы ваши</span></div>
+    </div></div>
+    <ul class="m">
+      <li class="pro">Наглядно подчёркивает наши преимущества</li>
+      <li class="con">Нужно не перегнуть с обещаниями</li>
+      <li class="pro">Сложность низкая</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="tag">Вариант 4</span>
+    <h2>Выбор пакета</h2>
+    <p class="meta">Три пакета прямо на первом экране.</p>
+    <div class="stage"><div class="pick">
+      <div class="p"><div><b>START</b><small>до 3 страниц</small></div><span class="price">349 €</span></div>
+      <div class="p"><div><b>BUSINESS</b><small>до 7 страниц, два языка</small></div><span class="price">649 €</span></div>
+      <div class="p"><div><b>SMART</b><small>AI-помощник, интеграции</small></div><span class="price">999 €</span></div>
+      <div class="badge" style="margin-top:6px">ϟ Оплата после согласования</div>
+    </div></div>
+    <ul class="m">
+      <li class="pro">Клиент сразу понимает цены и объём</li>
+      <li class="con">Дублирует раздел «Тарифы» ниже</li>
+      <li class="pro">Сложность низкая</li>
+    </ul>
+  </section>
+
+</div>
+<footer>Все четыре варианта — статичные, без анимации. Работают на мобильных. Можно комбинировать: например, схема процесса плюс бейдж «0 € предоплаты».</footer>
+</main></body></html>
