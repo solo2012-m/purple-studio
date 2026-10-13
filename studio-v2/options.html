@@ -1,56 +1,66 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Студия — выбор направления (2 варианта)</title>
+<title>Студия — выбор направления дизайна</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#0E0F12;--card:#17191D;--line:#26292F;--ink:#F2F1EE;--muted:#9BA0A8}
 *{box-sizing:border-box}
-body{margin:0;background:#0B0B0C;color:#EDEAE4;font:15px/1.6 Inter,system-ui,-apple-system,sans-serif}
-main{max-width:1180px;margin:0 auto;padding:56px 28px 80px}
-h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,3.4vw,42px);letter-spacing:-.01em;margin:0 0 14px}
-p.lead{color:#A8A29A;max-width:720px;margin:0 0 8px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:40px}
-.card{background:#121214;border:1px solid #242427;border-radius:16px;padding:22px;display:flex;flex-direction:column}
-.tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A83;margin-bottom:16px}
-.frame{border:1px solid #242427;border-radius:12px;overflow:hidden;background:#0B0B0C}
-.frame iframe{display:block;width:100%;height:360px;border:0;background:#fff}
-h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:26px;margin:18px 0 2px}
-.sub{color:#8E8A83;font-size:13px;margin:0 0 10px}
-.desc{color:#C9C4BC;font-size:14px;margin:0 0 16px}
-.sw{display:flex;gap:8px;margin-bottom:18px}
-.sw span{width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.14);display:block}
-.btn{display:inline-block;text-decoration:none;color:#0B0B0C;background:#EDEAE4;border-radius:10px;padding:11px 18px;font-weight:600;font-size:14px;align-self:flex-start}
-.btn:hover{background:#fff}
-footer{margin-top:56px;padding-top:24px;border-top:1px solid #242427;color:#8E8A83;font-size:13px;max-width:760px}
-@media(max-width:860px){.grid{grid-template-columns:1fr}main{padding:36px 18px 60px}.frame iframe{height:300px}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:48px 28px 80px}
+h1{font:600 34px/1.2 Inter,sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+p.lead{color:var(--muted);max-width:72ch;margin:0 0 40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.shot{position:relative;height:210px;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
+.shot iframe{width:1440px;height:1000px;border:0;transform:scale(.2944);transform-origin:top left;position:absolute;left:0;top:0}
+.meta{padding:20px 20px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tag{font:600 11px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.name{font:700 22px/1.1 Inter,sans-serif}
+.name i{font-style:normal;font-size:13px;color:var(--muted);font-weight:500;display:block;margin-top:6px;letter-spacing:.02em}
+.meta p{margin:0;color:var(--muted);font-size:14px}
+.pal{display:flex;gap:8px;margin-top:auto;padding-top:12px}
+.pal span{width:26px;height:26px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+.open{margin-top:14px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;border:1px solid var(--line);border-radius:10px;padding:10px 16px}
+.open:hover{border-color:#4a4f58}
+footer{margin-top:44px;color:var(--muted);font-size:13px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.shot{height:190px}.shot iframe{transform:scale(.24)}}
 </style></head>
-<body><main>
-<h1>Главный экран: два направления</h1>
-<p class="lead">Идея та же — небольшая веб-студия, сайты под ключ для малых предприятий. Образ спокойный и аккуратный: без неона, плазмы и молний.</p>
-<p class="lead">Ниже два варианта первого экрана. Выберите букву — разложу её на все секции и соберу общий предпросмотр.</p>
-
+<body><div class="wrap">
+<h1>Куда идём: три направления</h1>
+<p class="lead">Идея та же — небольшая веб-студия, сайты под ключ для малых предприятий в Словении. Убираем «энергетик»/неон, делаем спокойно и профессионально. Ниже три варианта названия, логотипа и стиля. Выберите букву — разложу её на весь сайт (все секции, SL/RU, предпросмотр).</p>
 <div class="grid">
-  <section class="card">
-    <div class="tag">Вариант A · рекомендую для доверия</div>
-    <div class="frame"><iframe src="a-vidik/index.html" title="Вариант A — VIDIK" loading="lazy"></iframe></div>
-    <h2>VIDIK</h2>
-    <p class="sub">studio · «обзор, точка зрения»</p>
-    <p class="desc">Светлый тёплый фон, тёмный текст, аккуратная серифная типографика. Один спокойный акцент — терракота. Чисто, просторно, «человечно».</p>
-    <div class="sw"><span style="background:#F6F3EE"></span><span style="background:#1B1A17"></span><span style="background:#B4552F"></span></div>
-    <a class="btn" href="a-vidik/index.html" target="_blank" rel="noopener">Открыть во весь экран →</a>
-  </section>
-
-  <section class="card">
-    <div class="tag">Вариант B · сдержанно и современно</div>
-    <div class="frame"><iframe src="b-kvadra/index.html" title="Вариант B — KVADRA" loading="lazy"></iframe></div>
-    <h2>KVADRA</h2>
-    <p class="sub">studio · «квадрат»</p>
-    <p class="desc">Тёмно-графитовый фон, тёплый янтарный акцент, строгая геометрическая типографика. Спокойно и профессионально, без «энергетики».</p>
-    <div class="sw"><span style="background:#14161A"></span><span style="background:#F2EDE4"></span><span style="background:#E0A64A"></span></div>
-    <a class="btn" href="b-kvadra/index.html" target="_blank" rel="noopener">Открыть во весь экран →</a>
-  </section>
+  <div class="card">
+    <div class="shot"><iframe src="a-vidik/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант A</span>
+      <div class="name">VIDIK <i>studio · «обзор, точка зрения»</i></div>
+      <p>Светлый тёплый фон, терракотовый акцент, аккуратная серифная типографика. Ремесленный, «человечный» вид. Логотип — рамка-видоискатель.</p>
+      <div class="pal"><span style="background:#F6F3EE"></span><span style="background:#14151A"></span><span style="background:#B4552F"></span></div>
+      <a class="open" href="a-vidik/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="shot"><iframe src="b-kvadra/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант B</span>
+      <div class="name">KVADRA <i>studio · «квадрат»</i></div>
+      <p>Тёмно-графитовый фон, тёплый янтарный акцент, геометричный гротеск. Строгий, современный, «инженерный» вид. Логотип — квадрат с заполненным углом.</p>
+      <div class="pal"><span style="background:#17181B"></span><span style="background:#F3F1EC"></span><span style="background:#E2A54C"></span></div>
+      <a class="open" href="b-kvadra/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="shot"><iframe src="c-nivo/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант C</span>
+      <div class="name">NIVO <i>studio · «уровень»</i></div>
+      <p>Светлый прохладный фон, глубокий зелёный акцент, много воздуха и линий. Спокойный, «сервисный» вид. Логотип — три растущих столбика.</p>
+      <div class="pal"><span style="background:#F3F6F4"></span><span style="background:#0F1412"></span><span style="background:#1F6F63"></span></div>
+      <a class="open" href="c-nivo/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
 </div>
-
-<footer>Черновой предпросмотр для выбора направления. Не для публикации. Названия студии — рабочие заглушки. Контакты и цены — финальные значения уточняются отдельно.</footer>
-</main></body></html>
+<footer>Черновой предпросмотр для выбора направления. Не для публикации. Контакты и цены уточняются отдельно.</footer>
+</div></body></html>
