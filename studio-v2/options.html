@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Студия — выбор направления дизайна</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0F12;--card:#17191D;--line:#26292F;--ink:#F2F1EE;--muted:#9BA0A8;--a:#B4552F;--b:#E2A54C;--c:#1F6F63}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:48px 28px 80px}
+h1{font:600 34px/1.2 Inter,sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+p.lead{color:var(--muted);max-width:70ch;margin:0 0 40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.shot{position:relative;height:210px;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
+.shot iframe{width:1440px;height:1000px;border:0;transform:scale(.2944);transform-origin:top left;position:absolute;left:0;top:0}
+.meta{padding:20px 20px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tag{font:600 11px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.name{font:700 22px/1.1 Inter,sans-serif}
+.name i{font-style:normal;font-size:13px;color:var(--muted);font-weight:500;display:block;margin-top:6px;letter-spacing:.02em}
+.meta p{margin:0;color:var(--muted);font-size:14px}
+.pal{display:flex;gap:8px;margin-top:auto;padding-top:12px}
+.pal span{width:26px;height:26px;border-radius:8px;border:1px solid rgba(255,255,255,.14)}
+.open{margin-top:14px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;border:1px solid var(--line);border-radius:10px;padding:10px 16px}
+.open:hover{border-color:#4a4f58}
+footer{margin-top:44px;color:var(--muted);font-size:13px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.shot{height:190px}.shot iframe{transform:scale(.24)}}
+</style></head>
+<body><div class="wrap">
+<h1>Куда идём: три направления</h1>
+<p class="lead">Идея та же — небольшая веб-студия, сайты под ключ для малых предприятий в Словении. Меняем образ: убираем «энергетик»/неон, делаем спокойно и профессионально. Ниже — три варианта названия, логотипа и стиля. Выберите букву — разложу её на весь сайт (все секции, RU/SL, предпросмотр).</p>
+<div class="grid">
+  <div class="card">
+    <div class="shot"><iframe src="a-vidik/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант A</span>
+      <div class="name">VIDIK <i>studio · «обзор, точка зрения»</i></div>
+      <p>Светлый тёплый фон, терракотовый акцент, аккуратная серифная типографика. Ремесленный, «человечный» вид. Логотип — рамка-видоискатель.</p>
+      <div class="pal"><span style="background:#F6F3EE"></span><span style="background:#14151A"></span><span style="background:#B4552F"></span></div>
+      <a class="open" href="a-vidik/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="shot"><iframe src="b-kvadra/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант B</span>
+      <div class="name">KVADRA <i>studio · «квадрат»</i></div>
+      <p>Тёмно-графитовый фон, тёплый янтарный акцент, геометричный гротеск. Строгий, современный, «инженерный» вид. Логотип — квадрат с заполненным углом.</p>
+      <div class="pal"><span style="background:#17181B"></span><span style="background:#F3F1EC"></span><span style="background:#E2A54C"></span></div>
+      <a class="open" href="b-kvadra/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="shot"><iframe src="c-nivo/index.html" loading="lazy"></iframe></div>
+    <div class="meta">
+      <span class="tag">Вариант C</span>
+      <div class="name">NIVO <i>studio · «уровень»</i></div>
+      <p>Светлый прохладный фон, глубокий зелёный акцент, много воздуха и линий. Спокойный, «сервисный» вид. Логотип — три растущих столбика.</p>
+      <div class="pal"><span style="background:#F3F6F4"></span><span style="background:#0F1412"></span><span style="background:#1F6F63"></span></div>
+      <a class="open" href="c-nivo/index.html">Открыть во весь экран →</a>
+    </div>
+  </div>
+</div>
+<footer>Черновой предпросмотр для выбора направления. Не для публикации. Контакты и цены — финальные значения уточняются отдельно.</footer>
+</div></body></html>

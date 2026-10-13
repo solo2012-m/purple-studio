@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Vidik — spletni studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F3EE;--surface:#fff;--ink:#14151A;--muted:#6B655D;--line:#E6DFD5;--accent:#B4552F;--soft:#F1E1D7}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+header{padding:24px 0}
+.hdr{display:flex;align-items:center;gap:44px}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none;color:inherit}
+.logo .mark{width:42px;height:42px}
+.logo b{font:600 20px/1 Fraunces,Georgia,serif;letter-spacing:.05em;display:block}
+.logo i{font-style:normal;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-top:4px}
+nav{display:flex;gap:30px;margin-left:auto}
+nav a{color:var(--muted);text-decoration:none;font-size:15px;transition:color .2s}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:14px 24px;font:500 15px Inter,sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--accent);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);padding:13px 22px}
+.btn.ghost:hover{background:#fff;border-color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;padding:56px 0 72px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.eyebrow:before{content:"";width:26px;height:1px;background:var(--accent);display:block}
+h1{font:600 clamp(40px,5.1vw,66px)/1.06 Fraunces,Georgia,serif;letter-spacing:-.015em;margin:22px 0 0}
+h1 em{font-style:italic;color:var(--accent)}
+.sub{font-size:18px;color:var(--muted);max-width:46ch;margin:22px 0 0}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:38px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{flex:none}
+/* art */
+.art{position:relative}
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px -34px rgba(60,40,25,.35);overflow:hidden}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;background:#FBF9F6;border-bottom:1px solid var(--line)}
+.mock-bar span{width:9px;height:9px;border-radius:50%;background:#E0D8CC}
+.mock-bar em{font-style:normal;margin-left:10px;font-size:11px;letter-spacing:.12em;color:var(--muted);background:#F2EEE7;padding:4px 12px;border-radius:999px}
+.mock-body{padding:26px 26px 30px;display:grid;gap:12px}
+.r{height:11px;border-radius:6px;background:#EFEAE2}
+.r.tall{height:26px;border-radius:8px;background:#E7DFD3}
+.r.h1{width:78%;background:#DCD2C4}
+.r.w60{width:60%}.r.w40{width:40%}
+.mock-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.mock-top .badge{width:26px;height:26px;border-radius:8px;background:var(--accent);opacity:.9}
+.mock-top .r{width:66px;height:9px}
+.mock-top .r:last-child{margin-left:auto;width:74px;height:24px;border-radius:999px;background:var(--ink);opacity:.85}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.cards i{display:block;height:74px;border-radius:10px;background:#F3EFE8;border:1px solid var(--line)}
+.cards i:nth-child(2){background:var(--soft);border-color:#E8D3C6}
+.float{position:absolute;left:-26px;bottom:-24px;background:var(--ink);color:#fff;border-radius:14px;padding:14px 18px;font-size:13px;line-height:1.35;box-shadow:0 20px 40px -20px rgba(20,21,26,.6)}
+.float b{display:block;font:600 20px/1 Fraunces,serif;margin-bottom:4px;color:#fff}
+.dots{position:absolute;right:-22px;top:-30px;width:120px;height:120px;background-image:radial-gradient(var(--line) 1.6px,transparent 1.6px);background-size:16px 16px;opacity:.9;z-index:-1}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip div{background:var(--bg);padding:26px 8px;text-align:center}
+.strip b{display:block;font:600 26px/1 Fraunces,serif}
+.strip span{font-size:13px;color:var(--muted)}
+footer{padding:34px 0 46px;color:var(--muted);font-size:13px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:44px;padding:34px 0 54px}nav{display:none}.strip{grid-template-columns:repeat(2,1fr)}h1{font-size:clamp(34px,9vw,48px)}.wrap{padding:0 20px}.float{left:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="hdr">
+  <a class="logo" href="#"><svg class="mark" viewBox="0 0 42 42" aria-hidden="true"><rect x="1.5" y="1.5" width="39" height="39" rx="11" fill="none" stroke="#14151A" stroke-width="2.6"/><circle cx="21" cy="21" r="8.4" fill="#B4552F"/><circle cx="24.4" cy="17.6" r="2.6" fill="#F6F3EE"/></svg><span><b>VIDIK</b><i>spletni studio</i></span></a>
+  <nav><a href="#">Storitve</a><a href="#">Cenik</a><a href="#">Postopek</a><a href="#">Vprašanja</a></nav>
+  <a class="btn" href="#">Pogovorimo se</a>
+</div></header>
+
+<section class="hero">
+  <div class="copy">
+    <span class="eyebrow">Studio za mala podjetja</span>
+    <h1>Vaš posel si zasluži <em>jasno podobo</em> na spletu.</h1>
+    <p class="sub">Izdelamo spletno stran, ki jo stranke razumejo na prvi pogled — predstavitev, storitve, cene in obrazec za povpraševanje. Vse v slovenščini in brez komplikacij.</p>
+    <div class="actions">
+      <a class="btn" href="#">Naročite stran</a>
+      <a class="btn ghost" href="#">Poglejte cenik</a>
+    </div>
+    <div class="trust">
+      <span><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 5.6 11 12 3.5" fill="none" stroke="#B4552F" stroke-width="2" stroke-linecap="round"/></svg>Prva različica v 2–3 dneh</span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 5.6 11 12 3.5" fill="none" stroke="#B4552F" stroke-width="2" stroke-linecap="round"/></svg>Plačilo po potrditvi</span>
+      <span><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 5.6 11 12 3.5" fill="none" stroke="#B4552F" stroke-width="2" stroke-linecap="round"/></svg>Vse pravice ostanejo vam</span>
+    </div>
+  </div>
+  <div class="art">
+    <div class="dots"></div>
+    <div class="mock">
+      <div class="mock-bar"><span></span><span></span><span></span><em>vasa-firma.si</em></div>
+      <div class="mock-body">
+        <div class="mock-top"><i class="badge"></i><div class="r"></div><div class="r"></div></div>
+        <div class="r tall h1"></div>
+        <div class="r w60"></div>
+        <div class="r w40"></div>
+        <div class="cards"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="float"><b>349 €</b>osnovni paket<br>do 3 strani</div>
+  </div>
+</section>
+</div>
+
+<div class="strip">
+  <div><b>2–3 dni</b><span>do prve različice</span></div>
+  <div><b>0 €</b><span>predplačila</span></div>
+  <div><b>2 jezika</b><span>SL + EN v paketu</span></div>
+  <div><b>100 %</b><span>pravic je vaših</span></div>
+</div>
+
+<div class="wrap"><footer>Vidik · spletni studio — predogled dizajna. Namenjeno izbiri smeri, ne objavi.</footer></div>
+</body>
+</html>
