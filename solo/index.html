@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SOLO</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <div class="draftbar"><b data-i18n="footer.draft"></b> <span data-i18n="meta.desc"></span></div>
+</div>
+
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="index.html">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1.5" y="1.5" width="37" height="37" rx="8" fill="none" stroke="#F4F3EF" stroke-width="2.4"/><rect x="20" y="20" width="17.5" height="17.5" rx="5" fill="#FFD400"/></svg>
+      <span><b>SOLO</b><i data-i18n="brand.sub"></i></span>
+    </a>
+    <nav>
+      <a href="#solutions" data-i18n="nav.solutions"></a>
+      <a href="#process" data-i18n="nav.process"></a>
+      <a href="#telegram" data-i18n="nav.telegram"></a>
+      <a href="#works" data-i18n="nav.works"></a>
+      <a href="#faq" data-i18n="nav.faq"></a>
+    </nav>
+    <div class="langbox">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
+    </div>
+    <button class="btn sm" onclick="SOLO.openContact()" data-i18n="cta.talk"></button>
+  </div>
+</header>
+
+<section class="first" style="padding-top:0">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow" data-i18n="hero.eyebrow"></span>
+      <h1><span data-i18n="hero.h1a"></span><br><span style="color:var(--accent)" data-i18n="hero.h1b"></span></h1>
+      <p class="sub" data-i18n="hero.sub"></p>
+      <div class="actions">
+        <button class="btn" onclick="SOLO.startQuiz()" data-i18n="hero.btn.pick"></button>
+        <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="hero.btn.talk"></button>
+      </div>
+      <div class="chips">
+        <span class="chip" data-i18n="chip.1"></span>
+        <span class="chip" data-i18n="chip.2"></span>
+        <span class="chip" data-i18n="chip.3"></span>
+        <span class="chip" data-i18n="chip.4"></span>
+      </div>
+    </div>
+    <div>
+      <div class="mock">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="body">
+          <div class="mrow"><span data-i18n="panel.1"></span><b data-i18n="panel.v1"></b></div>
+          <div class="mrow"><span data-i18n="panel.2"></span><b data-i18n="panel.v2"></b></div>
+          <div class="mrow"><span data-i18n="panel.3"></span><b data-i18n="panel.v3"></b></div>
+          <div class="mrow"><span data-i18n="panel.4"></span><b data-i18n="panel.v4"></b></div>
+          <div class="note" data-i18n="panel.note"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="situations">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s2.title"></h2>
+    <p class="lead" data-i18n="s2.lead"></p>
+    <div class="grid g4">
+      <button class="card pick" type="button" data-quiz="a"><div class="ico">01</div><h3 data-i18n="s2.c1.t"></h3><p data-i18n="s2.c1.d"></p></button>
+      <button class="card pick" type="button" data-quiz="b"><div class="ico">02</div><h3 data-i18n="s2.c2.t"></h3><p data-i18n="s2.c2.d"></p></button>
+      <button class="card pick" type="button" data-quiz="b"><div class="ico">03</div><h3 data-i18n="s2.c3.t"></h3><p data-i18n="s2.c3.d"></p></button>
+      <button class="card pick" type="button" data-quiz="c"><div class="ico">04</div><h3 data-i18n="s2.c4.t"></h3><p data-i18n="s2.c4.d"></p></button>
+    </div>
+  </div>
+</section>
+
+<section id="solutions">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s3.title"></h2>
+    <p class="lead" data-i18n="s3.lead"></p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="ico">A</div><h3 data-i18n="s3.a.t"></h3><p data-i18n="s3.a.d"></p>
+        <ul>
+          <li data-i18n="s3.a.l1"></li><li data-i18n="s3.a.l2"></li><li data-i18n="s3.a.l3"></li>
+          <li data-i18n="s3.a.l4"></li><li data-i18n="s3.a.l5"></li><li data-i18n="s3.a.l6"></li>
+        </ul>
+        <a class="more" data-route="create" href="#" data-i18n="s3.more"></a>
+      </div>
+      <div class="card">
+        <div class="ico">B</div><h3 data-i18n="s3.b.t"></h3><p data-i18n="s3.b.d"></p>
+        <ul>
+          <li data-i18n="s3.b.l1"></li><li data-i18n="s3.b.l2"></li><li data-i18n="s3.b.l3"></li><li data-i18n="s3.b.l4"></li>
+          <li data-i18n="s3.b.l5"></li><li data-i18n="s3.b.l6"></li><li data-i18n="s3.b.l7"></li><li data-i18n="s3.b.l8"></li>
+        </ul>
+        <a class="more" data-route="improve" href="#" data-i18n="s3.more"></a>
+      </div>
+      <div class="card">
+        <div class="ico">C</div><h3 data-i18n="s3.c.t"></h3><p data-i18n="s3.c.d"></p>
+        <ul>
+          <li data-i18n="s3.c.l1"></li><li data-i18n="s3.c.l2"></li><li data-i18n="s3.c.l3"></li>
+          <li data-i18n="s3.c.l4"></li><li data-i18n="s3.c.l5"></li><li data-i18n="s3.c.l6"></li>
+        </ul>
+        <a class="more" data-route="ai" href="#" data-i18n="s3.more"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s4.title"></h2>
+    <p class="lead" data-i18n="s4.lead"></p>
+    <div class="steps">
+      <div class="step"><b>1</b><div data-i18n="s4.s1"></div></div>
+      <div class="step"><b>2</b><div data-i18n="s4.s2"></div></div>
+      <div class="step"><b>3</b><div data-i18n="s4.s3"></div></div>
+      <div class="step"><b>4</b><div data-i18n="s4.s4"></div></div>
+      <div class="step"><b>5</b><div data-i18n="s4.s5"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="telegram">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s5.title"></h2>
+    <p class="lead" data-i18n="s5.lead"></p>
+    <div class="grid g2" style="align-items:start">
+      <div class="chat">
+        <div class="who" data-i18n="s5.who.me"></div>
+        <div class="msg me" data-i18n="s5.m1"></div>
+        <div class="who r" data-i18n="s5.who.ai"></div>
+        <div class="msg ai" data-i18n="s5.m2"></div>
+        <div class="msg act" data-i18n="s5.act"></div>
+        <div class="who" data-i18n="s5.who.me"></div>
+        <div class="msg me" data-i18n="s5.m3"></div>
+        <div class="msg act" data-i18n="s5.m4"></div>
+      </div>
+      <div class="card" style="margin-top:0">
+        <h3 data-i18n="s5.card.t"></h3>
+        <ul>
+          <li data-i18n="s5.card.l1"></li><li data-i18n="s5.card.l2"></li>
+          <li data-i18n="s5.card.l3"></li><li data-i18n="s5.card.l4"></li>
+        </ul>
+        <div class="note" data-i18n-html="s5.note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s6.title"></h2>
+    <ul class="check">
+      <li data-i18n="s6.i1"></li><li data-i18n="s6.i2"></li><li data-i18n="s6.i3"></li>
+      <li data-i18n="s6.i4"></li><li data-i18n="s6.i5"></li><li data-i18n="s6.i6"></li><li data-i18n="s6.i7"></li>
+    </ul>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s7.title"></h2>
+    <p class="lead" data-i18n="s7.lead"></p>
+    <div class="grid g3">
+      <div class="card work">
+        <div class="thumb"><i class="sk"></i><span data-i18n="s7.demo.tag"></span></div>
+        <div class="inner"><span class="tag" data-i18n="s7.c1.type"></span><h3 data-i18n="s7.c1.t"></h3><p data-i18n="s7.c1.d"></p></div>
+      </div>
+      <div class="card work">
+        <div class="thumb"><i class="sk"></i><span data-i18n="s7.demo.tag"></span></div>
+        <div class="inner"><span class="tag" data-i18n="s7.c2.type"></span><h3 data-i18n="s7.c2.t"></h3><p data-i18n="s7.c2.d"></p></div>
+      </div>
+      <div class="card work">
+        <div class="thumb"><i class="sk"></i><span data-i18n="s7.demo.tag"></span></div>
+        <div class="inner"><span class="tag" data-i18n="s7.c3.type"></span><h3 data-i18n="s7.c3.t"></h3><p data-i18n="s7.c3.d"></p></div>
+      </div>
+    </div>
+    <div class="note" data-i18n-html="s7.demo.note"></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="s8.title"></h2>
+    <div style="margin-top:30px">
+      <details class="faq"><summary data-i18n="s8.q1"></summary><p data-i18n="s8.a1"></p></details>
+      <details class="faq"><summary data-i18n="s8.q2"></summary><p data-i18n="s8.a2"></p></details>
+      <details class="faq"><summary data-i18n="s8.q3"></summary><p data-i18n="s8.a3"></p></details>
+      <details class="faq"><summary data-i18n="s8.q4"></summary><p data-i18n="s8.a4"></p></details>
+      <details class="faq"><summary data-i18n="s8.q5"></summary><p data-i18n="s8.a5"></p></details>
+      <details class="faq"><summary data-i18n="s8.q6"></summary><p data-i18n="s8.a6"></p></details>
+      <details class="faq"><summary data-i18n="s8.q7"></summary><p data-i18n="s8.a7"></p></details>
+      <details class="faq"><summary data-i18n="s8.q8"></summary><p data-i18n="s8.a8"></p></details>
+      <details class="faq"><summary data-i18n="s8.q9"></summary><p data-i18n="s8.a9"></p></details>
+      <details class="faq"><summary data-i18n="s8.q10"></summary><p data-i18n="s8.a10"></p></details>
+      <details class="faq"><summary data-i18n="s8.q11"></summary><p data-i18n="s8.a11"></p></details>
+      <details class="faq"><summary data-i18n="s8.q12"></summary><p data-i18n="s8.a12"></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 data-i18n="s9.title"></h2>
+    <p class="lead" data-i18n="s9.lead"></p>
+    <div class="actions center">
+      <button class="btn" onclick="SOLO.startQuiz()" data-i18n="hero.btn.pick"></button>
+      <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="hero.btn.talk"></button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footrow">
+      <div>
+        <div id="footlegal"></div>
+      </div>
+      <div class="footlinks" id="footlinks"></div>
+    </div>
+    <div style="margin-top:18px;color:var(--muted)" data-i18n="footer.rights"></div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)SOLO.close()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="SOLO.close()" aria-label="Close">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
