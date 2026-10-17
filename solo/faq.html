@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solo.Pov — vprašanja</title>
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="index.html">
+      <img src="assets/img/logo-mark.png" alt="Solo.Pov">
+      <span class="txt"><i data-i18n="brand.sub"></i></span>
+    </a>
+    <nav style="margin-left:auto">
+      <a href="index.html" data-i18n="nav.solutions"></a>
+      <a href="index.html#process" data-i18n="nav.process"></a>
+      <a href="index.html#telegram" data-i18n="nav.telegram"></a>
+      <a href="index.html#faq" data-i18n="nav.faq"></a>
+    </nav>
+    <div class="langbox">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
+    </div>
+  </div>
+</header>
+
+<section class="first" style="padding:52px 0 70px">
+  <div class="wrap">
+    <span class="eyebrow">Solo.Pov</span>
+    <h1 class="h2" style="font-size:clamp(30px,4vw,44px)" data-i18n="s8.title"></h1>
+    <div style="margin-top:30px">
+      <details class="faq"><summary data-i18n="s8.q1"></summary><p data-i18n="s8.a1"></p></details>
+      <details class="faq"><summary data-i18n="s8.q2"></summary><p data-i18n="s8.a2"></p></details>
+      <details class="faq"><summary data-i18n="s8.q3"></summary><p data-i18n="s8.a3"></p></details>
+      <details class="faq"><summary data-i18n="s8.q4"></summary><p data-i18n="s8.a4"></p></details>
+      <details class="faq"><summary data-i18n="s8.q5"></summary><p data-i18n="s8.a5"></p></details>
+      <details class="faq"><summary data-i18n="s8.q6"></summary><p data-i18n="s8.a6"></p></details>
+      <details class="faq"><summary data-i18n="s8.q7"></summary><p data-i18n="s8.a7"></p></details>
+      <details class="faq"><summary data-i18n="s8.q8"></summary><p data-i18n="s8.a8"></p></details>
+      <details class="faq"><summary data-i18n="s8.q9"></summary><p data-i18n="s8.a9"></p></details>
+      <details class="faq"><summary data-i18n="s8.q10"></summary><p data-i18n="s8.a10"></p></details>
+      <details class="faq"><summary data-i18n="s8.q11"></summary><p data-i18n="s8.a11"></p></details>
+      <details class="faq"><summary data-i18n="s8.q12"></summary><p data-i18n="s8.a12"></p></details>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn"></button>
+      <a class="btn ghost" href="index.html" data-i18n="nav.solutions"></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
+      <span data-i18n="footer.draft"></span>
+      <span>&copy; <span id="year"></span> <span data-i18n="brand.name"></span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)SOLO.close()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="SOLO.close()" aria-label="Close">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
