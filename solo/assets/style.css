@@ -698,3 +698,19 @@ pre.copyout{white-space:pre-wrap;background:var(--surface);border:1px solid var(
   .hint-mobile{display:inline}
   #revTooltip{width:calc(100vw - 24px);max-width:380px}
 }
+
+/* shared cursor light + logo highlight */
+.logo{position:relative;isolation:isolate}
+.logo:before{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(255,212,0,.34) 0%,rgba(255,212,0,.10) 45%,rgba(255,212,0,0) 72%);opacity:0;filter:blur(10px);transition:opacity .3s ease;pointer-events:none;z-index:-1}
+.logo img{transition:filter .3s ease,transform .3s ease}
+@media(hover:hover){
+  .logo:hover:before{opacity:1}
+  .logo:hover img{filter:drop-shadow(0 0 14px rgba(255,212,0,.55));transform:scale(1.02)}
+}
+.logo:focus-visible{outline:none}
+.logo:focus-visible:before{opacity:1}
+.logo:focus-visible img{filter:drop-shadow(0 0 14px rgba(255,212,0,.55))}
+@media(prefers-reduced-motion:reduce){
+  .logo img{transition:none}
+  .logo:hover img{transform:none}
+}

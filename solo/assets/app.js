@@ -655,7 +655,6 @@
     initPicker();
     startStamp();
     startType();
-    initFirefly();
     var cards = document.querySelectorAll('[data-quiz]');
     for (var i = 0; i < cards.length; i++) {
       (function (node) { node.addEventListener('click', function () { startQuiz(node.getAttribute('data-quiz')); }); })(cards[i]);
