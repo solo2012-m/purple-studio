@@ -4,7 +4,10 @@ window.SOLO_AI = {
     hero: {
       eyebrow: 'Solo.Pov · AI in tehnična podpora',
       title: 'Vaša stran deluje. Pomagamo ji rasti.',
-      sub: 'Tehnična podpora, AI-asistenti in avtomatizacija vsakodnevnih nalog. Manj rutine — več časa za vaše poslovanje.',
+      sub: [
+        'Tehnična podpora, AI-asistenti in avtomatizacija vsakodnevnih nalog.',
+        'Manj rutine — več časa za vaše poslovanje.'
+      ],
       cards: [
         { id: 'support', n: '01', title: 'Tehnična podpora', desc: 'Želite, da stran deluje, se posodablja in imate vedno koga vprašati?', cta: 'Poglej pakete →' },
         { id: 'ai', n: '02', title: 'AI-asistent', desc: 'Upravljajte vsebino strani prek Telegrama. Prosite AI, da pripravi besedilo, spremeni podatke ali ustvari novo objavo.', cta: 'Kako deluje →' },
@@ -65,6 +68,8 @@ window.SOLO_AI = {
       eyebrow: 'AI-asistent',
       title: 'Upravljajte stran s preprostimi sporočili',
       sub: 'Namesto zapletenih nadzornih plošč — znan Telegram. Napišite, kaj želite spremeniti, AI pa pomaga pripraviti rezultat.',
+      tariffsEyebrow: 'Paketi',
+      tariffsTitle: 'Paketi AI-asistenta za Telegram',
       phones: [
         { id: 'service', title: 'Nova storitev', chat: [
           { who: 'client', text: 'Dodaj na stran novo storitev — čiščenje fasad. Cena od 5 € za m².' },
@@ -206,7 +211,10 @@ window.SOLO_AI = {
     hero: {
       eyebrow: 'Solo.Pov · AI и техническая поддержка',
       title: 'Ваш сайт работает. Мы помогаем ему развиваться.',
-      sub: 'Техническая поддержка, AI-ассистенты и автоматизация повседневных задач. Меньше рутины — больше времени для вашего бизнеса.',
+      sub: [
+        'Техническая поддержка, AI-ассистенты и автоматизация повседневных задач.',
+        'Меньше рутины — больше времени для вашего бизнеса.'
+      ],
       cards: [
         { id: 'support', n: '01', title: 'Техническая поддержка', desc: 'Хотите, чтобы ваш сайт оставался в рабочем состоянии, обновлялся и всегда было к кому обратиться?', cta: 'Посмотреть тарифы →' },
         { id: 'ai', n: '02', title: 'AI-ассистент', desc: 'Управляйте содержимым сайта через Telegram. Попросите AI подготовить текст, изменить информацию или создать новую публикацию.', cta: 'Как это работает →' },
@@ -267,6 +275,8 @@ window.SOLO_AI = {
       eyebrow: 'AI-ассистент',
       title: 'Управляйте сайтом обычными сообщениями',
       sub: 'Вместо сложных панелей управления — привычный Telegram. Напишите, что нужно изменить, а AI поможет подготовить результат.',
+      tariffsEyebrow: 'Тарифы',
+      tariffsTitle: 'Тарифы AI-ассистента для Telegram',
       phones: [
         { id: 'service', title: 'Новая услуга', chat: [
           { who: 'client', text: 'Добавь на сайт новую услугу — чистка фасадов. Цена от 5 € за м².' },

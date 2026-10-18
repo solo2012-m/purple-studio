@@ -1075,3 +1075,36 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 
 /* AI form note below the button */
 .ai-form-panel .meta{display:block;margin-top:10px;text-align:left;line-height:1.5;max-width:70ch}
+
+/* AI hero sentence lines and Telegram demo */
+.ai-lead-line{display:block}
+.ai-lead-line + .ai-lead-line{margin-top:3px}
+.ai-cards{margin-top:36px}
+.ai-phones{margin-top:32px;margin-bottom:10px;gap:24px}
+.phone-chat{min-height:485px;background:#0e1621}
+.phone-head{background:#17212b;border-bottom:1px solid #22303d;border-radius:8px 8px 0 0}
+.phone-avatar.tg{background:#2AABEE;color:#fff}
+.phone-head b{color:#fff}
+.phone-head small{color:#8cccf5}
+.phone-badge{color:#8cccf5;border-color:rgba(42,171,238,.55)}
+.phone-msg.client{background:#2b5278;border-color:#3a6a96;color:#fff}
+.phone-msg.client:after{content:"\2713\2713";display:block;text-align:right;font:600 7px Inter,sans-serif;color:rgba(255,255,255,.65);margin-top:2px}
+.phone-msg.ai{background:#182533;border-color:#243447;color:#e7edf3}
+.phone-preview{background:#17212b;border-color:#2b3b4d}
+.pp-label{color:#8cccf5}
+.phone-status{background:rgba(42,171,238,.12);border:0;color:#8cccf5;text-align:center}
+.ai-tariffs-head{margin-top:58px;padding-top:36px;border-top:1px solid var(--line);max-width:920px}
+.ai-tariffs-head .eyebrow{display:block;margin-bottom:7px}
+.ai-tariffs-head h3{font:700 clamp(24px,3vw,32px)/1.2 "Space Grotesk",sans-serif;margin:0}
+.ai-tariffs-head + .ai-tariffs{margin-top:18px}
+@media(max-width:960px){
+  .ai-phones{gap:14px;margin-bottom:4px}
+  .phone-chat{min-height:450px}
+}
+@media(max-width:760px){
+  .ai-cards{margin-top:28px}
+  .ai-tariffs-head{margin-top:42px;padding-top:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .phone-msg.client:after{content:"\2713\2713"}
+}

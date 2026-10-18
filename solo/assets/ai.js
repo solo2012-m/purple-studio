@@ -43,7 +43,8 @@
     var d = D().hero, h = '';
     h += '<span class="eyebrow">' + esc(d.eyebrow) + '</span>';
     h += '<h1 class="ai-title">' + esc(d.title) + '</h1>';
-    h += '<p class="ai-lead">' + esc(d.sub) + '</p>';
+    var lines = Array.isArray(d.sub) ? d.sub : [d.sub];
+    h += '<p class="ai-lead">' + lines.map(function (x) { return '<span class="ai-lead-line">' + esc(x) + '</span>'; }).join('') + '</p>';
     h += '<div class="ai-cards">';
     for (var i = 0; i < d.cards.length; i++) {
       var c = d.cards[i];
@@ -114,7 +115,8 @@
   }
 
   function phoneHTML(p) {
-    var h = '<div class="ai-phone"><div class="phone-top"></div><div class="phone-head"><span class="phone-avatar">AI</span><div><b>SOLO.POV</b><small>Telegram · ' + esc(lang() === 'ru' ? 'пример' : 'primer') + '</small></div><span class="phone-badge">' + esc(p.title) + '</span></div><div class="phone-chat">';
+    var tg = '<svg width="14" height="14" viewBox="0 0 18 18" fill="none"><path d="M2.5 9l13-5-4 11-3-4-6-2z" fill="#fff"/><path d="M8.5 11l3-3" stroke="#2AABEE" stroke-width="1.2"/></svg>';
+    var h = '<div class="ai-phone"><div class="phone-top"></div><div class="phone-head"><span class="phone-avatar tg">' + tg + '</span><div><b>Telegram</b><small>SOLO.POV · ' + esc(lang() === 'ru' ? 'пример' : 'primer') + '</small></div><span class="phone-badge">' + esc(p.title) + '</span></div><div class="phone-chat">';
     for (var i = 0; i < p.chat.length; i++) {
       var m = p.chat[i];
       h += '<div class="phone-msg ' + (m.who === 'client' ? 'client' : 'ai') + '" style="--d:' + (i * 0.28).toFixed(2) + 's"><span>' + esc(m.text) + '</span></div>';
@@ -146,6 +148,7 @@
     h += '<div class="ai-section-head"><span class="eyebrow">' + esc(d.eyebrow) + '</span><h2>' + esc(d.title) + '</h2><p class="ai-lead">' + esc(d.sub) + '</p></div>';
     h += '<div class="ai-phones" id="aiPhones"></div>';
     h += '<p class="ai-demo-note">' + esc(d.note) + '</p>';
+    h += '<div class="ai-tariffs-head"><span class="eyebrow">' + esc(d.tariffsEyebrow) + '</span><h3>' + esc(d.tariffsTitle) + '</h3></div>';
     h += '<div class="ai-tariffs ai-tariffs--4" id="aiTariffs"></div>';
     h += '<p class="ai-footnote">' + esc(d.tariffNote) + '</p><p class="ai-footnote ai-footnote--small">' + esc(d.tariffFootnote) + '</p>';
     h += '<div class="ai-actions"><button type="button" class="btn" onclick="aiScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
