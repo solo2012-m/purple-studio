@@ -42,6 +42,10 @@ window.SOLO_CONFIG = {
     enabled: false,
     endpoint: ''
   },
+  ai: {
+    enabled: false,
+    endpoint: ''
+  },
   /* Prihodnja CRM / zbirka potencialnih strank. Trenutno izklopljeno. */
   crm: {
     enabled: false,

@@ -4,70 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Solo.Pov — AI-avtomatizacija in podpora</title>
+<title>Solo.Pov — AI in tehnična podpora</title>
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body class="create-page ai-page">
+
 <header>
   <div class="wrap hdr">
-    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov"></a>
-    <nav style="margin-left:auto">
-      <a href="izdelava-spletnih-strani.html">Izdelava</a>
-      <a href="izboljsanje-spletnih-strani.html">Izboljšave</a>
-      <a href="ai-avtomatizacija.html">AI in podpora</a>
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
+    <nav>
+      <a href="../index.html" data-i18n="create.nav.home"></a>
+      <a href="izdelava-spletnih-strani.html" data-i18n="create.nav.create"></a>
+      <a href="izboljsanje-spletnih-strani.html" data-i18n="create.nav.improve"></a>
+      <a href="ai-avtomatizacija.html" style="color:var(--ink)" data-i18n="create.nav.ai"></a>
     </nav>
-    <a class="btn ghost sm" href="../index.html">&#8592; Domov</a>
+    <div class="langbox" style="margin-left:auto">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderAI()">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru');renderAI()">RU</button>
+    </div>
+    <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
   </div>
 </header>
 
-<section class="first" style="padding:52px 0 30px">
-  <div class="wrap">
-    <span class="eyebrow">Solo.Pov · rešitev C</span>
-    <h1 class="h2" style="font-size:clamp(30px,4vw,44px)">AI-avtomatizacija in podpora</h1>
-    <p class="lead" style="font-size:18px;margin-top:6px">Redno vzdrževanje in razvoj, tudi z upravljanjem prek Telegrama.</p>
-    <p class="lead" style="margin-top:10px">Регулярное обслуживание и развитие, в том числе управление через Telegram.</p>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="grid g2">
-      <div class="card"><h3>Kaj naredimo</h3><ul><li>Tehnična podpora</li><li>Posodabljanje vsebine</li><li>Objavljanje člankov</li><li>AI-asistent za upravljanje strani</li><li>Avtomatizacija povpraševanj</li><li>Dodatne integracije</li></ul></div>
-      <div class="card"><h3>Что делаем</h3><ul><li>Техническая поддержка</li><li>Обновление контента</li><li>Публикация статей</li><li>AI-ассистент для управления сайтом</li><li>Автоматизация обработки заявок</li><li>Дополнительные интеграции</li></ul></div>
-    </div>
-    <div class="grid g2" style="margin-top:18px">
-      <div class="card"><h3>Kaj dobite</h3><ul><li>Manj ročnega dela</li><li>Spremembe prek sporočil</li><li>Predogled pred objavo</li><li>Podpora po dogovorjenih pogojih</li></ul></div>
-      <div class="card"><h3>Что вы получаете</h3><ul><li>Меньше ручной работы</li><li>Изменения через сообщения</li><li>Предпросмотр до публикации</li><li>Поддержка по согласованным условиям</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2 class="h2">Pogosta vprašanja / Частые вопросы</h2>
-    <div style="margin-top:26px"><details class="faq"><summary>Kako deluje AI-asistent? / Как работает AI-ассистент?</summary><p>Funkcija je v razvoju; prikaz na strani je ilustracija scenarija. / Функция в разработке; показ на сайте — иллюстрация сценария.</p></details>
-          <details class="faq"><summary>Ali lahko naročim samo vzdrževanje? / Можно заказать только обслуживание?</summary><p>Da, če stran že imate in deluje. / Да, если сайт уже есть и работает.</p></details>
-          <details class="faq"><summary>Ali so dostopi moji? / Доступы мои?</summary><p>Da, ves čas. / Да, всегда.</p></details></div>
-    <div class="actions" style="margin-top:26px">
-      <a class="btn" href="../index.html?quiz=c">Izberite rešitev / Подобрать решение</a>
-      <a class="btn ghost" href="../index.html">Nazaj / На главную</a>
-    </div>
-  </div>
-</section>
+<main>
+  <section class="ai-hero"><div class="wrap" id="aiHero"></div></section>
+  <section id="support" class="ai-section"><div class="wrap" id="supportBox"></div></section>
+  <section id="ai" class="ai-section ai-section--tint"><div class="wrap" id="aiBox"></div></section>
+  <section id="automation" class="ai-section"><div class="wrap" id="automationBox"></div></section>
+  <section id="request" class="ai-section ai-section--tint"><div class="wrap" id="requestBox"></div></section>
+  <section id="faq" class="ai-section"><div class="wrap" id="faqBox"></div></section>
+  <section class="ai-section"><div class="wrap" id="crossBox"></div></section>
+</main>
 
 <footer>
   <div class="wrap">
     <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
-      <span>Predogled v izdelavi. Ni za objavo.</span>
+      <span data-i18n="footer.draft"></span>
       <span>&copy; 2026 Solo.Pov</span>
     </div>
   </div>
 </footer>
-  <script src="../assets/cursor.js"></script>
-  <div class="firefly" id="firefly" aria-hidden="true"></div>
+
+<div class="firefly" id="firefly" aria-hidden="true"></div>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/concept-i18n.js"></script>
+<script src="../assets/ai-i18n.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/ai.js"></script>
+<script src="../assets/cursor.js"></script>
 </body>
 </html>
