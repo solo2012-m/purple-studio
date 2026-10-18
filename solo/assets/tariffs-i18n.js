@@ -1,0 +1,251 @@
+/* Solo.Pov — tariffs and add-ons data (page concept) */
+window.SOLO_TARIFFS = {
+  sl: {
+    tariffs: [
+      {
+        id: 'start', name: 'START', price: 300, priceLabel: 'od 300 €',
+        desc: 'Za eno glavno ponudbo, specialista ali manjše podjetje.',
+        features: [
+          'Enostranska spletna stran.',
+          'Odziven dizajn na osnovi pripravljene strukture.',
+          'Nekaj smiselnih sklopov na eni strani.',
+          'Preprost obrazec za povpraševanje.',
+          'Kontakti in gumbi za stik.',
+          'Zemljevid, če je potreben.',
+          'Osnovna SEO priprava.',
+          'Povezava domene in objava.',
+          'En krog popravkov.'
+        ],
+        includes: [], cta: 'Izberite START'
+      },
+      {
+        id: 'business', name: 'BUSINESS', price: 600, priceLabel: 'od 600 €',
+        desc: 'Za podjetje z več dejavnostmi.',
+        features: [
+          'Do pet strani.',
+          'Prilagojen dizajn.',
+          'Mobilna prilagoditev.',
+          'Obrazci za povpraševanja.',
+          'Galerija ali portfelj.',
+          'Osnovna SEO priprava vsake strani.',
+          'Nastavitev osnovne analitike.',
+          'Pomoč pri Google Business Profile v dogovorjenem obsegu.',
+          'Dva kroga popravkov.'
+        ],
+        includes: ['analytics', 'gbp'], cta: 'Izberite BUSINESS'
+      },
+      {
+        id: 'pro', name: 'PRO', price: 1000, priceLabel: 'od 1 000 €',
+        desc: 'Za podjetje, ki želi stran razvijati.',
+        features: [
+          'Do deset strani.',
+          'Razširjena struktura in dizajn.',
+          'Do dve jezikovni različici.',
+          'Razdelek s članki.',
+          'Napredni obrazci.',
+          'Analitika in sledenje dogovorjenih konverzij.',
+          'Ena preprosta integracija.',
+          'Trije krogi popravkov.'
+        ],
+        includes: ['language', 'blog', 'form', 'analytics', 'tracking'], cta: 'Izberite PRO'
+      },
+      {
+        id: 'custom', name: 'CUSTOM', price: null, priceLabel: 'Individualni izračun',
+        desc: 'Za trgovine, portale, rezervacije in posebne funkcije.',
+        features: [
+          'Spletne trgovine.',
+          'Osebni portali.',
+          'Zahtevni sistemi rezervacij.',
+          'Nestandardne funkcije.',
+          'Spletne aplikacije.',
+          'Cena po pogovoru.'
+        ],
+        includes: [], cta: 'Pogovorimo se'
+      }
+    ],
+    table: {
+      columns: ['START', 'BUSINESS', 'PRO'],
+      rows: [
+        { label: 'Število strani', values: ['1', 'do 5', 'do 10'] },
+        { label: 'Dizajn', values: ['Osnovna struktura', 'Prilagojen', 'Razširjen'] },
+        { label: 'Mobilna različica', values: [true, true, true] },
+        { label: 'Obrazci', values: ['Preprost', 'Več obrazcev', 'Napredni'] },
+        { label: 'Galerija', values: [false, true, true] },
+        { label: 'SEO', values: ['Osnovno', 'Osnovno po straneh', 'Napredno'] },
+        { label: 'Dodatni jeziki', values: ['1', '1', 'do 2'] },
+        { label: 'Google Analytics', values: [false, true, true] },
+        { label: 'Google Business Profile', values: [false, 'Po dogovoru', false] },
+        { label: 'Priprava na oglaševanje', values: [false, false, 'Po dogovoru'] },
+        { label: 'Blog', values: [false, false, true] },
+        { label: 'Integracije', values: [false, false, '1 preprosta'] },
+        { label: 'Krogi popravkov', values: ['1', '2', '3'] },
+        { label: 'Podpora', values: ['Po dogovoru', 'Po dogovoru', 'Po dogovoru'] }
+      ]
+    },
+    addons: [
+      { id: 'page', title: 'Dodatna stran', price: 50 },
+      { id: 'language', title: 'Dodatni jezik', price: 100 },
+      { id: 'blog', title: 'Blog', price: 120 },
+      { id: 'form', title: 'Obrazec z dodatnimi vprašanji', price: 70 },
+      { id: 'booking', title: 'Spletna rezervacija prek pripravljene storitve', price: 120 },
+      { id: 'analytics', title: 'Google Analytics', price: 60 },
+      { id: 'tracking', title: 'Sledenje povpraševanjem za oglaševanje', price: 90 },
+      { id: 'gbp', title: 'Pomoč pri Google Business Profile', price: 70 },
+      { id: 'calculator', title: 'Preprost kalkulator cene', price: 150 },
+      { id: 'integrations', title: 'Druge integracije', price: null, individual: true }
+    ],
+    ui: {
+      selected: 'Izbrano',
+      included: 'Vključeno',
+      includedInTariff: 'Vključeno v paket',
+      individual: 'Individualna ocena',
+      from: 'od',
+      calcTitle: 'Vaš izbor',
+      calcEmpty: 'Najprej izberite paket.',
+      calcBase: 'Osnovni paket',
+      calcAddons: 'Dodatne možnosti',
+      calcTotal: 'Predvidoma od',
+      calcNote: 'Predračun je orientacijski. Končno ceno in roke potrdimo pred začetkom dela.',
+      calcCustom: 'Individualni izračun',
+      calcIndividual: '+ individualna ocena',
+      discuss: 'Pogovorimo se o izbranem',
+      unsure: 'Ne vem, kaj izbrati',
+      choose: 'Izberite paket',
+      compareMobile: 'Prikaži paket',
+      addonsNote: 'Končna cena je odvisna od obsega in tehničnih zahtev.',
+      paymentTitle: 'O plačilu',
+      payment: [
+        'Izdelava strani se plača ločeno od rednega vzdrževanja.',
+        'Domena in plačljive zunanje storitve se lahko plačajo dodatno.',
+        'Končno ceno in roke potrdimo pred začetkom dela.',
+        'Dodatne spremembe nad dogovorjenim obsegom se obračunajo posebej.',
+        'Pogoji podpore se dogovorijo posebej.'
+      ],
+      vatNote: 'Davčni režim bo potrjen pred objavo.'
+    }
+  },
+  ru: {
+    tariffs: [
+      {
+        id: 'start', name: 'START', price: 300, priceLabel: 'от 300 €',
+        desc: 'Для одного основного предложения, специалиста или небольшого бизнеса.',
+        features: [
+          'Одностраничный сайт.',
+          'Адаптивный дизайн на основе готовой структуры.',
+          'Несколько смысловых секций в пределах одной страницы.',
+          'Простая форма заявки.',
+          'Контакты и кнопки связи.',
+          'Карта при необходимости.',
+          'Базовая SEO-подготовка.',
+          'Подключение домена и публикация.',
+          'Один раунд правок.'
+        ],
+        includes: [], cta: 'Выбрать START'
+      },
+      {
+        id: 'business', name: 'BUSINESS', price: 600, priceLabel: 'от 600 €',
+        desc: 'Для компании с несколькими направлениями.',
+        features: [
+          'До пяти страниц.',
+          'Персонализированный дизайн.',
+          'Мобильная адаптация.',
+          'Формы заявок.',
+          'Галерея или портфолио.',
+          'Основная SEO-подготовка каждой страницы.',
+          'Настройка базовой аналитики.',
+          'Помощь с Google Business Profile в согласованном объёме.',
+          'Два раунда правок.'
+        ],
+        includes: ['analytics', 'gbp'], cta: 'Выбрать BUSINESS'
+      },
+      {
+        id: 'pro', name: 'PRO', price: 1000, priceLabel: 'от 1 000 €',
+        desc: 'Для компании, которая хочет развивать сайт.',
+        features: [
+          'До десяти страниц.',
+          'Расширенная структура и дизайн.',
+          'До двух языковых версий.',
+          'Раздел статей.',
+          'Расширенные формы.',
+          'Аналитика и отслеживание согласованных конверсий.',
+          'Одна простая интеграция.',
+          'Три раунда правок.'
+        ],
+        includes: ['language', 'blog', 'form', 'analytics', 'tracking'], cta: 'Выбрать PRO'
+      },
+      {
+        id: 'custom', name: 'CUSTOM', price: null, priceLabel: 'Индивидуальный расчёт',
+        desc: 'Для интернет-магазинов, личных кабинетов, сложных систем бронирования и нестандартных функций.',
+        features: [
+          'Интернет-магазины.',
+          'Личные кабинеты.',
+          'Сложные системы бронирования.',
+          'Нестандартные функции.',
+          'Веб-приложения.',
+          'Цена после обсуждения задачи.'
+        ],
+        includes: [], cta: 'Обсудить задачу'
+      }
+    ],
+    table: {
+      columns: ['START', 'BUSINESS', 'PRO'],
+      rows: [
+        { label: 'Количество страниц', values: ['1', 'до 5', 'до 10'] },
+        { label: 'Дизайн', values: ['Базовая структура', 'Индивидуальный', 'Расширенный'] },
+        { label: 'Мобильная версия', values: [true, true, true] },
+        { label: 'Формы', values: ['Простая', 'Несколько форм', 'Расширенные'] },
+        { label: 'Галерея', values: [false, true, true] },
+        { label: 'SEO', values: ['Базовая', 'Базовая по страницам', 'Расширенная'] },
+        { label: 'Дополнительные языки', values: ['1', '1', 'до 2'] },
+        { label: 'Google Analytics', values: [false, true, true] },
+        { label: 'Google Business Profile', values: [false, 'По договорённости', false] },
+        { label: 'Подготовка к рекламе', values: [false, false, 'По договорённости'] },
+        { label: 'Блог', values: [false, false, true] },
+        { label: 'Интеграции', values: [false, false, '1 простая'] },
+        { label: 'Раунды правок', values: ['1', '2', '3'] },
+        { label: 'Поддержка', values: ['По договорённости', 'По договорённости', 'По договорённости'] }
+      ]
+    },
+    addons: [
+      { id: 'page', title: 'Дополнительная страница', price: 50 },
+      { id: 'language', title: 'Дополнительный язык', price: 100 },
+      { id: 'blog', title: 'Блог', price: 120 },
+      { id: 'form', title: 'Форма с дополнительными вопросами', price: 70 },
+      { id: 'booking', title: 'Онлайн-запись через готовый сервис', price: 120 },
+      { id: 'analytics', title: 'Google Analytics', price: 60 },
+      { id: 'tracking', title: 'Отслеживание заявок для рекламы', price: 90 },
+      { id: 'gbp', title: 'Помощь с Google Business Profile', price: 70 },
+      { id: 'calculator', title: 'Простой калькулятор стоимости', price: 150 },
+      { id: 'integrations', title: 'Другие интеграции', price: null, individual: true }
+    ],
+    ui: {
+      selected: 'Выбрано',
+      included: 'Включено',
+      includedInTariff: 'Включено в тариф',
+      individual: 'Индивидуальная оценка',
+      from: 'от',
+      calcTitle: 'Ваш выбор',
+      calcEmpty: 'Сначала выберите тариф.',
+      calcBase: 'Базовый тариф',
+      calcAddons: 'Дополнительные функции',
+      calcTotal: 'Ориентировочно от',
+      calcNote: 'Расчёт предварительный. Итоговую стоимость и сроки согласуем до начала работы.',
+      calcCustom: 'Индивидуальный расчёт',
+      calcIndividual: '+ индивидуальная оценка',
+      discuss: 'Обсудить выбранный вариант',
+      unsure: 'Не знаю, что выбрать',
+      choose: 'Выбрать тариф',
+      compareMobile: 'Показать тариф',
+      addonsNote: 'Итоговая стоимость зависит от объёма и технических требований.',
+      paymentTitle: 'Об оплате',
+      payment: [
+        'Создание сайта оплачивается отдельно от регулярного обслуживания.',
+        'Домен и платные внешние сервисы могут оплачиваться дополнительно.',
+        'Итоговая стоимость и сроки согласовываются до начала работы.',
+        'Дополнительные изменения сверх согласованного объёма рассчитываются отдельно.',
+        'Условия поддержки оговариваются отдельно.'
+      ],
+      vatNote: 'Налоговый режим будет подтверждён перед публикацией.'
+    }
+  }
+};

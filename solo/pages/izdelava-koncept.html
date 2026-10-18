@@ -14,7 +14,7 @@
 <body class="create-page">
 
 <div class="wrap">
-  <div class="draftbar"><b data-i18n="create.badge"></b></div>
+  <div class="draftbar"><b data-i18n="create.badge2"></b></div>
 </div>
 
 <header>
@@ -27,15 +27,15 @@
       <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
     </nav>
     <div class="langbox" style="margin-left:auto">
-      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
-      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderTariffs()">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru');renderTariffs()">RU</button>
     </div>
     <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
   </div>
 </header>
 
 <main>
-<section class="create-hero">
+<section class="create-hero create-hero--solo">
   <div class="wrap create-hero__grid">
     <div class="create-hero__copy">
       <span class="eyebrow" data-i18n="create.eyebrow"></span>
@@ -43,81 +43,36 @@
       <p class="create-sub" data-i18n="create.sub"></p>
       <div class="actions">
         <button type="button" class="btn" onclick="SOLO.startQuiz('a')" data-i18n="create.cta1"></button>
-        <button type="button" class="btn ghost" onclick="SOLO.openContact()" data-i18n="create.cta2"></button>
+        <a class="btn ghost" href="#tariffs" data-i18n="create.cta2"></a>
       </div>
       <small class="meta" data-i18n="create.meta"></small>
-      <p class="inc-title" data-i18n="create.inc.title"></p>
-      <div class="inc-grid">
-        <div class="inc"><b data-i18n="create.inc1.t"></b><span data-i18n="create.inc1.d"></span></div>
-        <div class="inc"><b data-i18n="create.inc2.t"></b><span data-i18n="create.inc2.d"></span></div>
-        <div class="inc"><b data-i18n="create.inc3.t"></b><span data-i18n="create.inc3.d"></span></div>
-        <div class="inc"><b data-i18n="create.inc4.t"></b><span data-i18n="create.inc4.d"></span></div>
-      </div>
     </div>
+  </div>
+</section>
 
-    <div class="create-hero__visual">
-      <div class="dev-stage" aria-hidden="true">
-        <div class="dev-glow"></div>
-        <div class="dev-desk"></div>
-
-        <div class="dev-monitor">
-          <div class="monitor-screen">
-            <div class="monitor-bar"><i></i><i></i><i></i><span>solo.pov</span></div>
-            <div class="monitor-in">
-              <div class="monitor-nav"><b>SOLO.POV</b><span data-i18n="mock.nav.services"></span><span>01</span><i data-i18n="mock.cta"></i></div>
-              <div class="monitor-hero">
-                <div class="monitor-copy">
-                  <span class="m-eye">01 / 04</span>
-                  <h3 data-i18n="mock.hero"></h3>
-                  <span class="m-lines"><i></i><i></i></span>
-                  <span class="m-btn" data-i18n="mock.cta"></span>
-                </div>
-                <div class="monitor-art"><span></span><span></span><span></span></div>
-              </div>
-              <div class="monitor-cards"><div></div><div></div><div></div></div>
-            </div>
-          </div>
-          <div class="monitor-neck"></div><div class="monitor-base"></div>
-        </div>
-
-        <div class="dev-laptop">
-          <div class="lap-screen">
-            <div class="form-ui">
-              <b data-i18n="mock.form.t"></b>
-              <span class="fld" data-i18n="mock.form.name"></span>
-              <span class="fld" data-i18n="mock.form.phone"></span>
-              <span class="fld" data-i18n="mock.form.email"></span>
-              <span class="fld tall" data-i18n="mock.form.message"></span>
-              <span class="fld btn" data-i18n="mock.form.btn"></span>
-            </div>
-          </div>
-          <div class="lap-base"></div>
-        </div>
-
-        <div class="dev-tablet">
-          <div class="tab-screen">
-            <b class="tab-title" data-i18n="mock.services.t"></b>
-            <div class="tab-item"><i></i><span data-i18n="mock.services.1"></span></div>
-            <div class="tab-item"><i></i><span data-i18n="mock.services.2"></span></div>
-            <div class="tab-item"><i></i><span data-i18n="mock.services.3"></span></div>
-            <div class="tab-review"><span class="stars">★★★★★</span><i></i><i></i><small data-i18n="mock.review.label"></small></div>
-          </div>
-        </div>
-
-        <div class="dev-phone">
-          <div class="ph-screen">
-            <div class="ph-top"></div>
-            <div class="ph-brand">SOLO.POV</div>
-            <div class="ph-hero"></div>
-            <span class="ph-lines"><i></i><i></i></span>
-            <span class="ph-btn" data-i18n="mock.phone.cta"></span>
-            <div class="ph-card"></div>
-          </div>
-        </div>
-
-        <div class="dev-toast"><i>&#10003;</i><div><b data-i18n="mock.toast.t"></b><small data-i18n="mock.toast.d"></small></div></div>
-      </div>
+<section id="tariffs" class="pricing">
+  <div class="wrap">
+    <div class="pricing-head">
+      <span class="eyebrow" data-i18n="price.eyebrow"></span>
+      <h2 class="h2" data-i18n="price.title"></h2>
+      <p class="lead" data-i18n="price.lead"></p>
     </div>
+    <div id="tariffCards" class="tariff-grid"></div>
+
+    <div class="pricing-subhead">
+      <h3 data-i18n="price.compare"></h3>
+      <p data-i18n="price.compareLead"></p>
+    </div>
+    <div id="tariffCompare"></div>
+
+    <div class="pricing-subhead">
+      <h3 data-i18n="price.addons"></h3>
+      <p data-i18n="price.addonsLead"></p>
+    </div>
+    <div id="tariffAddons" class="addons-grid"></div>
+
+    <div id="tariffCalc" class="calc-wrap"></div>
+    <div id="payinfo" class="payinfo"></div>
   </div>
 </section>
 </main>
@@ -141,6 +96,8 @@
 <script src="../assets/config.js"></script>
 <script src="../assets/i18n.js"></script>
 <script src="../assets/concept-i18n.js"></script>
+<script src="../assets/tariffs-i18n.js"></script>
 <script src="../assets/app.js"></script>
+<script src="../assets/tariffs.js"></script>
 </body>
 </html>
