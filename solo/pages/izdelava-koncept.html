@@ -46,61 +46,76 @@
         <button type="button" class="btn ghost" onclick="SOLO.openContact()" data-i18n="create.cta2"></button>
       </div>
       <small class="meta" data-i18n="create.meta"></small>
+      <p class="inc-title" data-i18n="create.inc.title"></p>
+      <div class="inc-grid">
+        <div class="inc"><b data-i18n="create.inc1.t"></b><span data-i18n="create.inc1.d"></span></div>
+        <div class="inc"><b data-i18n="create.inc2.t"></b><span data-i18n="create.inc2.d"></span></div>
+        <div class="inc"><b data-i18n="create.inc3.t"></b><span data-i18n="create.inc3.d"></span></div>
+        <div class="inc"><b data-i18n="create.inc4.t"></b><span data-i18n="create.inc4.d"></span></div>
+      </div>
     </div>
 
     <div class="create-hero__visual">
-      <div class="stage" aria-hidden="true">
-        <div class="mock-browser">
-          <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">solo.pov</span></div>
-          <div class="browser-screen">
-            <div class="mini-nav"><b>SOLO.POV</b><span data-i18n="mock.nav.services"></span><button type="button" class="mini-btn" tabindex="-1" data-i18n="mock.cta"></button></div>
-            <div class="mini-hero">
-              <div class="mini-copy">
-                <span class="mini-eyebrow">01 / 04</span>
-                <h3 data-i18n="mock.hero"></h3>
-                <span class="mini-lines"><i></i><i></i></span>
-                <button type="button" class="mini-cta" tabindex="-1" data-i18n="mock.cta"></button>
+      <div class="dev-stage" aria-hidden="true">
+        <div class="dev-glow"></div>
+        <div class="dev-desk"></div>
+
+        <div class="dev-monitor">
+          <div class="monitor-screen">
+            <div class="monitor-bar"><i></i><i></i><i></i><span>solo.pov</span></div>
+            <div class="monitor-in">
+              <div class="monitor-nav"><b>SOLO.POV</b><span data-i18n="mock.nav.services"></span><span>01</span><i data-i18n="mock.cta"></i></div>
+              <div class="monitor-hero">
+                <div class="monitor-copy">
+                  <span class="m-eye">01 / 04</span>
+                  <h3 data-i18n="mock.hero"></h3>
+                  <span class="m-lines"><i></i><i></i></span>
+                  <span class="m-btn" data-i18n="mock.cta"></span>
+                </div>
+                <div class="monitor-art"><span></span><span></span><span></span></div>
               </div>
-              <div class="mini-art"><span></span><span></span><span></span></div>
+              <div class="monitor-cards"><div></div><div></div><div></div></div>
             </div>
-            <div class="mini-cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+          </div>
+          <div class="monitor-neck"></div><div class="monitor-base"></div>
+        </div>
+
+        <div class="dev-laptop">
+          <div class="lap-screen">
+            <div class="form-ui">
+              <b data-i18n="mock.form.t"></b>
+              <span class="fld" data-i18n="mock.form.name"></span>
+              <span class="fld" data-i18n="mock.form.phone"></span>
+              <span class="fld" data-i18n="mock.form.email"></span>
+              <span class="fld tall" data-i18n="mock.form.message"></span>
+              <span class="fld btn" data-i18n="mock.form.btn"></span>
+            </div>
+          </div>
+          <div class="lap-base"></div>
+        </div>
+
+        <div class="dev-tablet">
+          <div class="tab-screen">
+            <b class="tab-title" data-i18n="mock.services.t"></b>
+            <div class="tab-item"><i></i><span data-i18n="mock.services.1"></span></div>
+            <div class="tab-item"><i></i><span data-i18n="mock.services.2"></span></div>
+            <div class="tab-item"><i></i><span data-i18n="mock.services.3"></span></div>
+            <div class="tab-review"><span class="stars">★★★★★</span><i></i><i></i><small data-i18n="mock.review.label"></small></div>
           </div>
         </div>
 
-        <div class="mock-phone">
-          <div class="phone-screen">
-            <div class="phone-top"></div>
-            <div class="phone-brand">SOLO.POV</div>
-            <div class="phone-hero"></div>
-            <span class="phone-lines"><i></i><i></i></span>
-            <button type="button" class="phone-cta" tabindex="-1" data-i18n="mock.phone.cta"></button>
-            <div class="phone-card"></div>
+        <div class="dev-phone">
+          <div class="ph-screen">
+            <div class="ph-top"></div>
+            <div class="ph-brand">SOLO.POV</div>
+            <div class="ph-hero"></div>
+            <span class="ph-lines"><i></i><i></i></span>
+            <span class="ph-btn" data-i18n="mock.phone.cta"></span>
+            <div class="ph-card"></div>
           </div>
         </div>
 
-        <div class="float-card fc-service">
-          <span class="fc-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor"/><rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor"/><rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor"/><rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor"/></svg></span>
-          <div><b data-i18n="mock.service.t"></b><small data-i18n="mock.service.d"></small></div>
-        </div>
-
-        <div class="float-card fc-form">
-          <b data-i18n="mock.form.t"></b>
-          <span class="fc-input" data-i18n="mock.form.name"></span>
-          <span class="fc-input" data-i18n="mock.form.email"></span>
-          <span class="fc-submit" data-i18n="mock.form.btn"></span>
-        </div>
-
-        <div class="float-card fc-cal">
-          <b data-i18n="mock.cal.t"></b>
-          <small data-i18n="mock.cal.d"></small>
-          <div class="cal-grid"><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i class="on">18</i></div>
-        </div>
-
-        <div class="float-card fc-product">
-          <div class="prod-img"></div>
-          <b data-i18n="mock.product.t"></b>
-          <small data-i18n="mock.product.p"></small>
-        </div>
+        <div class="dev-toast"><i>&#10003;</i><div><b data-i18n="mock.toast.t"></b><small data-i18n="mock.toast.d"></small></div></div>
       </div>
     </div>
   </div>

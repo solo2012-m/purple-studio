@@ -32,7 +32,25 @@
     'mock.product.t': 'Izdelek',
     'mock.product.p': '60 €',
     'mock.phone.cta': 'Pokliči',
-    'mock.nav.services': 'Storitve'
+    'mock.nav.services': 'Storitve',
+    'create.inc.title': 'Kaj vključuje izdelava strani',
+    'create.inc1.t': 'Struktura in besedila',
+    'create.inc1.d': 'Razmislimo o logiki strani in napišemo jasna besedila za vašo storitev.',
+    'create.inc2.t': 'Oblikovanje za blagovno znamko',
+    'create.inc2.d': 'Ne predloga: videz, poudarki in predstavitev za vaše podjetje.',
+    'create.inc3.t': 'Prilagoditev napravam',
+    'create.inc3.d': 'Telefon, tablica in računalnik — brez izgube sporočila in povpraševanj.',
+    'create.inc4.t': 'Zagon in osnovni SEO',
+    'create.inc4.d': 'Domena, gostovanje, hitrost nalaganja in indeksiranje.',
+    'mock.form.phone': 'Telefon',
+    'mock.form.message': 'Sporočilo',
+    'mock.services.t': 'Storitve',
+    'mock.services.1': 'Spletne strani po meri',
+    'mock.services.2': 'Vzdrževanje',
+    'mock.services.3': 'AI-avtomatizacija',
+    'mock.review.label': 'Primer mnenja',
+    'mock.toast.t': 'Povpraševanje prejeto',
+    'mock.toast.d': 'Stopimo v stik'
   });
   add('ru', {
     'meta.title': 'Solo.Pov — Создание сайтов',
@@ -61,6 +79,24 @@
     'mock.product.t': 'Товар',
     'mock.product.p': '60 €',
     'mock.phone.cta': 'Позвонить',
-    'mock.nav.services': 'Услуги'
+    'mock.nav.services': 'Услуги',
+    'create.inc.title': 'Что входит в создание сайта',
+    'create.inc1.t': 'Структура и тексты',
+    'create.inc1.d': 'Продумываем логику страниц и пишем понятные тексты под вашу услугу.',
+    'create.inc2.t': 'Дизайн под бренд',
+    'create.inc2.d': 'Не шаблон: визуал, акценты и подача под ваш бизнес.',
+    'create.inc3.t': 'Адаптация под устройства',
+    'create.inc3.d': 'Телефон, планшет и компьютер — без потери смысла и заявок.',
+    'create.inc4.t': 'Запуск и базовая SEO',
+    'create.inc4.d': 'Домен, хостинг, скорость загрузки и индексация.',
+    'mock.form.phone': 'Телефон',
+    'mock.form.message': 'Сообщение',
+    'mock.services.t': 'Услуги',
+    'mock.services.1': 'Сайты под ключ',
+    'mock.services.2': 'Поддержка',
+    'mock.services.3': 'AI-автоматизация',
+    'mock.review.label': 'Пример отзыва',
+    'mock.toast.t': 'Заявка получена',
+    'mock.toast.d': 'Мы свяжемся с вами'
   });
 })();
