@@ -32,7 +32,7 @@
     h += '<div class="ads-scenarios">';
     for (var i = 0; i < d.scenarios.length; i++) {
       var s = d.scenarios[i];
-      h += '<a class="ads-scenario" href="#' + (s.id === 'start' ? 'catalog' : 'issues') + '" onclick="return adsGo(event,\'' + (s.id === 'start' ? 'catalog' : 'issues') + '\')"><span class="ads-num">' + esc(s.n) + '</span><b>' + esc(s.title) + '</b><p>' + esc(s.desc) + '</p><span class="ads-link">' + esc(lang() === 'ru' ? 'Перейти →' : 'Naprej →') + '</span></a>';
+      h += '<a class="ads-scenario" href="#' + (s.id === 'start' ? 'catalog' : 'issues') + '" onclick="return adsGo(event,\'' + (s.id === 'start' ? 'catalog' : 'issues') + '\')"><b>' + esc(s.title) + '</b><p>' + esc(s.desc) + '</p><span class="ads-link">' + esc(lang() === 'ru' ? 'Перейти →' : 'Naprej →') + '</span></a>';
     }
     h += '</div>';
     $('adsHero').innerHTML = h;
@@ -44,6 +44,7 @@
     if (sel) h += '<span class="ads-sel">' + esc(lang() === 'ru' ? 'Выбрано' : 'Izbrano') + '</span>';
     h += '<span class="ads-type">' + esc(typeLabel(x.opt.type)) + '</span>';
     h += '<b>' + esc(x.opt.title) + '</b>';
+    if (x.opt.tip) h += '<small class="ads-geo-tip">' + esc(x.opt.tip) + '</small>';
     if (x.opt.features) {
       h += '<ul>';
       for (var i = 0; i < x.opt.features.length; i++) h += '<li>' + esc(x.opt.features[i]) + '</li>';
@@ -56,10 +57,10 @@
   }
 
   function groupHead(g) {
-    return '<div class="ads-group-head"><span class="ads-group-num">' + esc(g.num) + '</span><div><h3>' + esc(g.title) + '</h3><p>' + esc(g.sub) + '</p></div></div>';
+    return '<div class="ads-group-head"><div><h3>' + esc(g.title) + '</h3><p>' + esc(g.sub) + '</p></div></div>';
   }
   function paidCard(c) {
-    var h = '<div class="ads-paid-card"><div class="ads-cat-head"><span class="ads-letter">' + esc(c.letter) + '</span><div><h4>' + esc(c.title) + '</h4><p>' + esc(c.desc) + '</p></div></div>';
+    var h = '<div class="ads-paid-card"><div class="ads-cat-head"><div><h4>' + esc(c.title) + '</h4><p>' + esc(c.desc) + '</p></div></div>';
     h += '<ul class="ads-features">';
     for (var i = 0; i < c.features.length; i++) h += '<li>' + esc(c.features[i]) + '</li>';
     h += '</ul><div class="ads-options">';

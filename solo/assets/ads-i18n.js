@@ -45,7 +45,7 @@ window.SOLO_ADS = {
           { id: 'meta_setup', title: 'Nastavitev in zagon', price: 'od 150 €', type: 'once' },
           { id: 'meta_monthly', title: 'Vodenje kampanj', price: 'od 120 €/mesec', type: 'monthly' }
         ] },
-        { id: 'seo', letter: 'C', title: 'SEO in vidnost v AI-iskanju', desc: 'Pomagamo iskalnikom bolje razumeti vašo stran, potencialnim strankam pa najti informacije o vaših storitvah.', options: [
+        { id: 'seo', letter: 'C', title: 'SEO in vidnost v AI-iskanju', desc: 'SEO, lokalno SEO in GEO — trije pristopi k iskalni vidnosti.', options: [
           { id: 'seo_basic', title: 'SEO', price: 'od 100 €', type: 'once', features: [
             'Analiza strukture strani.',
             'Naslovi in metaopisi.',
@@ -62,7 +62,7 @@ window.SOLO_ADS = {
             'Usklajenost kontaktnih podatkov.',
             'Priporočila za lokalno prisotnost.'
           ] },
-          { id: 'seo_geo', title: 'GEO (Generative Engine Optimization)', price: 'individualno', type: 'individual', features: [
+          { id: 'seo_geo', title: 'GEO — optimizacija za AI-iskanje', price: 'individualno', type: 'individual', tip: 'Generative Engine Optimization — priprava informacij o podjetju za sodobne AI-iskalnike. Ne zagotavlja pojava v odgovorih AI.', features: [
             'Strukturiranje informacij o podjetju.',
             'Jasni opisi storitev.',
             'Tematski članki in uporabna gradiva.',
@@ -221,7 +221,7 @@ window.SOLO_ADS = {
           { id: 'meta_setup', title: 'Настройка и запуск', price: 'от 150 €', type: 'once' },
           { id: 'meta_monthly', title: 'Ведение кампаний', price: 'от 120 €/мес.', type: 'monthly' }
         ] },
-        { id: 'seo', letter: 'C', title: 'SEO и видимость в AI-поиске', desc: 'Поможем поисковым системам лучше понимать ваш сайт, а потенциальным клиентам — находить информацию о ваших услугах.', options: [
+        { id: 'seo', letter: 'C', title: 'SEO и видимость в AI-поиске', desc: 'SEO, локальное SEO и GEO — три подхода к поисковой видимости.', options: [
           { id: 'seo_basic', title: 'SEO', price: 'от 100 €', type: 'once', features: [
             'Анализ структуры сайта.',
             'Заголовки и метаописания.',
@@ -238,7 +238,7 @@ window.SOLO_ADS = {
             'Согласованность контактной информации.',
             'Рекомендации по локальному присутствию.'
           ] },
-          { id: 'seo_geo', title: 'GEO (Generative Engine Optimization)', price: 'индивидуально', type: 'individual', features: [
+          { id: 'seo_geo', title: 'GEO — оптимизация для AI-поиска', price: 'индивидуально', type: 'individual', tip: 'Generative Engine Optimization — подготовка информации о компании для современных AI-поисковых систем. Не гарантирует появление в ответах AI.', features: [
             'Структурирование информации о компании.',
             'Понятное описание услуг.',
             'Тематические статьи и полезные материалы.',

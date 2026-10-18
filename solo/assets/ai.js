@@ -49,7 +49,7 @@
     for (var i = 0; i < d.cards.length; i++) {
       var c = d.cards[i];
       h += '<a class="ai-card" href="#' + c.id + '" onclick="return aiGo(event,\'' + c.id + '\')">';
-      h += '<span class="ai-card-num">' + esc(c.n) + '</span><b>' + esc(c.title) + '</b><p>' + esc(c.desc) + '</p><span class="ai-card-cta">' + esc(c.cta) + '</span></a>';
+      h += '<b>' + esc(c.title) + '</b><p>' + esc(c.desc) + '</p><span class="ai-card-cta">' + esc(c.cta) + '</span></a>';
     }
     h += '</div>';
     $('aiHero').innerHTML = h;
