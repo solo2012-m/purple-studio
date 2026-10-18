@@ -1218,3 +1218,42 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 
 .ads-cat-google .ads-options,.ads-cat-meta .ads-options{grid-template-columns:repeat(2,1fr)}
 @media(max-width:640px){.ads-cat-google .ads-options,.ads-cat-meta .ads-options{grid-template-columns:1fr}}
+
+/* four main cards: aligned accents and links */
+.card.solution-card .solution-highlight{margin-top:auto}
+.card.solution-card .more{margin-top:10px;padding-top:0}
+/* advertising groups */
+.ads-group{margin-top:54px;padding-top:36px;border-top:1px solid var(--line)}
+.ads-group:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.ads-group-head{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;margin-bottom:20px}
+.ads-group-num{width:46px;height:46px;border:1px solid rgba(255,212,0,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);font:700 13px "Space Grotesk",sans-serif}
+.ads-group-head h3{font:700 clamp(26px,3vw,34px)/1.15 "Space Grotesk",sans-serif;margin:0 0 6px}
+.ads-group-head p{margin:0;color:var(--muted);font-size:14px;line-height:1.55;max-width:82ch}
+.ads-section-head--small{margin-bottom:0}
+.ads-paid-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.ads-paid-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column}
+.ads-paid-card .ads-cat-head{grid-template-columns:42px 1fr}
+.ads-paid-card h4{font:700 20px/1.25 "Space Grotesk",sans-serif;margin:0 0 5px}
+.ads-paid-card .ads-cat-head p{font-size:13px}
+.ads-paid-card .ads-options{grid-template-columns:1fr 1fr;margin-top:14px}
+.ads-paid-card .ads-features{grid-template-columns:1fr;margin-top:12px}
+.ads-options--3{grid-template-columns:repeat(3,1fr)}
+.ads-option{display:flex;flex-direction:column}
+.ads-price{margin-top:auto;padding-top:10px}
+.ads-explainer-block{margin-top:40px;border-top:1px solid var(--line);padding-top:26px}
+.ads-explainer-block h3{font:700 22px/1.25 "Space Grotesk",sans-serif;margin:0 0 14px}
+.ads-explainer--compact .ads-expl{padding:12px 13px}
+.ads-explainer--compact .ads-expl b{font-size:13px}
+.ads-explainer--compact .ads-expl p{font-size:11.5px}
+.ads-group--last{padding-bottom:0}
+@media(max-width:1000px){
+  .ads-paid-grid{grid-template-columns:1fr}
+  .ads-options--3{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .ads-group{margin-top:40px;padding-top:28px}
+  .ads-group-head{grid-template-columns:42px 1fr}
+  .ads-group-num{width:36px;height:36px;font-size:11px}
+  .ads-paid-card .ads-options,.ads-options--3{grid-template-columns:1fr}
+  .ads-explainer--compact{grid-template-columns:1fr}
+}

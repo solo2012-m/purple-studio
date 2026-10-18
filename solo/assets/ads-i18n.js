@@ -3,7 +3,7 @@ window.SOLO_ADS = {
   sl: {
     hero: {
       eyebrow: 'SOLO.POV · OGLAŠEVANJE IN PROMOCIJA',
-      title: 'Vaše podjetje mora najti svoje stranke.',
+      title: 'Pomagamo, da vas stranke najdejo.',
       sub: 'Nastavimo oglaševanje, izboljšamo vidnost v iskalnikih in pomagamo razumeti, kateri kanali prinašajo povpraševanja.'
     },
     scenarios: [
@@ -13,6 +13,12 @@ window.SOLO_ADS = {
     catalog: {
       title: 'Kako lahko pomagamo vašemu podjetju?',
       sub: 'Izberite potrebne storitve. Končno ceno in obseg potrdimo po pregledu vaše situacije.',
+      groups: [
+        { id: 'paid', num: '01', title: 'Plačljivo oglaševanje', sub: 'Nastavimo oglaševanje v Googlu, Facebooku in Instagramu, da potencialne stranke spoznajo vaše storitve.' },
+        { id: 'search', num: '02', title: 'Iskalna promocija', sub: 'Pomagamo potencialnim strankam najti informacije o vašem podjetju prek iskalnikov in sodobnih AI-sistemov.' },
+        { id: 'analytics', num: '03', title: 'Analitika in konverzije', sub: 'Pomagamo razumeti, od kod prihajajo obiskovalci, kaj počnejo in kateri kanali prinašajo povpraševanja.' },
+        { id: 'development', num: '04', title: 'Preverjanje in razvoj', sub: 'Pregledamo obstoječe oglaševanje in pomagamo določiti naslednje korake.' }
+      ],
       categories: [
         { id: 'google', letter: 'A', title: 'Google Ads', desc: 'Pokažemo vaše oglase ljudem, ki v Googleu iščejo ustrezne izdelke ali storitve.', features: [
           'Začetna nastavitev oglaševalskega računa.',
@@ -173,7 +179,7 @@ window.SOLO_ADS = {
   ru: {
     hero: {
       eyebrow: 'SOLO.POV · РЕКЛАМА И ПРОДВИЖЕНИЕ',
-      title: 'Ваш бизнес должен находить своих клиентов.',
+      title: 'Поможем вашим клиентам найти вас',
       sub: 'Настроим рекламу, улучшим поисковую видимость и поможем понять, какие каналы приводят обращения.'
     },
     scenarios: [
@@ -183,6 +189,12 @@ window.SOLO_ADS = {
     catalog: {
       title: 'Как мы можем помочь вашему бизнесу?',
       sub: 'Выберите необходимые услуги. Итоговую стоимость и объём согласуем после оценки вашей ситуации.',
+      groups: [
+        { id: 'paid', num: '01', title: 'Платная реклама', sub: 'Настроим рекламу в Google, Facebook и Instagram, чтобы знакомить потенциальных клиентов с вашими услугами.' },
+        { id: 'search', num: '02', title: 'Поисковое продвижение', sub: 'Поможем потенциальным клиентам находить информацию о вашем бизнесе через поиск и современные AI-системы.' },
+        { id: 'analytics', num: '03', title: 'Аналитика и конверсии', sub: 'Поможем понять, откуда приходят посетители, какие действия они совершают и какие каналы приносят обращения.' },
+        { id: 'development', num: '04', title: 'Проверка и развитие', sub: 'Проверим текущую рекламу и поможем определить следующие шаги.' }
+      ],
       categories: [
         { id: 'google', letter: 'A', title: 'Google Ads', desc: 'Покажем ваши объявления людям, которые ищут соответствующие товары или услуги в Google.', features: [
           'Первоначальная настройка рекламного кабинета.',

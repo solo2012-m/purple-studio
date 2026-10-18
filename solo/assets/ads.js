@@ -55,29 +55,50 @@
     return h;
   }
 
+  function groupHead(g) {
+    return '<div class="ads-group-head"><span class="ads-group-num">' + esc(g.num) + '</span><div><h3>' + esc(g.title) + '</h3><p>' + esc(g.sub) + '</p></div></div>';
+  }
+  function paidCard(c) {
+    var h = '<div class="ads-paid-card"><div class="ads-cat-head"><span class="ads-letter">' + esc(c.letter) + '</span><div><h4>' + esc(c.title) + '</h4><p>' + esc(c.desc) + '</p></div></div>';
+    h += '<ul class="ads-features">';
+    for (var i = 0; i < c.features.length; i++) h += '<li>' + esc(c.features[i]) + '</li>';
+    h += '</ul><div class="ads-options">';
+    for (var j = 0; j < c.options.length; j++) h += optionCard({ cat: c, opt: c.options[j] });
+    return h + '</div></div>';
+  }
   function renderCatalog() {
-    var d = D().catalog, h = '<div class="ads-section-head"><h2>' + esc(d.title) + '</h2><p class="ads-lead">' + esc(d.sub) + '</p></div>';
-    for (var i = 0; i < d.categories.length; i++) {
-      var c = d.categories[i];
-      h += '<div class="ads-category ads-cat-' + c.id + '"><div class="ads-cat-head"><span class="ads-letter">' + esc(c.letter) + '</span><div><h3>' + esc(c.title) + '</h3><p>' + esc(c.desc) + '</p></div></div>';
-      if (c.features) { h += '<ul class="ads-features">'; for (var j = 0; j < c.features.length; j++) h += '<li>' + esc(c.features[j]) + '</li>'; h += '</ul>'; }
-      h += '<div class="ads-options">';
-      for (var k = 0; k < c.options.length; k++) h += optionCard({ cat: c, opt: c.options[k] });
-      h += '</div>';
-      if (c.note) h += '<p class="ads-cat-note">' + esc(c.note) + '</p>';
-      h += '</div>';
-    }
+    var d = D().catalog, g = d.groups, byId = {};
+    for (var i = 0; i < d.categories.length; i++) byId[d.categories[i].id] = d.categories[i];
+    var h = '<div class="ads-section-head"><h2>' + esc(d.title) + '</h2><p class="ads-lead">' + esc(d.sub) + '</p></div>';
+    h += '<div class="ads-group"><div class="ads-section-head ads-section-head--small">' + groupHead(g[0]) + '</div><div class="ads-paid-grid">';
+    h += paidCard(byId.google) + paidCard(byId.meta);
+    h += '</div><p class="ads-budget-note">' + esc(D().form.budgetNote) + '</p></div>';
+    var seo = byId.seo;
+    h += '<div class="ads-group">' + groupHead(g[1]) + '<p class="ads-cat-note">' + esc(seo.desc) + '</p><div class="ads-options ads-options--3">';
+    for (var j = 0; j < seo.options.length; j++) h += optionCard({ cat: seo, opt: seo.options[j] });
+    h += '</div><p class="ads-cat-note">' + esc(seo.note) + '</p></div>';
+    var a = byId.analytics;
+    h += '<div class="ads-group">' + groupHead(g[2]) + '<ul class="ads-features">';
+    for (var k = 0; k < a.features.length; k++) h += '<li>' + esc(a.features[k]) + '</li>';
+    h += '</ul><div class="ads-options ads-options--3">';
+    for (var m = 0; m < a.options.length; m++) h += optionCard({ cat: a, opt: a.options[m] });
+    h += '</div><p class="ads-cat-note">' + esc(a.note) + '</p></div>';
     $('catalogBox').innerHTML = h;
   }
   window.toggleOption = function (id) { state.options[id] = !state.options[id]; renderCatalog(); refreshSummary(); };
 
   function renderIssues() {
-    var d = D().issues, h = '<div class="ads-section-head"><h2>' + esc(d.title) + '</h2><p class="ads-lead">' + esc(d.sub) + '</p></div><div class="ads-issues">';
+    var d = D().issues, e = D().explainer, g = D().catalog.groups[3], h = '';
+    h += '<div class="ads-group ads-group--last">' + groupHead(g);
+    h += '<div class="ads-section-head ads-section-head--small"><h2>' + esc(d.title) + '</h2><p class="ads-lead">' + esc(d.sub) + '</p></div><div class="ads-issues">';
     for (var i = 0; i < d.items.length; i++) {
       var it = d.items[i], sel = !!state.issues[it.id];
       h += '<div class="ads-issue' + (sel ? ' sel' : '') + '" role="button" tabindex="0" aria-pressed="' + sel + '" onclick="toggleIssue(\'' + it.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();toggleIssue(\'' + it.id + '\')}"><span class="ads-issue-check">' + (sel ? '✓' : '') + '</span>' + esc(it.label) + '</div>';
     }
     h += '</div><p class="ads-footnote">' + esc(d.note) + '</p><div class="ads-actions"><button type="button" class="btn" onclick="adsScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
+    h += '<div class="ads-explainer-block"><h3>' + esc(e.title) + '</h3><div class="ads-explainer ads-explainer--compact">';
+    for (var j = 0; j < e.items.length; j++) h += '<div class="ads-expl"><b>' + esc(e.items[j].title) + '</b><p>' + esc(e.items[j].desc) + '</p></div>';
+    h += '</div><p class="ads-footnote">' + esc(e.note) + '</p></div></div>';
     $('issuesBox').innerHTML = h;
   }
   window.toggleIssue = function (id) { state.issues[id] = !state.issues[id]; renderIssues(); refreshSummary(); };
@@ -228,7 +249,7 @@
   window.renderAds = function () {
     syncHeader();
     document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : 'Solo.Pov — Oglaševanje in promocija';
-    renderHero(); renderCatalog(); renderIssues(); renderExplainer(); renderRequest(); renderProcess(); renderFAQ();
+    renderHero(); renderCatalog(); renderIssues(); renderRequest(); renderProcess(); renderFAQ();
   };
   document.addEventListener('DOMContentLoaded', function () { window.renderAds(); });
   window.addEventListener('resize', syncHeader);
