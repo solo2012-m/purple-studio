@@ -41,7 +41,16 @@
     applyI18n();
     renderWorks();
     resetDemo();
+    retype();
     if (quiz.open) renderQuiz();
+  }
+  function retype() {
+    var line = document.getElementById('typeLine');
+    if (!line) return;
+    clearTimeout(typeTimer);
+    typeStarted = true;
+    line.textContent = t('picker.type');
+    line.parentNode.classList.add('done');
   }
 
   function applyI18n() {
@@ -141,6 +150,37 @@
     }, 3600));
   }
 
+  /* ---------- firefly ---------- */
+  function initFirefly() {
+    var f = document.getElementById('firefly');
+    if (!f) return;
+    var coarse = false;
+    try { coarse = window.matchMedia('(pointer: coarse)').matches; } catch (e) {}
+    if (coarse || reducedMotion()) { f.style.display = 'none'; return; }
+    var x = -600, y = -600, tx = x, ty = y, active = false, raf = null;
+    function move(e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!active) {
+        active = true;
+        x = tx; y = ty;
+        f.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%)';
+        f.classList.add('on');
+      }
+      var t = e.target;
+      if (t && t.closest && t.closest('a,button,.pick,.opt,summary')) f.classList.add('hot'); else f.classList.remove('hot');
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
+    function loop() {
+      x += (tx - x) * 0.14;
+      y += (ty - y) * 0.14;
+      f.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) translate(-50%,-50%)';
+      if (Math.abs(tx - x) < 0.5 && Math.abs(ty - y) < 0.5) { raf = null; return; }
+      raf = requestAnimationFrame(loop);
+    }
+    document.addEventListener('pointermove', move, { passive: true });
+    document.addEventListener('pointerleave', function () { f.classList.remove('on'); });
+  }
+
   /* ---------- picker ---------- */
   var pickedBranch = null;
   function initPicker() {
@@ -157,7 +197,39 @@
       if (go) go.disabled = false;
     });
   }
-  function startFromPicker() { if (pickedBranch) startQuiz(pickedBranch); }
+  function startFromPicker() { startQuiz(pickedBranch || null); }
+
+  /* ---------- stamp + typewriter ---------- */
+  function reducedMotion() {
+    try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; }
+  }
+  function startStamp() {
+    var logo = document.getElementById('logoStamp');
+    if (!logo) return;
+    if (reducedMotion() || (window.sessionStorage && sessionStorage.getItem('solo-stamp'))) return;
+    logo.classList.remove('play');
+    void logo.offsetWidth;
+    logo.classList.add('play');
+    try { sessionStorage.setItem('solo-stamp', '1'); } catch (e) {}
+  }
+  var typeTimer = null, typeStarted = false;
+  function startType() {
+    var line = document.getElementById('typeLine');
+    if (!line) return;
+    var txt = t('picker.type');
+    if (reducedMotion() || typeStarted) { line.textContent = txt; line.parentNode.classList.add('done'); return; }
+    typeStarted = true;
+    line.textContent = '';
+    line.parentNode.classList.remove('done');
+    var i = 0;
+    function tick() {
+      if (i > txt.length) { line.parentNode.classList.add('done'); return; }
+      line.textContent = txt.slice(0, i);
+      i++;
+      typeTimer = setTimeout(tick, 26);
+    }
+    typeTimer = setTimeout(tick, 900);
+  }
 
   /* ---------- anketa ---------- */
   var quiz = { open: false, branch: null, step: 0, answers: [], mode: 'quiz' };
@@ -173,13 +245,21 @@
     openModal(); renderQuiz();
   }
 
+  function setModal(html) {
+    var b = el('modalBody'); if (!b) return;
+    b.innerHTML = html;
+    b.classList.remove('swap');
+    void b.offsetWidth;
+    b.classList.add('swap');
+  }
+
   function renderQuiz() {
     if (!quiz.open) return;
     var body = el('modalBody'); if (!body) return;
-    if (quiz.mode === 'contact') { body.innerHTML = contactFormHtml(); return; }
-    if (!quiz.branch) { body.innerHTML = entryHtml(); return; }
+    if (quiz.mode === 'contact') { setModal(contactFormHtml()); return; }
+    if (!quiz.branch) { setModal(entryHtml()); return; }
     var br = quizPack().branches[quiz.branch];
-    if (quiz.step >= br.steps.length) { body.innerHTML = finalHtml(); return; }
+    if (quiz.step >= br.steps.length) { setModal(finalHtml()); return; }
     var st = br.steps[quiz.step], total = br.steps.length;
     var pct = Math.round((quiz.step / (total + 1)) * 100) + 10;
     var h = '<div class="qnum">' + esc(br.title) + ' · ' + esc(t('quiz.step', { n: quiz.step + 1, t: total })) + '</div>';
@@ -196,7 +276,7 @@
     if (st.multi) h += '<button type="button" class="btn" onclick="SOLO.next()">' + esc(t('quiz.next')) + '</button>';
     else h += '<button type="button" class="link" onclick="SOLO.close()">' + esc(t('quiz.close')) + '</button>';
     h += '</div>';
-    body.innerHTML = h;
+    setModal(h);
   }
 
   function entryHtml() {
@@ -321,7 +401,7 @@
     if (CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint) {
       try { window.fetch(CONFIG.submit.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: lang, text: text }) }); } catch (e) {}
     }
-    el('modalBody').innerHTML = notReadyHtml(text);
+    setModal(notReadyHtml(text));
   }
 
   function submitQuiz(e) {
@@ -371,6 +451,9 @@
     applyI18n();
     renderWorks();
     initPicker();
+    startStamp();
+    startType();
+    initFirefly();
     var cards = document.querySelectorAll('[data-quiz]');
     for (var i = 0; i < cards.length; i++) {
       (function (node) { node.addEventListener('click', function () { startQuiz(node.getAttribute('data-quiz')); }); })(cards[i]);

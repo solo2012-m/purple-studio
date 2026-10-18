@@ -20,9 +20,22 @@
 
 <header>
   <div class="wrap hdr">
-    <a class="logo" href="index.html">
-      <img src="assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="590">
-      <span class="txt"><i data-i18n="brand.sub"></i></span>
+    <a class="logo stamp" href="index.html" id="logoStamp">
+      <span class="logo-wrap">
+        <img src="assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551">
+        <span class="dust" aria-hidden="true">
+            <i style="--dx:26px;--dy:0px;--d:120ms"></i>
+            <i style="--dx:29px;--dy:21px;--d:142ms"></i>
+            <i style="--dx:14px;--dy:44px;--d:164ms"></i>
+            <i style="--dx:-8px;--dy:25px;--d:186ms"></i>
+            <i style="--dx:-29px;--dy:21px;--d:208ms"></i>
+            <i style="--dx:-46px;--dy:0px;--d:230ms"></i>
+            <i style="--dx:-21px;--dy:-15px;--d:252ms"></i>
+            <i style="--dx:-11px;--dy:-34px;--d:274ms"></i>
+            <i style="--dx:14px;--dy:-44px;--d:296ms"></i>
+            <i style="--dx:21px;--dy:-15px;--d:318ms"></i>
+        </span>
+      </span>
     </a>
     <nav>
       <a href="#solutions" data-i18n="nav.solutions"></a>
@@ -43,7 +56,7 @@
   <div class="wrap hero">
     <div>
       <span class="eyebrow" data-i18n="hero.eyebrow"></span>
-      <h1><span data-i18n="hero.h1a"></span><br><span style="color:var(--accent)" data-i18n="hero.h1b"></span></h1>
+      <h1><span data-i18n="hero.h1a"></span><br><span data-i18n="hero.h1b"></span><br><span class="acc" data-i18n="hero.h1c"></span></h1>
       <p class="sub" data-i18n="hero.sub"></p>
       <div class="actions">
         <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn"></button>
@@ -52,15 +65,18 @@
     </div>
     <div class="picker">
       <h3 data-i18n="picker.title"></h3>
-      <p data-i18n="picker.lead"></p>
+      <p class="picker-lead" data-i18n="picker.lead"></p>
+      <p class="type-line" aria-live="polite"><span id="typeLine"></span><i class="caret" id="typeCaret" aria-hidden="true"></i></p>
       <div class="pick-grid" id="heroPicks">
         <button type="button" class="pick" data-branch="a"><b>01</b><span data-i18n="picker.o1"></span></button>
         <button type="button" class="pick" data-branch="b"><b>02</b><span data-i18n="picker.o2"></span></button>
         <button type="button" class="pick" data-branch="b"><b>03</b><span data-i18n="picker.o3"></span></button>
         <button type="button" class="pick" data-branch="c"><b>04</b><span data-i18n="picker.o4"></span></button>
       </div>
-      <button class="btn" id="heroPickBtn" disabled onclick="SOLO.startFromPicker()" data-i18n="picker.btn"></button>
-      <small data-i18n="picker.hint"></small>
+      <button class="btn cta" id="heroPickBtn" onclick="SOLO.startFromPicker()">
+        <span data-i18n="picker.cta"></span><span class="arr" aria-hidden="true">&#8594;</span>
+      </button>
+      <small class="meta" data-i18n="picker.meta"></small>
     </div>
   </div>
 </section>
@@ -261,6 +277,8 @@
     </div>
   </div>
 </footer>
+
+<div class="firefly" id="firefly" aria-hidden="true"></div>
 
 <div class="overlay" id="overlay" onclick="if(event.target===this)SOLO.close()">
   <div class="modal" role="dialog" aria-modal="true">
