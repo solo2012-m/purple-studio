@@ -584,3 +584,50 @@ pre.copyout{white-space:pre-wrap;background:var(--surface);border:1px solid var(
   .addon-ico{width:26px;height:26px}
   .addon-card:last-of-type{grid-column:auto}
 }
+
+/* pricing refinements — compact intro, payment flow, rights */
+.pricing--top{padding-top:34px;border-top:0}
+.pricing-head--top{max-width:880px;margin-bottom:26px}
+.pricing-title{font:700 clamp(32px,4.4vw,52px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-.03em;margin:10px 0 12px}
+.pricing-lead{color:var(--muted);font-size:17px;line-height:1.55;max-width:64ch;margin:0}
+.adv-list{display:flex;flex-wrap:wrap;gap:10px 26px;list-style:none;margin:20px 0 0;padding:0}
+.adv-list li{position:relative;padding-left:20px;font:500 13.5px/1.4 Inter,sans-serif;color:var(--ink)}
+.adv-list li:before{content:"\2713";position:absolute;left:0;top:0;color:var(--accent);font-weight:700}
+.pricing-subhead--row{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.reset-link{background:none;border:0;color:var(--muted);font:500 12.5px Inter,sans-serif;text-decoration:underline;cursor:pointer;padding:0 0 4px}
+.reset-link:hover{color:var(--accent)}
+.payflow{background:linear-gradient(145deg,rgba(255,212,0,.07),var(--surface) 60%);border:1px solid rgba(255,212,0,.32);border-radius:16px;padding:26px 28px;margin-top:6px}
+.payflow-head .eyebrow{font:500 11px/1 "Space Grotesk",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.payflow-head h2{font:700 clamp(24px,3vw,34px)/1.15 "Space Grotesk",sans-serif;margin:8px 0 10px}
+.pay-lead{color:var(--muted);font-size:14.5px;line-height:1.6;max-width:76ch;margin:0}
+.paysteps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0 0;padding:0}
+.paysteps li{position:relative;padding-top:38px;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.paysteps li span{position:absolute;top:0;left:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#111;font:700 11px Inter,sans-serif;display:flex;align-items:center;justify-content:center;z-index:1}
+.paysteps li:before{content:"";position:absolute;top:13px;left:32px;right:-12px;height:1px;background:linear-gradient(90deg,rgba(255,212,0,.45),rgba(255,212,0,.08))}
+.paysteps li:last-child:before{display:none}
+.paysteps li b{display:block;color:var(--ink);font-weight:600;font-size:13px;line-height:1.35}
+.paynotes{margin-top:22px;display:grid;gap:7px;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.paynotes p{margin:0;padding-left:16px;position:relative}
+.paynotes p:before{content:"\2014";position:absolute;left:0;color:var(--accent)}
+.rights{margin-top:26px;border-top:1px solid var(--line);padding-top:22px;max-width:860px}
+.rights h3{font:700 20px/1.25 "Space Grotesk",sans-serif;margin:0 0 10px}
+.rights p{color:var(--muted);font-size:13.5px;line-height:1.6;margin:0 0 10px;max-width:80ch}
+.payinfo .rights ul{display:grid;grid-template-columns:1fr;gap:6px;margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.55}
+.pay-extra-title{font:600 11px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px}
+.payinfo .pay-extra{display:grid;grid-template-columns:1fr;gap:5px;margin:0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.5}
+.payinfo .paysteps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0 0;padding:0;font-size:12.5px}
+@media(max-width:900px){
+  .paysteps{grid-template-columns:1fr;gap:14px}
+  .paysteps li{padding-top:0;padding-left:40px;min-height:30px}
+  .paysteps li span{top:0}
+  .paysteps li:before{display:none}
+  .payflow{padding:20px 18px}
+}
+@media(max-width:760px){
+  .pricing--top{padding-top:24px}
+  .pricing-title{font-size:clamp(28px,8vw,38px)}
+  .pricing-lead{font-size:15.5px}
+  .adv-list{display:grid;gap:8px}
+  .pricing-subhead--row{align-items:flex-start}
+  .reset-link{text-align:left}
+}

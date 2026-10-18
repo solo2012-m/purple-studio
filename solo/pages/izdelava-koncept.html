@@ -35,27 +35,19 @@
 </header>
 
 <main>
-<section class="create-hero create-hero--solo">
-  <div class="wrap create-hero__grid">
-    <div class="create-hero__copy">
-      <span class="eyebrow" data-i18n="create.eyebrow"></span>
-      <h1 class="create-h1"><span data-i18n="create.h1a"></span><span class="acc" data-i18n="create.h1b"></span></h1>
-      <p class="create-sub" data-i18n="create.sub"></p>
-      <div class="actions">
-        <button type="button" class="btn" onclick="SOLO.startQuiz('a')" data-i18n="create.cta1"></button>
-        <a class="btn ghost" href="#tariffs" data-i18n="create.cta2"></a>
-      </div>
-      <small class="meta" data-i18n="create.meta"></small>
-    </div>
-  </div>
-</section>
 
-<section id="tariffs" class="pricing">
+
+<section id="tariffs" class="pricing pricing--top">
   <div class="wrap">
-    <div class="pricing-head">
+    <div class="pricing-head pricing-head--top">
       <span class="eyebrow" data-i18n="price.eyebrow"></span>
-      <h2 class="h2" data-i18n="price.title"></h2>
-      <p class="lead" data-i18n="price.lead"></p>
+      <h1 class="pricing-title" data-i18n="price.title"></h1>
+      <p class="pricing-lead" data-i18n="price.lead"></p>
+      <ul class="adv-list">
+        <li data-i18n="price.adv1"></li>
+        <li data-i18n="price.adv2"></li>
+        <li data-i18n="price.adv3"></li>
+      </ul>
     </div>
     <div id="tariffCards" class="tariff-grid"></div>
 
@@ -65,9 +57,12 @@
     </div>
     <div id="tariffCompare"></div>
 
-    <div class="pricing-subhead">
-      <h3 data-i18n="price.addons"></h3>
-      <p data-i18n="price.addonsLead"></p>
+    <div class="pricing-subhead pricing-subhead--row">
+      <div>
+        <h3 data-i18n="price.addons"></h3>
+        <p data-i18n="price.addonsLead"></p>
+      </div>
+      <button type="button" class="reset-link" onclick="resetAddons()" data-i18n="price.reset"></button>
     </div>
     <div id="tariffAddons" class="addons-grid"></div>
 
