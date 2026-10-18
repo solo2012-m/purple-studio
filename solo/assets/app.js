@@ -463,6 +463,9 @@
     if (quiz.url) h += '<div class="notice small">' + esc(ui('urlSaved')) + '</div>';
     h += '<div class="emailbox">';
     h += '<h4>' + esc(ui('emailTitle')) + '</h4><p class="qhint">' + esc(ui('emailLead')) + '</p>';
+    h += '<div class="field"><label>' + esc(ui('industryLabel')) + ' <span class="rec-badge">' + esc(ui('industryRecommended')) + '</span></label><input type="text" id="planIndustry" placeholder="' + esc(ui('industryPh')) + '"></div>';
+    h += '<div class="field"><label>' + esc(ui('notesLabel')) + '</label><textarea rows="3" id="planNotes" placeholder="' + esc(ui('notesPh')) + '"></textarea></div>';
+    h += '<small class="meta plan-help">' + esc(ui('planHelp')) + '</small>';
     h += '<div class="field"><label>' + esc(ui('emailLabel')) + '</label><input type="email" id="planEmail" placeholder="' + esc(ui('emailPh')) + '"></div>';
     h += '<small class="meta email-purpose">' + esc(ui('emailPurpose')) + '</small>';
     h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('consentLabel')) + '</span></label>';
@@ -498,10 +501,11 @@
     if (!emailValid(email)) { if (err) err.textContent = ui('emailErr'); return; }
     var consent = el('planConsent');
     var on = !!(consent && consent.checked);
-    deliver(buildText('plan', email, on), buildLead(email, on));
+    var industry = val('planIndustry'), notes = val('planNotes');
+    deliver(buildText('plan', email, on, industry, notes), buildLead(email, on, industry, notes));
   }
 
-  function buildLead(email, consent) {
+  function buildLead(email, consent, industry, notes) {
     var br = quizPack().branches[quiz.branch], data = resultData(), answers = [];
     for (var i = 0; i < br.steps.length; i++) {
       var st = br.steps[i], a = quiz.answers[st.id];
@@ -525,6 +529,8 @@
       interest: interest,
       answers: answers,
       siteUrl: quiz.url || '',
+      industry: industry || '',
+      notes: notes || '',
       recommendation: { key: data.variant, title: data.res.t, next: data.res.next },
       marketingConsent: !!consent,
       consentTextVersion: CONSENT_VERSION,
@@ -533,7 +539,7 @@
     };
   }
 
-  function buildText(kind, email, consent) {
+  function buildText(kind, email, consent, industry, notes) {
     var L = lang === 'ru', lines = [], br = quiz.branch ? quizPack().branches[quiz.branch] : null;
     lines.push((L ? 'Заявка Solo.Pov' : 'Povpraševanje Solo.Pov') + (kind === 'plan' ? (L ? ' — подробный план' : ' — podroben načrt') : ''));
     lines.push((L ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(L ? 'ru-RU' : 'sl-SI'));
@@ -554,6 +560,8 @@
       if (n) lines.push((L ? 'Пожелания' : 'Želje') + ': ' + n);
       return lines.join('\n');
     }
+    if (industry) lines.push((L ? 'Сфера деятельности' : 'Dejavnost') + ': ' + industry);
+    if (notes) lines.push((L ? 'Дополнительно' : 'Dodatne informacije') + ': ' + notes);
     if (email) lines.push((L ? 'Email' : 'Email') + ': ' + email);
     lines.push((L ? 'Согласие на маркетинговые сообщения' : 'Soglasje za marketinška obvestila') + ': ' + (consent ? (L ? 'да' : 'da') : (L ? 'нет' : 'ne')));
     lines.push((L ? 'Версия текста согласия' : 'Različica besedila soglasja') + ': ' + CONSENT_VERSION);
