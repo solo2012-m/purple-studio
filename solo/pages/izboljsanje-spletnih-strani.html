@@ -11,63 +11,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body class="create-page improve-page">
+
 <header>
   <div class="wrap hdr">
-    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov"></a>
-    <nav style="margin-left:auto">
-      <a href="izdelava-spletnih-strani.html">Izdelava</a>
-      <a href="izboljsanje-spletnih-strani.html">Izboljšave</a>
-      <a href="ai-avtomatizacija.html">AI in podpora</a>
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
+    <nav>
+      <a href="../index.html" data-i18n="create.nav.home"></a>
+      <a href="izdelava-spletnih-strani.html" data-i18n="create.nav.create"></a>
+      <a href="izboljsanje-spletnih-strani.html" style="color:var(--ink)" data-i18n="create.nav.improve"></a>
+      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
     </nav>
-    <a class="btn ghost sm" href="../index.html">&#8592; Domov</a>
+    <div class="langbox" style="margin-left:auto">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderImprove()">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru');renderImprove()">RU</button>
+    </div>
+    <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
   </div>
 </header>
 
-<section class="first" style="padding:52px 0 30px">
+<main>
+<section class="improve-hero">
   <div class="wrap">
-    <span class="eyebrow">Solo.Pov · rešitev B</span>
-    <h1 class="h2" style="font-size:clamp(30px,4vw,44px)">Izboljšanje spletnih strani</h1>
-    <p class="lead" style="font-size:18px;margin-top:6px">Stran že imate, a ne deluje tako, kot želite. Pregledamo jo in predlagamo, kaj popraviti, pospešiti ali prenoviti.</p>
-    <p class="lead" style="margin-top:10px">Сайт уже есть, но работает не так, как нужно. Разберём его и предложим, что исправить, ускорить или обновить.</p>
+    <span class="eyebrow" data-i18n="improve.eyebrow"></span>
+    <h1 class="pricing-title" data-i18n="improve.title"></h1>
+    <p class="pricing-lead" data-i18n="improve.sub"></p>
+    <div class="entry-grid">
+      <a class="entry-card" href="#services">
+        <span class="entry-num">01</span>
+        <b data-i18n="improve.entry.a.t"></b>
+        <span class="entry-desc" data-i18n="improve.entry.a.d"></span>
+        <i data-i18n="improve.entry.a.cta"></i>
+      </a>
+      <button type="button" class="entry-card" onclick="openExpress()">
+        <span class="entry-num">02</span>
+        <b data-i18n="improve.entry.b.t"></b>
+        <span class="entry-desc" data-i18n="improve.entry.b.d"></span>
+        <i data-i18n="improve.entry.b.cta"></i>
+      </button>
+    </div>
   </div>
 </section>
 
-<section style="padding-top:0">
+<section id="express" class="improve-section">
   <div class="wrap">
-    <div class="grid g2">
-      <div class="card"><h3>Kaj naredimo</h3><ul><li>Prenova videza in posodobitev</li><li>Odprava napak</li><li>Hitrejše nalaganje</li><li>SEO optimizacija</li><li>Boljša konverzija</li><li>Dodatne strani, funkcije in jeziki</li><li>Priprava na oglaševanje</li><li>Integracije</li></ul></div>
-      <div class="card"><h3>Что делаем</h3><ul><li>Редизайн и модернизация</li><li>Исправление ошибок</li><li>Ускорение загрузки</li><li>SEO-оптимизация</li><li>Улучшение конверсии</li><li>Новые страницы, функции и языки</li><li>Подготовка к рекламе</li><li>Интеграции</li></ul></div>
-    </div>
-    <div class="grid g2" style="margin-top:18px">
-      <div class="card"><h3>Kaj dobite</h3><ul><li>Pregled obstoječe strani</li><li>Predlog, kaj je smiselno popraviti</li><li>Jasnejša pot do povpraševanja</li><li>Stran brez znanih napak</li></ul></div>
-      <div class="card"><h3>Что вы получаете</h3><ul><li>Разбор текущего сайта</li><li>План, что стоит исправить</li><li>Более понятный путь к заявке</li><li>Сайт без известных ошибок</li></ul></div>
+    <div class="express-panel">
+      <span class="eyebrow" data-i18n="improve.express.eyebrow"></span>
+      <h2 data-i18n="improve.express.title"></h2>
+      <p class="section-lead" data-i18n="improve.express.desc"></p>
+      <form id="expressForm" onsubmit="return submitExpress(event)">
+        <div class="grid g2">
+          <div class="field">
+            <label data-i18n="improve.express.urlLabel"></label>
+            <input type="text" id="expressUrl" inputmode="url" placeholder="https://primer.si" data-i18n-ph="improve.express.urlPh">
+          </div>
+          <div class="field">
+            <label data-i18n="improve.express.concernLabel"></label>
+            <textarea id="expressConcern" rows="3" data-i18n-ph="improve.express.concernPh"></textarea>
+          </div>
+        </div>
+        <div class="qerr" id="expressErr"></div>
+        <button type="submit" class="btn" data-i18n="improve.express.btn"></button>
+      </form>
+      <div class="notice express-notice" id="expressNotice" hidden>
+        <p data-i18n="improve.express.notReady"></p>
+        <button type="button" class="btn ghost sm" onclick="requestFromExpress()" data-i18n="improve.express.requestBtn"></button>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="services" class="improve-section">
   <div class="wrap">
-    <h2 class="h2">Pogosta vprašanja / Частые вопросы</h2>
-    <div style="margin-top:26px"><details class="faq"><summary>Ali lahko izboljšate obstoječo stran? / Можете улучшить существующий сайт?</summary><p>Da, pregledamo jo in predlagamo obseg. / Да, посмотрим и предложим объём работ.</p></details>
-          <details class="faq"><summary>Koliko stane prenova? / Сколько стоит редизайн?</summary><p>Odvisno od obsega; oceno potrdimo pred začetkom. / Зависит от объёма; смету согласуем до старта.</p></details>
-          <details class="faq"><summary>Ali bo stran prinesla več strank? / Станет ли больше клиентов?</summary><p>Stran je temelj, ne zagotovilo. / Сайт — основа, а не гарантия.</p></details></div>
-    <div class="actions" style="margin-top:26px">
-      <a class="btn" href="../index.html?quiz=b">Izberite rešitev / Подобрать решение</a>
-      <a class="btn ghost" href="../index.html">Nazaj / На главную</a>
+    <div class="improve-head">
+      <h2 data-i18n="improve.catalog.title"></h2>
+      <p class="section-lead" data-i18n="improve.catalog.sub"></p>
+    </div>
+    <div id="serviceGrid" class="service-grid"></div>
+    <p class="catalog-note" data-i18n="improve.catalog.note"></p>
+  </div>
+</section>
+
+<section id="request" class="improve-section">
+  <div class="wrap">
+    <div class="request-panel">
+      <div class="request-head">
+        <h2 data-i18n="improve.request.title"></h2>
+        <span class="request-type" id="requestType"></span>
+      </div>
+      <div id="selectedList" class="selected-list"></div>
+      <p class="request-warning" data-i18n="improve.request.warning"></p>
+      <h3 class="request-form-title" data-i18n="improve.request.formTitle"></h3>
+
+      <form id="improveForm" onsubmit="return submitImprove(event)">
+        <div class="grid g2">
+          <div class="field">
+            <label data-i18n="improve.request.siteLabel"></label>
+            <input type="text" id="reqUrl" inputmode="url" data-i18n-ph="improve.request.sitePh">
+          </div>
+          <div class="field">
+            <label data-i18n="improve.request.emailLabel"></label>
+            <input type="email" id="reqEmail" data-i18n-ph="improve.request.emailPh">
+          </div>
+        </div>
+        <div class="field">
+          <label data-i18n="improve.request.commentLabel"></label>
+          <textarea id="reqComment" rows="3" data-i18n-ph="improve.request.commentPh"></textarea>
+        </div>
+        <label class="check"><input type="checkbox" id="reqConsent"><span data-i18n="improve.request.consent"></span></label>
+        <small class="consent-note" data-i18n="improve.request.consentNote"></small>
+        <a class="privacy-link" href="../privacy.html" target="_blank" rel="noopener" data-i18n="footer.privacy"></a>
+        <div class="qerr" id="reqErr"></div>
+        <button type="submit" class="btn" id="improveSubmit" data-i18n="improve.request.submit"></button>
+        <small class="meta" data-i18n="improve.request.note"></small>
+      </form>
+      <div id="improveResult" class="request-result" hidden></div>
     </div>
   </div>
 </section>
+
+<section class="improve-section">
+  <div class="wrap">
+    <div class="audit-panel">
+      <span class="eyebrow" data-i18n="improve.audit.eyebrow"></span>
+      <h2 data-i18n="improve.audit.title"></h2>
+      <p class="section-lead" data-i18n="improve.audit.sub"></p>
+      <h3 data-i18n="improve.audit.listTitle"></h3>
+      <ul id="auditList" class="audit-list"></ul>
+      <p class="audit-price" data-i18n="improve.audit.price"></p>
+      <button type="button" class="btn" onclick="startAudit()" data-i18n="improve.audit.btn"></button>
+      <small class="meta" data-i18n="improve.audit.note"></small>
+    </div>
+  </div>
+</section>
+
+<section class="improve-section">
+  <div class="wrap">
+    <div class="demo-panel">
+      <span class="eyebrow" data-i18n="improve.demo.eyebrow"></span>
+      <h2 data-i18n="improve.demo.title"></h2>
+      <p class="section-lead" data-i18n="improve.demo.sub"></p>
+      <div class="demo-tabs">
+        <button type="button" data-demo="before" onclick="setDemo('before')" data-i18n="improve.demo.before"></button>
+        <button type="button" data-demo="after" onclick="setDemo('after')" data-i18n="improve.demo.after"></button>
+      </div>
+      <div class="demo-stage show-before" id="demoStage">
+        <div class="demo-screen demo-before">
+          <div class="db-top"><span></span><span></span><span></span></div>
+          <div class="db-body">
+            <div class="db-nav"></div>
+            <div class="db-title"></div>
+            <div class="db-lines"><i></i><i></i><i></i></div>
+            <div class="db-box"></div>
+            <div class="db-cols"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="demo-screen demo-after">
+          <div class="da-top"><b>SOLO.POV</b><span></span><span></span><i></i></div>
+          <div class="da-hero">
+            <div class="da-copy"><span></span><b></b><i></i><em></em></div>
+            <div class="da-art"><span></span><span></span></div>
+          </div>
+          <div class="da-cards"><div></div><div></div><div></div></div>
+        </div>
+      </div>
+      <small class="demo-caption" data-i18n="improve.demo.caption"></small>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
   <div class="wrap">
     <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
-      <span>Predogled v izdelavi. Ni za objavo.</span>
+      <span data-i18n="footer.draft"></span>
       <span>&copy; 2026 Solo.Pov</span>
     </div>
   </div>
 </footer>
-  <script src="../assets/cursor.js"></script>
-  <div class="firefly" id="firefly" aria-hidden="true"></div>
+
+<div class="firefly" id="firefly" aria-hidden="true"></div>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/concept-i18n.js"></script>
+<script src="../assets/improve-i18n.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/improve.js"></script>
+<script src="../assets/cursor.js"></script>
 </body>
 </html>

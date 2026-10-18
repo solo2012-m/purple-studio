@@ -33,6 +33,15 @@ window.SOLO_CONFIG = {
     enabled: false,
     endpoint: ''
   },
+  /* Prihodnja hitra diagnoza in obdelava zahtev za izboljšave. Trenutno izklopljeno. */
+  express: {
+    enabled: false,
+    endpoint: ''
+  },
+  improve: {
+    enabled: false,
+    endpoint: ''
+  },
   /* Prihodnja CRM / zbirka potencialnih strank. Trenutno izklopljeno. */
   crm: {
     enabled: false,
