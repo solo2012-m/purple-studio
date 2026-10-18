@@ -380,45 +380,783 @@ window.SOLO_I18N = {
 
 window.SOLO_QUIZ = {
   sl: {
-    entry: ['Nimam spletne strani', 'Stran že imam', 'Želim avtomatizirati delo s stranjo'],
+    entryTitle: 'Podberimo rešitev za vaše podjetje',
+    entryLead: 'Odgovorite na nekaj preprostih vprašanj in prejmite osebno priporočilo, prilagojeno vašim ciljem.',
+    ui: {
+      step: 'Vprašanje {n} iz {t}',
+      multi: 'Izberete lahko več odgovorov.',
+      back: 'Nazaj',
+      next: 'Nadaljuj',
+      close: 'Zapri',
+      start: 'Začni znova',
+      urlTitle: 'Naslov vaše strani',
+      urlLead: 'Navedite naslov, da bomo lahko pozneje opravili predhodno diagnostiko.',
+      urlPh: 'npr. www.primer.si',
+      urlSkip: 'Nadaljuj brez naslova',
+      urlErr: 'Vnesite veljaven naslov, npr. www.primer.si',
+      urlSaved: 'Naslov strani je shranjen. Predhodno priporočilo za zdaj temelji na vaših odgovorih. Tehnična diagnostika bo na voljo pozneje.',
+      resultTitle: 'Vaš predhodni rezultat je pripravljen!',
+      resultRec: 'Predlagana rešitev',
+      resultWhy: 'Zakaj vam ustreza',
+      resultInc: 'Priporočamo, da predvidite',
+      resultNext: 'Naslednji korak',
+      emailTitle: 'Želite podroben načrt za vaše podjetje?',
+      emailLead: 'Pripravili bomo priporočila o strukturi, funkcijah in naslednjih korakih glede na vaše odgovore. Email uporabimo samo za pošiljanje tega načrta.',
+      emailLabel: 'Vaš email',
+      emailPh: 'ime@primer.si',
+      emailBtn: 'Prejmite podroben načrt',
+      emailConsent: 'Strinjam se s prejemom obvestil o storitvah Solo.Pov. Oglaševalskih sporočil ne pošiljamo brez ločenega soglasja.',
+      emailNote: 'Email ni obvezen za ogled predhodnega rezultata.',
+      emailErr: 'Vnesite veljaven email naslov.',
+      notReadyTitle: 'Pošiljanje še ni povezano',
+      notReadyText: 'Zahteva <b>ni bila poslana</b>, ker povezava še ni nastavljena. Spodaj je pripravljeno besedilo, ki ga lahko kopirate in nam pošljete.',
+      copy: 'Kopiraj besedilo',
+      copied: 'Kopirano',
+      ok: 'Razumem',
+      summary: 'Povzetek vaše situacije',
+      branch: 'Izhodišče'
+    },
     branches: {
-      a: { title: 'Nimate spletne strani', rec: 'a', steps: [
-        { q: 'Za kaj potrebujete spletno stran?', o: ['Predstaviti storitve in prejemati povpraševanja', 'Prodajati izdelke', 'Predstaviti podjetje', 'Zaenkrat ne vem'] },
-        { q: 'Kaj opisuje vaše poslovanje?', o: ['Ena storitev ali izdelek', 'Več storitev', 'Katalog izdelkov', 'Potrebujem nasvet'] },
-        { q: 'Kaj je za vas najpomembnejše?', o: ['Pridobivanje strank', 'Spletna prodaja', 'Zaupanje v podjetje', 'Avtomatizacija'] },
-        { q: 'Imate že gradivo?', o: ['Da, vse je pripravljeno: fotografije, besedila, logotip', 'Imam le del gradiva', 'Potrebujem pomoč pri pripravi'] }
-      ]},
-      b: { title: 'Stran že imate', rec: 'b', steps: [
-        { q: 'Kaj vas moti?', multi: true, o: ['Zastarel videz', 'Premalo povpraševanj ali prodaje', 'Stran deluje počasi ali se pojavljajo napake', 'Primanjkuje funkcij', 'Slaba vidnost v Google', 'Drugo'] },
-        { q: 'Kakšen rezultat želite?', o: ['Posodobiti videz in uporabnost', 'Povečati število povpraševanj', 'Odpraviti tehnične težave', 'Dodati funkcije, strani ali jezike', 'Potrebujem celovito oceno'] },
-        { q: 'Kdo trenutno upravlja stran?', o: ['Sam(a)', 'Drug razvijalec', 'Nihče, ne vem, ali imam dostope'] }
-      ]},
-      c: { title: 'AI-avtomatizacija in vzdrževanje', rec: 'c', steps: [
-        { q: 'Kaj želite avtomatizirati?', multi: true, o: ['Dodajanje člankov in fotografij', 'Spreminjanje besedil, cen in storitev', 'Odgovore strankam in obdelavo povpraševanj', 'SEO in posodabljanje vsebine', 'Celovito upravljanje strani'] },
-        { q: 'Ali stran že imate?', o: ['Da', 'Ne, potrebujem stran skupaj z avtomatizacijo'] },
-        { q: 'Kako vam je lažje upravljati stran?', o: ['Prek Telegrama', 'Prek nadzorne plošče', 'Obe možnosti'] }
-      ]}
+      a: {
+        title: 'Nimate spletne strani',
+        baseWhy: 'Stran gradimo od začetka, zato lahko strukturo prilagodimo vašim ciljem, ne obstoječi zasnovi.',
+        steps: [
+          { id: 'q1', q: 'Za kaj vaše podjetje potrebuje spletno stran?', why: [
+            'Želite, da vas stranke najdejo in pustijo povpraševanje — stran mora biti zgrajena okoli jasnega klica k dejanju.',
+            'Stran bo najprej predstavljala podjetje in storitve — pomembna sta jasna struktura in zaupanje.',
+            'Želite spletno prodajo — potrebujete katalog, košarico in varen zaključek nakupa.',
+            'Potrebujete prijave ali rezervacije — ključen je preprost koledar in potrditev termina.',
+            'Možnosti še raziskujete — začnimo z majhno, jasno stranjo, ki jo je mogoče nadgraditi.'
+          ], o: [
+            'Da me stranke najdejo in pustijo povpraševanje.',
+            'Da predstavim podjetje in njegove storitve.',
+            'Da prodajam izdelke na spletu.',
+            'Da se stranke lahko prijavijo ali rezervirajo termin.',
+            'Zaenkrat ne vem, želim razumeti možnosti.'
+          ]},
+          { id: 'q2', q: 'Kaj ponujate strankam?', why: [
+            'Imate eno glavno storitev ali izdelek — enostavna stran z jasnim opisom in povpraševanjem bo dovolj.',
+            'Imate več storitev — priporočamo ločene sklope ali strani, da se stranka ne izgubi.',
+            'Imate veliko izdelkov — potrebujete katalog ali spletno trgovino.',
+            'Delate individualne projekte — pomembno je pokazati proces in primere.'
+          ], o: [
+            'Eno glavno storitev ali izdelek.',
+            'Več različnih storitev.',
+            'Veliko izdelkov.',
+            'Individualne projekte ali naročila.'
+          ]},
+          { id: 'q3', q: 'Katere možnosti potrebujete?', multi: true, exclusive: 5, why: [
+            'Potrebujete obrazec za povpraševanje — to bo glavni vir stikov.',
+            'Potrebujete katalog — dodali bomo pregledno strukturo storitev ali izdelkov.',
+            'Želite spletno plačilo — načrtujemo varen zaključek nakupa.',
+            'Potrebujete rezervacijo — dodali bomo koledar in potrditve.',
+            'Potrebujete več jezikov — vsebino bomo pripravili v več različicah.',
+            'Pri možnostih se še odločate — predlagali bomo smiselno osnovo in jo kasneje nadgradili.'
+          ], o: [
+            'Obrazec za povpraševanje ali stik.',
+            'Katalog storitev ali izdelkov.',
+            'Spletno plačilo.',
+            'Spletna prijava ali rezervacija.',
+            'Več jezikov.',
+            'Zaenkrat ne vem — svetujte mi.'
+          ]},
+          { id: 'q4', q: 'Kaj imate že pripravljeno?', why: [
+            'Gradivo je pripravljeno — lahko se osredotočimo na strukturo in vsebino.',
+            'Imate del gradiva — manjkajoče bomo dopolnili skupaj.',
+            'Gradiva še ni — pomagali vam bomo pri besedilih in slikah.',
+            'Gradivo je staro — najprej ga bomo pregledali in posodobili.'
+          ], o: [
+            'Imam logotip, fotografije in besedila.',
+            'Imam le del gradiva.',
+            'Zaenkrat nimam ničesar.',
+            'Imam staro gradivo, ki ga je treba posodobiti.'
+          ]},
+          { id: 'q5', q: 'Kdaj načrtujete zagon strani?', why: [
+            'Zagon želite čim prej — predlagamo kratko, jasno prvo različico.',
+            'Zagon načrtujete v mesecu dni — časa je dovolj za skrbno pripravo.',
+            'Zagon načrtujete v 1–3 mesecih — lahko mirno pripravimo strukturo in gradivo.',
+            'Možnosti še raziskujete — priporočilo je informativno in brez obveznosti.'
+          ], o: [
+            'Čim prej.',
+            'V naslednjem mesecu.',
+            'Čez 1–3 mesece.',
+            'Zaenkrat le raziskujem možnosti.'
+          ]}
+        ],
+        res: {
+          leads: { t: 'Enostranska stran s povpraševanjem', inc: [
+            'Jasen prvi zaslon z glavno storitvijo in klicem k dejanju.',
+            'Obrazec za povpraševanje in vidni kontakt.',
+            'Blok s primeri ali dokazili zaupanja.',
+            'Osnovna priprava strani za Google.'
+          ], next: 'Priporočamo, da skupaj določimo strukturo in glavno sporočilo strani.' },
+          presentation: { t: 'Večstranska predstavitvena stran', inc: [
+            'Domača stran s ključnimi storitvami.',
+            'Ločene strani za posamezne storitve.',
+            'Stran o podjetju in kontakt.',
+            'Možnost več jezikov, če jih potrebujete.'
+          ], next: 'Predlagamo, da najprej zberemo gradivo in potrdimo strukturo strani.' },
+          shop: { t: 'Spletna trgovina', inc: [
+            'Katalog izdelkov s kategorijami.',
+            'Košarica in varen zaključek nakupa.',
+            'Načini dostave in plačila.',
+            'Pregled naročil in osnovno upravljanje.'
+          ], next: 'Priporočamo, da določimo obseg izdelkov in način plačila.' },
+          booking: { t: 'Stran s spletno rezervacijo', inc: [
+            'Koledar razpoložljivih terminov.',
+            'Obrazec za rezervacijo.',
+            'Samodejna potrditev in opomniki.',
+            'Pregled rezervacij na enem mestu.'
+          ], next: 'Priporočamo, da opišete termine in pravila rezervacije.' },
+          multi: { t: 'Večstranska stran storitev', inc: [
+            'Domača stran s pregledom storitev.',
+            'Ločene strani za vsako storitev.',
+            'Obrazec za povpraševanje na vsaki strani.',
+            'Stran o podjetju in kontakt.'
+          ], next: 'Predlagamo, da razdelimo storitve v smiselne sklope in določimo prednost.' },
+          unknown: { t: 'Majhna začetna stran', inc: [
+            'Enostaven prvi zaslon z osnovnimi informacijami.',
+            'Kontakt in obrazec za povpraševanje.',
+            'Struktura, ki jo je mogoče kasneje nadgraditi.',
+            'Osnovna nastavitev za Google.'
+          ], next: 'Priporočamo kratek pogovor o ciljih, preden izberemo obseg strani.' }
+        }
+      },
+      b: {
+        title: 'Vaša stran je zastarela',
+        urlStep: true,
+        baseWhy: 'Obstoječe gradivo in zgodovino strani lahko uporabimo, zato prenova ne pomeni vedno začetka od nič.',
+        steps: [
+          { id: 'q1', q: 'Kaj vas najbolj moti?', multi: true, why: [
+            'Star videz vpliva na zaupanje — posodobitev videza bo prvi vidni korak.',
+            'Uporaba na telefonu je ključna, ker večina obiskovalcev pride z mobilnih naprav.',
+            'Počasno nalaganje odvrača obiskovalce — pospešitev je merljiv cilj.',
+            'Težavno urejanje pomeni, da za vsako spremembo potrebujete pomoč.',
+            'Nedelujoče funkcije lahko neposredno izgubljajo povpraševanja.'
+          ], o: [
+            'Star videz.',
+            'Neprijetna uporaba na telefonu.',
+            'Počasno nalaganje.',
+            'Težko sam spreminjam vsebino.',
+            'Nekatere funkcije ne delujejo pravilno.'
+          ]},
+          { id: 'q2', q: 'Kaj želite ohraniti?', why: [
+            'Ohranili boste vsebino in strukturo — spremenili bomo predvsem videz in uporabnost.',
+            'Ohranili boste le del gradiva — pregledali bomo, kaj je še uporabno.',
+            'Domena in obstoječi naslovi strani bodo ostali, da ne izgubite najdenih povezav.',
+            'Stran bomo popolnoma prenovili — struktura se lahko spremeni od začetka.',
+            'Ne veste, kaj ohraniti — najprej bomo naredili pregled in predlagali možnosti.'
+          ], o: [
+            'Vsebino in strukturo, spremeniti želim videz.',
+            'Le del gradiva.',
+            'Domeno in obstoječe naslove strani.',
+            'Želim popolnoma prenoviti stran.',
+            'Ne vem, potrebujem nasvet.'
+          ]},
+          { id: 'q3', q: 'Kaj želite dodatno izboljšati?', multi: true, exclusive: 5, why: [
+            'Dodali bomo nove strani ali storitve v obstoječo strukturo.',
+            'Dodali bomo jezike in poskrbeli za dosledno vsebino.',
+            'Stran bomo pripravili na oglaševanje in merjenje rezultatov.',
+            'Izboljšali bomo osnovno vidnost v Googlu.',
+            'Posodobitve bo mogoče avtomatizirati ali poenostaviti.',
+            'Dodatnih izboljšav ne načrtujete — osredotočili se bomo na prenovo.'
+          ], o: [
+            'Dodati strani in storitve.',
+            'Dodati jezike.',
+            'Pripraviti stran za oglaševanje.',
+            'Izboljšati vidnost v Googlu.',
+            'Avtomatizirati posodobitve.',
+            'Nič dodatnega.'
+          ]},
+          { id: 'q4', q: 'Ali imate dostop do upravljanja strani?', why: [
+            'Popoln dostop pomeni, da lahko prenovo izvedemo brez posrednikov.',
+            'Delni dostop je dovolj za večino sprememb, manjkajoče bomo preverili.',
+            'Dostop ima stari razvijalec — potrebovali bomo njegovo sodelovanje ali prenos.',
+            'Ne veste, kdo ima dostop — najprej bomo preverili lastništvo domene in gostovanja.'
+          ], o: [
+            'Da, popoln dostop.',
+            'Delni dostop.',
+            'Dostop ima stari razvijalec.',
+            'Ne vem.'
+          ]}
+        ],
+        res: {
+          modernize: { t: 'Modernizacija obstoječe strani', inc: [
+            'Nov videz in boljša uporaba na telefonu.',
+            'Hitrejše nalaganje in tehnični pregled.',
+            'Preureditev ključnih strani in povpraševanj.',
+            'Enostavnejše urejanje vsebine.'
+          ], next: 'Priporočamo, da najprej pregledamo obstoječo stran in potrdimo, kaj ohraniti.' },
+          renew: { t: 'Celovita prenova strani', inc: [
+            'Nova struktura in vsebina strani.',
+            'Sodoben videz in mobilna različica.',
+            'Ohranitev domene in pomembnih povezav.',
+            'Priprava na nadaljnje dopolnitve.'
+          ], next: 'Predlagamo, da določimo obseg prenove in gradivo, ki ga želite ohraniti.' }
+        }
+      },
+      c: {
+        title: 'Stran ima premalo povpraševanj',
+        urlStep: true,
+        baseWhy: 'Priporočilo temelji na vaših odgovorih; za natančne ugotovitve bo potreben pregled obstoječe strani.',
+        steps: [
+          { id: 'q1', q: 'Katera situacija najbolje opisuje vašo stran?', why: [
+            'Obiskovalcev skoraj ni — najprej je treba ugotoviti, ali stran sploh doseže pravo občinstvo.',
+            'Obiskovalci so, povpraševanj pa malo — težava je najverjetneje v vsebini ali poti do povpraševanja.',
+            'Povpraševanja so, a redko postanejo naročila — treba je okrepiti zaupanje in jasnost ponudbe.',
+            'Ne veste, koliko obiskovalcev pride — najprej je treba vzpostaviti merjenje.'
+          ], o: [
+            'Obiskovalcev skoraj ni.',
+            'Obiskovalci so, a povpraševanj je malo.',
+            'Povpraševanja so, a redko postanejo naročila.',
+            'Ne vem, koliko ljudi obišče stran.'
+          ]},
+          { id: 'q2', q: 'Od kod zdaj prihajajo obiskovalci?', multi: true, exclusive: 4, why: [
+            'Google lahko prinese obiskovalce z jasno vsebino in osnovno optimizacijo.',
+            'Oglaševanje je treba uskladiti s stranjo, da klik ne konča brez povpraševanja.',
+            'Družbena omrežja lahko vodijo na stran, če je ponudba jasna in preprosta.',
+            'Priporočila in neposredni obiski kažejo, da je treba okrepiti zaupanje in prepoznavnost.',
+            'Vira obiskovalcev še ne spremljate — merjenje bo prvi korak.'
+          ], o: [
+            'Google.',
+            'Google Ads ali oglaševanje na družbenih omrežjih.',
+            'Družbena omrežja.',
+            'Priporočila in neposredni obiski.',
+            'Ne vem.'
+          ]},
+          { id: 'q3', q: 'Kaj lahko obiskovalec naredi na strani?', multi: true, why: [
+            'Obiskovalec lahko pusti povpraševanje — preverili bomo, kako vidno in preprosto je to.',
+            'Obiskovalec lahko pokliče ali napiše — kontakt mora biti viden na vsakem koraku.',
+            'Na strani je mogoče kupiti ali plačati — preverili bomo pot do nakupa.',
+            'Na strani se je mogoče prijaviti na storitev — preverili bomo rezervacijski tok.',
+            'Stran je trenutno samo informativna — treba je dodati jasen naslednji korak.'
+          ], o: [
+            'Pusti povpraševanje.',
+            'Pokliče ali napiše.',
+            'Kupi ali plača.',
+            'Prijavi se na storitev.',
+            'Samo pogleda informacije.'
+          ]},
+          { id: 'q4', q: 'Kaj bi radi izboljšali?', multi: true, exclusive: 4, why: [
+            'Želite več obiskovalcev — priporočili bomo vidnost in vsebino.',
+            'Želite več povpraševanj — osredotočili se bomo na pot do povpraševanja.',
+            'Želite učinkovitejše oglaševanje — uskladili bomo oglas in ciljno stran.',
+            'Želite večje zaupanje — dodali bomo dokazila in jasno predstavitev.',
+            'Vzroka ne poznate — priporočamo diagnozo, preden posegamo v stran.'
+          ], o: [
+            'Povečati število obiskovalcev.',
+            'Prejemati več povpraševanj.',
+            'Narediti oglaševanje bolj učinkovito.',
+            'Povečati zaupanje v podjetje.',
+            'Potrebujem diagnozo — ne vem, v čem je vzrok.'
+          ]}
+        ],
+        res: {
+          visibility: { t: 'Tehnična diagnostika in vidnost', inc: [
+            'Pregled hitrosti in delovanja na telefonu.',
+            'Osnovni tehnični SEO pregled.',
+            'Preverjanje naslovov in meta opisov.',
+            'Predlog vsebine za boljšo najdljivost.'
+          ], next: 'Za natančne ugotovitve je treba pregledati obstoječo stran — diagnostični pregled še ni opravljen.' },
+          conversion: { t: 'Analiza poti obiskovalca do povpraševanja', inc: [
+            'Jasen klic k dejanju na ključnih mestih.',
+            'Preprostejši obrazec za povpraševanje.',
+            'Odstranitev ovir in nejasnosti.',
+            'Merjenje, od kod pridejo povpraševanja.'
+          ], next: 'Priporočamo pregled poti od prvega obiska do povpraševanja.' },
+          sales: { t: 'Optimizacija zaupanja in prodaje', inc: [
+            'Jasnejša predstavitev ponudbe in cen.',
+            'Dokazila zaupanja: izkušnje, proces, garancije.',
+            'Preprostejši korak do naročila ali povpraševanja.',
+            'Odgovori na pogosta vprašanja pred odločitvijo.'
+          ], next: 'Predlagamo, da skupaj pregledamo, kje se obiskovalci ustavijo pred naročilom.' },
+          diagnostics: { t: 'Diagnostika in merjenje', inc: [
+            'Vzpostavitev osnovnega merjenja obiska.',
+            'Pregled virov obiskovalcev.',
+            'Analiza vedenja na ključnih straneh.',
+            'Predlog prednostnih izboljšav.'
+          ], next: 'Priporočamo, da najprej vzpostavimo merjenje, nato pa se odločimo za izboljšave.' }
+        }
+      },
+      d: {
+        title: 'Želite avtomatizirati delo',
+        urlAfter: 2,
+        baseWhy: 'Avtomatizacija ima smisel le, če reši konkreten ponavljajoč se proces — zato začnemo pri najbolj obremenjenem delu.',
+        steps: [
+          { id: 'q1', q: 'Kaj vam vzame največ časa?', multi: true, why: [
+            'Ponavljajoča vprašanja so dober kandidat za asistente in pripravljene odgovore.',
+            'Ročna obdelava povpraševanj se da delno ali v celoti avtomatizirati.',
+            'Ročno dodajanje izdelkov in cen je pogosto mogoče poenostaviti.',
+            'Objava novic in člankov je primerna za delno avtomatizacijo.',
+            'Delo z dokumenti in podatki je mogoče povezati v en tok.'
+          ], o: [
+            'Nenehno odgovarjam na enaka vprašanja.',
+            'Ročno obdelujem povpraševanja.',
+            'Dodajam izdelke, cene in storitve.',
+            'Objavljam novice in članke.',
+            'Delam z dokumenti in podatki.'
+          ]},
+          { id: 'q2', q: 'Kaj bi radi avtomatizirali?', multi: true, why: [
+            'Komunikacija s strankami je najpogosteje prvi korak avtomatizacije.',
+            'Posodabljanje strani lahko poteka prek preprostega vmesnika ali Telegrama.',
+            'Ustvarjanje vsebine je mogoče pospešiti, a jo je treba pregledati.',
+            'Prijave in rezervacije je mogoče povezati s koledarjem in obvestili.',
+            'Prenos povpraševanj v CRM ali Telegram odpravi ročno prepisovanje.'
+          ], o: [
+            'Komunikacijo s strankami.',
+            'Posodabljanje strani.',
+            'Ustvarjanje vsebine.',
+            'Prijave in rezervacije.',
+            'Prenos povpraševanj v CRM ali Telegram.'
+          ]},
+          { id: 'q3', q: 'Katere pripomočke že uporabljate?', multi: true, exclusive: 4, why: [
+            'Imate stran — avtomatizacijo lahko povežemo z obstoječo vsebino.',
+            'Telegram ali WhatsApp je dobra osnova za obvestila in preprosto upravljanje.',
+            'CRM lahko prevzame povpraševanja in zgodovino stikov.',
+            'Spletna trgovina omogoča povezavo naročil in zalog.',
+            'Zaenkrat nimate podobnih orodij — predlagali bomo preprost začetek.'
+          ], o: [
+            'Spletno stran.',
+            'Telegram ali WhatsApp.',
+            'CRM.',
+            'Spletno trgovino.',
+            'Zaenkrat nič podobnega.'
+          ]},
+          { id: 'q4', q: 'Kako vam je najlažje upravljati procese?', why: [
+            'Telegram je preprost, če želite ukrepati s telefona.',
+            'Nadzorna plošča je pregledna, če želite videti več podatkov na enem mestu.',
+            'Samodejno z vašo potrditvijo pomembnih dejanj zmanjša delo, a ohrani nadzor.',
+            'Zaenkrat potrebujete nasvet — predlagali bomo najpreprostejšo pot.'
+          ], o: [
+            'Prek Telegrama.',
+            'Prek strani ali nadzorne plošče.',
+            'Čim bolj samodejno, z mojo potrditvijo pomembnih dejanj.',
+            'Zaenkrat potrebujem nasvet.'
+          ]}
+        ],
+        res: {
+          assistant: { t: 'AI-asistent za komunikacijo s strankami', inc: [
+            'Pripravljeni odgovori na pogosta vprašanja.',
+            'Preusmeritev zahtevnejših vprašanj na vas.',
+            'Zbiranje povpraševanj v enem kanalu.',
+            'Pregled zgodovine pogovorov.'
+          ], next: 'Priporočamo, da izberemo eno skupino vprašanj in preizkusimo odgovore.' },
+          content: { t: 'AI-upravljanje vsebine strani', inc: [
+            'Preprosto posodabljanje besedil in cen.',
+            'Priprava osnutkov novic in opisov.',
+            'Predogled pred objavo.',
+            'Zgodovina sprememb in potrditev.'
+          ], next: 'Predlagamo, da začnemo z eno vrsto vsebine, ki se najpogosteje spreminja.' },
+          booking: { t: 'Avtomatizacija prijav in rezervacij', inc: [
+            'Spletni koledar razpoložljivih terminov.',
+            'Samodejna potrditev in opomniki.',
+            'Povezava z vašim koledarjem.',
+            'Pregled rezervacij na enem mestu.'
+          ], next: 'Priporočamo, da določimo pravila rezervacije in način obveščanja.' },
+          integration: { t: 'Integracija povpraševanj s CRM ali Telegramom', inc: [
+            'Samodejno zbiranje povpraševanj z obrazcev.',
+            'Takojšnje obvestilo v Telegram ali CRM.',
+            'Enotna evidenca stikov in statusov.',
+            'Manj ročnega prepisovanja.'
+          ], next: 'Predlagamo, da preverimo, kam želite prejemati povpraševanja.' },
+          combined: { t: 'Kombinirana avtomatizacija', inc: [
+            'Ena povezava med stranjo, obrazci in obvestili.',
+            'Samodejna obdelava ponavljajočih se korakov.',
+            'Pregled in potrditev pomembnih dejanj.',
+            'Postopno uvajanje brez velikega projekta naenkrat.'
+          ], next: 'Priporočamo, da izberemo en proces z največ ročnega dela in ga najprej preizkusimo.' }
+        }
+      }
     }
   },
   ru: {
-    entry: ['У меня нет сайта', 'У меня уже есть сайт', 'Хочу автоматизировать работу с сайтом'],
+    entryTitle: 'Подберём решение для вашего бизнеса',
+    entryLead: 'Ответьте на несколько простых вопросов и получите персональную рекомендацию с учётом ваших задач.',
+    ui: {
+      step: 'Вопрос {n} из {t}',
+      multi: 'Можно выбрать несколько ответов.',
+      back: 'Назад',
+      next: 'Продолжить',
+      close: 'Закрыть',
+      start: 'Начать заново',
+      urlTitle: 'Адрес вашего сайта',
+      urlLead: 'Укажите адрес, чтобы мы могли в дальнейшем провести предварительную диагностику.',
+      urlPh: 'например, www.primer.si',
+      urlSkip: 'Продолжить без адреса',
+      urlErr: 'Укажите корректный адрес, например www.primer.si',
+      urlSaved: 'Адрес сайта сохранён. Предварительная рекомендация пока основана на ваших ответах. Техническая диагностика будет доступна позднее.',
+      resultTitle: 'Ваш предварительный результат готов!',
+      resultRec: 'Рекомендуемое решение',
+      resultWhy: 'Почему это подходит',
+      resultInc: 'Что рекомендуется предусмотреть',
+      resultNext: 'Следующий шаг',
+      emailTitle: 'Хотите получить подробный план для вашего бизнеса?',
+      emailLead: 'Подготовим рекомендации по структуре, функциям и следующим шагам с учётом ваших ответов. Email используем только для отправки этого плана.',
+      emailLabel: 'Ваш email',
+      emailPh: 'name@example.com',
+      emailBtn: 'Получить подробный план',
+      emailConsent: 'Согласен получать сообщения об услугах Solo.Pov. Рекламные рассылки не отправляем без отдельного согласия.',
+      emailNote: 'Email не обязателен для просмотра предварительного результата.',
+      emailErr: 'Укажите корректный email.',
+      notReadyTitle: 'Отправка пока не подключена',
+      notReadyText: 'Заявка <b>не была отправлена</b>, потому что связь ещё не настроена. Ниже — готовый текст, его можно скопировать и прислать нам.',
+      copy: 'Скопировать текст',
+      copied: 'Скопировано',
+      ok: 'Понятно',
+      summary: 'Резюме вашей ситуации',
+      branch: 'Исходная ситуация'
+    },
     branches: {
-      a: { title: 'У вас пока нет сайта', rec: 'a', steps: [
-        { q: 'Для чего вам нужен сайт?', o: ['Представлять услуги и получать заявки', 'Продавать товары', 'Рассказать о компании', 'Пока не знаю'] },
-        { q: 'Что описывает ваш бизнес?', o: ['Одна услуга или продукт', 'Несколько услуг', 'Каталог товаров', 'Нужна рекомендация'] },
-        { q: 'Что для вас важнее?', o: ['Привлечение клиентов', 'Онлайн-продажи', 'Доверие к компании', 'Автоматизация'] },
-        { q: 'Есть ли у вас материалы?', o: ['Да, всё готово: фото, тексты, логотип', 'Есть только часть материалов', 'Нужна помощь с подготовкой'] }
-      ]},
-      b: { title: 'Сайт уже есть', rec: 'b', steps: [
-        { q: 'Что вас не устраивает?', multi: true, o: ['Устаревший дизайн', 'Мало заявок или продаж', 'Сайт медленно работает или возникают ошибки', 'Не хватает функций', 'Плохая видимость в Google', 'Другое'] },
-        { q: 'Какой результат хотите получить?', o: ['Обновить дизайн и удобство', 'Увеличить количество заявок', 'Исправить технические проблемы', 'Добавить функции, страницы или языки', 'Нужна комплексная оценка'] },
-        { q: 'Кто сейчас управляет сайтом?', o: ['Я самостоятельно', 'Другой разработчик', 'Никто, не знаю, есть ли доступы'] }
-      ]},
-      c: { title: 'AI-автоматизация и обслуживание', rec: 'c', steps: [
-        { q: 'Что хотите автоматизировать?', multi: true, o: ['Добавление статей и фотографий', 'Изменение текстов, цен и услуг', 'Ответы клиентам и обработку заявок', 'SEO и обновление контента', 'Комплексное управление сайтом'] },
-        { q: 'У вас уже есть сайт?', o: ['Да', 'Нет, нужен сайт вместе с автоматизацией'] },
-        { q: 'Как удобнее управлять сайтом?', o: ['Через Telegram', 'Через панель управления', 'Оба варианта'] }
-      ]}
+      a: {
+        title: 'У вас пока нет сайта',
+        baseWhy: 'Сайт создаётся с нуля, поэтому структуру можно построить под ваши задачи, а не под старое решение.',
+        steps: [
+          { id: 'q1', q: 'Для чего вашему бизнесу нужен сайт?', why: [
+            'Вы хотите, чтобы клиенты находили вас и оставляли заявки — сайт должен быть построен вокруг понятного действия.',
+            'Сайт будет прежде всего представлять компанию и услуги — важны ясная структура и доверие.',
+            'Вы хотите продавать онлайн — нужны каталог, корзина и безопасное оформление заказа.',
+            'Нужны записи или бронирование — важен простой календарь и подтверждение.',
+            'Вы ещё изучаете варианты — начнём с небольшого понятного сайта, который можно развивать.'
+          ], o: [
+            'Чтобы клиенты находили меня и оставляли заявки.',
+            'Чтобы представить компанию и её услуги.',
+            'Чтобы продавать товары онлайн.',
+            'Чтобы люди могли записываться или бронировать.',
+            'Пока не знаю, хочу разобраться.'
+          ]},
+          { id: 'q2', q: 'Что вы предлагаете клиентам?', why: [
+            'У вас одна основная услуга или продукт — достаточно одностраничного сайта с ясным описанием и заявкой.',
+            'У вас несколько услуг — рекомендуем отдельные разделы или страницы, чтобы клиент не запутался.',
+            'У вас много товаров — нужен каталог или интернет-магазин.',
+            'Вы делаете индивидуальные проекты — важно показать процесс и примеры.'
+          ], o: [
+            'Одну основную услугу или продукт.',
+            'Несколько различных услуг.',
+            'Много товаров.',
+            'Индивидуальные проекты или заказы.'
+          ]},
+          { id: 'q3', q: 'Какие возможности вам нужны?', multi: true, exclusive: 5, why: [
+            'Нужна форма заявки — она станет основным источником контактов.',
+            'Нужен каталог — добавим понятную структуру услуг или товаров.',
+            'Нужна онлайн-оплата — предусмотрим безопасное оформление заказа.',
+            'Нужна онлайн-запись — добавим календарь и подтверждения.',
+            'Нужно несколько языков — подготовим версии контента.',
+            'Вы ещё не определились — предложим разумную основу и будем развивать её позже.'
+          ], o: [
+            'Форма заявки или обратная связь.',
+            'Каталог услуг или товаров.',
+            'Онлайн-оплата.',
+            'Онлайн-запись или бронирование.',
+            'Несколько языков.',
+            'Пока не знаю — посоветуйте.'
+          ]},
+          { id: 'q4', q: 'Что у вас уже подготовлено?', why: [
+            'Материалы готовы — можно сосредоточиться на структуре и содержании.',
+            'Есть часть материалов — недостающее дополним вместе.',
+            'Материалов пока нет — поможем с текстами и изображениями.',
+            'Материалы старые — сначала посмотрим, что можно обновить.'
+          ], o: [
+            'Есть логотип, фотографии и тексты.',
+            'Есть только часть материалов.',
+            'Пока ничего нет.',
+            'Есть старые материалы, которые нужно обновить.'
+          ]},
+          { id: 'q5', q: 'Когда планируете запустить сайт?', why: [
+            'Запуск нужен как можно скорее — предлагаем короткую и ясную первую версию.',
+            'Запуск в течение месяца — времени достаточно для аккуратной подготовки.',
+            'Запуск через 1–3 месяца — можно спокойно подготовить структуру и материалы.',
+            'Вы пока изучаете варианты — рекомендация информационная, без обязательств.'
+          ], o: [
+            'Как можно скорее.',
+            'В ближайший месяц.',
+            'Через 1–3 месяца.',
+            'Пока изучаю варианты.'
+          ]}
+        ],
+        res: {
+          leads: { t: 'Одностраничный сайт услуг с формой заявки', inc: [
+            'Первый экран с главной услугой и понятным действием.',
+            'Форма заявки и заметный контакт.',
+            'Блок с примерами или доказательствами доверия.',
+            'Базовая подготовка сайта для Google.'
+          ], next: 'Рекомендуем согласовать структуру и главное сообщение сайта.' },
+          presentation: { t: 'Многостраничный сайт компании', inc: [
+            'Главная страница с ключевыми услугами.',
+            'Отдельные страницы услуг.',
+            'Страница о компании и контакты.',
+            'Несколько языков, если они нужны.'
+          ], next: 'Предлагаем сначала собрать материалы и утвердить структуру сайта.' },
+          shop: { t: 'Интернет-магазин', inc: [
+            'Каталог товаров с категориями.',
+            'Корзина и безопасное оформление заказа.',
+            'Варианты доставки и оплаты.',
+            'Просмотр заказов и базовое управление.'
+          ], next: 'Рекомендуем определить ассортимент и способ оплаты.' },
+          booking: { t: 'Сайт с онлайн-записью', inc: [
+            'Календарь доступных слотов.',
+            'Форма записи.',
+            'Автоматическое подтверждение и напоминания.',
+            'Просмотр записей в одном месте.'
+          ], next: 'Рекомендуем описать слоты и правила записи.' },
+          multi: { t: 'Многостраничный сайт услуг', inc: [
+            'Главная с обзором услуг.',
+            'Отдельные страницы для каждой услуги.',
+            'Форма заявки на каждой странице.',
+            'Страница о компании и контакты.'
+          ], next: 'Предлагаем разделить услуги на понятные группы и определить приоритет.' },
+          unknown: { t: 'Небольшой стартовый сайт', inc: [
+            'Простой первый экран с основной информацией.',
+            'Контакт и форма заявки.',
+            'Структура, которую можно развивать позже.',
+            'Базовая настройка для Google.'
+          ], next: 'Рекомендуем коротко обсудить цели, прежде чем выбирать объём сайта.' }
+        }
+      },
+      b: {
+        title: 'Ваш сайт устарел',
+        urlStep: true,
+        baseWhy: 'Существующие материалы и историю сайта можно использовать, поэтому модернизация не всегда означает начало с нуля.',
+        steps: [
+          { id: 'q1', q: 'Что вас больше всего не устраивает?', multi: true, why: [
+            'Устаревший дизайн влияет на доверие — обновление станет первым заметным шагом.',
+            'Удобство на телефоне критично: большинство посетителей приходят с мобильных.',
+            'Медленная загрузка отпугивает посетителей — ускорение даст измеримый результат.',
+            'Сложное редактирование означает, что для каждой правки нужна помощь.',
+            'Неработающие функции могут напрямую терять заявки.'
+          ], o: [
+            'Старый дизайн.',
+            'Неудобно пользоваться с телефона.',
+            'Медленная загрузка.',
+            'Сложно самостоятельно изменять информацию.',
+            'Некоторые функции работают неправильно.'
+          ]},
+          { id: 'q2', q: 'Что вы хотите сохранить?', why: [
+            'Сохраним содержание и структуру — изменим прежде всего дизайн и удобство.',
+            'Сохраним только часть материалов — посмотрим, что ещё актуально.',
+            'Домен и существующие адреса страниц останутся, чтобы не потерять найденные ссылки.',
+            'Сайт полностью пересмотрим — структура может измениться.',
+            'Вы не знаете, что сохранять — сначала проведём обзор и предложим варианты.'
+          ], o: [
+            'Содержание и структуру, но изменить дизайн.',
+            'Только часть материалов.',
+            'Домен и существующие адреса страниц.',
+            'Хочу полностью пересмотреть сайт.',
+            'Не знаю, нужна консультация.'
+          ]},
+          { id: 'q3', q: 'Что хотите улучшить дополнительно?', multi: true, exclusive: 5, why: [
+            'Добавим новые страницы или услуги в существующую структуру.',
+            'Добавим языки и позаботимся о согласованности контента.',
+            'Подготовим сайт к рекламе и измерению результатов.',
+            'Улучшим базовую видимость в Google.',
+            'Обновления можно будет автоматизировать или упростить.',
+            'Дополнительных улучшений не планируете — сосредоточимся на обновлении.'
+          ], o: [
+            'Добавить страницы и услуги.',
+            'Добавить языки.',
+            'Подготовить сайт к рекламе.',
+            'Улучшить видимость в Google.',
+            'Автоматизировать обновления.',
+            'Ничего дополнительного.'
+          ]},
+          { id: 'q4', q: 'Есть ли у вас доступ к управлению сайтом?', why: [
+            'Полный доступ позволяет провести обновление без посредников.',
+            'Частичного доступа достаточно для большинства изменений, недостающее проверим.',
+            'Доступ у старого разработчика — потребуется его участие или передача.',
+            'Вы не знаете, у кого доступ — сначала проверим владение доменом и хостингом.'
+          ], o: [
+            'Да, полный доступ.',
+            'Частичный доступ.',
+            'Доступы у старого разработчика.',
+            'Не знаю.'
+          ]}
+        ],
+        res: {
+          modernize: { t: 'Модернизация существующего сайта', inc: [
+            'Новый дизайн и удобство на телефоне.',
+            'Ускорение загрузки и техническая проверка.',
+            'Переработка ключевых страниц и заявок.',
+            'Более простое редактирование контента.'
+          ], next: 'Рекомендуем сначала посмотреть существующий сайт и подтвердить, что сохранить.' },
+          renew: { t: 'Полное обновление сайта', inc: [
+            'Новая структура и содержание.',
+            'Современный дизайн и мобильная версия.',
+            'Сохранение домена и важных ссылок.',
+            'Готовность к дальнейшему развитию.'
+          ], next: 'Предлагаем определить объём обновления и материалы, которые хотите сохранить.' }
+        }
+      },
+      c: {
+        title: 'Сайт есть, но мало заявок',
+        urlStep: true,
+        baseWhy: 'Рекомендация основана на ваших ответах; для точных выводов потребуется проверить существующий сайт.',
+        steps: [
+          { id: 'q1', q: 'Какая ситуация лучше описывает ваш сайт?', why: [
+            'Посетителей почти нет — сначала нужно понять, доходит ли сайт до нужной аудитории.',
+            'Посетители есть, но заявок мало — вероятная причина в содержании или пути к заявке.',
+            'Заявки есть, но редко становятся заказами — нужно усилить доверие и ясность предложения.',
+            'Вы не знаете, сколько людей приходит — сначала нужно настроить измерение.'
+          ], o: [
+            'Посетителей почти нет.',
+            'Посетители есть, но обращений мало.',
+            'Обращения есть, но редко превращаются в заказы.',
+            'Не знаю, сколько людей посещает сайт.'
+          ]},
+          { id: 'q2', q: 'Откуда сейчас приходят посетители?', multi: true, exclusive: 4, why: [
+            'Google может приводить посетителей при ясном содержании и базовой оптимизации.',
+            'Рекламу нужно согласовать с сайтом, чтобы клик не заканчивался без заявки.',
+            'Соцсети могут приводить на сайт, если предложение понятное и простое.',
+            'Рекомендации и прямые переходы показывают, что стоит усилить доверие и узнаваемость.',
+            'Источники пока не отслеживаются — измерение станет первым шагом.'
+          ], o: [
+            'Google.',
+            'Google Ads или реклама в соцсетях.',
+            'Социальные сети.',
+            'Рекомендации и прямые переходы.',
+            'Не знаю.'
+          ]},
+          { id: 'q3', q: 'Что посетитель может сделать на сайте?', multi: true, why: [
+            'Посетитель может оставить заявку — проверим, насколько это заметно и просто.',
+            'Посетитель может позвонить или написать — контакт должен быть виден на каждом шаге.',
+            'На сайте можно купить или оплатить — проверим путь до покупки.',
+            'На сайте можно записаться на услугу — проверим процесс записи.',
+            'Сайт сейчас только информационный — нужно добавить понятный следующий шаг.'
+          ], o: [
+            'Оставить заявку.',
+            'Позвонить или написать.',
+            'Купить или оплатить.',
+            'Записаться на услугу.',
+            'Только посмотреть информацию.'
+          ]},
+          { id: 'q4', q: 'Что вы хотели бы улучшить?', multi: true, exclusive: 4, why: [
+            'Хотите больше посетителей — предложим работу над видимостью и содержанием.',
+            'Хотите больше заявок — сосредоточимся на пути к заявке.',
+            'Хотите эффективнее рекламу — согласуем объявление и целевую страницу.',
+            'Хотите больше доверия — добавим доказательства и ясную презентацию.',
+            'Причина неизвестна — рекомендуем диагностику, прежде чем менять сайт.'
+          ], o: [
+            'Увеличить число посетителей.',
+            'Получать больше заявок.',
+            'Сделать рекламу эффективнее.',
+            'Повысить доверие к компании.',
+            'Нужна диагностика — не знаю причину.'
+          ]}
+        ],
+        res: {
+          visibility: { t: 'Техническая диагностика и видимость', inc: [
+            'Проверка скорости и работы на телефоне.',
+            'Базовый технический SEO-аудит.',
+            'Проверка заголовков и метаописаний.',
+            'Предложения по контенту для лучшей находимости.'
+          ], next: 'Для точных выводов нужно проверить существующий сайт — диагностика ещё не выполнялась.' },
+          conversion: { t: 'Анализ пути посетителя до заявки', inc: [
+            'Понятный призыв к действию в ключевых местах.',
+            'Более простая форма заявки.',
+            'Устранение препятствий и неясностей.',
+            'Измерение источников заявок.'
+          ], next: 'Рекомендуем проверить путь от первого визита до заявки.' },
+          sales: { t: 'Оптимизация доверия и продаж', inc: [
+            'Более ясная презентация предложения и цен.',
+            'Доказательства доверия: опыт, процесс, гарантии.',
+            'Более простой шаг к заказу или заявке.',
+            'Ответы на частые вопросы до решения.'
+          ], next: 'Предлагаем вместе посмотреть, где посетители останавливаются перед заказом.' },
+          diagnostics: { t: 'Диагностика и измерение', inc: [
+            'Настройка базового измерения посещений.',
+            'Обзор источников трафика.',
+            'Анализ поведения на ключевых страницах.',
+            'Список приоритетных улучшений.'
+          ], next: 'Рекомендуем сначала настроить измерение, затем выбирать улучшения.' }
+        }
+      },
+      d: {
+        title: 'Хочу автоматизировать работу',
+        urlAfter: 2,
+        baseWhy: 'Автоматизация имеет смысл, только если решает конкретный повторяющийся процесс — поэтому начинаем с самой загруженной работы.',
+        steps: [
+          { id: 'q1', q: 'Что отнимает у вас больше всего времени?', multi: true, why: [
+            'Повторяющиеся вопросы — хороший кандидат для ассистента и готовых ответов.',
+            'Ручную обработку заявок можно частично или полностью автоматизировать.',
+            'Ручное добавление товаров и цен часто можно упростить.',
+            'Публикацию новостей и статей можно частично автоматизировать.',
+            'Работу с документами и данными можно связать в один поток.'
+          ], o: [
+            'Постоянно отвечаю на одинаковые вопросы.',
+            'Обрабатываю заявки вручную.',
+            'Добавляю товары, цены и услуги.',
+            'Публикую новости и статьи.',
+            'Работаю с документами и данными.'
+          ]},
+          { id: 'q2', q: 'Что хотелось бы автоматизировать?', multi: true, why: [
+            'Общение с клиентами — чаще всего первый шаг автоматизации.',
+            'Обновление сайта может идти через простой интерфейс или Telegram.',
+            'Создание контента можно ускорить, но его нужно проверять.',
+            'Запись и бронирование можно связать с календарём и уведомлениями.',
+            'Передача заявок в CRM или Telegram убирает ручное переписывание.'
+          ], o: [
+            'Общение с клиентами.',
+            'Обновление сайта.',
+            'Создание контента.',
+            'Запись и бронирование.',
+            'Передачу заявок в CRM или Telegram.'
+          ]},
+          { id: 'q3', q: 'Какие инструменты вы уже используете?', multi: true, exclusive: 4, why: [
+            'У вас есть сайт — автоматизацию можно связать с существующим контентом.',
+            'Telegram или WhatsApp — хорошая основа для уведомлений и простого управления.',
+            'CRM может принять заявки и историю контактов.',
+            'Интернет-магазин позволяет связать заказы и остатки.',
+            'Похожих инструментов пока нет — предложим простой старт.'
+          ], o: [
+            'Сайт.',
+            'Telegram или WhatsApp.',
+            'CRM.',
+            'Интернет-магазин.',
+            'Пока ничего подобного.'
+          ]},
+          { id: 'q4', q: 'Как вам удобнее управлять процессами?', why: [
+            'Telegram прост, если хотите действовать с телефона.',
+            'Панель управления наглядна, если нужно видеть больше данных в одном месте.',
+            'Автоматически с вашим подтверждением важных действий снижает нагрузку, но сохраняет контроль.',
+            'Пока нужна консультация — предложим самый простой путь.'
+          ], o: [
+            'Через Telegram.',
+            'Через сайт или панель управления.',
+            'Максимально автоматически, с моим подтверждением важных действий.',
+            'Пока нужна консультация.'
+          ]}
+        ],
+        res: {
+          assistant: { t: 'AI-ассистент для общения с клиентами', inc: [
+            'Готовые ответы на частые вопросы.',
+            'Передача сложных вопросов вам.',
+            'Сбор заявок в одном канале.',
+            'Просмотр истории диалогов.'
+          ], next: 'Рекомендуем выбрать одну группу вопросов и протестировать ответы.' },
+          content: { t: 'AI-управление контентом сайта', inc: [
+            'Простое обновление текстов и цен.',
+            'Подготовка черновиков новостей и описаний.',
+            'Предпросмотр перед публикацией.',
+            'История изменений и подтверждений.'
+          ], next: 'Предлагаем начать с одного типа контента, который меняется чаще всего.' },
+          booking: { t: 'Автоматизация записи и бронирования', inc: [
+            'Онлайн-календарь доступных слотов.',
+            'Автоматическое подтверждение и напоминания.',
+            'Связь с вашим календарём.',
+            'Просмотр записей в одном месте.'
+          ], next: 'Рекомендуем определить правила записи и способ уведомлений.' },
+          integration: { t: 'Интеграция заявок с CRM или Telegram', inc: [
+            'Автоматический сбор заявок с форм.',
+            'Мгновенное уведомление в Telegram или CRM.',
+            'Единый учёт контактов и статусов.',
+            'Меньше ручного переписывания.'
+          ], next: 'Предлагаем проверить, куда вы хотите получать заявки.' },
+          combined: { t: 'Комбинированная автоматизация', inc: [
+            'Единая связь между сайтом, формами и уведомлениями.',
+            'Автоматическая обработка повторяющихся шагов.',
+            'Просмотр и подтверждение важных действий.',
+            'Поэтапное внедрение без большого проекта сразу.'
+          ], next: 'Рекомендуем выбрать один процесс с наибольшей ручной работой и сначала протестировать его.' }
+        }
+      }
     }
   }
 };

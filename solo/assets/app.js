@@ -232,16 +232,18 @@
   }
 
   /* ---------- anketa ---------- */
-  var quiz = { open: false, branch: null, step: 0, answers: [], mode: 'quiz' };
+  var quiz = { open: false, branch: null, step: 0, answers: {}, url: '', mode: 'quiz' };
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function el(id) { return document.getElementById(id); }
   function overlay() { return el('overlay'); }
   function openModal() { quiz.open = true; if (overlay()) overlay().classList.add('on'); document.body.style.overflow = 'hidden'; }
   function closeModal() { quiz.open = false; if (overlay()) overlay().classList.remove('on'); document.body.style.overflow = ''; }
   function quizPack() { return QZ[lang] || QZ[available()[0]]; }
+  function ui(k) { var u = quizPack().ui || {}; return u[k] || ''; }
+  function fmt(s, vars) { if (!s) return ''; for (var k in vars) if (vars.hasOwnProperty(k)) s = s.split('{' + k + '}').join(vars[k]); return s; }
 
   function startQuiz(branch) {
-    quiz = { open: false, branch: branch || null, step: 0, answers: [], mode: 'quiz' };
+    quiz = { open: false, branch: (branch && quizPack().branches[branch]) ? branch : null, step: 0, answers: {}, url: '', mode: 'quiz' };
     openModal(); renderQuiz();
   }
 
@@ -253,147 +255,276 @@
     b.classList.add('swap');
   }
 
+  function stepsFor() {
+    var br = quizPack().branches[quiz.branch], out = [];
+    if (!br) return out;
+    if (br.urlStep) out.push({ type: 'url' });
+    for (var i = 0; i < br.steps.length; i++) {
+      out.push({ type: 'q', st: br.steps[i] });
+      if (br.urlAfter === i && hasSite()) out.push({ type: 'url' });
+    }
+    return out;
+  }
+  function hasSite() {
+    var br = quizPack().branches[quiz.branch];
+    if (!br || br.urlAfter == null) return false;
+    var st = br.steps[br.urlAfter];
+    var a = quiz.answers[st.id];
+    return Array.isArray(a) && a.indexOf(0) !== -1;
+  }
+
   function renderQuiz() {
     if (!quiz.open) return;
     var body = el('modalBody'); if (!body) return;
     if (quiz.mode === 'contact') { setModal(contactFormHtml()); return; }
     if (!quiz.branch) { setModal(entryHtml()); return; }
+    var flow = stepsFor();
+    if (quiz.step >= flow.length) { setModal(resultHtml()); return; }
+    var item = flow[quiz.step];
     var br = quizPack().branches[quiz.branch];
-    if (quiz.step >= br.steps.length) { setModal(finalHtml()); return; }
-    var st = br.steps[quiz.step], total = br.steps.length;
-    var pct = Math.round((quiz.step / (total + 1)) * 100) + 10;
-    var h = '<div class="qnum">' + esc(br.title) + ' · ' + esc(t('quiz.step', { n: quiz.step + 1, t: total })) + '</div>';
-    h += '<div class="prog"><i style="width:' + pct + '%"></i></div>';
-    h += '<div class="qtitle">' + esc(st.q) + '</div>';
-    if (st.multi) h += '<p class="qhint">' + esc(t('quiz.multi')) + '</p>';
+    var pct = Math.round(((quiz.step + 1) / flow.length) * 100);
+    var head = '<div class="qnum">' + esc(br.title) + (item.type === 'q' ? ' · ' + esc(fmt(ui('step'), { n: countQuestionsBefore(flow, quiz.step) + 1, t: br.steps.length })) : '') + '</div>';
+    head += '<div class="prog"><i style="width:' + pct + '%"></i></div>';
+    if (item.type === 'url') { setModal(head + urlHtml()); return; }
+
+    var st = item.st;
+    var h = head + '<div class="qtitle">' + esc(st.q) + '</div>';
+    if (st.multi) h += '<p class="qhint">' + esc(ui('multi')) + '</p>';
+    var sel = quiz.answers[st.id];
+    if (st.multi && !Array.isArray(sel)) sel = [];
     h += '<div class="opts">';
-    var sel = quiz.answers[quiz.step] || (st.multi ? [] : null);
     for (var i = 0; i < st.o.length; i++) {
-      var on = st.multi ? (sel.indexOf(st.o[i]) !== -1) : (sel === st.o[i]);
+      var on = st.multi ? (sel.indexOf(i) !== -1) : (sel === i);
       h += '<button type="button" class="opt' + (on ? ' sel' : '') + '" onclick="SOLO.choose(' + i + ')">' + esc(st.o[i]) + '</button>';
     }
-    h += '</div><div class="mnav"><button type="button" class="link" onclick="SOLO.back()">&#8592; ' + esc(t('quiz.back')) + '</button>';
-    if (st.multi) h += '<button type="button" class="btn" onclick="SOLO.next()">' + esc(t('quiz.next')) + '</button>';
-    else h += '<button type="button" class="link" onclick="SOLO.close()">' + esc(t('quiz.close')) + '</button>';
+    h += '</div><div class="mnav"><button type="button" class="link" onclick="SOLO.back()">&#8592; ' + esc(ui('back')) + '</button>';
+    if (st.multi) {
+      var empty = !sel.length;
+      h += '<button type="button" class="btn" id="qNext"' + (empty ? ' disabled' : '') + ' onclick="SOLO.next()">' + esc(ui('next')) + '</button>';
+    } else {
+      h += '<button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button>';
+    }
     h += '</div>';
     setModal(h);
   }
+  function countQuestionsBefore(flow, idx) {
+    var n = 0;
+    for (var i = 0; i < idx; i++) if (flow[i].type === 'q') n++;
+    return n;
+  }
 
   function entryHtml() {
-    var labels = quizPack().entry, keys = ['a', 'b', 'c'];
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(t('quiz.entry.title')) + '</div><div class="opts">';
-    for (var i = 0; i < keys.length; i++) h += '<button type="button" class="opt" onclick="SOLO.chooseBranch(\'' + keys[i] + '\')">' + esc(labels[i]) + '</button>';
-    h += '</div><div class="mnav"><span></span><button type="button" class="link" onclick="SOLO.close()">' + esc(t('quiz.close')) + '</button></div>';
+    var p = quizPack(), keys = ['a', 'b', 'c', 'd'];
+    var h = '<div class="qnum">Solo.Pov</div>';
+    h += '<div class="qtitle">' + esc(p.entryTitle) + '</div>';
+    h += '<p class="qhint">' + esc(p.entryLead) + '</p><div class="opts">';
+    for (var i = 0; i < keys.length; i++) {
+      h += '<button type="button" class="opt" onclick="SOLO.chooseBranch(\'' + keys[i] + '\')">' + esc(p.branches[keys[i]].title) + '</button>';
+    }
+    h += '</div><div class="mnav"><span></span><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
     return h;
   }
 
-  function chooseBranch(b) { quiz.branch = b; quiz.step = 0; quiz.answers = []; renderQuiz(); }
+  function urlHtml() {
+    var h = '<div class="qtitle">' + esc(ui('urlTitle')) + '</div>';
+    h += '<p class="qhint">' + esc(ui('urlLead')) + '</p>';
+    h += '<div class="field"><label>' + esc(ui('urlTitle')) + '</label><input type="text" id="siteUrl" inputmode="url" placeholder="' + esc(ui('urlPh')) + '" value="' + esc(quiz.url) + '"></div>';
+    h += '<div class="qerr" id="urlErr"></div>';
+    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.back()">&#8592; ' + esc(ui('back')) + '</button>';
+    h += '<button type="button" class="btn" onclick="SOLO.saveUrl()">' + esc(ui('next')) + '</button></div>';
+    h += '<div class="urlskip"><button type="button" class="link" onclick="SOLO.skipUrl()">' + esc(ui('urlSkip')) + '</button></div>';
+    return h;
+  }
+
+  function chooseBranch(b) {
+    if (!quizPack().branches[b]) return;
+    quiz.branch = b; quiz.step = 0; quiz.answers = {}; quiz.url = ''; quiz.mode = 'quiz';
+    renderQuiz();
+  }
+
   function choose(i) {
-    var st = quizPack().branches[quiz.branch].steps[quiz.step];
+    var flow = stepsFor(), item = flow[quiz.step];
+    if (!item || item.type !== 'q') return;
+    var st = item.st, cur = quiz.answers[st.id];
     if (st.multi) {
-      var cur = quiz.answers[quiz.step] || [], v = st.o[i], idx = cur.indexOf(v);
-      if (idx === -1) cur.push(v); else cur.splice(idx, 1);
-      quiz.answers[quiz.step] = cur; renderQuiz(); return;
+      if (!Array.isArray(cur)) cur = [];
+      var pos = cur.indexOf(i);
+      if (pos === -1) cur.push(i); else cur.splice(pos, 1);
+      if (st.exclusive != null && i === st.exclusive && pos === -1) cur = [i];
+      else if (st.exclusive != null) cur = cur.filter(function (v) { return v !== st.exclusive; });
+      cur.sort(function (a, b) { return a - b; });
+      quiz.answers[st.id] = cur;
+      renderQuiz(); return;
     }
-    quiz.answers[quiz.step] = st.o[i];
+    quiz.answers[st.id] = i;
     next();
   }
+
   function next() {
-    var br = quizPack().branches[quiz.branch], st = br.steps[quiz.step];
-    if (st.multi && (!quiz.answers[quiz.step] || !quiz.answers[quiz.step].length)) return;
-    if (quiz.step + 1 < br.steps.length) { quiz.step++; renderQuiz(); }
-    else { quiz.step = br.steps.length; renderQuiz(); }
+    var flow = stepsFor(), item = flow[quiz.step];
+    if (!item) return;
+    if (item.type === 'q' && item.st.multi) {
+      var a = quiz.answers[item.st.id];
+      if (!Array.isArray(a) || !a.length) return;
+    }
+    quiz.step++;
+    renderQuiz();
   }
   function back() {
     if (quiz.step > 0) { quiz.step--; renderQuiz(); }
-    else { quiz.branch = null; renderQuiz(); }
+    else { quiz.branch = null; quiz.step = 0; renderQuiz(); }
   }
 
-  function recommendation() {
-    var br = quizPack().branches[quiz.branch], rec = br.rec;
-    if (quiz.branch === 'c') {
-      var a2 = quiz.answers[1] || '';
-      rec = /^(Ne,|Нет,)/.test(a2) ? 'mix' : 'c';
+  function normalizeUrl(v) {
+    v = (v || '').replace(/^\s+|\s+$/g, '');
+    if (!v) return '';
+    if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+    return v;
+  }
+  function validUrl(v) {
+    if (!v) return true;
+    return /^https?:\/\/([a-z0-9-]+\.)+[a-z]{2,63}(:\d{1,5})?([\/?#][^\s]*)?$/i.test(v);
+  }
+  function saveUrl() {
+    var inp = el('siteUrl');
+    var raw = inp ? inp.value : '';
+    var v = normalizeUrl(raw);
+    var err = el('urlErr');
+    if (!validUrl(v)) { if (err) err.textContent = ui('urlErr'); return; }
+    quiz.url = v;
+    next();
+  }
+  function skipUrl() { quiz.url = ''; next(); }
+
+  function pickVariant() {
+    var a = quiz.answers, b = quiz.branch;
+    if (b === 'a') {
+      if (a.q1 === 2 || a.q2 === 2) return 'shop';
+      if (a.q1 === 3) return 'booking';
+      if (a.q1 === 0) return 'leads';
+      if (a.q1 === 1) return 'presentation';
+      if (a.q2 === 1) return 'multi';
+      return 'unknown';
     }
-    if (rec === 'mix') return t('quiz.rec.mix');
-    if (rec === 'a') return t('quiz.rec.a');
-    if (rec === 'b') return t('quiz.rec.b');
-    return t('quiz.rec.c');
+    if (b === 'b') return a.q2 === 3 ? 'renew' : 'modernize';
+    if (b === 'c') return ['visibility', 'conversion', 'sales', 'diagnostics'][a.q1] || 'diagnostics';
+    if (b === 'd') {
+      var sel = Array.isArray(a.q2) ? a.q2 : [];
+      var cats = sel.map(function (i) { return ['assistant', 'content', 'content', 'booking', 'integration'][i]; });
+      var uniq = cats.filter(function (v, i) { return v && cats.indexOf(v) === i; });
+      if (!uniq.length) return 'combined';
+      return uniq.length > 1 ? 'combined' : uniq[0];
+    }
+    return 'unknown';
+  }
+
+  function resultData() {
+    var br = quizPack().branches[quiz.branch];
+    var v = pickVariant();
+    var res = (br.res && br.res[v]) || (br.res && br.res[Object.keys(br.res)[0]]) || { t: '', inc: [], next: '' };
+    return { res: res, variant: v };
+  }
+
+  function whyList() {
+    var br = quizPack().branches[quiz.branch], out = [];
+    for (var i = 0; i < br.steps.length; i++) {
+      var st = br.steps[i], a = quiz.answers[st.id];
+      if (a == null) continue;
+      var idxs = Array.isArray(a) ? a : [a];
+      for (var j = 0; j < idxs.length; j++) {
+        var w = st.why && st.why[idxs[j]];
+        if (w && out.indexOf(w) === -1) out.push(w);
+        if (out.length >= 3) break;
+      }
+      if (out.length >= 3) break;
+    }
+    if (out.length < 2) out.push(br.baseWhy);
+    return out.slice(0, 3);
+  }
+
+  function resultHtml() {
+    var br = quizPack().branches[quiz.branch];
+    var data = resultData(), r = data.res, h = '';
+    h += '<div class="qnum">Solo.Pov</div><div class="prog"><i style="width:100%"></i></div>';
+    h += '<div class="qtitle">' + esc(ui('resultTitle')) + '</div>';
+    h += '<div class="qres">';
+    h += '<div class="qres-block"><h4>' + esc(ui('resultRec')) + '</h4><p class="qres-title">' + esc(r.t) + '</p></div>';
+    var whys = whyList();
+    h += '<div class="qres-block"><h4>' + esc(ui('resultWhy')) + '</h4><ul>';
+    for (var i = 0; i < whys.length; i++) h += '<li>' + esc(whys[i]) + '</li>';
+    h += '</ul></div>';
+    h += '<div class="qres-block"><h4>' + esc(ui('resultInc')) + '</h4><ul>';
+    for (var j = 0; j < r.inc.length; j++) h += '<li>' + esc(r.inc[j]) + '</li>';
+    h += '</ul></div>';
+    h += '<div class="qres-block"><h4>' + esc(ui('resultNext')) + '</h4><p>' + esc(r.next) + '</p></div>';
+    h += '</div>';
+    if (quiz.url) h += '<div class="notice small">' + esc(ui('urlSaved')) + '</div>';
+    h += '<div class="emailbox">';
+    h += '<h4>' + esc(ui('emailTitle')) + '</h4><p class="qhint">' + esc(ui('emailLead')) + '</p>';
+    h += '<div class="field"><label>' + esc(ui('emailLabel')) + '</label><input type="email" id="planEmail" placeholder="' + esc(ui('emailPh')) + '"></div>';
+    h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('emailConsent')) + '</span></label>';
+    h += '<div class="qerr" id="emailErr"></div>';
+    h += '<button type="button" class="btn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
+    h += '<small class="meta">' + esc(ui('emailNote')) + '</small>';
+    h += '</div>';
+    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(ui('start')) + '</button>';
+    h += '<button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
+    return h;
   }
 
   function answersRows() {
     var br = quizPack().branches[quiz.branch], out = [];
     for (var i = 0; i < br.steps.length; i++) {
-      var a = quiz.answers[i];
-      if (a === undefined || a === null) continue;
-      out.push({ q: br.steps[i].q, a: Array.isArray(a) ? a.join(', ') : a });
+      var st = br.steps[i], a = quiz.answers[st.id];
+      if (a == null || (Array.isArray(a) && !a.length)) continue;
+      var labels = Array.isArray(a) ? a.map(function (x) { return st.o[x]; }) : [st.o[a]];
+      out.push({ q: st.q, a: labels.join('; ') });
     }
     return out;
   }
 
-  function summaryHtml() {
-    var rows = answersRows();
-    var h = '<div class="sum"><h4>' + esc(t('quiz.summary')) + '</h4>';
-    for (var i = 0; i < rows.length; i++) h += '<div class="row">' + esc(rows[i].q) + ' — <b>' + esc(rows[i].a) + '</b></div>';
-    h += '<div class="rec">' + esc(t('quiz.recommend')) + ': <b>' + esc(recommendation()) + '</b></div></div>';
-    return h;
+  function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+  function submitPlan() {
+    var inp = el('planEmail'), err = el('emailErr');
+    var email = inp ? inp.value.replace(/^\s+|\s+$/g, '') : '';
+    if (!emailValid(email)) { if (err) err.textContent = ui('emailErr'); return; }
+    var consent = el('planConsent');
+    deliver(buildText('plan', email, consent && consent.checked));
   }
 
-  function field(id, labelKey, phKey, req) {
-    return '<div class="field"><label>' + esc(t(labelKey)) + '</label><input type="text" id="' + id + '" data-i18n-ph="' + phKey + '"' + (req ? ' required' : '') + ' placeholder="' + esc(t(phKey)) + '"></div>';
-  }
-
-  function finalHtml() {
-    var h = '<div class="qnum">Solo.Pov</div><div class="prog"><i style="width:100%"></i></div>';
-    h += '<div class="qtitle">' + esc(t('quiz.final.title')) + '</div>' + summaryHtml();
-    h += '<form id="quizForm" onsubmit="return SOLO.submitQuiz(event)">';
-    h += field('f-business', 'quiz.f.business', 'quiz.f.business.ph', true);
-    h += field('f-site', 'quiz.f.site', 'quiz.f.site.ph', false);
-    h += field('f-contact', 'quiz.f.contact', 'quiz.f.contact.ph', true);
-    h += '<div class="field"><label>' + esc(t('quiz.f.notes')) + '</label><textarea rows="3" id="f-notes" data-i18n-ph="quiz.f.notes.ph"></textarea></div>';
-    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.back()">&#8592; ' + esc(t('quiz.back')) + '</button>';
-    h += '<button type="submit" class="btn">' + esc(t('quiz.submit')) + '</button></div></form>';
-    return h;
-  }
-
-  function contactFormHtml() {
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(t('cta.talk')) + '</div>';
-    h += '<form id="contactForm" onsubmit="return SOLO.submitContact(event)">';
-    h += field('c-business', 'quiz.f.business', 'quiz.f.business.ph', false);
-    h += field('c-contact', 'quiz.f.contact', 'quiz.f.contact.ph', true);
-    h += '<div class="field"><label>' + esc(t('quiz.f.notes')) + '</label><textarea rows="4" id="c-notes" data-i18n-ph="quiz.f.notes.ph"></textarea></div>';
-    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(t('picker.btn')) + '</button>';
-    h += '<button type="submit" class="btn">' + esc(t('quiz.submit')) + '</button></div></form>';
-    return h;
-  }
-
-  function val(id) { var e = el(id); return e ? e.value.replace(/^\s+|\s+$/g, '') : ''; }
-
-  function buildText(kind) {
-    var L = lang === 'ru', lines = [];
-    lines.push((L ? 'Заявка Solo.Pov' : 'Povpraševanje Solo.Pov') + (kind === 'quiz' ? ' (' + (L ? 'мини-анкета' : 'mini anketa') + ')' : ''));
-    if (kind === 'quiz') {
+  function buildText(kind, email, consent) {
+    var L = lang === 'ru', lines = [], br = quiz.branch ? quizPack().branches[quiz.branch] : null;
+    lines.push((L ? 'Заявка Solo.Pov' : 'Povpraševanje Solo.Pov') + (kind === 'plan' ? (L ? ' — подробный план' : ' — podroben načrt') : ''));
+    lines.push((L ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(L ? 'ru-RU' : 'sl-SI'));
+    lines.push((L ? 'Язык' : 'Jezik') + ': ' + lang.toUpperCase());
+    if (br) {
+      lines.push((L ? 'Ситуация' : 'Izhodišče') + ': ' + br.title);
       var rows = answersRows();
       for (var i = 0; i < rows.length; i++) lines.push(rows[i].q + ': ' + rows[i].a);
-      lines.push((L ? 'Рекомендуемое решение' : 'Predlagana rešitev') + ': ' + recommendation());
+      if (quiz.url) lines.push((L ? 'Сайт' : 'Spletna stran') + ': ' + quiz.url);
+      var rd = resultData();
+      lines.push((L ? 'Рекомендация' : 'Priporočilo') + ': ' + rd.res.t);
+      lines.push((L ? 'Следующий шаг' : 'Naslednji korak') + ': ' + rd.res.next);
     }
-    var b = val(kind === 'quiz' ? 'f-business' : 'c-business');
-    var c = val(kind === 'quiz' ? 'f-contact' : 'c-contact');
-    var n = val(kind === 'quiz' ? 'f-notes' : 'c-notes');
-    var s = kind === 'quiz' ? val('f-site') : '';
-    if (b) lines.push((L ? 'Бизнес' : 'Dejavnost') + ': ' + b);
-    if (s) lines.push((L ? 'Существующий сайт' : 'Obstoječa stran') + ': ' + s);
-    if (c) lines.push((L ? 'Связь' : 'Kontakt') + ': ' + c);
-    if (n) lines.push((L ? 'Пожелания' : 'Želje') + ': ' + n);
+    if (kind === 'contact') {
+      var b = val('c-business'), c = val('c-contact'), n = val('c-notes');
+      if (b) lines.push((L ? 'Бизнес' : 'Dejavnost') + ': ' + b);
+      if (c) lines.push((L ? 'Связь' : 'Kontakt') + ': ' + c);
+      if (n) lines.push((L ? 'Пожелания' : 'Želje') + ': ' + n);
+      return lines.join('\n');
+    }
+    if (email) lines.push((L ? 'Email' : 'Email') + ': ' + email);
+    lines.push((L ? 'Согласие на сообщения' : 'Soglasje za obvestila') + ': ' + (consent ? (L ? 'да' : 'da') : (L ? 'нет' : 'ne')));
     return lines.join('\n');
   }
 
   function notReadyHtml(text) {
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(t('quiz.notready.t')) + '</div>';
-    h += '<div class="notice">' + t('quiz.notready.p') + '</div>';
+    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(ui('notReadyTitle')) + '</div>';
+    h += '<div class="notice">' + ui('notReadyText') + '</div>';
     h += '<pre class="copyout" id="copyout">' + esc(text) + '</pre>';
-    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.close()">' + esc(t('quiz.close2')) + '</button>';
-    h += '<button type="button" class="btn" id="copyBtn" onclick="SOLO.copyText()">' + esc(t('quiz.copy')) + '</button></div>';
+    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('ok')) + '</button>';
+    h += '<button type="button" class="btn" id="copyBtn" onclick="SOLO.copyText()">' + esc(ui('copy')) + '</button></div>';
     return h;
   }
 
@@ -404,12 +535,20 @@
     setModal(notReadyHtml(text));
   }
 
-  function submitQuiz(e) {
-    e.preventDefault();
-    var f = el('quizForm');
-    if (f && !f.checkValidity()) { f.reportValidity(); return false; }
-    deliver(buildText('quiz')); return false;
+  function field(id, labelKey, phKey, req) {
+    return '<div class="field"><label>' + esc(t(labelKey)) + '</label><input type="text" id="' + id + '" data-i18n-ph="' + phKey + '"' + (req ? ' required' : '') + ' placeholder="' + esc(t(phKey)) + '"></div>';
   }
+  function contactFormHtml() {
+    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(t('cta.talk')) + '</div>';
+    h += '<form id="contactForm" onsubmit="return SOLO.submitContact(event)">';
+    h += field('c-business', 'quiz.f.business', 'quiz.f.business.ph', false);
+    h += field('c-contact', 'quiz.f.contact', 'quiz.f.contact.ph', true);
+    h += '<div class="field"><label>' + esc(t('quiz.f.notes')) + '</label><textarea rows="4" id="c-notes" data-i18n-ph="quiz.f.notes.ph"></textarea></div>';
+    h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(t('picker.btn')) + '</button>';
+    h += '<button type="submit" class="btn">' + esc(t('quiz.submit')) + '</button></div></form>';
+    return h;
+  }
+  function val(id) { var e = el(id); return e ? e.value.replace(/^\s+|\s+$/g, '') : ''; }
   function submitContact(e) {
     e.preventDefault();
     var f = el('contactForm');
@@ -420,7 +559,7 @@
   function copyText() {
     var pre = el('copyout'); if (!pre) return;
     var txt = pre.textContent;
-    var done = function () { var b = el('copyBtn'); if (b) b.textContent = t('quiz.copied'); };
+    var done = function () { var b = el('copyBtn'); if (b) b.textContent = ui('copied'); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(pre, done); });
     else fallbackCopy(pre, done);
   }
@@ -434,13 +573,14 @@
 
   function openContact(e) {
     if (e && e.preventDefault) e.preventDefault();
-    quiz = { open: false, branch: null, step: 0, answers: [], mode: 'contact' };
+    quiz = { open: false, branch: null, step: 0, answers: {}, url: '', mode: 'contact' };
     openModal(); renderQuiz();
   }
 
   window.SOLO = {
     startQuiz: startQuiz, chooseBranch: chooseBranch, choose: choose, next: next, back: back,
-    close: closeModal, submitQuiz: submitQuiz, submitContact: submitContact, copyText: copyText,
+    close: closeModal, submitPlan: submitPlan, submitContact: submitContact, copyText: copyText,
+    saveUrl: saveUrl, skipUrl: skipUrl,
     openContact: openContact, setLang: setLang, renderQuiz: renderQuiz, t: t,
     runDemo: runDemo, startFromPicker: startFromPicker,
     getLang: function () { return lang; }
