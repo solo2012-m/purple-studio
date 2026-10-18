@@ -8,7 +8,8 @@
     var coarse = false, reduced = false;
     try { coarse = window.matchMedia('(pointer: coarse)').matches; } catch (e) {}
     try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-    if (coarse || reduced) { f.style.display = 'none'; return; }
+    if (coarse) { f.style.display = 'none'; return; }
+    if (reduced) f.style.transition = 'none';
     var x = -600, y = -600, tx = x, ty = y, active = false, raf = null;
     function move(e) {
       tx = e.clientX; ty = e.clientY;
@@ -17,6 +18,7 @@
         x = tx; y = ty;
         f.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%)';
         f.classList.add('on');
+        f.style.opacity = '1';
       }
       var t = e.target;
       if (t && t.closest && t.closest('a,button,.pick,.opt,summary,.tariff-card,.solution-card,.info-wrap')) f.classList.add('hot');
@@ -31,7 +33,7 @@
       raf = requestAnimationFrame(loop);
     }
     document.addEventListener('pointermove', move, { passive: true });
-    document.addEventListener('pointerleave', function () { f.classList.remove('on'); });
+    document.addEventListener('pointerleave', function () { f.classList.remove('on'); f.style.opacity = '0'; });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
