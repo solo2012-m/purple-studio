@@ -673,3 +673,28 @@ pre.copyout{white-space:pre-wrap;background:var(--surface);border:1px solid var(
 }
 /* calc and payment align with the rest of the content */
 .calc-wrap,.payinfo{max-width:100%}
+
+/* tariff hover glow and arrow */
+.tariff-arrow{position:absolute;top:15px;right:16px;color:var(--accent);font:700 15px Inter,sans-serif;opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.tariff-card.sel .tariff-arrow{display:none}
+@media(hover:hover){
+  .tariff-card:hover{border-color:var(--accent);box-shadow:0 22px 45px -28px rgba(255,212,0,.55);transform:translateY(-2px)}
+  .tariff-card:hover .tariff-arrow{opacity:1;transform:translateX(0)}
+  .tariff-card.sel:hover{box-shadow:0 0 0 1px var(--accent),0 26px 50px -28px rgba(255,212,0,.55)}
+}
+/* revisions tooltip */
+.info-wrap{display:inline-flex;align-items:center;gap:6px;cursor:help;text-align:left}
+.info-btn{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,212,0,.55);background:transparent;color:var(--accent);font:700 10px/1 Inter,sans-serif;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex:0 0 auto}
+.info-btn:hover,.info-btn[aria-expanded="true"]{background:var(--accent);color:#111}
+.info-wrap:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+#revTooltip{position:fixed;z-index:300;width:min(380px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:#17171a;border:1px solid rgba(255,212,0,.55);border-radius:12px;padding:14px 16px;box-shadow:0 24px 55px -18px #000;color:var(--muted);font:400 12.5px/1.55 Inter,sans-serif}
+#revTooltip[hidden]{display:none}
+#revTooltip p{margin:0 0 9px}
+#revTooltip p:last-child{margin:0}
+.cmp-hint{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.hint-mobile{display:none}
+@media(max-width:760px){
+  .hint-desktop{display:none}
+  .hint-mobile{display:inline}
+  #revTooltip{width:calc(100vw - 24px);max-width:380px}
+}

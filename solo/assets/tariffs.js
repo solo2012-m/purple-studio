@@ -35,6 +35,7 @@
     for (var i = 0; i < d.tariffs.length; i++) {
       var t = d.tariffs[i], sel = state.tariff === t.id;
       h += '<article class="tariff-card' + (sel ? ' sel' : '') + (t.id === 'custom' ? ' custom' : '') + '" data-tariff="' + t.id + '" role="button" tabindex="0" aria-pressed="' + (sel ? 'true' : 'false') + '" onclick="tariffCard(\'' + t.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();tariffCard(\'' + t.id + '\')}">';
+      h += '<span class="tariff-arrow">&#8594;</span>';
       if (sel) h += '<span class="tariff-badge">' + esc(d.ui.selected) + '</span>';
       h += '<div class="tariff-name">' + esc(t.name) + '</div>';
       var priceText = t.price == null ? t.priceLabel : (d.ui.from + ' ' + money(t.price));
@@ -49,6 +50,14 @@
     document.getElementById('tariffCards').innerHTML = h;
   }
 
+  function rowLabel(row) {
+    var l = esc(row.label);
+    if (row.key === 'revisions') {
+      return '<span class="info-wrap" data-tip="rev">' + l + ' <button type="button" class="info-btn" aria-label="' + esc(data().ui.revInfoLabel) + '" aria-expanded="false">i</button></span>';
+    }
+    return l;
+  }
+
   function renderCompare() {
     var d = data(), ids = ['start', 'business', 'pro'], h = '';
     var tab = (state.compareTab === 'business' || state.compareTab === 'pro') ? state.compareTab : 'start';
@@ -60,7 +69,7 @@
     h += '</tr></thead><tbody>';
     for (var r = 0; r < d.table.rows.length; r++) {
       var row = d.table.rows[r];
-      h += '<tr><th>' + esc(row.label) + '</th>';
+      h += '<tr><th>' + rowLabel(row) + '</th>';
       for (var v = 0; v < 3; v++) {
         h += '<td data-col="' + ids[v] + '" class="' + (state.tariff === ids[v] ? 'on' : '') + '">' + cell(row.values[v]) + '</td>';
       }
@@ -75,9 +84,10 @@
     h += '</div><div class="cmp-list">';
     var idx = ids.indexOf(tab);
     for (var m = 0; m < d.table.rows.length; m++) {
-      h += '<div class="cmp-item"><span>' + esc(d.table.rows[m].label) + '</span><b>' + cell(d.table.rows[m].values[idx]) + '</b></div>';
+      h += '<div class="cmp-item"><span>' + rowLabel(d.table.rows[m]) + '</span><b>' + cell(d.table.rows[m].values[idx]) + '</b></div>';
     }
     h += '</div></div></div>';
+    h += '<p class="cmp-hint"><span class="hint-desktop">' + esc(d.ui.revHintDesktop) + '</span><span class="hint-mobile">' + esc(d.ui.revHintMobile) + '</span></p>';
     document.getElementById('tariffCompare').innerHTML = h;
   }
 
@@ -148,8 +158,80 @@
     document.getElementById('payinfo').innerHTML = h;
   }
 
+  var tipTimer = null;
+  function cancelTipHide() { if (tipTimer) { clearTimeout(tipTimer); tipTimer = null; } }
+  function scheduleTipHide() { cancelTipHide(); tipTimer = setTimeout(hideTip, 140); }
+  function getTip() {
+    var el = document.getElementById('revTooltip');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'revTooltip';
+      el.className = 'rev-tooltip';
+      el.setAttribute('role', 'tooltip');
+      el.hidden = true;
+      el.addEventListener('mouseenter', cancelTipHide);
+      el.addEventListener('mouseleave', scheduleTipHide);
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  function showTip(target) {
+    var d = data(), el = getTip();
+    cancelTipHide();
+    el.innerHTML = d.ui.revTooltip.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    el.hidden = false;
+    el.style.visibility = 'hidden';
+    var r = target.getBoundingClientRect();
+    var w = el.offsetWidth, h = el.offsetHeight;
+    var left = Math.min(Math.max(12, r.left + r.width / 2 - w / 2), window.innerWidth - w - 12);
+    var top = r.bottom + 10;
+    if (top + h > window.innerHeight - 12) top = Math.max(12, r.top - h - 10);
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    el.style.visibility = '';
+    var btn = target.querySelector('.info-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+  function hideTip() {
+    cancelTipHide();
+    var el = document.getElementById('revTooltip');
+    if (el) el.hidden = true;
+    var b = document.querySelectorAll('.info-wrap .info-btn[aria-expanded="true"]');
+    for (var i = 0; i < b.length; i++) b[i].setAttribute('aria-expanded', 'false');
+  }
+  function toggleTip(target) {
+    var el = document.getElementById('revTooltip');
+    if (el && !el.hidden) hideTip(); else showTip(target);
+  }
+  document.addEventListener('mouseover', function (e) {
+    var t = e.target.closest ? e.target.closest('.info-wrap') : null;
+    if (t) showTip(t);
+  });
+  document.addEventListener('mouseout', function (e) {
+    var t = e.target.closest ? e.target.closest('.info-wrap') : null;
+    if (t && !t.contains(e.relatedTarget)) scheduleTipHide();
+  });
+  document.addEventListener('focusin', function (e) {
+    var t = e.target.closest ? e.target.closest('.info-wrap') : null;
+    if (t) showTip(t);
+  });
+  document.addEventListener('focusout', function (e) {
+    var t = e.target.closest ? e.target.closest('.info-wrap') : null;
+    if (t) scheduleTipHide();
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('.info-wrap') : null;
+    if (t) { e.preventDefault(); e.stopPropagation(); toggleTip(t); return; }
+    var el = document.getElementById('revTooltip');
+    if (el && !el.hidden && !el.contains(e.target)) hideTip();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideTip(); });
+  window.addEventListener('scroll', function () { hideTip(); }, true);
+  window.addEventListener('resize', hideTip);
+
   function render() {
     if (!window.SOLO_TARIFFS) return;
+    hideTip();
     renderCards(); renderCompare(); renderAddons(); renderCalc(); renderPay();
   }
 

@@ -14,7 +14,7 @@ window.SOLO_TARIFFS = {
           'Zemljevid, če je potreben.',
           'Osnovna SEO priprava.',
           'Povezava domene in objava.',
-          'En krog popravkov.'
+          'Dva kroga popravkov.'
         ],
         includes: [], cta: 'Izberite START'
       },
@@ -30,7 +30,7 @@ window.SOLO_TARIFFS = {
           'Osnovna SEO priprava vsake strani.',
           'Nastavitev osnovne analitike.',
           'Pomoč pri Google Business Profile v dogovorjenem obsegu.',
-          'Dva kroga popravkov.'
+          'Trije krogi popravkov.'
         ],
         includes: ['analytics', 'gbp'], cta: 'Izberite BUSINESS'
       },
@@ -45,7 +45,7 @@ window.SOLO_TARIFFS = {
           'Napredni obrazci.',
           'Analitika in sledenje dogovorjenih konverzij.',
           'Ena preprosta integracija.',
-          'Trije krogi popravkov.'
+          'Štirje krogi popravkov.'
         ],
         includes: ['language', 'blog', 'form', 'analytics', 'tracking'], cta: 'Izberite PRO'
       },
@@ -58,7 +58,8 @@ window.SOLO_TARIFFS = {
           'Zahtevni sistemi rezervacij.',
           'Nestandardne funkcije.',
           'Spletne aplikacije.',
-          'Cena po pogovoru.'
+          'Cena po pogovoru.',
+          'Krogi popravkov po dogovoru.'
         ],
         includes: [], cta: 'Pogovorimo se'
       }
@@ -78,7 +79,7 @@ window.SOLO_TARIFFS = {
         { label: 'Priprava na oglaševanje', values: [false, false, 'Po dogovoru'] },
         { label: 'Blog', values: [false, false, true] },
         { label: 'Integracije', values: [false, false, '1 preprosta'] },
-        { label: 'Krogi popravkov', values: ['1', '2', '3'] },
+        { label: 'Krogi popravkov', key: 'revisions', values: ['2', '3', '4'] },
         { label: 'Podpora', values: ['Po dogovoru', 'Po dogovoru', 'Po dogovoru'] }
       ]
     },
@@ -136,6 +137,15 @@ window.SOLO_TARIFFS = {
         'Pogoji podpore se dogovorijo posebej.'
       ],
       calcNote: 'Predračun je orientacijski. Končno ceno in roke potrdimo pred začetkom dela.',
+      revInfoLabel: 'Pojasnilo o krogih popravkov',
+      revHintDesktop: 'Pomaknite se na ⓘ ali kliknite, da izveste, kako se upoštevajo krogi popravkov.',
+      revHintMobile: 'Kliknite ⓘ za pojasnilo.',
+      revTooltip: [
+        'En krog popravkov je en dogovorjen paket pripomb naročnika po pregledu različice strani.',
+        'Na primer, zamenjati fotografijo, popraviti besedilo, premakniti blok in uskladiti videz — vse to je lahko del enega kroga.',
+        'Odprava tehničnih napak in neskladij z dogovorjenim naročilom ni omejena s številom krogov in se ne zaračuna dodatno.',
+        'Nove strani, dodatne funkcije in bistvene spremembe potrjene zasnove se dogovorijo posebej.'
+      ],
       calcCustom: 'Individualni izračun',
       calcIndividual: '+ individualna ocena',
       discuss: 'Pogovorimo se o izbranem',
@@ -168,7 +178,7 @@ window.SOLO_TARIFFS = {
           'Карта при необходимости.',
           'Базовая SEO-подготовка.',
           'Подключение домена и публикация.',
-          'Один раунд правок.'
+          'Два раунда правок.'
         ],
         includes: [], cta: 'Выбрать START'
       },
@@ -184,7 +194,7 @@ window.SOLO_TARIFFS = {
           'Основная SEO-подготовка каждой страницы.',
           'Настройка базовой аналитики.',
           'Помощь с Google Business Profile в согласованном объёме.',
-          'Два раунда правок.'
+          'Три раунда правок.'
         ],
         includes: ['analytics', 'gbp'], cta: 'Выбрать BUSINESS'
       },
@@ -199,7 +209,7 @@ window.SOLO_TARIFFS = {
           'Расширенные формы.',
           'Аналитика и отслеживание согласованных конверсий.',
           'Одна простая интеграция.',
-          'Три раунда правок.'
+          'Четыре раунда правок.'
         ],
         includes: ['language', 'blog', 'form', 'analytics', 'tracking'], cta: 'Выбрать PRO'
       },
@@ -212,7 +222,8 @@ window.SOLO_TARIFFS = {
           'Сложные системы бронирования.',
           'Нестандартные функции.',
           'Веб-приложения.',
-          'Цена после обсуждения задачи.'
+          'Цена после обсуждения задачи.',
+          'Раунды правок по договорённости.'
         ],
         includes: [], cta: 'Обсудить задачу'
       }
@@ -232,7 +243,7 @@ window.SOLO_TARIFFS = {
         { label: 'Подготовка к рекламе', values: [false, false, 'По договорённости'] },
         { label: 'Блог', values: [false, false, true] },
         { label: 'Интеграции', values: [false, false, '1 простая'] },
-        { label: 'Раунды правок', values: ['1', '2', '3'] },
+        { label: 'Раунды правок', key: 'revisions', values: ['2', '3', '4'] },
         { label: 'Поддержка', values: ['По договорённости', 'По договорённости', 'По договорённости'] }
       ]
     },
@@ -290,6 +301,15 @@ window.SOLO_TARIFFS = {
         'Условия поддержки оговариваются отдельно.'
       ],
       calcNote: 'Расчёт предварительный. Итоговую стоимость и сроки согласуем до начала работы.',
+      revInfoLabel: 'Пояснение о раундах правок',
+      revHintDesktop: 'Наведите на ⓘ или нажмите, чтобы узнать, как учитываются раунды правок.',
+      revHintMobile: 'Нажмите ⓘ для пояснения.',
+      revTooltip: [
+        'Один раунд правок — это один согласованный пакет замечаний клиента после просмотра версии сайта.',
+        'Например, изменить фотографию, поправить текст, переместить блок и скорректировать оформление — всё это может входить в один раунд.',
+        'Исправление технических ошибок и несоответствий утверждённому заданию не ограничивается количеством раундов и не оплачивается дополнительно.',
+        'Новые страницы, дополнительные функции и существенные изменения утверждённой концепции согласовываются отдельно.'
+      ],
       calcCustom: 'Индивидуальный расчёт',
       calcIndividual: '+ индивидуальная оценка',
       discuss: 'Обсудить выбранный вариант',
