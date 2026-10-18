@@ -21,7 +21,8 @@ window.SOLO_CONFIG = {
   routes: {
     create:  'pages/izdelava-spletnih-strani.html',
     improve: 'pages/izboljsanje-spletnih-strani.html',
-    ai:      'pages/ai-avtomatizacija.html'
+    ai:      'pages/ai-avtomatizacija.html',
+    ads:     'pages/reklama-in-promocija.html'
   },
   /* Resnični projekti. Prazen seznam = prikaže se pošteno obvestilo "v pripravi".
      Primer vnosa:

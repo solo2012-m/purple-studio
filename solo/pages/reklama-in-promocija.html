@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solo.Pov — Oglaševanje in promocija</title>
+<link rel="icon" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="create-page ads-page">
+
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
+    <nav>
+      <a href="../index.html" data-i18n="create.nav.home"></a>
+      <a href="izdelava-spletnih-strani.html" data-i18n="create.nav.create"></a>
+      <a href="izboljsanje-spletnih-strani.html" data-i18n="create.nav.improve"></a>
+      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
+      <a href="reklama-in-promocija.html" style="color:var(--ink)" data-i18n="nav.ads"></a>
+    </nav>
+    <div class="langbox" style="margin-left:auto">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderAds()">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru');renderAds()">RU</button>
+    </div>
+    <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
+  </div>
+</header>
+
+<main>
+  <section class="ads-hero"><div class="wrap" id="adsHero"></div></section>
+  <section id="catalog" class="ads-section"><div class="wrap" id="catalogBox"></div></section>
+  <section id="issues" class="ads-section ads-section--tint"><div class="wrap" id="issuesBox"></div></section>
+  <section class="ads-section"><div class="wrap" id="explainerBox"></div></section>
+  <section id="request" class="ads-section ads-section--tint"><div class="wrap" id="requestBox"></div></section>
+  <section class="ads-section"><div class="wrap" id="processBox"></div></section>
+  <section id="faq" class="ads-section"><div class="wrap" id="faqBox"></div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
+      <span data-i18n="footer.draft"></span>
+      <span>&copy; 2026 Solo.Pov</span>
+    </div>
+  </div>
+</footer>
+
+<div class="firefly" id="firefly" aria-hidden="true"></div>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/concept-i18n.js"></script>
+<script src="../assets/ads-i18n.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/ads.js"></script>
+<script src="../assets/cursor.js"></script>
+</body>
+</html>
