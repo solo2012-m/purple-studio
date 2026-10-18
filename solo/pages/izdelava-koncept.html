@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Solo.Pov — Izdelava spletnih strani</title>
+<link rel="icon" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="create-page">
+
+<div class="wrap">
+  <div class="draftbar"><b data-i18n="create.badge"></b></div>
+</div>
+
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
+    <nav>
+      <a href="../index.html" data-i18n="create.nav.home"></a>
+      <a href="izdelava-koncept.html" style="color:var(--ink)" data-i18n="create.nav.create"></a>
+      <a href="izboljsanje-spletnih-strani.html" data-i18n="create.nav.improve"></a>
+      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
+    </nav>
+    <div class="langbox" style="margin-left:auto">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
+    </div>
+    <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
+  </div>
+</header>
+
+<main>
+<section class="create-hero">
+  <div class="wrap create-hero__grid">
+    <div class="create-hero__copy">
+      <span class="eyebrow" data-i18n="create.eyebrow"></span>
+      <h1 class="create-h1"><span data-i18n="create.h1a"></span><span class="acc" data-i18n="create.h1b"></span></h1>
+      <p class="create-sub" data-i18n="create.sub"></p>
+      <div class="actions">
+        <button type="button" class="btn" onclick="SOLO.startQuiz('a')" data-i18n="create.cta1"></button>
+        <button type="button" class="btn ghost" onclick="SOLO.openContact()" data-i18n="create.cta2"></button>
+      </div>
+      <small class="meta" data-i18n="create.meta"></small>
+    </div>
+
+    <div class="create-hero__visual">
+      <div class="stage" aria-hidden="true">
+        <div class="mock-browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">solo.pov</span></div>
+          <div class="browser-screen">
+            <div class="mini-nav"><b>SOLO.POV</b><span data-i18n="mock.nav.services"></span><button type="button" class="mini-btn" tabindex="-1" data-i18n="mock.cta"></button></div>
+            <div class="mini-hero">
+              <div class="mini-copy">
+                <span class="mini-eyebrow">01 / 04</span>
+                <h3 data-i18n="mock.hero"></h3>
+                <span class="mini-lines"><i></i><i></i></span>
+                <button type="button" class="mini-cta" tabindex="-1" data-i18n="mock.cta"></button>
+              </div>
+              <div class="mini-art"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mini-cards"><div class="mini-card"></div><div class="mini-card"></div><div class="mini-card"></div></div>
+          </div>
+        </div>
+
+        <div class="mock-phone">
+          <div class="phone-screen">
+            <div class="phone-top"></div>
+            <div class="phone-brand">SOLO.POV</div>
+            <div class="phone-hero"></div>
+            <span class="phone-lines"><i></i><i></i></span>
+            <button type="button" class="phone-cta" tabindex="-1" data-i18n="mock.phone.cta"></button>
+            <div class="phone-card"></div>
+          </div>
+        </div>
+
+        <div class="float-card fc-service">
+          <span class="fc-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor"/><rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor"/><rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor"/><rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor"/></svg></span>
+          <div><b data-i18n="mock.service.t"></b><small data-i18n="mock.service.d"></small></div>
+        </div>
+
+        <div class="float-card fc-form">
+          <b data-i18n="mock.form.t"></b>
+          <span class="fc-input" data-i18n="mock.form.name"></span>
+          <span class="fc-input" data-i18n="mock.form.email"></span>
+          <span class="fc-submit" data-i18n="mock.form.btn"></span>
+        </div>
+
+        <div class="float-card fc-cal">
+          <b data-i18n="mock.cal.t"></b>
+          <small data-i18n="mock.cal.d"></small>
+          <div class="cal-grid"><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i class="on">18</i></div>
+        </div>
+
+        <div class="float-card fc-product">
+          <div class="prod-img"></div>
+          <b data-i18n="mock.product.t"></b>
+          <small data-i18n="mock.product.p"></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
+      <span data-i18n="footer.draft"></span>
+      <span>&copy; 2026 Solo.Pov</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)SOLO.close()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="SOLO.close()" aria-label="Close">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/concept-i18n.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
