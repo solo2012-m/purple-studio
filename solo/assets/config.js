@@ -32,5 +32,10 @@ window.SOLO_CONFIG = {
   submit: {
     enabled: false,
     endpoint: ''
+  },
+  /* Prihodnja CRM / zbirka potencialnih strank. Trenutno izklopljeno. */
+  crm: {
+    enabled: false,
+    endpoint: ''
   }
 };

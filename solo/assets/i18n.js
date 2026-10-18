@@ -22,7 +22,7 @@ window.SOLO_I18N = {
     'hero.h1c': 'Več možnosti.',
     'hero.sub': 'Izdelamo strani od začetka, izboljšamo obstoječe in pomagamo upravljati z njimi s pomočjo AI — brez tehničnih skrbi.',
     'picker.title': 'Katera rešitev ustreza vašemu podjetju?',
-    'picker.lead': 'Pripravili smo kratek interaktivni izbor. Odgovorite na nekaj vprašanj in prejeli boste osebno priporočilo za vašo situacijo.',
+    'picker.lead': 'Izberite svojo situacijo — vprašalnik se odpre takoj. Na voljo je kratek osebni izbor rešitve.',
     'picker.meta': 'Približno 1 minuta • Brez klicev • Prilagojeno vaši nalogi',
     'picker.o1': 'Nimam spletne strani',
     'picker.o2': 'Želim obnoviti stran',
@@ -209,7 +209,7 @@ window.SOLO_I18N = {
     'hero.h1c': 'Больше возможностей.',
     'hero.sub': 'Создаём сайты с нуля, улучшаем существующие и помогаем управлять ими через AI — без технической головной боли.',
     'picker.title': 'Какое решение подойдёт вашему бизнесу?',
-    'picker.lead': 'Мы подготовили короткий интерактивный подбор. Ответьте на несколько вопросов — и получите персональную рекомендацию для вашей ситуации.',
+    'picker.lead': 'Выберите свою ситуацию — анкета откроется сразу. Вас ждёт короткий персональный подбор решения.',
     'picker.meta': 'Около 1 минуты • Без звонков • Под вашу задачу',
     'picker.o1': 'У меня нет сайта',
     'picker.o2': 'Хочу обновить сайт',
@@ -390,7 +390,7 @@ window.SOLO_QUIZ = {
       close: 'Zapri',
       start: 'Začni znova',
       urlTitle: 'Naslov vaše strani',
-      urlLead: 'Navedite naslov, da bomo lahko pozneje opravili predhodno diagnostiko.',
+      urlLead: 'Vnesite naslov vaše strani, da bomo lahko pozneje opravili predhodno diagnostiko.',
       urlPh: 'npr. www.primer.si',
       urlSkip: 'Nadaljuj brez naslova',
       urlErr: 'Vnesite veljaven naslov, npr. www.primer.si',
@@ -407,6 +407,13 @@ window.SOLO_QUIZ = {
       emailBtn: 'Prejmite podroben načrt',
       emailConsent: 'Strinjam se s prejemom obvestil o storitvah Solo.Pov. Oglaševalskih sporočil ne pošiljamo brez ločenega soglasja.',
       emailNote: 'Email ni obvezen za ogled predhodnega rezultata.',
+      emailPurpose: 'Email uporabimo za pošiljanje načrta in stik v zvezi z vašim povpraševanjem.',
+      consentLabel: 'Želim prejemati koristne nasvete in nove možnosti od SOLO.POV',
+      consentNote: 'Občasno bomo pošiljali priporočila, novice o AI-orodjih in predloge za ustvarjanje ter razvoj strani. Odjava je mogoča kadarkoli.',
+      privacy: 'Politika zasebnosti',
+      resultNote: 'Na podlagi vaših odgovorov lahko sklepamo o možnih vzrokih. To je predhodno priporočilo; tehnična diagnostika še ni bila opravljena.',
+      sentTitle: 'Hvala!',
+      sentText: 'Vaša zahteva je bila poslana.',
       emailErr: 'Vnesite veljaven email naslov.',
       notReadyTitle: 'Pošiljanje še ni povezano',
       notReadyText: 'Zahteva <b>ni bila poslana</b>, ker povezava še ni nastavljena. Spodaj je pripravljeno besedilo, ki ga lahko kopirate in nam pošljete.',
@@ -524,14 +531,14 @@ window.SOLO_QUIZ = {
       },
       b: {
         title: 'Vaša stran je zastarela',
-        urlStep: true,
+        urlAtEnd: true,
         baseWhy: 'Obstoječe gradivo in zgodovino strani lahko uporabimo, zato prenova ne pomeni vedno začetka od nič.',
         steps: [
           { id: 'q1', q: 'Kaj vas najbolj moti?', multi: true, why: [
-            'Star videz vpliva na zaupanje — posodobitev videza bo prvi vidni korak.',
+            'Star videz lahko vpliva na zaupanje — posodobitev videza bo prvi vidni korak.',
             'Uporaba na telefonu je ključna, ker večina obiskovalcev pride z mobilnih naprav.',
-            'Počasno nalaganje odvrača obiskovalce — pospešitev je merljiv cilj.',
-            'Težavno urejanje pomeni, da za vsako spremembo potrebujete pomoč.',
+            'Počasno nalaganje lahko odvrača obiskovalce — pospešitev je merljiv cilj.',
+            'Težavno urejanje lahko pomeni, da za vsako spremembo potrebujete pomoč.',
             'Nedelujoče funkcije lahko neposredno izgubljajo povpraševanja.'
           ], o: [
             'Star videz.',
@@ -597,12 +604,12 @@ window.SOLO_QUIZ = {
       },
       c: {
         title: 'Stran ima premalo povpraševanj',
-        urlStep: true,
+        urlAtEnd: true,
         baseWhy: 'Priporočilo temelji na vaših odgovorih; za natančne ugotovitve bo potreben pregled obstoječe strani.',
         steps: [
           { id: 'q1', q: 'Katera situacija najbolje opisuje vašo stran?', why: [
             'Obiskovalcev skoraj ni — najprej je treba ugotoviti, ali stran sploh doseže pravo občinstvo.',
-            'Obiskovalci so, povpraševanj pa malo — težava je najverjetneje v vsebini ali poti do povpraševanja.',
+            'Obiskovalci so, povpraševanj pa malo — možna vzroka sta vsebina ali pot do povpraševanja. To je treba preveriti.',
             'Povpraševanja so, a redko postanejo naročila — treba je okrepiti zaupanje in jasnost ponudbe.',
             'Ne veste, koliko obiskovalcev pride — najprej je treba vzpostaviti merjenje.'
           ], o: [
@@ -780,7 +787,7 @@ window.SOLO_QUIZ = {
       close: 'Закрыть',
       start: 'Начать заново',
       urlTitle: 'Адрес вашего сайта',
-      urlLead: 'Укажите адрес, чтобы мы могли в дальнейшем провести предварительную диагностику.',
+      urlLead: 'Укажите адрес вашего сайта, чтобы мы могли в дальнейшем провести его предварительную диагностику.',
       urlPh: 'например, www.primer.si',
       urlSkip: 'Продолжить без адреса',
       urlErr: 'Укажите корректный адрес, например www.primer.si',
@@ -797,6 +804,13 @@ window.SOLO_QUIZ = {
       emailBtn: 'Получить подробный план',
       emailConsent: 'Согласен получать сообщения об услугах Solo.Pov. Рекламные рассылки не отправляем без отдельного согласия.',
       emailNote: 'Email не обязателен для просмотра предварительного результата.',
+      emailPurpose: 'Email используем для отправки плана и связи по вашей заявке.',
+      consentLabel: 'Хочу получать полезные советы и новые возможности от SOLO.POV',
+      consentNote: 'Периодически будем отправлять рекомендации, новости об AI-инструментах и предложения по созданию и развитию сайтов. Отписаться можно в любой момент.',
+      privacy: 'Политика конфиденциальности',
+      resultNote: 'На основании ваших ответов можно предположить возможные причины. Это предварительная рекомендация; техническая диагностика ещё не проводилась.',
+      sentTitle: 'Спасибо!',
+      sentText: 'Ваша заявка отправлена.',
       emailErr: 'Укажите корректный email.',
       notReadyTitle: 'Отправка пока не подключена',
       notReadyText: 'Заявка <b>не была отправлена</b>, потому что связь ещё не настроена. Ниже — готовый текст, его можно скопировать и прислать нам.',
@@ -914,14 +928,14 @@ window.SOLO_QUIZ = {
       },
       b: {
         title: 'Ваш сайт устарел',
-        urlStep: true,
+        urlAtEnd: true,
         baseWhy: 'Существующие материалы и историю сайта можно использовать, поэтому модернизация не всегда означает начало с нуля.',
         steps: [
           { id: 'q1', q: 'Что вас больше всего не устраивает?', multi: true, why: [
-            'Устаревший дизайн влияет на доверие — обновление станет первым заметным шагом.',
+            'Устаревший дизайн может влиять на доверие — обновление станет первым заметным шагом.',
             'Удобство на телефоне критично: большинство посетителей приходят с мобильных.',
-            'Медленная загрузка отпугивает посетителей — ускорение даст измеримый результат.',
-            'Сложное редактирование означает, что для каждой правки нужна помощь.',
+            'Медленная загрузка может отпугивать посетителей — ускорение даст измеримый результат.',
+            'Сложное редактирование может означать, что для каждой правки нужна помощь.',
             'Неработающие функции могут напрямую терять заявки.'
           ], o: [
             'Старый дизайн.',
@@ -987,12 +1001,12 @@ window.SOLO_QUIZ = {
       },
       c: {
         title: 'Сайт есть, но мало заявок',
-        urlStep: true,
+        urlAtEnd: true,
         baseWhy: 'Рекомендация основана на ваших ответах; для точных выводов потребуется проверить существующий сайт.',
         steps: [
           { id: 'q1', q: 'Какая ситуация лучше описывает ваш сайт?', why: [
             'Посетителей почти нет — сначала нужно понять, доходит ли сайт до нужной аудитории.',
-            'Посетители есть, но заявок мало — вероятная причина в содержании или пути к заявке.',
+            'Посетители есть, но заявок мало — возможная причина в содержании или пути к заявке. Это стоит проверить.',
             'Заявки есть, но редко становятся заказами — нужно усилить доверие и ясность предложения.',
             'Вы не знаете, сколько людей приходит — сначала нужно настроить измерение.'
           ], o: [

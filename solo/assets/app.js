@@ -192,9 +192,9 @@
       var all = box.querySelectorAll('.pick');
       for (var i = 0; i < all.length; i++) all[i].classList.remove('on');
       btn.classList.add('on');
-      pickedBranch = btn.getAttribute('data-branch');
-      var go = document.getElementById('heroPickBtn');
-      if (go) go.disabled = false;
+      var branch = btn.getAttribute('data-branch');
+      if (!branch) return;
+      setTimeout(function () { startQuiz(branch); }, 120);
     });
   }
   function startFromPicker() { startQuiz(pickedBranch || null); }
@@ -258,11 +258,12 @@
   function stepsFor() {
     var br = quizPack().branches[quiz.branch], out = [];
     if (!br) return out;
-    if (br.urlStep) out.push({ type: 'url' });
+    if (br.urlStep && !br.urlAtEnd) out.push({ type: 'url' });
     for (var i = 0; i < br.steps.length; i++) {
       out.push({ type: 'q', st: br.steps[i] });
       if (br.urlAfter === i && hasSite()) out.push({ type: 'url' });
     }
+    if (br.urlAtEnd) out.push({ type: 'url' });
     return out;
   }
   function hasSite() {
@@ -458,11 +459,16 @@
     h += '</ul></div>';
     h += '<div class="qres-block"><h4>' + esc(ui('resultNext')) + '</h4><p>' + esc(r.next) + '</p></div>';
     h += '</div>';
+    h += '<p class="result-note">' + esc(ui('resultNote')) + '</p>';
     if (quiz.url) h += '<div class="notice small">' + esc(ui('urlSaved')) + '</div>';
     h += '<div class="emailbox">';
     h += '<h4>' + esc(ui('emailTitle')) + '</h4><p class="qhint">' + esc(ui('emailLead')) + '</p>';
     h += '<div class="field"><label>' + esc(ui('emailLabel')) + '</label><input type="email" id="planEmail" placeholder="' + esc(ui('emailPh')) + '"></div>';
-    h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('emailConsent')) + '</span></label>';
+    h += '<small class="meta email-purpose">' + esc(ui('emailPurpose')) + '</small>';
+    h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('consentLabel')) + '</span></label>';
+    h += '<small class="consent-note">' + esc(ui('consentNote')) + '</small>';
+    var purl = (CONFIG.legal && CONFIG.legal.privacyUrl) ? CONFIG.legal.privacyUrl : 'privacy.html';
+    h += '<a class="privacy-link" href="' + esc(purl) + '" target="_blank" rel="noopener">' + esc(ui('privacy')) + '</a>';
     h += '<div class="qerr" id="emailErr"></div>';
     h += '<button type="button" class="btn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
     h += '<small class="meta">' + esc(ui('emailNote')) + '</small>';
@@ -485,12 +491,46 @@
 
   function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
 
+  var CONSENT_VERSION = '2026-10-18';
   function submitPlan() {
     var inp = el('planEmail'), err = el('emailErr');
     var email = inp ? inp.value.replace(/^\s+|\s+$/g, '') : '';
     if (!emailValid(email)) { if (err) err.textContent = ui('emailErr'); return; }
     var consent = el('planConsent');
-    deliver(buildText('plan', email, consent && consent.checked));
+    var on = !!(consent && consent.checked);
+    deliver(buildText('plan', email, on), buildLead(email, on));
+  }
+
+  function buildLead(email, consent) {
+    var br = quizPack().branches[quiz.branch], data = resultData(), answers = [];
+    for (var i = 0; i < br.steps.length; i++) {
+      var st = br.steps[i], a = quiz.answers[st.id];
+      if (a == null || (Array.isArray(a) && !a.length)) continue;
+      var ids = Array.isArray(a) ? a.slice() : [a];
+      answers.push({
+        questionId: st.id,
+        question: st.q,
+        optionIds: ids,
+        answers: ids.map(function (x) { return st.o[x]; })
+      });
+    }
+    var interest = { a: 'site_creation', b: 'site_redesign', c: 'seo_leads', d: 'ai_automation' }[quiz.branch] || '';
+    return {
+      id: 'lead_' + Date.now(),
+      email: email,
+      date: new Date().toISOString(),
+      lang: lang,
+      branch: quiz.branch,
+      branchTitle: br.title,
+      interest: interest,
+      answers: answers,
+      siteUrl: quiz.url || '',
+      recommendation: { key: data.variant, title: data.res.t, next: data.res.next },
+      marketingConsent: !!consent,
+      consentTextVersion: CONSENT_VERSION,
+      consentDate: consent ? new Date().toISOString() : null,
+      status: 'new'
+    };
   }
 
   function buildText(kind, email, consent) {
@@ -515,7 +555,9 @@
       return lines.join('\n');
     }
     if (email) lines.push((L ? 'Email' : 'Email') + ': ' + email);
-    lines.push((L ? 'Согласие на сообщения' : 'Soglasje za obvestila') + ': ' + (consent ? (L ? 'да' : 'da') : (L ? 'нет' : 'ne')));
+    lines.push((L ? 'Согласие на маркетинговые сообщения' : 'Soglasje za marketinška obvestila') + ': ' + (consent ? (L ? 'да' : 'da') : (L ? 'нет' : 'ne')));
+    lines.push((L ? 'Версия текста согласия' : 'Različica besedila soglasja') + ': ' + CONSENT_VERSION);
+    if (consent) lines.push((L ? 'Дата согласия' : 'Datum soglasja') + ': ' + new Date().toISOString());
     return lines.join('\n');
   }
 
@@ -528,9 +570,21 @@
     return h;
   }
 
-  function deliver(text) {
-    if (CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint) {
-      try { window.fetch(CONFIG.submit.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: lang, text: text }) }); } catch (e) {}
+  function sentHtml() {
+    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(ui('sentTitle')) + '</div>';
+    h += '<div class="notice">' + esc(ui('sentText')) + '</div>';
+    h += '<div class="mnav"><span></span><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
+    return h;
+  }
+  function deliver(text, lead) {
+    var ep = (CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
+    if (ep) {
+      try {
+        window.fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
+          .then(function (r) { setModal(r && r.ok ? sentHtml() : notReadyHtml(text)); })
+          .catch(function () { setModal(notReadyHtml(text)); });
+        return;
+      } catch (e) {}
     }
     setModal(notReadyHtml(text));
   }
@@ -580,7 +634,7 @@
   window.SOLO = {
     startQuiz: startQuiz, chooseBranch: chooseBranch, choose: choose, next: next, back: back,
     close: closeModal, submitPlan: submitPlan, submitContact: submitContact, copyText: copyText,
-    saveUrl: saveUrl, skipUrl: skipUrl,
+    saveUrl: saveUrl, skipUrl: skipUrl, buildLead: buildLead,
     openContact: openContact, setLang: setLang, renderQuiz: renderQuiz, t: t,
     runDemo: runDemo, startFromPicker: startFromPicker,
     getLang: function () { return lang; }
