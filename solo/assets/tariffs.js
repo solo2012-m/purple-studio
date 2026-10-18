@@ -34,7 +34,8 @@
     var d = data(), h = '';
     for (var i = 0; i < d.tariffs.length; i++) {
       var t = d.tariffs[i], sel = state.tariff === t.id;
-      h += '<article class="tariff-card' + (sel ? ' sel' : '') + (t.id === 'custom' ? ' custom' : '') + '" data-tariff="' + t.id + '">';
+      h += '<article class="tariff-card' + (sel ? ' sel' : '') + (t.id === 'custom' ? ' custom' : '') + '" data-tariff="' + t.id + '" role="button" tabindex="0" aria-pressed="' + (sel ? 'true' : 'false') + '" onclick="tariffCard(\'' + t.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();tariffCard(\'' + t.id + '\')}">';
+      if (sel) h += '<span class="tariff-badge">' + esc(d.ui.selected) + '</span>';
       h += '<div class="tariff-name">' + esc(t.name) + '</div>';
       var priceText = t.price == null ? t.priceLabel : (d.ui.from + ' ' + money(t.price));
       h += '<div class="tariff-price' + (t.price == null ? ' small' : '') + '">' + esc(priceText) + '</div>';
@@ -42,7 +43,7 @@
       h += '<ul class="tariff-feats">';
       for (var j = 0; j < t.features.length; j++) h += '<li>' + esc(t.features[j]) + '</li>';
       h += '</ul>';
-      h += '<button type="button" class="btn ' + (sel ? '' : 'ghost') + ' tariff-btn" onclick="selectTariff(\'' + t.id + '\')">' + esc(sel ? d.ui.selected : t.cta) + '</button>';
+      h += '<button type="button" class="btn ' + (sel ? '' : 'ghost') + ' tariff-btn" onclick="event.stopPropagation();tariffCard(\'' + t.id + '\')">' + esc(sel ? d.ui.selected : t.cta) + '</button>';
       h += '</article>';
     }
     document.getElementById('tariffCards').innerHTML = h;
@@ -134,19 +135,16 @@
   function renderPay() {
     var d = data(), L = lang() === 'ru', h = '';
     h += '<div class="payflow">';
-    h += '<div class="payflow-head"><span class="eyebrow">' + (L ? 'Оплата' : 'Plačilo') + '</span>';
-    h += '<h2>' + esc(d.ui.payTitle) + '</h2><p class="pay-lead">' + esc(d.ui.payLead) + '</p></div>';
-    h += '<ol class="paysteps">';
+    h += '<span class="eyebrow">' + (L ? 'Оплата' : 'Plačilo') + '</span>';
+    h += '<h2>' + esc(d.ui.payTitle) + '</h2><p class="pay-lead">' + esc(d.ui.payLead) + '</p>';
+    h += '<ol class="paysteps three">';
     for (var i = 0; i < d.ui.paySteps.length; i++) h += '<li><span>' + (i + 1) + '</span><b>' + esc(d.ui.paySteps[i]) + '</b></li>';
     h += '</ol>';
-    h += '<div class="paynotes"><p>' + esc(d.ui.payNote1) + '</p><p>' + esc(d.ui.payNote2) + '</p><p>' + esc(d.ui.payNote3) + '</p></div>';
+    h += '<p class="paynote">' + esc(d.ui.payNote) + '</p>';
+    h += '<details class="pay-details"><summary>' + esc(d.ui.payDetailsTitle) + '</summary><ul>';
+    for (var j = 0; j < d.ui.payDetails.length; j++) h += '<li>' + esc(d.ui.payDetails[j]) + '</li>';
+    h += '</ul><p class="vat-note">' + esc(d.ui.vatNote) + '</p></details>';
     h += '</div>';
-    h += '<div class="rights"><h3>' + esc(d.ui.rightsTitle) + '</h3><p>' + esc(d.ui.rightsLead) + '</p><ul>';
-    for (var j = 0; j < d.ui.rightsBullets.length; j++) h += '<li>' + esc(d.ui.rightsBullets[j]) + '</li>';
-    h += '</ul>';
-    h += '<p class="pay-extra-title">' + (L ? 'Дополнительно' : 'Dodatno') + '</p><ul class="pay-extra">';
-    for (var k = 0; k < d.ui.payExtra.length; k++) h += '<li>' + esc(d.ui.payExtra[k]) + '</li>';
-    h += '</ul><p class="vat-note">' + esc(d.ui.vatNote) + '</p></div>';
     document.getElementById('payinfo').innerHTML = h;
   }
 
@@ -156,6 +154,10 @@
   }
 
   window.renderTariffs = render;
+  window.tariffCard = function (id) {
+    if (id === 'custom') { selectTariff('custom'); discussTariff(); }
+    else selectTariff(id);
+  };
   window.resetAddons = function () { state.addons = {}; render(); };
   window.selectTariff = function (id) {
     state.tariff = id;

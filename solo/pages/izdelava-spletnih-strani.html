@@ -11,61 +11,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body class="create-page">
+
 <header>
   <div class="wrap hdr">
-    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov"></a>
-    <nav style="margin-left:auto">
-      <a href="izdelava-spletnih-strani.html">Izdelava</a>
-      <a href="izboljsanje-spletnih-strani.html">Izboljšave</a>
-      <a href="ai-avtomatizacija.html">AI in podpora</a>
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
+    <nav>
+      <a href="../index.html" data-i18n="create.nav.home"></a>
+      <a href="izdelava-spletnih-strani.html" style="color:var(--ink)" data-i18n="create.nav.create"></a>
+      <a href="izboljsanje-spletnih-strani.html" data-i18n="create.nav.improve"></a>
+      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
     </nav>
-    <a class="btn ghost sm" href="../index.html">&#8592; Domov</a>
+    <div class="langbox" style="margin-left:auto">
+      <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderTariffs()">SL</button>
+      <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru');renderTariffs()">RU</button>
+    </div>
+    <a class="btn ghost sm" href="../index.html" aria-label="Nazaj">&#8592;</a>
   </div>
 </header>
 
-<section class="first" style="padding:52px 0 30px">
-  <div class="wrap">
-    <span class="eyebrow">Solo.Pov · rešitev A</span>
-    <h1 class="h2" style="font-size:clamp(30px,4vw,44px)">Izdelava spletnih strani</h1>
-    <p class="lead" style="font-size:18px;margin-top:6px">Od ideje do strani, ki predstavlja vaše podjetje in prinaša povpraševanja. Brez odvečne zapletenosti.</p>
-    <p class="lead" style="margin-top:10px">От идеи до сайта, который представляет ваш бизнес и приносит заявки. Без лишней сложности.</p>
-  </div>
-</section>
+<main>
 
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="grid g2">
-      <div class="card"><h3>Kaj naredimo</h3><ul><li>Enostranska stran (landing page)</li><li>Vizitka</li><li>Večstranska stran podjetja</li><li>Stran s storitvami</li><li>Spletna trgovina</li><li>Poseben projekt</li></ul></div>
-      <div class="card"><h3>Что делаем</h3><ul><li>Одностраничный сайт (landing page)</li><li>Сайт-визитка</li><li>Многостраничный сайт компании</li><li>Сайт услуг</li><li>Интернет-магазин</li><li>Индивидуальный проект</li></ul></div>
-    </div>
-    <div class="grid g2" style="margin-top:18px">
-      <div class="card"><h3>Kaj dobite</h3><ul><li>Sodoben videz in mobilna različica</li><li>Jasna struktura in besedila</li><li>Preprost način, da vas stranka kontaktira</li><li>Osnova za nadaljnji razvoj</li></ul></div>
-      <div class="card"><h3>Что вы получаете</h3><ul><li>Современный дизайн и мобильная версия</li><li>Понятная структура и тексты</li><li>Простой способ связаться с вами</li><li>Основа для дальнейшего развития</li></ul></div>
-    </div>
-  </div>
-</section>
 
-<section>
+<section id="tariffs" class="pricing pricing--top">
   <div class="wrap">
-    <h2 class="h2">Pogosta vprašanja / Частые вопросы</h2>
-    <div style="margin-top:26px"><details class="faq"><summary>Koliko časa traja izdelava? / Сколько времени занимает разработка?</summary><p>Rok dogovorimo pred začetkom dela. Pri manjši strani nekaj dni do dveh tednov. / Сроки согласуем до начала работы. Для небольшого сайта — от нескольких дней до двух недель.</p></details>
-          <details class="faq"><summary>Kaj pa, če nimam materialov? / Что, если у меня нет материалов?</summary><p>Pomagamo s strukturo in besedili, za fotografije predlagamo rešitve. / Поможем со структурой и текстами, для фото предложим варианты.</p></details>
-          <details class="faq"><summary>Komu pripada stran? / Кому принадлежит сайт?</summary><p>Vam — domena, gostovanje in dostopi so na vaše ime. / Вам — домен, хостинг и доступы оформляются на вас.</p></details></div>
-    <div class="actions" style="margin-top:26px">
-      <a class="btn" href="../index.html?quiz=a">Izberite rešitev / Подобрать решение</a>
-      <a class="btn ghost" href="../index.html">Nazaj / На главную</a>
+    <div class="pricing-head pricing-head--top">
+      <span class="eyebrow" data-i18n="price.eyebrow"></span>
+      <h1 class="pricing-title" data-i18n="price.title"></h1>
+      <p class="pricing-lead" data-i18n="price.lead"></p>
+      <ul class="adv-list">
+        <li data-i18n="price.adv1"></li>
+        <li data-i18n="price.adv2"></li>
+        <li data-i18n="price.adv3"></li>
+      </ul>
     </div>
+    <div id="tariffCards" class="tariff-grid"></div>
+
+    <div class="pricing-subhead">
+      <h3 data-i18n="price.compare"></h3>
+      <p data-i18n="price.compareLead"></p>
+    </div>
+    <div id="tariffCompare"></div>
+
+    <div class="pricing-subhead pricing-subhead--row">
+      <div>
+        <h3 data-i18n="price.addons"></h3>
+        <p data-i18n="price.addonsLead"></p>
+      </div>
+      <button type="button" class="reset-link" onclick="resetAddons()" data-i18n="price.reset"></button>
+    </div>
+    <div id="tariffAddons" class="addons-grid"></div>
+
+    <div id="tariffCalc" class="calc-wrap"></div>
+    <div id="payinfo" class="payinfo"></div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
     <div class="footer-bottom" style="border-top:0;margin-top:0;padding-top:0">
-      <span>Predogled v izdelavi. Ni za objavo.</span>
+      <span data-i18n="footer.draft"></span>
       <span>&copy; 2026 Solo.Pov</span>
     </div>
   </div>
 </footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)SOLO.close()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" onclick="SOLO.close()" aria-label="Close">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/concept-i18n.js"></script>
+<script src="../assets/tariffs-i18n.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/tariffs.js"></script>
 </body>
 </html>

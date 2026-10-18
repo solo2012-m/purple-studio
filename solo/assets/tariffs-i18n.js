@@ -95,7 +95,7 @@ window.SOLO_TARIFFS = {
       { id: 'integrations', title: 'Druge integracije', price: null, individual: true }
     ],
     ui: {
-      selected: 'Izbrano',
+      selected: 'Izbran',
       included: 'Vključeno',
       includedInTariff: 'Vključeno v paket',
       individual: 'Individualna ocena',
@@ -106,9 +106,19 @@ window.SOLO_TARIFFS = {
       calcAddons: 'Dodatne možnosti',
       calcTotal: 'Približna cena od',
       reset: 'Ponastavi dodatne možnosti',
-      payTitle: 'Najprej rezultat. Potem plačilo.',
-      payLead: 'Izdelamo stran in vam pokažemo končno različico na testnem naslovu. Vi preverite rezultat, mi pa vnesemo dogovorjene popravke. Po potrditvi strani plačate izdelavo, mi pa projekt objavimo in predamo dogovorjene dostope.',
-      paySteps: ['Dogovor o naročilu', 'Izdelava strani', 'Predogled in popravki', 'Plačilo', 'Objava in predaja dostopov'],
+      payTitle: 'Najprej stran. Potem plačilo.',
+      payLead: 'Izdelamo stran in vam pokažemo končno različico. Vi preverite rezultat, se dogovorite o popravkih in šele po potrditvi plačate izdelavo. Nato stran objavimo in predamo dostope.',
+      paySteps: ['Izdelamo stran.', 'Vi preverite.', 'Plačilo in predaja.'],
+      payNote: 'Brez predplačila za izdelavo pri standardnih paketih START in BUSINESS. Za PRO in individualne projekte se pogoji dogovorijo posebej. Domena in plačljive storitve se plačajo posebej.',
+      payDetailsTitle: 'Podrobni pogoji plačila in predaje strani',
+      payDetails: [
+        'Domeno priporočamo, da registrirate na ime lastnika podjetja.',
+        'Naročnik lahko domeno kupi sam ali zaprosi za pomoč.',
+        'Po plačilu predamo dogovorjene dostope in gradivo.',
+        'Pravice do kode, oblikovanja in drugega gradiva se določijo s pogoji naročila.',
+        'Plačljive zunanje storitve in redno vzdrževanje se plačajo posebej.',
+        'Dodatna dela nad potrjenim obsegom se dogovorijo posebej.'
+      ],
       payNote1: 'Za standardna projekta START in BUSINESS predplačilo za izdelavo ni potrebno.',
       payNote2: 'Za zahtevne in individualne projekte se pogoji plačila določijo posebej.',
       payNote3: 'Domena in plačljive zunanje storitve se plačajo posebej.',
@@ -239,7 +249,7 @@ window.SOLO_TARIFFS = {
       { id: 'integrations', title: 'Другие интеграции', price: null, individual: true }
     ],
     ui: {
-      selected: 'Выбрано',
+      selected: 'Выбран',
       included: 'Включено',
       includedInTariff: 'Включено в тариф',
       individual: 'Индивидуальная оценка',
@@ -250,9 +260,19 @@ window.SOLO_TARIFFS = {
       calcAddons: 'Дополнительные функции',
       calcTotal: 'Ориентировочная стоимость от',
       reset: 'Сбросить дополнительные функции',
-      payTitle: 'Сначала результат. Потом оплата',
-      payLead: 'Мы создаём сайт и показываем готовую версию на тестовом адресе. Вы проверяете результат, мы вносим согласованные правки. После утверждения сайта вы оплачиваете разработку, а мы публикуем проект и передаём согласованные доступы.',
-      paySteps: ['Согласование заказа', 'Разработка сайта', 'Предпросмотр и правки', 'Оплата', 'Публикация и передача доступов'],
+      payTitle: 'Сначала сайт. Потом оплата.',
+      payLead: 'Мы создаём сайт и показываем готовую версию. Вы проверяете результат, согласовываете правки и только после утверждения оплачиваете разработку. Затем мы запускаем сайт и передаём доступы.',
+      paySteps: ['Создаём сайт.', 'Вы проверяете.', 'Оплата и передача.'],
+      payNote: 'Без предоплаты за разработку для стандартных START и BUSINESS. Для PRO и индивидуальных проектов условия согласовываются отдельно. Домен и платные сервисы оплачиваются отдельно.',
+      payDetailsTitle: 'Подробные условия оплаты и передачи сайта',
+      payDetails: [
+        'Домен рекомендуем оформлять на владельца бизнеса.',
+        'Клиент может купить домен самостоятельно либо попросить помощь.',
+        'После оплаты передаём согласованные доступы и материалы.',
+        'Права на код, дизайн и другие материалы определяются условиями заказа.',
+        'Платные сторонние сервисы и регулярное обслуживание оплачиваются отдельно.',
+        'Дополнительные работы сверх утверждённого задания согласовываются отдельно.'
+      ],
       payNote1: 'Для стандартных проектов START и BUSINESS предоплата за разработку не требуется.',
       payNote2: 'Для сложных и индивидуальных проектов условия оплаты определяются отдельно.',
       payNote3: 'Домен и платные сторонние сервисы оплачиваются отдельно.',
