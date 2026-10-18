@@ -829,3 +829,21 @@ pre.copyout{white-space:pre-wrap;background:var(--surface);border:1px solid var(
 
 .card.solution-card.improve-card:hover{box-shadow:0 18px 40px -26px rgba(255,212,0,.38)}
 .request-form-title{font:700 18px/1.3 "Space Grotesk",sans-serif;margin:0 0 8px}
+
+/* final improve page — request help and compact audit */
+.request-help{font-size:12.5px;line-height:1.55;color:var(--muted);margin:10px 0 4px;padding-left:14px;border-left:2px solid rgba(255,212,0,.5)}
+.audit-directions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 4px}
+.audit-dir{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.audit-dir span{font:700 10px Inter,sans-serif;letter-spacing:.14em;color:var(--accent)}
+.audit-dir b{display:block;font:600 14.5px/1.35 Inter,sans-serif;color:var(--ink);margin:4px 0}
+.audit-dir p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.45}
+.audit-details{margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.audit-details summary{cursor:pointer;color:var(--ink);font:600 13.5px/1.4 Inter,sans-serif;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.audit-details summary::-webkit-details-marker{display:none}
+.audit-details summary:after{content:"+";color:var(--accent);font-size:18px;line-height:1}
+.audit-details[open] summary:after{content:"\2212"}
+.audit-details .audit-list{margin-top:12px}
+.improve-page .improve-section:last-of-type{padding-bottom:72px}
+@media(max-width:640px){
+  .audit-directions{grid-template-columns:1fr}
+}

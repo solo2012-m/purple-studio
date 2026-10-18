@@ -73,10 +73,19 @@
   }
 
   function renderAudit() {
-    var box = document.getElementById('auditList'); if (!box) return;
-    var items = data().auditItems, h = '';
-    for (var i = 0; i < items.length; i++) h += '<li>' + esc(items[i]) + '</li>';
-    box.innerHTML = h;
+    var d = data(), dirs = document.getElementById('auditDirections'), list = document.getElementById('auditDetailsList'), h = '';
+    if (dirs) {
+      for (var i = 0; i < d.auditDirections.length; i++) {
+        var x = d.auditDirections[i];
+        h += '<div class="audit-dir"><span>0' + (i + 1) + '</span><b>' + esc(x.title) + '</b><p>' + esc(x.desc) + '</p></div>';
+      }
+      dirs.innerHTML = h;
+    }
+    if (list) {
+      h = '';
+      for (var j = 0; j < d.auditItems.length; j++) h += '<li>' + esc(d.auditItems[j]) + '</li>';
+      list.innerHTML = h;
+    }
   }
 
   function renderImprove() { renderServices(); renderRequest(); renderAudit(); }
@@ -258,15 +267,7 @@
     try { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); done(); } catch (e) {}
   }
 
-  window.setDemo = function (mode) {
-    var stage = document.getElementById('demoStage');
-    if (stage) stage.className = 'demo-stage ' + (mode === 'after' ? 'show-after' : 'show-before');
-    var btns = document.querySelectorAll('[data-demo]');
-    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle('on', btns[i].getAttribute('data-demo') === mode);
-  };
-
   document.addEventListener('DOMContentLoaded', function () {
     renderImprove();
-    window.setDemo('before');
   });
 })();

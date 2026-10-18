@@ -33,6 +33,7 @@
     'improve.catalog.note': 'Cene so okvirne minimalne vrednosti. Končna cena je odvisna od platforme, dostopov, zahtevnosti strani in obsega dela.',
     'improve.request.title': 'Vaša zahteva za izboljšanje strani',
     'improve.request.warning': 'Končna cena se določi po pregledu strani in obsega dela.',
+    'improve.request.help': 'Ogledali bomo vašo stran, ocenili potrebne izboljšave ter predlagali ceno in roke. Pošiljanje zahteve vas k ničemur ne obvezuje.',
     'improve.request.formTitle': 'Povejte, kaj je treba spremeniti',
     'improve.request.empty': 'Nič še ni izbrano. Začnite z brezplačnim hitrim pregledom ali izberite storitve zgoraj.',
     'improve.request.emptyBtn': 'Brezplačen pregled',
@@ -64,9 +65,10 @@
     'improve.request.remove': 'Odstrani',
     'improve.audit.eyebrow': 'Plačljiva revizija',
     'improve.audit.title': 'Potrebujete globljo analizo?',
-    'improve.audit.sub': 'Izvedli bomo profesionalno revizijo strani, preučili tehnično stanje, strukturo, vidnost v iskalnikih in možnosti izboljšav.',
+    'improve.audit.sub': 'Izvedli bomo profesionalno revizijo vaše strani, preučili tehnično stanje, vidnost v iskalnikih, konkurenco in pripravili načrt izboljšav.',
     'improve.audit.listTitle': 'Kaj lahko vključuje revizija',
-    'improve.audit.price': 'Cena je individualna in se določi po obsegu analize.',
+    'improve.audit.detailsTitle': 'Kaj vključuje profesionalna revizija?',
+    'improve.audit.price': 'Individualno — po določitvi obsega analize.',
     'improve.audit.btn': 'Naroči profesionalno revizijo',
     'improve.audit.note': 'Orodja in obseg analize uskladimo pred začetkom dela.',
     'improve.demo.eyebrow': 'Predstavitveni primer',
@@ -104,6 +106,7 @@
     'improve.catalog.note': 'Цены указаны как ориентировочные минимальные значения. Итоговая стоимость зависит от платформы, доступов, сложности сайта и объёма работ.',
     'improve.request.title': 'Ваш запрос на улучшение сайта',
     'improve.request.warning': 'Итоговая стоимость определяется после проверки сайта и объёма работ.',
+    'improve.request.help': 'Мы изучим ваш сайт, оценим необходимые доработки и предложим стоимость и сроки выполнения. Отправка заявки ни к чему вас не обязывает.',
     'improve.request.formTitle': 'Расскажите, что нужно изменить',
     'improve.request.empty': 'Пока ничего не выбрано. Начните с бесплатной экспресс-проверки или выберите услуги выше.',
     'improve.request.emptyBtn': 'Бесплатная проверка',
@@ -135,9 +138,10 @@
     'improve.request.remove': 'Убрать',
     'improve.audit.eyebrow': 'Платный аудит',
     'improve.audit.title': 'Нужен более глубокий анализ?',
-    'improve.audit.sub': 'Проведём профессиональный аудит сайта, изучим техническое состояние, структуру, поисковую видимость и возможности улучшения.',
+    'improve.audit.sub': 'Проведём профессиональный аудит вашего сайта, изучим его техническое состояние, поисковую видимость, конкурентов и подготовим план улучшений.',
     'improve.audit.listTitle': 'Что может включать аудит',
-    'improve.audit.price': 'Стоимость — индивидуально после определения объёма анализа.',
+    'improve.audit.detailsTitle': 'Что входит в профессиональный аудит?',
+    'improve.audit.price': 'Индивидуально — после определения объёма анализа.',
     'improve.audit.btn': 'Заказать профессиональный аудит',
     'improve.audit.note': 'Инструменты и объём анализа согласуем до начала работы.',
     'improve.demo.eyebrow': 'Демонстрационный пример',
@@ -163,6 +167,12 @@
         { id: 'booking', title: 'Povezava spletnega rezervacijskega sistema', desc: 'Prek pripravljene storitve za rezervacije.', price: 120 },
         { id: 'redesign', title: 'Redizajn posamezne strani', desc: 'Nov videz za eno stran.', price: 150 },
         { id: 'complex', title: 'Celovita modernizacija', desc: 'Individualna ocena obsega.', price: null }
+      ],
+      auditDirections: [
+        { title: 'Tehnično stanje in SEO', desc: 'Napake, hitrost delovanja, struktura.' },
+        { title: 'Uporabnost in konverzija', desc: 'Kako enostavno je za obiskovalca uporabljati stran in oddati povpraševanje.' },
+        { title: 'Vidnost v iskalnikih in konkurenca', desc: 'Analiza položaja strani in konkurenčnega okolja.' },
+        { title: 'Načrt izboljšav', desc: 'Konkretna priporočila in prioritete dela.' }
       ],
       auditItems: [
         'Globoka tehnična SEO-analiza.',
@@ -190,6 +200,12 @@
         { id: 'booking', title: 'Подключение онлайн-записи', desc: 'Через готовый сервис записи.', price: 120 },
         { id: 'redesign', title: 'Редизайн отдельной страницы', desc: 'Новый визуал для одной страницы.', price: 150 },
         { id: 'complex', title: 'Комплексная модернизация', desc: 'Индивидуальная оценка объёма.', price: null }
+      ],
+      auditDirections: [
+        { title: 'Техническое состояние и SEO', desc: 'Ошибки, производительность, структура.' },
+        { title: 'Удобство и конверсия', desc: 'Насколько удобно посетителю пользоваться сайтом и оставлять заявку.' },
+        { title: 'Поисковая видимость и конкуренты', desc: 'Анализ положения сайта и конкурентной среды.' },
+        { title: 'План улучшений', desc: 'Конкретные рекомендации и приоритеты работ.' }
       ],
       auditItems: [
         'Глубокий технический SEO-анализ.',

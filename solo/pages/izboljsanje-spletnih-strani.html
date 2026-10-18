@@ -121,6 +121,7 @@
         <label class="check"><input type="checkbox" id="reqConsent"><span data-i18n="improve.request.consent"></span></label>
         <small class="consent-note" data-i18n="improve.request.consentNote"></small>
         <a class="privacy-link" href="../privacy.html" target="_blank" rel="noopener" data-i18n="footer.privacy"></a>
+        <p class="request-help" data-i18n="improve.request.help"></p>
         <div class="qerr" id="reqErr"></div>
         <button type="submit" class="btn" id="improveSubmit" data-i18n="improve.request.submit"></button>
         <small class="meta" data-i18n="improve.request.note"></small>
@@ -136,8 +137,11 @@
       <span class="eyebrow" data-i18n="improve.audit.eyebrow"></span>
       <h2 data-i18n="improve.audit.title"></h2>
       <p class="section-lead" data-i18n="improve.audit.sub"></p>
-      <h3 data-i18n="improve.audit.listTitle"></h3>
-      <ul id="auditList" class="audit-list"></ul>
+      <div id="auditDirections" class="audit-directions"></div>
+      <details class="audit-details">
+        <summary data-i18n="improve.audit.detailsTitle"></summary>
+        <ul id="auditDetailsList" class="audit-list"></ul>
+      </details>
       <p class="audit-price" data-i18n="improve.audit.price"></p>
       <button type="button" class="btn" onclick="startAudit()" data-i18n="improve.audit.btn"></button>
       <small class="meta" data-i18n="improve.audit.note"></small>
@@ -145,40 +149,7 @@
   </div>
 </section>
 
-<section class="improve-section">
-  <div class="wrap">
-    <div class="demo-panel">
-      <span class="eyebrow" data-i18n="improve.demo.eyebrow"></span>
-      <h2 data-i18n="improve.demo.title"></h2>
-      <p class="section-lead" data-i18n="improve.demo.sub"></p>
-      <div class="demo-tabs">
-        <button type="button" data-demo="before" onclick="setDemo('before')" data-i18n="improve.demo.before"></button>
-        <button type="button" data-demo="after" onclick="setDemo('after')" data-i18n="improve.demo.after"></button>
-      </div>
-      <div class="demo-stage show-before" id="demoStage">
-        <div class="demo-screen demo-before">
-          <div class="db-top"><span></span><span></span><span></span></div>
-          <div class="db-body">
-            <div class="db-nav"></div>
-            <div class="db-title"></div>
-            <div class="db-lines"><i></i><i></i><i></i></div>
-            <div class="db-box"></div>
-            <div class="db-cols"><span></span><span></span><span></span></div>
-          </div>
-        </div>
-        <div class="demo-screen demo-after">
-          <div class="da-top"><b>SOLO.POV</b><span></span><span></span><i></i></div>
-          <div class="da-hero">
-            <div class="da-copy"><span></span><b></b><i></i><em></em></div>
-            <div class="da-art"><span></span><span></span></div>
-          </div>
-          <div class="da-cards"><div></div><div></div><div></div></div>
-        </div>
-      </div>
-      <small class="demo-caption" data-i18n="improve.demo.caption"></small>
-    </div>
-  </div>
-</section>
+
 </main>
 
 <footer>
