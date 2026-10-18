@@ -155,7 +155,7 @@
     h += group('once', d.setup) + group('monthly', d.monthly) + group('individual', d.individual);
     if (iss.length) {
       h += '<div class="ads-sum-group"><small>' + esc(d.issue) + '</small>';
-      for (var k = 0; k < iss.length; k++) h += '<div class="ads-sum-row"><span>' + esc(iss[k].label) + '</span><button type="button" onclick="removeIssue(\'' + iss[k].id + '\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
+      for (var k = 0; k < iss.length; k++) h += '<div class="ads-sum-row"><span>' + esc(iss[k].label) + '</span><b></b><button type="button" onclick="removeIssue(\'' + iss[k].id + '\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
       h += '</div>';
     }
     if (!sel.length && !iss.length) h += '<p class="ads-sum-empty">' + esc(d.none) + '</p>';
