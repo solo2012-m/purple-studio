@@ -66,8 +66,94 @@ window.SOLO_AI = {
     },
     ai: {
       eyebrow: 'AI-asistent',
-      title: 'Upravljajte stran s preprostimi sporočili',
-      sub: 'Namesto zapletenih nadzornih plošč — znan Telegram. Napišite, kaj želite spremeniti, AI pa pomaga pripraviti rezultat.',
+      title: 'Vaša stran. Vaš Telegram. Vaš AI-pomočnik.',
+      sub: 'Upravljajte stran s preprostimi sporočili. Dodajajte storitve, spreminjajte cene, objavljajte članke in posodabljajte podatke brez zapletenih nadzornih plošč.',
+      offer: {
+        accent: 'Preizkusite AI-pomočnika brezplačno — plačajte, če vam ustreza.',
+        cta: 'Preizkusite AI-pomočnika →',
+        note: 'Predstavitev je brezplačna. Možnost preizkusa na vaši strani se dogovori individualno.'
+      },
+      scenarios: {
+        label: 'Primeri dela AI-pomočnika',
+        title: 'Kako to izgleda v praksi',
+        note: 'Resnične naloge in prikaz možnosti.',
+        disclaimer: 'Prikazani pogovori so rekonstruirani primeri za predstavitev. Ne gre za dobesedne posnetke, rezultati pa so odvisni od dogovorjenega obsega.',
+        items: [
+          {
+            id: 'service', tab: 'Dodajanje storitve', bot: 'Zeleni pomočnik', project: 'Zeleni pomočnik', kind: 'site',
+            messages: [
+              { who: 'client', text: 'Živjo! Prosim, dodaj na stran novo storitev: čiščenje in pranje žlebov ter odtočnih sistemov. Preveri, kako to predstavljajo konkurenti, in pripravi koristen članek.' },
+              { who: 'ai', text: 'Seveda. Pregledal sem javno dostopne ponudbe lokalnih konkurentov. Večina poudarja preventivno vzdrževanje in cene okvirno 3–7 €/m.' },
+              { who: 'ai', text: 'Pripravil sem nov blok storitve: opis, ključne prednosti, gumb za povpraševanje in ikone.' },
+              { who: 'ai', text: 'Pripravil sem tudi članek »Zakaj je redno čiščenje žlebov pomembno?« z nasveti za vzdrževanje.' },
+              { who: 'client', text: 'Super. Pokaži, kako bo izgledalo na strani.' },
+              { who: 'ai', text: 'Tukaj je predogled. Spremembe so pripravljene za pregled — objavimo jih po vaši potrditvi.' }
+            ],
+            result: {
+              label: 'Predogled na strani', url: 'zelenipomocnik.si', kicker: 'Nova storitev',
+              title: 'Čiščenje in pranje žlebov ter odtočnih sistemov',
+              desc: 'Profesionalno odstranimo listje, umazanijo in zamašitve ter poskrbimo za nemoten odtok meteornih voda.',
+              meta: 'od 3–7 €/m', button: 'Povprašaj za ponudbo'
+            }
+          },
+          {
+            id: 'research', tab: 'Raziskava konkurence', bot: 'Zeleni pomočnik', project: 'Zeleni pomočnik', kind: 'research',
+            messages: [
+              { who: 'client', text: 'Preveri, kaj ponujajo konkurenti za čiščenje streh in fasad ter kakšne cene objavljajo.' },
+              { who: 'ai', text: 'Pregledal sem javno dostopne ponudbe. Prevladujejo paketi za redno vzdrževanje; cene se gibljejo okvirno 3–7 €/m² glede na dostopnost in stopnjo umazanije.' },
+              { who: 'ai', text: 'Večina izpostavlja preprečevanje poškodb fasade in strehe ter možnost letnega pregleda.' },
+              { who: 'ai', text: 'Priporočam, da na strani jasno navedete obseg, ceno po m² in primer izračuna. To zmanjša število vprašanj pred povpraševanjem.' },
+              { who: 'client', text: 'Dobro. Pripravi povzetek, da ga uporabimo pri novi storitvi.' }
+            ],
+            result: {
+              label: 'Povzetek raziskave', url: 'javno dostopni podatki',
+              title: 'Kaj ponujajo konkurenti',
+              rows: [
+                { k: 'Storitve', v: 'Čiščenje streh, fasad in žlebov' },
+                { k: 'Cene', v: 'okvirno 3–7 €/m²' },
+                { k: 'Poudarek', v: 'preventiva in redno vzdrževanje' },
+                { k: 'Priložnost', v: 'jasen obseg in primer izračuna' }
+              ],
+              note: 'Informativni pregled javno dostopnih podatkov. Ni zagotovilo tržnih cen.'
+            }
+          },
+          {
+            id: 'booking', tab: 'Upravljanje rezervacij', bot: 'Solopova Makeup', project: 'SOLO.POV Makeup', kind: 'booking',
+            messages: [
+              { who: 'client', text: 'Živjo! Želim, da so spletni termini povezani z mojim koledarjem in da se prosti termini prikažejo samodejno, brez dvojnih rezervacij. Kako to nastavimo?' },
+              { who: 'ai', text: 'Povezavo lahko uredimo. Spletne rezervacije se povežejo z Google Koledarjem, prosti termini pa se prikažejo glede na razpoložljivost.' },
+              { who: 'ai', text: 'Sistem upošteva trajanje posameznih storitev in blokira potrebne intervale. Po rezervaciji stranka prejme potrditev.' },
+              { who: 'ai', text: 'Povezali bi: rezervacije, koledar, trajanje storitev in potrditev termina. Nastavitev se izvede po vaši potrditvi.' },
+              { who: 'client', text: 'Odlično, pripravi predogled.' },
+              { who: 'ai', text: 'Tukaj je primer, kako so storitve in termini prikazani na strani.' }
+            ],
+            result: {
+              label: 'Predogled rezervacij', url: 'solopovamakeup.si',
+              title: 'Spletni termini in storitve',
+              services: [
+                { name: 'Večerno ličenje', dur: '60 min' },
+                { name: 'Poročno ličenje', dur: '90 min' },
+                { name: 'Ličenje za fotografiranje', dur: '75 min' }
+              ],
+              note: 'Primer prikaza storitev in trajanja. Povezava s koledarjem se nastavi posebej.'
+            }
+          }
+        ]
+      },
+      trial: {
+        eyebrow: 'Brezplačni preizkus',
+        title: 'Preizkusite sami. Prepričajte se, kako priročno je.',
+        desc: 'Spoznajte AI-pomočnika v brezplačni predstavitvi. Za zainteresirane stranke lahko dogovorimo individualni preizkus na njihovi strani.',
+        steps: [
+          { t: 'Povežemo', d: 'Preverimo združljivost strani in pripravimo povezavo z AI-pomočnikom.' },
+          { t: 'Preizkusite', d: 'Dodajte storitev, uredite besedilo ali izvedite drugo dogovorjeno nalogo.' },
+          { t: 'Odločite se', d: 'Nadaljujete le, če vam preizkus ustreza. Brez samodejnega podaljšanja.' }
+        ],
+        note: 'Predhodna zasnova individualnega preizkusa je 4 ure po dogovorjeni aktivaciji, z omejitvami uporabe. Preizkus na dejanski strani je odvisen od tehnične združljivosti in dogovorjenih pogojev. Spremembe na delujoči strani izvajamo le z dovoljenji in po potrditvi stranke.',
+        cta: 'Dogovorite se za preizkus →',
+        interest: 'Preizkus AI-pomočnika',
+        interestLabel: 'Interes'
+      },
       tariffsEyebrow: 'Paketi',
       tariffsTitle: 'Paketi AI-asistenta za Telegram',
       phones: [
@@ -273,8 +359,94 @@ window.SOLO_AI = {
     },
     ai: {
       eyebrow: 'AI-ассистент',
-      title: 'Управляйте сайтом обычными сообщениями',
-      sub: 'Вместо сложных панелей управления — привычный Telegram. Напишите, что нужно изменить, а AI поможет подготовить результат.',
+      title: 'Ваш сайт. Ваш Telegram. Ваш AI-помощник.',
+      sub: 'Управляйте своим сайтом обычными сообщениями. Добавляйте услуги, меняйте цены, публикуйте статьи и обновляйте информацию без сложных панелей управления.',
+      offer: {
+        accent: 'Попробуйте AI-помощника бесплатно — оплачивайте, если вам подходит.',
+        cta: 'Попробовать AI-помощника →',
+        note: 'Демонстрация бесплатно. Возможность тестирования на вашем сайте обсуждается индивидуально.'
+      },
+      scenarios: {
+        label: 'Примеры работы AI-ассистента',
+        title: 'Как это выглядит на практике',
+        note: 'Реальные задачи и демонстрация возможностей.',
+        disclaimer: 'Показанные диалоги реконструированы для демонстрации. Это не дословные скриншоты, а результат зависит от согласованного объёма работ.',
+        items: [
+          {
+            id: 'service', tab: 'Добавление услуги', bot: 'Zeleni pomočnik', project: 'Zeleni pomočnik', kind: 'site',
+            messages: [
+              { who: 'client', text: 'Привет! Добавь на сайт новую услугу: чистка и промывка водостоков и водосточных систем. Проверь, как это подают конкуренты, и подготовь полезную статью.' },
+              { who: 'ai', text: 'Проверил открытые предложения местных конкурентов. Большинство делает акцент на профилактическом обслуживании, цены ориентировочно 3–7 €/м.' },
+              { who: 'ai', text: 'Подготовил новый блок услуги: описание, ключевые преимущества, кнопку заявки и иконки.' },
+              { who: 'ai', text: 'Также подготовил статью «Почему важна регулярная чистка водостоков?» с советами по уходу.' },
+              { who: 'client', text: 'Отлично. Покажи, как это будет выглядеть на сайте.' },
+              { who: 'ai', text: 'Вот предпросмотр. Изменения готовы к проверке — опубликуем после вашего подтверждения.' }
+            ],
+            result: {
+              label: 'Предпросмотр на сайте', url: 'zelenipomocnik.si', kicker: 'Новая услуга',
+              title: 'Чистка и промывка водостоков и водосточных систем',
+              desc: 'Профессионально убираем листья, загрязнения и засоры, обеспечиваем свободный отток дождевой воды.',
+              meta: 'от 3–7 €/м', button: 'Оставить заявку'
+            }
+          },
+          {
+            id: 'research', tab: 'Исследование конкурентов', bot: 'Zeleni pomočnik', project: 'Zeleni pomočnik', kind: 'research',
+            messages: [
+              { who: 'client', text: 'Проверь, что предлагают конкуренты по чистке крыш и фасадов и какие цены публикуют.' },
+              { who: 'ai', text: 'Изучил открытые предложения. Преобладают пакеты регулярного обслуживания; цены ориентировочно 3–7 €/м² в зависимости от доступа и степени загрязнения.' },
+              { who: 'ai', text: 'Большинство подчёркивает профилактику повреждений фасада и крыши, а также возможность ежегодного осмотра.' },
+              { who: 'ai', text: 'Рекомендую на сайте явно указать объём, цену за м² и пример расчёта. Это снимет часть вопросов до заявки.' },
+              { who: 'client', text: 'Хорошо. Подготовь сводку, используем её в новой услуге.' }
+            ],
+            result: {
+              label: 'Сводка исследования', url: 'открытые данные',
+              title: 'Что предлагают конкуренты',
+              rows: [
+                { k: 'Услуги', v: 'чистка крыш, фасадов и водостоков' },
+                { k: 'Цены', v: 'ориентировочно 3–7 €/м²' },
+                { k: 'Акцент', v: 'профилактика и регулярный уход' },
+                { k: 'Возможность', v: 'понятный объём и пример расчёта' }
+              ],
+              note: 'Информационный обзор открытых данных. Не гарантия рыночных цен.'
+            }
+          },
+          {
+            id: 'booking', tab: 'Управление записью', bot: 'Solopova Makeup', project: 'SOLO.POV Makeup', kind: 'booking',
+            messages: [
+              { who: 'client', text: 'Привет! Хочу, чтобы онлайн-запись была связана с моим календарём и свободные слоты показывались автоматически, без двойных записей. Как это настроить?' },
+              { who: 'ai', text: 'Это можно настроить. Онлайн-запись связывается с Google Календарём, а свободные слоты показываются с учётом занятости.' },
+              { who: 'ai', text: 'Система учитывает длительность каждой услуги и блокирует нужные интервалы. После записи клиент получает подтверждение.' },
+              { who: 'ai', text: 'Подключаем: запись, календарь, длительность услуг и подтверждение. Настройка выполняется после вашего подтверждения.' },
+              { who: 'client', text: 'Отлично, подготовь предпросмотр.' },
+              { who: 'ai', text: 'Вот пример того, как услуги и слоты будут показаны на сайте.' }
+            ],
+            result: {
+              label: 'Предпросмотр записи', url: 'solopovamakeup.si',
+              title: 'Онлайн-запись и услуги',
+              services: [
+                { name: 'Вечерний макияж', dur: '60 мин' },
+                { name: 'Свадебный макияж', dur: '90 мин' },
+                { name: 'Макияж для фотосессии', dur: '75 мин' }
+              ],
+              note: 'Пример отображения услуг и длительности. Подключение календаря настраивается отдельно.'
+            }
+          }
+        ]
+      },
+      trial: {
+        eyebrow: 'Бесплатное тестирование',
+        title: 'Попробуйте сами. Убедитесь, насколько это удобно.',
+        desc: 'Познакомьтесь с AI-ассистентом в бесплатной демонстрации. Для заинтересованных клиентов можем согласовать индивидуальное тестирование на их собственном сайте.',
+        steps: [
+          { t: 'Подключаем', d: 'Проверяем совместимость сайта и готовим подключение AI-помощника.' },
+          { t: 'Вы пробуете', d: 'Добавляете услугу, меняете текст или выполняете другую согласованную задачу.' },
+          { t: 'Вы решаете', d: 'Продолжаете только если тест подошёл. Без автоматического продления.' }
+        ],
+        note: 'Предварительная концепция индивидуального теста — 4 часа после согласованной активации, с ограничениями использования. Тест на реальном сайте зависит от технической совместимости и согласованных условий. Изменения на действующем сайте выполняем только с разрешениями и после подтверждения клиента.',
+        cta: 'Обсудить пробное подключение →',
+        interest: 'Пробное подключение AI-ассистента',
+        interestLabel: 'Интерес'
+      },
       tariffsEyebrow: 'Тарифы',
       tariffsTitle: 'Тарифы AI-ассистента для Telegram',
       phones: [

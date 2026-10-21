@@ -1,7 +1,7 @@
 /* Solo.Pov — AI, support and automation page logic (v2) */
 (function () {
   'use strict';
-  var state = { support: null, ai: null, automations: {} };
+  var state = { support: null, ai: null, automations: {}, interest: null };
   var CONSENT_VERSION = '2026-10-18';
   var tipTimer = null;
 
@@ -143,20 +143,81 @@
   }
   window.selectAITariff = function (id) { state.ai = id; aiTariffCards(); refreshSummary(); };
 
+  function scenarioById(id) {
+    var a = D().ai.scenarios.items;
+    for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i];
+    return a[0] || null;
+  }
+  function msgTime(i) {
+    var m = 2 + i * 3, hh = 10 + Math.floor(m / 60), mm = m % 60;
+    return hh + ':' + (mm < 10 ? '0' : '') + mm;
+  }
+  function chatHTML(item) {
+    var ru = lang() === 'ru';
+    var h = '<div class="ai-tg"><div class="ai-tg-head"><span class="ai-tg-avatar">' + esc(item.bot.charAt(0)) + '</span><div class="ai-tg-id"><b>' + esc(item.bot) + '</b><small>bot · ' + esc(ru ? 'пример' : 'primer') + '</small></div><span class="ai-tg-badge">' + esc(ru ? 'Демо' : 'Demo') + '</span></div><div class="ai-tg-body">';
+    for (var i = 0; i < item.messages.length; i++) {
+      var m = item.messages[i], out = m.who === 'client';
+      h += '<div class="ai-msg ' + (out ? 'out' : 'in') + '" style="--d:' + (i * 0.18).toFixed(2) + 's"><p>' + esc(m.text).replace(/\n/g, '<br>') + '</p><span class="ai-msg-meta">' + msgTime(i) + (out ? ' <i class="ticks">&#10003;&#10003;</i>' : '') + '</span></div>';
+    }
+    h += '</div><div class="ai-tg-input"><span>' + esc(ru ? 'Сообщение' : 'Sporočilo') + '</span><i class="ai-tg-send"></i></div></div>';
+    return h;
+  }
+  function resultHTML(item) {
+    var r = item.result, ru = lang() === 'ru';
+    var h = '<div class="ai-res-card"><div class="ai-res-bar"><span class="ai-res-dots"><i></i><i></i><i></i></span><span class="ai-res-url">' + esc(r.url || '') + '</span></div><div class="ai-res-body"><span class="ai-res-label">' + esc(r.label) + '</span>';
+    if (item.kind === 'site') {
+      h += '<div class="ai-site-preview"><span class="ai-site-kicker">' + esc(r.kicker) + '</span><h4>' + esc(r.title) + '</h4><p>' + esc(r.desc) + '</p><div class="ai-site-foot"><span class="ai-site-price">' + esc(r.meta) + '</span><span class="ai-site-btn">' + esc(r.button) + '</span></div></div>';
+    } else if (item.kind === 'research') {
+      h += '<h4>' + esc(r.title) + '</h4><div class="ai-res-rows">';
+      for (var i = 0; i < r.rows.length; i++) h += '<div class="ai-res-row"><span>' + esc(r.rows[i].k) + '</span><b>' + esc(r.rows[i].v) + '</b></div>';
+      h += '</div><p class="ai-res-note">' + esc(r.note) + '</p>';
+    } else {
+      h += '<h4>' + esc(r.title) + '</h4><div class="ai-booking">';
+      for (var j = 0; j < r.services.length; j++) h += '<div class="ai-booking-row"><span class="ai-booking-dot"></span><span class="ai-booking-name">' + esc(r.services[j].name) + '</span><span class="ai-booking-dur">' + esc(r.services[j].dur) + '</span></div>';
+      h += '</div><div class="ai-cal"><div class="ai-cal-days"><span>' + esc(ru ? 'Пн' : 'Pon') + '</span><span>' + esc(ru ? 'Вт' : 'Tor') + '</span><span>' + esc(ru ? 'Ср' : 'Sre') + '</span><span class="on">' + esc(ru ? 'Чт' : 'Čet') + '</span><span>' + esc(ru ? 'Пт' : 'Pet') + '</span><span>' + esc(ru ? 'Сб' : 'Sob') + '</span><span>' + esc(ru ? 'Вс' : 'Ned') + '</span></div><div class="ai-cal-slots"><span>09:00</span><span>10:30</span><span class="off">12:00</span><span>14:00</span><span>15:30</span><span>17:00</span></div></div><p class="ai-res-note">' + esc(r.note) + '</p>';
+    }
+    h += '</div></div>';
+    return h;
+  }
+  window.selectScenario = function (id) {
+    var item = scenarioById(id); if (!item) return;
+    var tabs = document.querySelectorAll('.ai-sc-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      var on = tabs[i].getAttribute('data-scenario') === id;
+      tabs[i].classList.toggle('on', on);
+      tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+    $('aiChat').innerHTML = chatHTML(item);
+    $('aiResultPanel').innerHTML = resultHTML(item);
+  };
+  window.startTrial = function () {
+    state.interest = 'trial';
+    refreshSummary();
+    aiScrollTo('request');
+  };
+
   function renderAISection() {
     var d = D().ai, h = '';
     h += '<div class="ai-section-head"><span class="eyebrow">' + esc(d.eyebrow) + '</span><h2>' + esc(d.title) + '</h2><p class="ai-lead">' + esc(d.sub) + '</p></div>';
-    h += '<div class="ai-phones" id="aiPhones"></div>';
-    h += '<p class="ai-demo-note">' + esc(d.note) + '</p>';
+    h += '<div class="ai-offer"><p class="ai-offer-accent">' + esc(d.offer.accent) + '</p><button type="button" class="btn" onclick="aiScrollTo(\'aiScenario\')">' + esc(d.offer.cta) + '</button><p class="ai-offer-note">' + esc(d.offer.note) + '</p></div>';
+    h += '<div class="ai-scenarios" id="aiScenario"><div class="ai-sc-head"><span class="eyebrow">' + esc(d.scenarios.label) + '</span><h3>' + esc(d.scenarios.title) + '</h3><p class="ai-lead">' + esc(d.scenarios.note) + '</p></div><div class="ai-sc-tabs" role="tablist">';
+    for (var i = 0; i < d.scenarios.items.length; i++) {
+      var it = d.scenarios.items[i];
+      h += '<button type="button" class="ai-sc-tab' + (i === 0 ? ' on' : '') + '" role="tab" aria-selected="' + (i === 0 ? 'true' : 'false') + '" data-scenario="' + esc(it.id) + '" onclick="selectScenario(\'' + esc(it.id) + '\')"><span>' + esc(it.tab) + '</span><small>' + esc(it.project) + '</small></button>';
+    }
+    h += '</div><div class="ai-sc-grid"><div class="ai-sc-chat" id="aiChat"></div><div class="ai-sc-result" id="aiResultPanel"></div></div><p class="ai-demo-note">' + esc(d.scenarios.disclaimer) + '</p></div>';
+    h += '<div class="ai-trial" id="aiTrial"><div class="ai-trial-copy"><span class="eyebrow">' + esc(d.trial.eyebrow) + '</span><h3>' + esc(d.trial.title) + '</h3><p class="ai-lead">' + esc(d.trial.desc) + '</p></div><div class="ai-trial-steps">';
+    for (var j = 0; j < d.trial.steps.length; j++) {
+      h += '<div class="ai-trial-step"><span class="ai-trial-num">0' + (j + 1) + '</span><b>' + esc(d.trial.steps[j].t) + '</b><p>' + esc(d.trial.steps[j].d) + '</p></div>';
+    }
+    h += '</div><p class="ai-trial-note">' + esc(d.trial.note) + '</p><div class="ai-actions"><button type="button" class="btn" onclick="startTrial()">' + esc(d.trial.cta) + '</button></div></div>';
     h += '<div class="ai-tariffs-head"><span class="eyebrow">' + esc(d.tariffsEyebrow) + '</span><h3>' + esc(d.tariffsTitle) + '</h3></div>';
     h += '<div class="ai-tariffs ai-tariffs--4" id="aiTariffs"></div>';
     h += '<p class="ai-footnote">' + esc(d.tariffNote) + '</p><p class="ai-footnote ai-footnote--small">' + esc(d.tariffFootnote) + '</p>';
     h += '<div class="ai-actions"><button type="button" class="btn" onclick="aiScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
     $('aiBox').innerHTML = h;
-    var ph = '';
-    for (var i = 0; i < d.phones.length; i++) ph += phoneHTML(d.phones[i]);
-    $('aiPhones').innerHTML = ph;
     aiTariffCards();
+    selectScenario(d.scenarios.items[0].id);
   }
 
   function automationCards() {
@@ -221,6 +282,10 @@
   function refreshSummary() {
     var box = $('aiSummary'); if (!box) return;
     var d = D().form, h = '<h3>' + esc(d.summaryTitle) + '</h3>', count = 0, monthly = 0;
+    if (state.interest) {
+      count++;
+      h += '<div class="ai-sum-row"><span><small>' + esc(D().ai.trial.interestLabel) + '</small><b>' + esc(D().ai.trial.interest) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'interest\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
+    }
     if (state.support) {
       var s = supportById(state.support);
       if (s) {
@@ -250,6 +315,7 @@
   window.removeSelection = function (kind) {
     if (kind === 'support') state.support = null;
     if (kind === 'ai') state.ai = null;
+    if (kind === 'interest') state.interest = null;
     if (kind === 'support') supportCards();
     if (kind === 'ai') aiTariffCards();
     refreshSummary();
@@ -270,6 +336,7 @@
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
     if (state.support) { var s = supportById(state.support); if (s) lines.push((ru ? 'Техническая поддержка' : 'Tehnična podpora') + ': ' + s.name + ' — ' + s.price); }
     if (state.ai) { var a = aiById(state.ai); if (a) lines.push((ru ? 'AI-ассистент' : 'AI-asistent') + ': ' + a.name + ' — ' + a.price); }
+    if (state.interest) lines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + D().ai.trial.interest);
     var autos = selectedAutomations();
     if (autos.length) {
       lines.push((ru ? 'Автоматизация' : 'Avtomatizacija') + ':');
@@ -287,7 +354,7 @@
     return lines.join('\n');
   }
   function buildLead(site, comment, email, telegram, consent) {
-    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), support: state.support, ai: state.ai, automations: selectedAutomations().map(function (a) { return a.id; }), siteUrl: site, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
+    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), support: state.support, ai: state.ai, interest: state.interest, automations: selectedAutomations().map(function (a) { return a.id; }), siteUrl: site, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
   }
 
   window.submitAI = function (e) {
@@ -300,7 +367,7 @@
     var consent = !!($('aiConsent') || {}).checked;
     if (site && !validUrl(site)) { if (err) err.textContent = d.errUrl; return false; }
     if (!validEmail(email)) { if (err) err.textContent = d.errEmail; return false; }
-    if (!state.support && !state.ai && !selectedAutomations().length && !comment) { if (err) err.textContent = d.errEmpty; return false; }
+    if (!state.support && !state.ai && !state.interest && !selectedAutomations().length && !comment) { if (err) err.textContent = d.errEmpty; return false; }
     if (err) err.textContent = '';
     var text = buildText(site, comment, email, telegram, consent);
     deliverAI(text, buildLead(site, comment, email, telegram, consent));
