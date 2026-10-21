@@ -105,17 +105,25 @@
       box.innerHTML = '<div class="work-empty"><b>' + esc(t('s7.empty.t')) + '</b><p>' + esc(t('s7.empty.d')) + '</p></div>';
       return;
     }
-    var h = '<div class="grid g3">';
+    var h = '<div class="works-grid">';
     for (var i = 0; i < projects.length; i++) {
       var p = projects[i];
       var title = p.title[lang] || p.title.sl || '';
       var sector = p.sector ? (p.sector[lang] || p.sector.sl || '') : '';
       var task = p.task ? (p.task[lang] || p.task.sl || '') : '';
-      h += '<div class="card work">';
-      if (p.img) h += '<div class="thumb" style="background-image:url(' + p.img + ');background-size:cover"></div>';
-      h += '<div class="inner">' + (sector ? '<span class="tag">' + esc(sector) + '</span>' : '') + '<h3>' + esc(title) + '</h3><p>' + esc(task) + '</p>';
-      if (p.url) h += '<a class="more" href="' + p.url + '" target="_blank" rel="noopener">' + (lang === 'ru' ? 'Открыть сайт' : 'Odpri stran') + '</a>';
-      h += '</div></div>';
+      var host = p.host || (p.url ? p.url.replace(/^https?:\/\//, '').replace(/\/.*$/, '') : '');
+      var tags = [t('s7.tag.site')].concat(p.tags || []);
+      var card = '<a class="work-card" href="' + esc(p.url || '#') + '" target="_blank" rel="noopener">';
+      card += '<div class="work-frame"><div class="work-bar"><span class="wd"></span><span class="wd"></span><span class="wd"></span><span class="work-url">' + esc(host) + '</span></div>';
+      if (p.img) card += '<div class="work-shot"><img src="' + esc(p.img) + '" alt="' + esc(title) + '" width="1200" height="750" loading="lazy"></div>';
+      card += '</div><div class="work-body"><div class="work-head"><h3>' + esc(title) + '</h3><span class="work-arrow" aria-hidden="true">&#8599;</span></div>';
+      if (sector) card += '<div class="work-field">' + esc(sector) + '</div>';
+      if (task) card += '<p class="work-task">' + esc(task) + '</p>';
+      card += '<div class="work-tags">';
+      for (var j = 0; j < tags.length; j++) card += '<span>' + esc(tags[j]) + '</span>';
+      card += '</div><span class="work-link"><span>' + esc(t('s7.open')) + '</span><span class="ar" aria-hidden="true">&rarr;</span></span>';
+      card += '</div></a>';
+      h += card;
     }
     h += '</div>';
     box.innerHTML = h;

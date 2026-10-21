@@ -29,7 +29,32 @@ window.SOLO_CONFIG = {
      { title: {sl:'', ru:''}, sector: {sl:'', ru:''}, task: {sl:'', ru:''},
        img: 'assets/img/projects/ime.jpg', url: 'https://...' }
      Objavljamo samo projekte, za katere imamo dovoljenje. */
-  projects: [],
+  projects: [
+    {
+      title: { sl: 'Zeleni pomočnik', ru: 'Zeleni pomočnik' },
+      sector: { sl: 'Čiščenje streh, fasad in sončnih panelov', ru: 'Чистка крыш, фасадов и солнечных панелей' },
+      task: {
+        sl: 'Predstavitev storitev, galerija izvedenih del, izračun in povpraševanje — v treh jezikih.',
+        ru: 'Услуги, галерея выполненных работ, расчёт стоимости и заявка — на трёх языках.'
+      },
+      img: 'assets/img/works/zeleni-pomocnik.jpg',
+      url: 'https://zelenipomocnik.si/',
+      host: 'zelenipomocnik.si',
+      tags: ['SL · DE · EN']
+    },
+    {
+      title: { sl: 'Solopova Makeup', ru: 'Solopova Makeup' },
+      sector: { sl: 'Vizažistka · Maribor', ru: 'Визажист · Марибор' },
+      task: {
+        sl: 'Osebna blagovna znamka, storitve, galerija, tečaji in rezervacija termina.',
+        ru: 'Личный бренд, услуги, галерея, курсы и онлайн-запись.'
+      },
+      img: 'assets/img/works/solopova-makeup.jpg',
+      url: 'https://solopovamakeup.si/index.html',
+      host: 'solopovamakeup.si',
+      tags: ['SL · EN · RU']
+    }
+  ],
   submit: {
     enabled: false,
     endpoint: ''
