@@ -38,7 +38,8 @@ window.SOLO_AI = {
               { who: 'ai', text: 'Predogled je pripravljen. Objavim?' },
               { who: 'client', text: 'Da.' },
               { who: 'ai', text: 'Končano ✓ Storitev je dodana na stran.' }
-            ]
+            ],
+            note: 'AI pripravi opis in ceno; objava sledi po vaši potrditvi.'
           },
           {
             id: 'research', tab: 'Raziskava konkurence', project: 'Zeleni pomočnik', bot: 'Zeleni pomočnik', avatar: '../assets/img/works/zeleni-pomocnik.jpg',
@@ -48,17 +49,17 @@ window.SOLO_AI = {
               { who: 'client', text: 'Da, pripravi.' },
               { who: 'ai', text: 'Pripravil sem opis storitve in priporočila. Pogledate?' }
             ],
-            note: 'Primer je skrajšan. Raziskava poteka po dostopnih virih in v okviru ustreznega paketa; ponazoritveni podatki niso predstavljeni kot potrjeni rezultati raziskave.'
+            note: 'Kratek pregled javnih ponudb; primer je skrajšan.'
           },
           {
-            id: 'booking', tab: 'Spletne rezervacije', project: 'SOLO.POV Makeup', bot: 'SOLO.POV Makeup', avatar: '../assets/img/works/solopova-makeup.jpg',
+            id: 'booking', tab: 'Upravljanje spletnih rezervacij', project: 'SOLO.POV Makeup', bot: 'SOLO.POV Makeup', avatar: '../assets/img/works/solopova-makeup.jpg',
             messages: [
               { who: 'client', text: 'Spremeni trajanje večernega ličenja na 90 minut.' },
               { who: 'ai', text: 'Našel sem storitev »Večerno ličenje«.\n\nTrenutno trajanje: 60 minut.\n\nNovo trajanje: 90 minut.\n\nPotrdim spremembo?' },
               { who: 'client', text: 'Potrjujem.' },
               { who: 'ai', text: 'Končano ✓ Trajanje je posodobljeno.\n\nPreverim ustrezno nastavitev v koledarju rezervacij?' }
             ],
-            note: 'Scenarij je predstavitven. Prikaz ne pomeni, da je določena koledarska integracija že povezana.'
+            note: 'Prikaz spremembe storitve; koledarska povezava ni vzpostavljena.'
           }
         ]
       },
@@ -106,6 +107,7 @@ window.SOLO_AI = {
       ],
       tariffNote: 'Cene in limiti so predhodni. Ne obljubljamo neomejenih dejanj ali neomejenega števila člankov. Zahtevno ročno programiranje ni vključeno. Pred začetkom se dokončno določijo stroški povezave, mesečni limiti, dovoljeni stroški zunanjih AI-storitev in dodatna dela.',
       tariffFootnote: 'Paket se začne po potrditvi tehnične združljivosti strani in nastavitvi povezave. Avtomatizacija poslovanja je ločena storitev z individualno oceno.',
+      limitsNote: 'Standardna operacija je dogovorjena sprememba vsebine ali nastavitev strani v okviru podprtih funkcij AI-asistenta. Zahtevne spremembe, razvoj novih funkcij in integracije se ocenijo posebej.',
       cta: 'Izberi AI-asistenta →'
     },
     automation: {
@@ -137,6 +139,9 @@ window.SOLO_AI = {
       summaryTitle: 'Vaš izbor SOLO.POV',
       aiLabel: 'AI-asistent',
       automationLabel: 'Avtomatizacija',
+      monthlySection: 'Mesečna naročnina',
+      additionalSection: 'Dodatna dela',
+      additionalNote: 'Enkratni strošek se določi po oceni naloge in ni vključen v mesečno naročnino.',
       monthlyLabel: 'Predhodni mesečni paket',
       oneTimeLabel: 'Enkratni strošek avtomatizacije',
       afterEstimate: 'določi se po oceni',
@@ -176,9 +181,12 @@ window.SOLO_AI = {
       ]
     },
     cross: {
-      title: 'Potrebujete več?',
-      link: 'Izdelava in izboljšanje strani →',
-      future: 'Oglaševanje, SEO in analitika — kmalu'
+      title: 'Potrebujete še kaj?',
+      links: [
+        { label: 'Izdelava strani →', href: 'izdelava-spletnih-strani.html' },
+        { label: 'Izboljšanje strani →', href: 'izboljsanje-spletnih-strani.html' },
+        { label: 'Oglaševanje in promocija →', href: 'reklama-in-promocija.html' }
+      ]
     }
   },
   ru: {
@@ -219,7 +227,8 @@ window.SOLO_AI = {
               { who: 'ai', text: 'Предпросмотр готов. Опубликовать?' },
               { who: 'client', text: 'Да.' },
               { who: 'ai', text: 'Готово ✓ Услуга добавлена на сайт.' }
-            ]
+            ],
+            note: 'AI готовит описание и цену; публикация — после подтверждения.'
           },
           {
             id: 'research', tab: 'Исследование конкурентов', project: 'Zeleni pomočnik', bot: 'Zeleni pomočnik', avatar: '../assets/img/works/zeleni-pomocnik.jpg',
@@ -229,17 +238,17 @@ window.SOLO_AI = {
               { who: 'client', text: 'Да, подготовь.' },
               { who: 'ai', text: 'Подготовил описание услуги и рекомендации. Посмотреть?' }
             ],
-            note: 'Пример сокращён. Исследование выполняется по доступным источникам и в рамках соответствующего тарифа; условные данные не представлены как подтверждённые результаты.'
+            note: 'Краткий обзор открытых предложений; пример сокращён.'
           },
           {
-            id: 'booking', tab: 'Онлайн-запись', project: 'SOLO.POV Makeup', bot: 'SOLO.POV Makeup', avatar: '../assets/img/works/solopova-makeup.jpg',
+            id: 'booking', tab: 'Управление онлайн-записью', project: 'SOLO.POV Makeup', bot: 'SOLO.POV Makeup', avatar: '../assets/img/works/solopova-makeup.jpg',
             messages: [
               { who: 'client', text: 'Измени длительность вечернего макияжа на 90 минут.' },
               { who: 'ai', text: 'Нашёл услугу «Вечерний макияж».\n\nТекущая длительность: 60 минут.\n\nНовая длительность: 90 минут.\n\nПодтвердить изменение?' },
               { who: 'client', text: 'Подтверждаю.' },
               { who: 'ai', text: 'Готово ✓ Длительность обновлена.\n\nПроверить соответствующую настройку в календаре записи?' }
             ],
-            note: 'Сценарий демонстрационный. Он не означает, что конкретная календарная интеграция уже подключена.'
+            note: 'Показ изменения услуги; календарная интеграция не подключена.'
           }
         ]
       },
@@ -287,6 +296,7 @@ window.SOLO_AI = {
       ],
       tariffNote: 'Цены и лимиты предварительные. Мы не обещаем безлимитные действия или неограниченное количество статей. Сложная ручная разработка не входит в стоимость. До начала работ согласуются стоимость подключения, месячные лимиты, допустимые расходы на сторонние AI-сервисы и дополнительные работы.',
       tariffFootnote: 'Тариф начинается после подтверждения технической совместимости сайта и настройки подключения. Автоматизация бизнеса — отдельная услуга с индивидуальной оценкой.',
+      limitsNote: 'Стандартная операция — согласованное изменение содержимого или настроек сайта в пределах доступных функций AI-ассистента. Сложные изменения, разработка новых функций и интеграции оцениваются отдельно.',
       cta: 'Выбрать AI-ассистента →'
     },
     automation: {
@@ -318,6 +328,9 @@ window.SOLO_AI = {
       summaryTitle: 'Ваш выбор SOLO.POV',
       aiLabel: 'AI-ассистент',
       automationLabel: 'Автоматизация',
+      monthlySection: 'Ежемесячная подписка',
+      additionalSection: 'Дополнительные работы',
+      additionalNote: 'Разовая стоимость определяется после оценки задачи и не входит в ежемесячную подписку.',
       monthlyLabel: 'Предварительный месячный тариф',
       oneTimeLabel: 'Разовая стоимость автоматизации',
       afterEstimate: 'определяется после оценки',
@@ -357,9 +370,12 @@ window.SOLO_AI = {
       ]
     },
     cross: {
-      title: 'Нужно больше возможностей?',
-      link: 'Создание и улучшение сайтов →',
-      future: 'Реклама, SEO и аналитика — скоро'
+      title: 'Нужно что-то ещё?',
+      links: [
+        { label: 'Создание сайтов →', href: 'izdelava-spletnih-strani.html' },
+        { label: 'Улучшение сайтов →', href: 'izboljsanje-spletnih-strani.html' },
+        { label: 'Реклама и продвижение →', href: 'reklama-in-promocija.html' }
+      ]
     }
   }
 };

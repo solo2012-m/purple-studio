@@ -99,7 +99,7 @@
     for (var j = 0; j < d.items.length; j++) {
       var it = d.items[j];
       h += '<div class="tgm-col' + (j === state.scenario ? ' on' : '') + '" data-col="' + j + '">';
-      h += '<div class="tgm-caption"><span>0' + (j + 1) + '</span>' + esc(it.tab) + '</div>';
+      h += '<div class="tgm-caption">' + esc(it.tab) + '</div>';
       h += phoneHTML(it, j);
       if (it.note) h += '<p class="tgm-note">' + esc(it.note) + '</p>';
       h += '</div>';
@@ -134,6 +134,7 @@
     h += '<div class="ai-tariffs-head"><span class="eyebrow">' + esc(d.tariffsEyebrow) + '</span><h3>' + esc(d.tariffsTitle) + '</h3></div>';
     h += '<div class="ai-tariffs ai-tariffs--4" id="aiTariffs"></div>';
     h += '<p class="ai-footnote">' + esc(d.tariffNote) + '</p><p class="ai-footnote ai-footnote--small">' + esc(d.tariffFootnote) + '</p>';
+    if (d.limitsNote) h += '<p class="ai-footnote ai-footnote--small">' + esc(d.limitsNote) + '</p>';
     h += '<div class="ai-actions"><button type="button" class="btn" onclick="aiScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
     $('aiBox').innerHTML = h;
     aiTariffCards();
@@ -222,7 +223,7 @@
 
   function refreshSummary() {
     var box = $('aiSummary'); if (!box) return;
-    var d = D().form, h = '<h3>' + esc(d.summaryTitle) + '</h3>', count = 0, monthly = 0;
+    var d = D().form, h = '<h3>' + esc(d.summaryTitle) + '</h3>', count = 0;
     if (state.interest) {
       count++;
       var interestLabel = lang() === 'ru' ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev';
@@ -231,19 +232,17 @@
     if (state.ai) {
       var a = aiById(state.ai);
       if (a) {
-        count++; monthly += a.monthly;
-        h += '<div class="ai-sum-row"><span><small>' + esc(d.aiLabel) + '</small><b>' + esc(a.name) + ' — ' + esc(a.price) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'ai\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
+        count++;
+        h += '<div class="ai-sum-section"><small>' + esc(d.monthlySection) + '</small><div class="ai-sum-row"><span><small>' + esc(d.aiLabel) + '</small><b>' + esc(a.name) + ' — ' + esc(a.price) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'ai\')" aria-label="' + esc(d.remove) + '">&times;</button></div></div>';
       }
     }
     var autos = selectedAutomations();
     if (autos.length) {
       count += autos.length;
-      h += '<div class="ai-sum-group"><small>' + esc(d.automationLabel) + '</small>';
+      h += '<div class="ai-sum-section"><small>' + esc(d.additionalSection) + '</small>';
       for (var i = 0; i < autos.length; i++) h += '<div class="ai-sum-auto"><span>' + esc(autos[i].title) + '</span><button type="button" class="ai-sum-remove" onclick="removeAutomation(\'' + autos[i].id + '\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
-      h += '</div>';
+      h += '<p class="ai-sum-note">' + esc(d.additionalNote) + '</p></div>';
     }
-    if (monthly > 0) h += '<div class="ai-sum-total"><span>' + esc(d.monthlyLabel) + '</span><b>' + (lang() === 'ru' ? 'от ' + monthly + ' €/мес.' : 'od ' + monthly + ' €/mesec') + '</b></div>';
-    if (autos.length) h += '<div class="ai-sum-onetime"><span>' + esc(d.oneTimeLabel) + '</span><b>' + esc(d.afterEstimate) + '</b></div>';
     if (!count) h += '<p class="ai-sum-empty">' + esc(d.none) + '</p>';
     box.innerHTML = h;
   }
@@ -267,16 +266,14 @@
     var ru = lang() === 'ru', lines = [];
     lines.push(ru ? 'Заявка Solo.Pov — AI-ассистент и автоматизация' : 'Povpraševanje Solo.Pov — AI-asistent in avtomatizacija');
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
-    if (state.ai) { var a = aiById(state.ai); if (a) lines.push((ru ? 'AI-ассистент' : 'AI-asistent') + ': ' + a.name + ' — ' + a.price); }
+    if (state.ai) { var a = aiById(state.ai); if (a) lines.push((ru ? 'Ежемесячная подписка' : 'Mesečna naročnina') + ': ' + a.name + ' — ' + a.price); }
     if (state.interest) lines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + (ru ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev'));
     var autos = selectedAutomations();
     if (autos.length) {
-      lines.push((ru ? 'Автоматизация' : 'Avtomatizacija') + ':');
+      lines.push((ru ? 'Дополнительные работы' : 'Dodatna dela') + ':');
       for (var i = 0; i < autos.length; i++) lines.push('- ' + autos[i].title);
+      lines.push(ru ? 'Разовая стоимость определяется после оценки задачи.' : 'Enkratni strošek se določi po oceni naloge.');
     }
-    var monthly = (state.ai ? aiById(state.ai).monthly : 0);
-    if (monthly > 0) lines.push((ru ? 'Предварительный ежемесячный тариф' : 'Predhodni mesečni paket') + ': ' + (ru ? 'от ' + monthly + ' €/мес.' : 'od ' + monthly + ' €/mesec'));
-    if (autos.length) lines.push((ru ? 'Разовая стоимость автоматизации' : 'Enkratni strošek avtomatizacije') + ': ' + (ru ? 'определяется после оценки' : 'določi se po oceni'));
     if (site) lines.push((ru ? 'Сайт' : 'Stran') + ': ' + site);
     if (comment) lines.push((ru ? 'Задача' : 'Naloga') + ': ' + comment);
     lines.push('Email: ' + email);
@@ -382,8 +379,8 @@
   }
   function renderCross() {
     var d = D().cross, h = '<div class="ai-cross"><h2>' + esc(d.title) + '</h2><div class="ai-cross-links">';
-    h += '<a class="btn ghost" href="izdelava-spletnih-strani.html?lang=' + lang() + '">' + esc(d.link) + '</a>';
-    h += '<span class="ai-future">' + esc(d.future) + '</span></div></div>';
+    for (var i = 0; i < d.links.length; i++) h += '<a class="btn ghost" href="' + esc(d.links[i].href) + '?lang=' + lang() + '">' + esc(d.links[i].label) + '</a>';
+    h += '</div></div>';
     $('crossBox').innerHTML = h;
   }
 

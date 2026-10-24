@@ -1152,7 +1152,7 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 .ai-tariff.ai-selectable:hover{border-color:var(--accent);box-shadow:0 20px 42px -30px rgba(255,212,0,.5);transform:translateY(-2px)}
 .ai-tariff.ai-selectable.sel{border-color:var(--accent);background:var(--surface2);box-shadow:0 0 0 1px var(--accent),0 24px 45px -32px rgba(255,212,0,.5)}
 .ai-tariff.ai-selectable:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.ai-tariff-badge,.ai-sel-badge{display:inline-block;font:700 9.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:4px 8px;margin:0 5px 8px 0;line-height:1}
+.ai-tariff-badge,.ai-sel-badge{display:inline-block;align-self:flex-start;width:auto;font:700 9.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:4px 8px;margin:0 5px 8px 0;line-height:1}
 .ai-tariff-badge{color:var(--accent);border:1px solid rgba(255,212,0,.4);background:rgba(255,212,0,.06)}
 .ai-tariff-badge.rec{background:var(--accent);border-color:var(--accent);color:#111}
 .ai-sel-badge{background:var(--accent);color:#111}
@@ -1208,6 +1208,9 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 .ai-sum-total b{font:700 20px "Space Grotesk",sans-serif;color:var(--accent)}
 .ai-sum-onetime{display:flex;justify-content:space-between;gap:12px;font-size:11.5px;color:var(--muted);padding-top:6px}
 .ai-sum-empty{margin:0;color:var(--muted);font-size:13px}
+.ai-sum-section{margin:10px 0}
+.ai-sum-section>small{display:block;font:500 10.5px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ai-sum-note{margin:8px 0 0;color:var(--muted);font-size:11.5px;line-height:1.45}
 .ai-help{font-size:12.5px;line-height:1.55;color:var(--muted);margin:12px 0 4px;padding-left:14px;border-left:2px solid rgba(255,212,0,.5)}
 @media(max-width:1100px){.ai-tariffs--4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:960px){
@@ -1432,7 +1435,7 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 @media(max-width:640px){.ads-summary{max-height:360px}}
 
 /* === AI assistant page — realistic Telegram demos (2026-10-24) === */
-.ai-hero{min-height:0;padding:56px 0 48px}
+.ai-hero{min-height:0;padding:52px 0 44px}
 .ai-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .ai-card{height:100%;min-height:0}
 .ai-card p{max-width:48ch}
@@ -1442,7 +1445,7 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 .tgm-tabs{display:none}
 .tgm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px;align-items:start}
 .tgm-col{min-width:0}
-.tgm-caption{display:flex;align-items:center;gap:7px;margin:0 0 10px;font:600 11px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tgm-caption{display:flex;align-items:center;justify-content:center;min-height:17px;max-width:338px;margin:0 auto 10px;text-align:center;font:600 11px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .tgm-caption span{color:var(--accent);font:700 11px Inter,sans-serif}
 .tgm-phone{position:relative;width:100%;max-width:338px;margin:0 auto;padding:10px;border-radius:42px;background:linear-gradient(160deg,#202024,#08080a 55%);border:1px solid #3a3a40;box-shadow:0 42px 70px -48px #000,inset 0 0 0 1px rgba(255,255,255,.05)}
 .tgm-phone:before{content:"";position:absolute;left:-2px;top:96px;width:2px;height:34px;border-radius:2px;background:#2d2d33}
@@ -1479,7 +1482,7 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 .tgm-field{flex:1;min-width:0;padding:8px 11px;border-radius:16px;background:#f1f2f4;color:#8a9096;font:400 12.5px Inter,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tgm-home{position:relative;height:14px;background:#fff}
 .tgm-home:after{content:"";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);width:96px;height:4px;border-radius:2px;background:#111;opacity:.85}
-.tgm-note{max-width:338px;margin:10px auto 0;font-size:11.5px;line-height:1.5;color:var(--muted)}
+.tgm-note{width:100%;max-width:338px;margin:10px auto 0;text-align:center;font-size:11.5px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
 .ai-demo-note--small{font-size:11px;color:#8b8b90;margin-top:8px}
 
 @media(max-width:1100px){
@@ -1514,6 +1517,7 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
   .tgm-screen{height:804px;border-radius:31px}
   .tgm-chat{padding:8px 8px 10px}
   .tgm-bubble{font-size:13.4px;max-width:87%}
+  .tgm-caption{max-width:320px}
   .tgm-note{max-width:320px}
 }
 @media(prefers-reduced-motion:reduce){
