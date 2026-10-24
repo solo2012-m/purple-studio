@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=20261024-main">
 </head>
 <body>
 
@@ -173,67 +173,15 @@
   <div class="wrap">
     <h2 class="h2" data-i18n="s5.title"></h2>
     <p class="lead" data-i18n="s5.lead"></p>
-    <div class="demo">
-      <div class="panel chat">
-        <div class="ph"><i></i><span data-i18n="s5.demo.title"></span></div>
-        <div class="pb">
-          <div class="who" data-i18n="s5.who.me"></div>
-          <div class="msg me on" id="dm1" data-i18n="s5.m1"></div>
-          <div class="who r" data-i18n="s5.who.ai"></div>
-          <div class="msg ai" id="dm2" data-i18n="s5.m2"></div>
-          <div class="who" data-i18n="s5.who.me"></div>
-          <div class="msg me" id="dm3" data-i18n="s5.m3"></div>
-          <div class="msg act" id="dm4" data-i18n="s5.m4"></div>
-          <div class="demo-ctl">
-            <button class="btn sm" id="demoBtn" onclick="SOLO.runDemo()" data-i18n="s5.demo.btn"></button>
-          </div>
-          <div class="demo-note" data-i18n="s5.disclaimer"></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="ph"><i></i><span data-i18n="s5.demo.step2"></span></div>
-        <div class="pb">
-          <div class="site">
-            <div class="sh"><b data-i18n="s5.site.title"></b><span>solo.pov</span></div>
-            <div class="svc on">
-              <b data-i18n="s5.site.old"></b>
-              <p data-i18n="s5.site.olddesc"></p>
-            </div>
-            <div class="svc" id="svcCard" style="margin-top:10px">
-              <span class="tag" data-i18n="s5.site.new"></span>
-              <b data-i18n="s5.site.card"></b>
-              <p data-i18n="s5.site.desc"></p>
-              <span class="lnk" data-i18n="s5.site.cta"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="grid" style="margin-top:26px">
-      <div class="card">
-        <h3 data-i18n="s5.card.t"></h3>
-        <ul>
-          <li data-i18n="s5.card.l1"></li><li data-i18n="s5.card.l2"></li>
-          <li data-i18n="s5.card.l3"></li><li data-i18n="s5.card.l4"></li>
-        </ul>
-      </div>
+    <div id="telegramHome"></div>
+    <p class="ai-demo-note" data-i18n="s5.demo.note"></p>
+    <div class="actions center" style="margin-top:26px">
+      <a class="btn" href="pages/ai-avtomatizacija.html" data-route="ai" data-i18n="s5.cta"></a>
     </div>
   </div>
 </section>
 
-<section id="why">
-  <div class="wrap">
-    <h2 class="h2" data-i18n="s6.title"></h2>
-    <p class="lead" data-i18n="s6.lead"></p>
-    <div class="fears">
-      <div class="fear"><div class="f" data-i18n="s6.f1"></div><div class="r" data-i18n="s6.r1"></div></div>
-      <div class="fear"><div class="f" data-i18n="s6.f2"></div><div class="r" data-i18n="s6.r2"></div></div>
-      <div class="fear"><div class="f" data-i18n="s6.f3"></div><div class="r" data-i18n="s6.r3"></div></div>
-      <div class="fear"><div class="f" data-i18n="s6.f4"></div><div class="r" data-i18n="s6.r4"></div></div>
-      <div class="fear"><div class="f" data-i18n="s6.f5"></div><div class="r" data-i18n="s6.r5"></div></div>
-    </div>
-  </div>
-</section>
+
 
 <section id="works">
   <div class="wrap">
@@ -314,6 +262,7 @@
         <a href="pages/izdelava-spletnih-strani.html" data-i18n="s3.a.t"></a>
         <a href="pages/izboljsanje-spletnih-strani.html" data-i18n="s3.b.t"></a>
         <a href="pages/ai-avtomatizacija.html" data-i18n="s3.c.t"></a>
+        <a href="pages/reklama-in-promocija.html" data-i18n="s3.d.t"></a>
       </div>
       <div id="footcontact">
         <h4 data-i18n="footer.contact"></h4>
@@ -324,6 +273,7 @@
         <a href="?lang=sl" onclick="SOLO.setLang('sl');return false;">Slovenščina</a>
         <a href="?lang=ru" onclick="SOLO.setLang('ru');return false;">Русский</a>
         <a href="faq.html" data-i18n="s8.all"></a>
+        <a href="privacy.html" data-i18n="footer.privacy"></a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -342,9 +292,11 @@
   </div>
 </div>
 
-<script src="assets/config.js"></script>
-<script src="assets/i18n.js?v=20261024-ai"></script>
-<script src="assets/app.js"></script>
+<script src="assets/config.js?v=20261024-main"></script>
+<script src="assets/i18n.js?v=20261024-main"></script>
+<script src="assets/ai-i18n.js?v=20261024-main"></script>
+<script src="assets/app.js?v=20261024-main"></script>
+<script src="assets/telegram-home.js?v=20261024-main"></script>
 <script>
   (function () {
     var grid = document.getElementById('principles');

@@ -1523,3 +1523,16 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
 @media(prefers-reduced-motion:reduce){
   .ai-card,.tgm-tab{transition:none}
 }
+
+/* === Home page lower sections (2026-10-24) === */
+#telegram .lead{max-width:780px}
+#telegram .tgm-grid{margin-top:30px}
+#telegram .ai-demo-note{max-width:72ch;margin:16px auto 0;text-align:center}
+#telegram .actions.center{margin-top:26px}
+.principles{grid-auto-rows:1fr}
+.principles .principle{height:100%}
+.works-grid .work-card{height:100%}
+@media(max-width:640px){
+  #telegram .tgm-grid{margin-top:18px}
+  #telegram .ai-demo-note{margin-top:12px}
+}

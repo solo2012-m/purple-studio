@@ -40,6 +40,7 @@
     document.documentElement.lang = l;
     applyI18n();
     renderWorks();
+    if (window.renderTelegramHome) window.renderTelegramHome();
     resetDemo();
     retype();
     if (quiz.open) renderQuiz();

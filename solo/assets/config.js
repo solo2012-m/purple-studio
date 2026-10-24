@@ -32,10 +32,10 @@ window.SOLO_CONFIG = {
   projects: [
     {
       title: { sl: 'Zeleni pomočnik', ru: 'Zeleni pomočnik' },
-      sector: { sl: 'Čiščenje streh, fasad in sončnih panelov', ru: 'Чистка крыш, фасадов и солнечных панелей' },
+      sector: { sl: 'Čiščenje in barvanje streh ter fasad', ru: 'Очистка и покраска крыш и фасадов' },
       task: {
-        sl: 'Predstavitev storitev, galerija izvedenih del, izračun in povpraševanje — v treh jezikih.',
-        ru: 'Услуги, галерея выполненных работ, расчёт стоимости и заявка — на трёх языках.'
+        sl: 'Spletna stran storitev čiščenja in barvanja streh ter fasad. Strani storitev, obrazci za povpraševanje, večjezičnost, posodabljanje vsebine in razvoj s pomočjo AI.',
+        ru: 'Сайт услуг по очистке и покраске крыш и фасадов. Страницы услуг, формы заявок, мультиязычность, обновление содержимого и развитие через AI.'
       },
       img: 'assets/img/works/zeleni-pomocnik.jpg',
       url: 'https://zelenipomocnik.si/',
@@ -46,8 +46,8 @@ window.SOLO_CONFIG = {
       title: { sl: 'Solopova Makeup', ru: 'Solopova Makeup' },
       sector: { sl: 'Vizažistka · Maribor', ru: 'Визажист · Марибор' },
       task: {
-        sl: 'Osebna blagovna znamka, storitve, galerija, tečaji in rezervacija termina.',
-        ru: 'Личный бренд, услуги, галерея, курсы и онлайн-запись.'
+        sl: 'Spletna stran vizažistke. Predstavitev storitev, nastavitev trajanja storitev, spletne rezervacije in upravljanje vsebine.',
+        ru: 'Сайт визажиста. Презентация услуг, настройка продолжительности процедур, онлайн-запись и управление содержимым.'
       },
       img: 'assets/img/works/solopova-makeup.jpg',
       url: 'https://solopovamakeup.si/index.html',
