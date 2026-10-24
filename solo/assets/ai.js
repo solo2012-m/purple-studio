@@ -1,8 +1,8 @@
-/* Solo.Pov — AI, support and automation page logic (v2) */
+/* Solo.Pov — AI assistant and automation page logic (v3, 2026-10-24) */
 (function () {
   'use strict';
-  var state = { support: null, ai: null, automations: {}, interest: null };
-  var CONSENT_VERSION = '2026-10-18';
+  var state = { ai: null, automations: {}, interest: null, scenario: 0 };
+  var CONSENT_VERSION = '2026-10-24';
   var tipTimer = null;
 
   var ICONS = {
@@ -14,11 +14,12 @@
     publish: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 14l1-3 7-7 2 2-7 7-3 1z"/><path d="M10 5l3 3"/></svg>'
   };
 
+  var TICKS = '<svg class="tgm-ticks" width="15" height="10" viewBox="0 0 16 11" aria-hidden="true"><path d="M1 5.5l3 3L10 2" fill="none" stroke="#4FC3F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 8.5L13 2" fill="none" stroke="#4FC3F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
   function lang() { return (window.SOLO && SOLO.getLang) ? SOLO.getLang() : 'sl'; }
   function D() { var d = window.SOLO_AI || {}; return d[lang()] || d.sl; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function $(id) { return document.getElementById(id); }
-  function supportById(id) { var a = D().support.tariffs; for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
   function aiById(id) { var a = D().ai.tariffs; for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
   function autoById(id) { var a = D().automation.cards; for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
   function selectedAutomations() { var a = D().automation.cards, out = []; for (var i = 0; i < a.length; i++) if (state.automations[a[i].id]) out.push(a[i]); return out; }
@@ -48,82 +49,64 @@
     h += '<div class="ai-cards">';
     for (var i = 0; i < d.cards.length; i++) {
       var c = d.cards[i];
-      h += '<a class="ai-card" href="#' + c.id + '" onclick="return aiGo(event,\'' + c.id + '\')">';
+      h += '<a class="ai-card" href="#' + esc(c.id) + '" onclick="return aiGo(event,\'' + esc(c.id) + '\')">';
       h += '<b>' + esc(c.title) + '</b><p>' + esc(c.desc) + '</p><span class="ai-card-cta">' + esc(c.cta) + '</span></a>';
     }
     h += '</div>';
     $('aiHero').innerHTML = h;
   }
 
-  function supportCards() {
-    var box = $('supportCards'); if (!box) return;
-    var d = D().support, h = '';
-    for (var i = 0; i < d.tariffs.length; i++) {
-      var t = d.tariffs[i], sel = state.support === t.id;
-      h += '<div class="ai-tariff ai-selectable' + (sel ? ' sel' : '') + '" data-support="' + t.id + '" role="button" tabindex="0" aria-pressed="' + sel + '" onclick="selectSupport(\'' + t.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectSupport(\'' + t.id + '\')}">';
-      if (sel) h += '<span class="ai-sel-badge">' + esc(lang() === 'ru' ? 'Выбрано' : 'Izbrano') + '</span>';
-      h += '<div class="ai-tariff-name">' + esc(t.name) + '</div><div class="ai-tariff-price">' + esc(t.price) + '</div><p class="ai-tariff-desc">' + esc(t.desc) + '</p><ul>';
-      for (var j = 0; j < t.features.length; j++) h += '<li>' + esc(t.features[j]) + '</li>';
-      h += '</ul></div>';
-    }
-    box.innerHTML = h;
+  function msgTime(i) {
+    var t = 10 * 60 + 24 + i * 2, hh = Math.floor(t / 60) % 24, mm = t % 60;
+    return hh + ':' + (mm < 10 ? '0' : '') + mm;
   }
+  function botLabel() { return lang() === 'ru' ? 'бот' : 'bot'; }
+  function dayLabel() { return lang() === 'ru' ? 'Сегодня' : 'Danes'; }
+  function inputLabel() { return lang() === 'ru' ? 'Сообщение' : 'Sporočilo'; }
 
-  function renderSupport() {
-    var d = D().support, h = '';
-    h += '<div class="ai-section-head"><span class="eyebrow">' + esc(d.eyebrow) + '</span><h2>' + esc(d.title) + '</h2><p class="ai-lead">' + esc(d.explainer) + '</p></div>';
-    h += '<div class="ai-tariffs" id="supportCards"></div>';
-    h += '<div class="ai-details-stack">';
-    for (var i = 0; i < d.details.length; i++) {
-      h += '<details class="ai-details"><summary>' + esc(d.details[i].title) + '</summary><div>';
-      for (var j = 0; j < d.details[i].body.length; j++) h += '<p>' + esc(d.details[i].body[j]) + '</p>';
-      h += '</div></details>';
+  function phoneHTML(item, idx) {
+    var h = '<div class="tgm-phone" data-phone="' + idx + '">';
+    h += '<div class="tgm-screen">';
+    h += '<div class="tgm-notch" aria-hidden="true"></div>';
+    h += '<div class="tgm-status"><span>10:24</span><span class="tgm-sys" aria-hidden="true"><svg width="43" height="11" viewBox="0 0 43 11" fill="#111"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="8" rx="1"/><rect x="15" y="1" width="3" height="10" rx="1"/><path d="M25.5 2.1a6.3 6.3 0 017.9 0l-1 1.2a4.8 4.8 0 00-5.9 0zM27.1 4.3a3.6 3.6 0 014.7 0l-1 1.2a2.1 2.1 0 00-2.7 0zM29.4 6.5c.4-.3.9-.3 1.3 0l-.65.8z"/><rect x="36" y="2" width="6.2" height="7" rx="1.8" fill="none" stroke="#111" stroke-width="1"/><rect x="37.2" y="3.2" width="3.6" height="4.6" rx="1"/><rect x="42.5" y="4" width="1" height="3" rx=".5"/></svg></span></div>';
+    h += '<div class="tgm-head"><span class="tgm-back" aria-hidden="true">&#8249;</span>';
+    h += '<span class="tgm-avatar"><img src="' + esc(item.avatar) + '" alt="" width="72" height="72" loading="lazy"></span>';
+    h += '<span class="tgm-peer"><b>' + esc(item.bot) + '</b><small>' + esc(botLabel()) + '</small></span>';
+    h += '<span class="tgm-menu" aria-hidden="true"><i></i><i></i><i></i></span></div>';
+    h += '<div class="tgm-chat">';
+    h += '<span class="tgm-day">' + esc(dayLabel()) + '</span>';
+    for (var i = 0; i < item.messages.length; i++) {
+      var m = item.messages[i], out = m.who === 'client';
+      h += '<div class="tgm-row ' + (out ? 'out' : 'in') + '"><div class="tgm-bubble"><p>' + esc(m.text).replace(/\n/g, '<br>') + '</p><span class="tgm-meta">' + msgTime(i) + (out ? TICKS : '') + '</span></div></div>';
     }
     h += '</div>';
-    h += '<p id="supportHint" class="ai-hint" hidden>' + esc(d.hint) + '</p>';
-    h += '<div class="ai-actions"><button type="button" class="btn" onclick="supportCTA()">' + esc(d.cta) + '</button></div>';
-    $('supportBox').innerHTML = h;
-    supportCards();
+    h += '<div class="tgm-input"><span class="tgm-emoji" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b8f96" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8M9 9.5h.01M15 9.5h.01" stroke-linecap="round"/></svg></span>';
+    h += '<span class="tgm-field">' + esc(inputLabel()) + '</span>';
+    h += '<span class="tgm-attach" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b8f96" stroke-width="1.7" stroke-linecap="round"><path d="M20 11.5l-8.2 8.2a5 5 0 01-7.1-7.1l8.5-8.5a3.4 3.4 0 014.8 4.8l-8.4 8.4a1.8 1.8 0 01-2.6-2.6l7.7-7.7"/></svg></span>';
+    h += '<span class="tgm-mic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b8f96" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0012 0M12 17v3"/></svg></span>';
+    h += '</div><div class="tgm-home" aria-hidden="true"></div></div></div>';
+    return h;
   }
 
-  window.selectSupport = function (id) {
-    state.support = id;
-    var hint = $('supportHint'); if (hint) hint.hidden = true;
-    supportCards();
-    refreshSummary();
-  };
-  window.supportCTA = function () {
-    if (!state.support) {
-      var hint = $('supportHint'); if (hint) hint.hidden = false;
-      var first = document.querySelector('#supportCards .ai-tariff');
-      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
+  function phoneSection() {
+    var d = D().ai.scenarios, h = '';
+    h += '<div class="ai-sc-head"><span class="eyebrow">' + esc(d.label) + '</span><h3>' + esc(d.title) + '</h3><p class="ai-lead">' + esc(d.note) + '</p></div>';
+    h += '<div class="tgm-tabs" role="tablist">';
+    for (var i = 0; i < d.items.length; i++) {
+      h += '<button type="button" class="tgm-tab' + (i === state.scenario ? ' on' : '') + '" role="tab" aria-selected="' + (i === state.scenario ? 'true' : 'false') + '" data-idx="' + i + '" onclick="selectScenario(' + i + ')"><span>' + esc(d.items[i].tab) + '</span><small>' + esc(d.items[i].project) + '</small></button>';
     }
-    aiScrollTo('request');
-  };
-
-  function previewHTML(p) {
-    if (p.type === 'service') {
-      return '<div class="phone-preview"><span class="pp-label">' + esc(lang() === 'ru' ? 'Предпросмотр' : 'Predogled') + '</span><b>' + esc(p.title) + '</b><p>' + esc(p.desc) + '</p><span class="pp-price">' + esc(p.price) + '</span><span class="pp-btn">' + esc(p.button) + '</span></div>';
+    h += '</div><div class="tgm-grid">';
+    for (var j = 0; j < d.items.length; j++) {
+      var it = d.items[j];
+      h += '<div class="tgm-col' + (j === state.scenario ? ' on' : '') + '" data-col="' + j + '">';
+      h += '<div class="tgm-caption"><span>0' + (j + 1) + '</span>' + esc(it.tab) + '</div>';
+      h += phoneHTML(it, j);
+      if (it.note) h += '<p class="tgm-note">' + esc(it.note) + '</p>';
+      h += '</div>';
     }
-    if (p.type === 'article') {
-      return '<div class="phone-preview"><span class="pp-label">' + esc(lang() === 'ru' ? 'Предпросмотр статьи' : 'Predogled članka') + '</span><b>' + esc(p.title) + '</b><p>' + esc(p.excerpt) + '</p></div>';
-    }
-    var lines = '';
-    for (var i = 0; i < p.lines.length; i++) lines += '<span>' + esc(p.lines[i]) + '</span>';
-    return '<div class="phone-preview"><span class="pp-label">' + esc(lang() === 'ru' ? 'Предпросмотр' : 'Predogled') + '</span><b>' + esc(p.title) + '</b><div class="pp-hours">' + lines + '</div></div>';
-  }
-
-  function phoneHTML(p) {
-    var tg = '<svg width="14" height="14" viewBox="0 0 18 18" fill="none"><path d="M2.5 9l13-5-4 11-3-4-6-2z" fill="#fff"/><path d="M8.5 11l3-3" stroke="#2AABEE" stroke-width="1.2"/></svg>';
-    var h = '<div class="ai-phone"><div class="phone-top"></div><div class="phone-head"><span class="phone-avatar tg">' + tg + '</span><div><b>Telegram</b><small>SOLO.POV · ' + esc(lang() === 'ru' ? 'пример' : 'primer') + '</small></div><span class="phone-badge">' + esc(p.title) + '</span></div><div class="phone-chat">';
-    for (var i = 0; i < p.chat.length; i++) {
-      var m = p.chat[i];
-      h += '<div class="phone-msg ' + (m.who === 'client' ? 'client' : 'ai') + '" style="--d:' + (i * 0.28).toFixed(2) + 's"><span>' + esc(m.text) + '</span></div>';
-      if (p.previewAfter === i) h += '<div class="phone-preview-wrap" style="--d:' + ((i + 1) * 0.28).toFixed(2) + 's">' + previewHTML(p.preview) + '</div>';
-    }
-    h += '<div class="phone-status" style="--d:' + (p.chat.length * 0.28 + 0.2).toFixed(2) + 's">' + esc(p.status) + '</div>';
-    h += '</div></div>';
+    h += '</div>';
+    h += '<p class="ai-demo-note">' + esc(d.afterNote) + '</p>';
+    h += '<p class="ai-demo-note ai-demo-note--small">' + esc(d.disclaimer) + '</p>';
     return h;
   }
 
@@ -143,82 +126,39 @@
   }
   window.selectAITariff = function (id) { state.ai = id; aiTariffCards(); refreshSummary(); };
 
-  function scenarioById(id) {
-    var a = D().ai.scenarios.items;
-    for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i];
-    return a[0] || null;
-  }
-  function msgTime(i) {
-    var m = 2 + i * 3, hh = 10 + Math.floor(m / 60), mm = m % 60;
-    return hh + ':' + (mm < 10 ? '0' : '') + mm;
-  }
-  function chatHTML(item) {
-    var ru = lang() === 'ru';
-    var h = '<div class="ai-tg"><div class="ai-tg-head"><span class="ai-tg-avatar">' + esc(item.bot.charAt(0)) + '</span><div class="ai-tg-id"><b>' + esc(item.bot) + '</b><small>bot · ' + esc(ru ? 'пример' : 'primer') + '</small></div><span class="ai-tg-badge">' + esc(ru ? 'Демо' : 'Demo') + '</span></div><div class="ai-tg-body">';
-    for (var i = 0; i < item.messages.length; i++) {
-      var m = item.messages[i], out = m.who === 'client';
-      h += '<div class="ai-msg ' + (out ? 'out' : 'in') + '" style="--d:' + (i * 0.18).toFixed(2) + 's"><p>' + esc(m.text).replace(/\n/g, '<br>') + '</p><span class="ai-msg-meta">' + msgTime(i) + (out ? ' <i class="ticks">&#10003;&#10003;</i>' : '') + '</span></div>';
-    }
-    h += '</div><div class="ai-tg-input"><span>' + esc(ru ? 'Сообщение' : 'Sporočilo') + '</span><i class="ai-tg-send"></i></div></div>';
-    return h;
-  }
-  function resultHTML(item) {
-    var r = item.result, ru = lang() === 'ru';
-    var h = '<div class="ai-res-card"><div class="ai-res-bar"><span class="ai-res-dots"><i></i><i></i><i></i></span><span class="ai-res-url">' + esc(r.url || '') + '</span></div><div class="ai-res-body"><span class="ai-res-label">' + esc(r.label) + '</span>';
-    if (item.kind === 'site') {
-      h += '<div class="ai-site-preview"><span class="ai-site-kicker">' + esc(r.kicker) + '</span><h4>' + esc(r.title) + '</h4><p>' + esc(r.desc) + '</p><div class="ai-site-foot"><span class="ai-site-price">' + esc(r.meta) + '</span><span class="ai-site-btn">' + esc(r.button) + '</span></div></div>';
-    } else if (item.kind === 'research') {
-      h += '<h4>' + esc(r.title) + '</h4><div class="ai-res-rows">';
-      for (var i = 0; i < r.rows.length; i++) h += '<div class="ai-res-row"><span>' + esc(r.rows[i].k) + '</span><b>' + esc(r.rows[i].v) + '</b></div>';
-      h += '</div><p class="ai-res-note">' + esc(r.note) + '</p>';
-    } else {
-      h += '<h4>' + esc(r.title) + '</h4><div class="ai-booking">';
-      for (var j = 0; j < r.services.length; j++) h += '<div class="ai-booking-row"><span class="ai-booking-dot"></span><span class="ai-booking-name">' + esc(r.services[j].name) + '</span><span class="ai-booking-dur">' + esc(r.services[j].dur) + '</span></div>';
-      h += '</div><div class="ai-cal"><div class="ai-cal-days"><span>' + esc(ru ? 'Пн' : 'Pon') + '</span><span>' + esc(ru ? 'Вт' : 'Tor') + '</span><span>' + esc(ru ? 'Ср' : 'Sre') + '</span><span class="on">' + esc(ru ? 'Чт' : 'Čet') + '</span><span>' + esc(ru ? 'Пт' : 'Pet') + '</span><span>' + esc(ru ? 'Сб' : 'Sob') + '</span><span>' + esc(ru ? 'Вс' : 'Ned') + '</span></div><div class="ai-cal-slots"><span>09:00</span><span>10:30</span><span class="off">12:00</span><span>14:00</span><span>15:30</span><span>17:00</span></div></div><p class="ai-res-note">' + esc(r.note) + '</p>';
-    }
-    h += '</div></div>';
-    return h;
-  }
-  window.selectScenario = function (id) {
-    var item = scenarioById(id); if (!item) return;
-    var tabs = document.querySelectorAll('.ai-sc-tab');
-    for (var i = 0; i < tabs.length; i++) {
-      var on = tabs[i].getAttribute('data-scenario') === id;
-      tabs[i].classList.toggle('on', on);
-      tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
-    }
-    $('aiChat').innerHTML = chatHTML(item);
-    $('aiResultPanel').innerHTML = resultHTML(item);
-  };
-  window.startTrial = function () {
-    state.interest = 'trial';
-    refreshSummary();
-    aiScrollTo('request');
-  };
-
   function renderAISection() {
     var d = D().ai, h = '';
     h += '<div class="ai-section-head"><span class="eyebrow">' + esc(d.eyebrow) + '</span><h2>' + esc(d.title) + '</h2><p class="ai-lead">' + esc(d.sub) + '</p></div>';
-    h += '<div class="ai-offer"><p class="ai-offer-accent">' + esc(d.offer.accent) + '</p><button type="button" class="btn" onclick="aiScrollTo(\'aiScenario\')">' + esc(d.offer.cta) + '</button><p class="ai-offer-note">' + esc(d.offer.note) + '</p></div>';
-    h += '<div class="ai-scenarios" id="aiScenario"><div class="ai-sc-head"><span class="eyebrow">' + esc(d.scenarios.label) + '</span><h3>' + esc(d.scenarios.title) + '</h3><p class="ai-lead">' + esc(d.scenarios.note) + '</p></div><div class="ai-sc-tabs" role="tablist">';
-    for (var i = 0; i < d.scenarios.items.length; i++) {
-      var it = d.scenarios.items[i];
-      h += '<button type="button" class="ai-sc-tab' + (i === 0 ? ' on' : '') + '" role="tab" aria-selected="' + (i === 0 ? 'true' : 'false') + '" data-scenario="' + esc(it.id) + '" onclick="selectScenario(\'' + esc(it.id) + '\')"><span>' + esc(it.tab) + '</span><small>' + esc(it.project) + '</small></button>';
-    }
-    h += '</div><div class="ai-sc-grid"><div class="ai-sc-chat" id="aiChat"></div><div class="ai-sc-result" id="aiResultPanel"></div></div><p class="ai-demo-note">' + esc(d.scenarios.disclaimer) + '</p></div>';
-    h += '<div class="ai-trial" id="aiTrial"><div class="ai-trial-copy"><span class="eyebrow">' + esc(d.trial.eyebrow) + '</span><h3>' + esc(d.trial.title) + '</h3><p class="ai-lead">' + esc(d.trial.desc) + '</p></div><div class="ai-trial-steps">';
-    for (var j = 0; j < d.trial.steps.length; j++) {
-      h += '<div class="ai-trial-step"><span class="ai-trial-num">0' + (j + 1) + '</span><b>' + esc(d.trial.steps[j].t) + '</b><p>' + esc(d.trial.steps[j].d) + '</p></div>';
-    }
-    h += '</div><p class="ai-trial-note">' + esc(d.trial.note) + '</p><div class="ai-actions"><button type="button" class="btn" onclick="startTrial()">' + esc(d.trial.cta) + '</button></div></div>';
+    h += '<div class="ai-offer"><p class="ai-offer-accent">' + esc(d.offer.accent) + '</p><button type="button" class="btn" onclick="startTrial()">' + esc(d.offer.cta) + '</button><p class="ai-offer-note">' + esc(d.offer.note) + '</p></div>';
+    h += '<div class="ai-scenarios" id="aiScenario">' + phoneSection() + '</div>';
     h += '<div class="ai-tariffs-head"><span class="eyebrow">' + esc(d.tariffsEyebrow) + '</span><h3>' + esc(d.tariffsTitle) + '</h3></div>';
     h += '<div class="ai-tariffs ai-tariffs--4" id="aiTariffs"></div>';
     h += '<p class="ai-footnote">' + esc(d.tariffNote) + '</p><p class="ai-footnote ai-footnote--small">' + esc(d.tariffFootnote) + '</p>';
     h += '<div class="ai-actions"><button type="button" class="btn" onclick="aiScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
     $('aiBox').innerHTML = h;
     aiTariffCards();
-    selectScenario(d.scenarios.items[0].id);
+    selectScenario(state.scenario);
   }
+
+  window.selectScenario = function (idx) {
+    var items = D().ai.scenarios.items;
+    idx = Number(idx) || 0;
+    if (idx < 0 || idx >= items.length) idx = 0;
+    state.scenario = idx;
+    var tabs = document.querySelectorAll('.tgm-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      var on = Number(tabs[i].getAttribute('data-idx')) === idx;
+      tabs[i].classList.toggle('on', on);
+      tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+    var cols = document.querySelectorAll('.tgm-col');
+    for (var j = 0; j < cols.length; j++) cols[j].classList.toggle('on', Number(cols[j].getAttribute('data-col')) === idx);
+  };
+  window.startTrial = function () {
+    state.interest = 'trial';
+    refreshSummary();
+    aiScrollTo('request');
+  };
 
   function automationCards() {
     var box = $('autoCards'); if (!box) return;
@@ -246,6 +186,7 @@
     h += '<p class="ai-footnote">' + esc(d.priceNote) + '</p><div class="ai-prices">';
     for (var i = 0; i < d.prices.length; i++) h += '<div><span>' + esc(d.prices[i].title) + '</span><b>' + esc(d.prices[i].price) + '</b></div>';
     h += '</div><p class="ai-footnote ai-footnote--small">' + esc(d.footnote) + '</p>';
+    if (d.integrationNote) h += '<p class="ai-footnote ai-footnote--small">' + esc(d.integrationNote) + '</p>';
     h += '<div class="ai-actions"><button type="button" class="btn" onclick="aiScrollTo(\'request\')">' + esc(d.cta) + '</button></div>';
     $('automationBox').innerHTML = h;
     automationCards();
@@ -284,14 +225,8 @@
     var d = D().form, h = '<h3>' + esc(d.summaryTitle) + '</h3>', count = 0, monthly = 0;
     if (state.interest) {
       count++;
-      h += '<div class="ai-sum-row"><span><small>' + esc(D().ai.trial.interestLabel) + '</small><b>' + esc(D().ai.trial.interest) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'interest\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
-    }
-    if (state.support) {
-      var s = supportById(state.support);
-      if (s) {
-        count++; monthly += s.monthly;
-        h += '<div class="ai-sum-row"><span><small>' + esc(d.supportLabel) + '</small><b>' + esc(s.name) + ' — ' + esc(s.price) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'support\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
-      }
+      var interestLabel = lang() === 'ru' ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev';
+      h += '<div class="ai-sum-row"><span><small>' + esc(d.aiLabel) + '</small><b>' + esc(interestLabel) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'interest\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
     }
     if (state.ai) {
       var a = aiById(state.ai);
@@ -313,10 +248,8 @@
     box.innerHTML = h;
   }
   window.removeSelection = function (kind) {
-    if (kind === 'support') state.support = null;
     if (kind === 'ai') state.ai = null;
     if (kind === 'interest') state.interest = null;
-    if (kind === 'support') supportCards();
     if (kind === 'ai') aiTariffCards();
     refreshSummary();
   };
@@ -332,18 +265,17 @@
 
   function buildText(site, comment, email, telegram, consent) {
     var ru = lang() === 'ru', lines = [];
-    lines.push(ru ? 'Заявка Solo.Pov — AI и поддержка' : 'Povpraševanje Solo.Pov — AI in podpora');
+    lines.push(ru ? 'Заявка Solo.Pov — AI-ассистент и автоматизация' : 'Povpraševanje Solo.Pov — AI-asistent in avtomatizacija');
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
-    if (state.support) { var s = supportById(state.support); if (s) lines.push((ru ? 'Техническая поддержка' : 'Tehnična podpora') + ': ' + s.name + ' — ' + s.price); }
     if (state.ai) { var a = aiById(state.ai); if (a) lines.push((ru ? 'AI-ассистент' : 'AI-asistent') + ': ' + a.name + ' — ' + a.price); }
-    if (state.interest) lines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + D().ai.trial.interest);
+    if (state.interest) lines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + (ru ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev'));
     var autos = selectedAutomations();
     if (autos.length) {
       lines.push((ru ? 'Автоматизация' : 'Avtomatizacija') + ':');
       for (var i = 0; i < autos.length; i++) lines.push('- ' + autos[i].title);
     }
-    var monthly = (state.support ? supportById(state.support).monthly : 0) + (state.ai ? aiById(state.ai).monthly : 0);
-    if (monthly > 0) lines.push((ru ? 'Предварительные ежемесячные тарифы' : 'Predhodni mesečni tarifi') + ': ' + (ru ? 'от ' + monthly + ' €/мес.' : 'od ' + monthly + ' €/mesec'));
+    var monthly = (state.ai ? aiById(state.ai).monthly : 0);
+    if (monthly > 0) lines.push((ru ? 'Предварительный ежемесячный тариф' : 'Predhodni mesečni paket') + ': ' + (ru ? 'от ' + monthly + ' €/мес.' : 'od ' + monthly + ' €/mesec'));
     if (autos.length) lines.push((ru ? 'Разовая стоимость автоматизации' : 'Enkratni strošek avtomatizacije') + ': ' + (ru ? 'определяется после оценки' : 'določi se po oceni'));
     if (site) lines.push((ru ? 'Сайт' : 'Stran') + ': ' + site);
     if (comment) lines.push((ru ? 'Задача' : 'Naloga') + ': ' + comment);
@@ -354,7 +286,7 @@
     return lines.join('\n');
   }
   function buildLead(site, comment, email, telegram, consent) {
-    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), support: state.support, ai: state.ai, interest: state.interest, automations: selectedAutomations().map(function (a) { return a.id; }), siteUrl: site, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
+    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), ai: state.ai, interest: state.interest, automations: selectedAutomations().map(function (a) { return a.id; }), siteUrl: site, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
   }
 
   window.submitAI = function (e) {
@@ -367,7 +299,7 @@
     var consent = !!($('aiConsent') || {}).checked;
     if (site && !validUrl(site)) { if (err) err.textContent = d.errUrl; return false; }
     if (!validEmail(email)) { if (err) err.textContent = d.errEmail; return false; }
-    if (!state.support && !state.ai && !state.interest && !selectedAutomations().length && !comment) { if (err) err.textContent = d.errEmpty; return false; }
+    if (!state.ai && !state.interest && !selectedAutomations().length && !comment) { if (err) err.textContent = d.errEmpty; return false; }
     if (err) err.textContent = '';
     var text = buildText(site, comment, email, telegram, consent);
     deliverAI(text, buildLead(site, comment, email, telegram, consent));
@@ -457,8 +389,8 @@
 
   window.renderAI = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — AI и техническая поддержка' : 'Solo.Pov — AI in tehnična podpora';
-    renderHero(); renderSupport(); renderAISection(); renderAutomation(); renderRequest(); renderFAQ(); renderCross();
+    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : 'Solo.Pov — AI-asistent in avtomatizacija';
+    renderHero(); renderAISection(); renderAutomation(); renderRequest(); renderFAQ(); renderCross();
   };
 
   document.addEventListener('DOMContentLoaded', function () { window.renderAI(); });
