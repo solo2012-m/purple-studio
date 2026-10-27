@@ -597,8 +597,8 @@
     var ep = (CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
     if (ep) {
       try {
-        window.fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
-          .then(function (r) { setModal(r && r.ok ? sentHtml() : notReadyHtml(text)); })
+        window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
+          .then(function () { setModal(sentHtml()); })
           .catch(function () { setModal(notReadyHtml(text)); });
         return;
       } catch (e) {}

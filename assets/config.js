@@ -74,7 +74,7 @@ window.SOLO_CONFIG = {
   },
   /* Prihodnja CRM / zbirka potencialnih strank. Trenutno izklopljeno. */
   crm: {
-    enabled: false,
-    endpoint: ''
+    enabled: true,
+    endpoint: 'https://script.google.com/macros/s/AKfycbySsK0ke-H_p0atwXPSfOYVm805fbdB2Jy1Gh4nPNp9rJoHFEXbgdXVpGIZqibddzFY/exec'
   }
 };
