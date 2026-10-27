@@ -1,0 +1,165 @@
+/**
+ * Solo.Pov — заявки: Google-таблица + письма (v2)
+ * 4 направления, UTM, статусы, письмо клиенту на его языке.
+ */
+var SHEETS = {
+  site_creation: 'Создание сайта',
+  site_redesign: 'Редизайн',
+  seo_leads:     'SEO и заявки',
+  ai_automation: 'AI-автоматизация'
+};
+
+var HEADERS = ['Дата','Email','Контакт','Язык','Направление','Ситуация','Сфера','Сайт',
+               'Рекомендация','Ответы','Заметки','Согласие','Версия согласия',
+               'Источник','UTM','Статус'];
+
+var T = {
+  sl: {
+    subject: 'Solo.Pov — vaše povpraševanje je prejeto',
+    hello: 'Pozdravljeni,',
+    intro: 'Hvala za izpolnjen vprašalnik. Spodaj je povzetek vaših odgovorov in predlog naslednjega koraka.',
+    sit: 'Vaša situacija',
+    rec: 'Priporočilo',
+    next: 'Naslednji korak',
+    your: 'Vaši odgovori',
+    contact: 'Odgovorili vam bomo v enem delovnem dnevu.',
+    sign: 'Lep pozdrav,\nSolo.Pov'
+  },
+  ru: {
+    subject: 'Solo.Pov — ваша заявка получена',
+    hello: 'Здравствуйте!',
+    intro: 'Спасибо за заполненную анкету. Ниже — краткая сводка ваших ответов и предложение следующего шага.',
+    sit: 'Ваша ситуация',
+    rec: 'Рекомендация',
+    next: 'Следующий шаг',
+    your: 'Ваши ответы',
+    contact: 'Ответим вам в течение одного рабочего дня.',
+    sign: 'С уважением,\nSolo.Pov'
+  }
+};
+
+function doPost(e) {
+  try {
+    var lead = JSON.parse(e.postData.contents);
+    var dir = String(lead.interest || '').trim() || branchToInterest(lead.branch);
+    var sheet = getSheet(dir);
+    var answers = (lead.answers || []).map(function (a) {
+      return (a.question || '') + ': ' + (a.answers || []).join(', ');
+    }).join('\n');
+    var u = lead.utm || {};
+    var utm = Object.keys(u).map(function (k) { return k + '=' + u[k]; }).join('&');
+
+    sheet.appendRow([
+      new Date(),
+      lead.email || '',
+      lead.contact || '',
+      lead.lang || '',
+      dir,
+      lead.branchTitle || (lead.type === 'contact' ? 'Быстрый контакт' : ''),
+      lead.industry || '',
+      lead.siteUrl || '',
+      lead.recommendation ? (lead.recommendation.title || '') : '',
+      answers,
+      lead.notes || '',
+      lead.marketingConsent ? 'да' : 'нет',
+      lead.consentTextVersion || '',
+      utm ? 'utm' : (lead.type === 'contact' ? 'contact form' : 'direct'),
+      utm,
+      'new'
+    ]);
+
+    notifyOwner_(lead, dir, answers, utm);
+    if (lead.type !== 'contact' && lead.email) sendClient_(lead, dir, answers);
+    return json_({ ok: true, sheet: SHEETS[dir] || dir });
+  } catch (err) {
+    return json_({ ok: false, error: String(err) });
+  }
+}
+
+function doGet() {
+  return json_({ ok: true, service: 'solopov-leads', version: 2 });
+}
+
+function branchToInterest(b) {
+  return { a: 'site_creation', b: 'site_redesign', c: 'seo_leads', d: 'ai_automation' }[b] || 'site_creation';
+}
+
+function getSheet(dir) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var name = SHEETS[dir] || SHEETS.site_creation;
+  var sh = ss.getSheetByName(name);
+  if (!sh) {
+    sh = ss.insertSheet(name);
+    sh.appendRow(HEADERS);
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+function langOf(lead) {
+  var l = String(lead.lang || 'sl').toLowerCase();
+  return l.indexOf('ru') === 0 ? 'ru' : 'sl';
+}
+
+function sendClient_(lead, dir, answers) {
+  try {
+    var L = T[langOf(lead)];
+    var rec = lead.recommendation || {};
+    var lines = [L.hello, '', L.intro, ''];
+    lines.push(L.sit + ': ' + (lead.branchTitle || '-'));
+    if (lead.industry) lines.push((L === T.ru ? 'Сфера' : 'Dejavnost') + ': ' + lead.industry);
+    if (rec.title) lines.push('', L.rec + ': ' + rec.title);
+    if (rec.next) lines.push(L.next + ': ' + rec.next);
+    if (answers) lines.push('', L.your + ':', answers);
+    lines.push('', L.contact, '', L.sign);
+    MailApp.sendEmail({
+      to: lead.email,
+      subject: L.subject,
+      body: lines.join('\n'),
+      name: 'Solo.Pov',
+      replyTo: Session.getEffectiveUser().getEmail()
+    });
+  } catch (e) {}
+}
+
+function notifyOwner_(lead, dir, answers, utm) {
+  try {
+    var to = Session.getEffectiveUser().getEmail();
+    var body = [
+      'Направление: ' + (SHEETS[dir] || dir),
+      'Тип: ' + (lead.type || 'quiz'),
+      'Email: ' + (lead.email || '-'),
+      'Контакт: ' + (lead.contact || '-'),
+      'Язык: ' + (lead.lang || '-'),
+      'Ситуация: ' + (lead.branchTitle || '-'),
+      'Сфера: ' + (lead.industry || '-'),
+      'Сайт: ' + (lead.siteUrl || '-'),
+      'Рекомендация: ' + (lead.recommendation ? lead.recommendation.title : '-'),
+      'Заметки: ' + (lead.notes || '-'),
+      'UTM: ' + (utm || '-'),
+      '', 'Ответы:', (answers || '-')
+    ].join('\n');
+    MailApp.sendEmail(to, 'Solo.Pov — новая заявка: ' + (SHEETS[dir] || dir), body);
+  } catch (e) {}
+}
+
+function json_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function setup() {
+  Object.keys(SHEETS).forEach(function (k) { getSheet(k); });
+}
+
+/** Добавляет новые колонки в уже созданные вкладки. Запусти один раз. */
+function upgradeV2() {
+  Object.keys(SHEETS).forEach(function (k) {
+    var sh = getSheet(k);
+    var width = sh.getLastColumn();
+    if (width < HEADERS.length) {
+      sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+      sh.setFrozenRows(1);
+    }
+  });
+}
