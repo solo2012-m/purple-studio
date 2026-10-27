@@ -8,15 +8,18 @@ window.SOLO_CONFIG = {
     planned: ['en', 'de', 'hr']
   },
   contact: {
-    telegram: '',
-    email: '',
+    telegram: 'https://t.me/solo_pov',
+    email: 'info@solopov.si',
     phone: ''
   },
   legal: {
-    companyName: '',
-    address: '',
-    taxId: '',
-    privacyUrl: ''
+    companyName: 'ZEPO, Mykhailo Solopov s.p.',
+    address: 'Vodovodna ulica 16, 2312 Orehova vas, Slovenija',
+    taxId: '16357728',
+    privacyUrl: '/pages/zasebnost.html'
+  },
+  analytics: {
+    ga4: ''
   },
   routes: {
     create:  'pages/izdelava-spletnih-strani.html',
