@@ -7,6 +7,16 @@
   var QZ = window.SOLO_QUIZ || {};
   var lang = (CONFIG.langs && CONFIG.langs.default) || 'sl';
 
+  function utmParams() {
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'];
+    var out = {};
+    keys.forEach(function (k) {
+      var m = new RegExp('[?&]' + k + '=([^&]+)').exec(window.location.search);
+      if (m) out[k] = decodeURIComponent(m[1].replace(/\+/g, ' '));
+    });
+    return out;
+  }
+
   function getParam(name) {
     var m = new RegExp('[?&]' + name + '=([^&]+)').exec(window.location.search);
     return m ? decodeURIComponent(m[1]) : null;
@@ -541,6 +551,8 @@
       industry: industry || '',
       notes: notes || '',
       recommendation: { key: data.variant, title: data.res.t, next: data.res.next },
+      type: 'quiz',
+      utm: utmParams(),
       marketingConsent: !!consent,
       consentTextVersion: CONSENT_VERSION,
       consentDate: consent ? new Date().toISOString() : null,
@@ -624,7 +636,13 @@
     e.preventDefault();
     var f = el('contactForm');
     if (f && !f.checkValidity()) { f.reportValidity(); return false; }
-    deliver(buildText('contact')); return false;
+    var leadC = {
+      type: 'contact', id: 'lead_' + Date.now(), date: new Date().toISOString(),
+      lang: lang, branch: '', interest: '', branchTitle: '',
+      email: '', contact: val('c-contact'), industry: val('c-business'),
+      notes: val('c-notes'), answers: [], utm: utmParams(), status: 'new'
+    };
+    deliver(buildText('contact', '', false, val('c-business'), val('c-notes')), leadC); return false;
   }
 
   function copyText() {
