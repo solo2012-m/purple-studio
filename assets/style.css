@@ -43,7 +43,7 @@ section.first{border-top:0}
 .draftbar b{color:var(--accent)}
 /* header */
 header{position:sticky;top:0;z-index:40;background:rgba(11,11,12,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.hdr{display:flex;align-items:center;gap:28px;padding:20px 0}
+.hdr{display:flex;align-items:center;gap:28px;padding:24px 0}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .logo img{height:46px;width:auto;display:block}
 .logo-wrap{position:relative;display:inline-flex;transform-origin:50% 65%}
