@@ -1540,8 +1540,8 @@ main > section.improve-section:nth-of-type(even){background:none}
 
 /* Sun rays background — photo layer (2026-10-28) */
 body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1}
-body::before{inset:-14vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 104.5s ease-in-out infinite alternate}
-body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206,90,.10),rgba(255,206,90,.03) 38%,transparent 66%);animation:raysGlow 32.3s ease-in-out infinite alternate}
+body::before{inset:-14vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 20.9s ease-in-out infinite alternate}
+body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206,90,.10),rgba(255,206,90,.03) 38%,transparent 66%);animation:raysGlow 6.5s ease-in-out infinite alternate}
 @keyframes raysDrift{
   0%{transform:scale(1.02) translate3d(0,0,0)}
   50%{transform:scale(1.07) translate3d(-1.1%,.9%,0)}
@@ -1557,3 +1557,19 @@ html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:94px;pointe
   border-top:1px solid var(--line)}
 
 html.footer-in::after{opacity:0}
+
+/* drifting dust motes — 5x livelier background */
+html::before{content:"";position:fixed;inset:-6vmax;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:
+    radial-gradient(circle, rgba(255,222,150,.55) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle, rgba(255,214,130,.35) 0 .9px, transparent 1.4px),
+    radial-gradient(circle, rgba(255,232,180,.25) 0 .7px, transparent 1.1px);
+  background-size:190px 190px, 260px 260px, 340px 340px;
+  background-position:0 0, 60px 90px, 140px 40px;
+  animation:dustDrift 22s linear infinite;
+  will-change:background-position}
+@keyframes dustDrift{
+  from{background-position:0 0, 60px 90px, 140px 40px}
+  to{background-position:190px 190px, 320px 350px, 480px 380px}
+}
+@media(prefers-reduced-motion:reduce){html::before{animation:none}}
