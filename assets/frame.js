@@ -9,6 +9,11 @@
   function check() {
     var atBottom = (window.innerHeight + window.pageYOffset) >= (html.scrollHeight - 4);
     html.classList.toggle('at-bottom', atBottom);
+    footer = footer || document.querySelector('footer');
+    if (footer) {
+      var r = footer.getBoundingClientRect();
+      html.classList.toggle('footer-in', r.top <= window.innerHeight - 8);
+    }
   }
   function all() { measure(); check(); }
   window.addEventListener('load', all);
