@@ -1540,14 +1540,16 @@ main > section.improve-section:nth-of-type(even){background:none}
 
 /* Sun rays background — photo layer (2026-10-28) */
 body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1}
-body::before{inset:-14vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 20.9s ease-in-out infinite alternate}
-body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206,90,.10),rgba(255,206,90,.03) 38%,transparent 66%);animation:raysGlow 6.5s ease-in-out infinite alternate}
+body::before{inset:-14vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 34s linear infinite}
+body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206,90,.10),rgba(255,206,90,.03) 38%,transparent 66%);animation:raysGlow 9s ease-in-out infinite}
 @keyframes raysDrift{
-  0%{transform:scale(1.02) translate3d(0,0,0)}
-  50%{transform:scale(1.07) translate3d(-1.1%,.9%,0)}
-  100%{transform:scale(1.05) translate3d(-.4%,-.7%,0)}
+  0%{transform:scale(1.05) translate3d(0,0,0)}
+  25%{transform:scale(1.062) translate3d(-1.15%,.85%,0)}
+  50%{transform:scale(1.05) translate3d(-.55%,1.55%,0)}
+  75%{transform:scale(1.038) translate3d(.75%,.8%,0)}
+  100%{transform:scale(1.05) translate3d(0,0,0)}
 }
-@keyframes raysGlow{0%{opacity:.75}100%{opacity:1}}
+@keyframes raysGlow{0%{opacity:.72}50%{opacity:1}100%{opacity:.72}}100%{opacity:1}}
 @media(max-width:760px){body::before{background-position:28% 0;background-size:auto 115%}body::after{opacity:.8}}
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 
