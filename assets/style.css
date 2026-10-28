@@ -1552,7 +1552,6 @@ body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 
 /* bottom frame — identical to the header: same height, colour, opacity 80% */
-html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:92px;pointer-events:none;z-index:36;transition:height .28s cubic-bezier(.4,0,.2,1);
+html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:94px;pointer-events:none;z-index:36;
   background:rgba(11,11,12,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-top:1px solid var(--line)}
-html.at-bottom::after{height:var(--footer-h,92px)}
