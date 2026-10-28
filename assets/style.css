@@ -1540,7 +1540,7 @@ main > section.improve-section:nth-of-type(even){background:none}
 
 /* Sun rays background — photo layer (2026-10-28) */
 body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1}
-body::before{inset:-9vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 104.5s ease-in-out infinite alternate}
+body::before{inset:-14vmax;background:url("img/rays-bg.jpg?v=3") no-repeat center/cover;will-change:transform;animation:raysDrift 104.5s ease-in-out infinite alternate}
 body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206,90,.10),rgba(255,206,90,.03) 38%,transparent 66%);animation:raysGlow 32.3s ease-in-out infinite alternate}
 @keyframes raysDrift{
   0%{transform:scale(1.02) translate3d(0,0,0)}
