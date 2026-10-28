@@ -1551,9 +1551,7 @@ body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206
 @media(max-width:760px){body::before{background-position:28% 0;background-size:auto 115%}body::after{opacity:.8}}
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 
-/* bottom frame — same transparency as the header */
-html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:clamp(78px,13vh,140px);pointer-events:none;z-index:36;
-  background:linear-gradient(to bottom,rgba(11,11,12,0) 0%,rgba(11,11,12,.45) 38%,rgba(11,11,12,.92) 100%);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 100%);
-  mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 100%)}
+/* bottom frame — same look as the header */
+html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:clamp(64px,9vh,96px);pointer-events:none;z-index:36;
+  background:rgba(11,11,12,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line)}
