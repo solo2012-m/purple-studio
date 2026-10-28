@@ -19,7 +19,7 @@ window.SOLO_CONFIG = {
     privacyUrl: '/pages/zasebnost.html'
   },
   analytics: {
-    ga4: ''
+    ga4: 'G-1CY1DLCCV9'
   },
   routes: {
     create:  'pages/izdelava-spletnih-strani.html',
