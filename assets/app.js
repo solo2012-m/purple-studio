@@ -610,7 +610,7 @@
     if (ep) {
       try {
         window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
-          .then(function () { setModal(sentHtml()); })
+          .then(function () { if (window.soloTrack) window.soloTrack('generate_lead', { form: 'contact' }); setModal(sentHtml()); })
           .catch(function () { setModal(notReadyHtml(text)); });
         return;
       } catch (e) {}

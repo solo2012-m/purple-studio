@@ -46,6 +46,23 @@
     document.body.appendChild(d);
   }
 
+  window.soloTrack = function (name, params) {
+    try {
+      if (window.__soloGaLoaded && typeof window.gtag === 'function') {
+        window.gtag('event', name, params || {});
+      }
+    } catch (e) {}
+  };
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (/^https?:\/\/(t\.me|telegram\.me)\//i.test(href)) { if (window.soloTrack) window.soloTrack('click_telegram', {}); }
+    else if (/^mailto:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_email', {}); }
+    else if (/^tel:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_phone', {}); }
+  }, true);
+
   if (stored() === 'granted') loadGA();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', banner);
   else banner();

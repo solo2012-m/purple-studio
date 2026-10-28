@@ -237,7 +237,7 @@
     if (ep) {
       try {
         window.fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
-          .then(function (r) { if (r && r.ok) showImproveResult(true, text); else showImproveResult(false, text); })
+          .then(function (r) { if (r && r.ok) { if (window.soloTrack) window.soloTrack('generate_lead', { form: 'improve' }); showImproveResult(true, text); } else showImproveResult(false, text); })
           .catch(function () { showImproveResult(false, text); });
         return;
       } catch (ex) {}
