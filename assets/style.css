@@ -1536,3 +1536,13 @@ main > section.improve-section:nth-of-type(even){background:rgba(255,255,255,.01
   #telegram .tgm-grid{margin-top:18px}
   #telegram .ai-demo-note{margin-top:12px}
 }
+
+
+/* Sun rays background (2026-10-28) */
+body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1}
+body::before{inset:-6vmax;background:url("img/rays-bg.jpg") no-repeat center/cover;opacity:.9;animation:raysDrift 120s ease-in-out infinite alternate;will-change:transform}
+body::after{inset:-22vmax;background:repeating-conic-gradient(from 8deg at -14% -22%,transparent 0deg 2.4deg,rgba(255,212,0,.055) 2.9deg 3.7deg,transparent 4.2deg 7.6deg);-webkit-mask-image:radial-gradient(115% 95% at -8% -18%,#000 0%,rgba(0,0,0,.5) 42%,transparent 76%);mask-image:radial-gradient(115% 95% at -8% -18%,#000 0%,rgba(0,0,0,.5) 42%,transparent 76%);opacity:.55;mix-blend-mode:screen;transform-origin:-14% -22%;animation:raysSweep 150s linear infinite}
+@keyframes raysDrift{0%{transform:scale(1.02) translate3d(0,0,0)}100%{transform:scale(1.07) translate3d(-1.2%,.8%,0)}}
+@keyframes raysSweep{0%{transform:rotate(-1.2deg)}100%{transform:rotate(1.2deg)}}
+@media(max-width:760px){body::before{background-position:22% 0;opacity:.8}body::after{opacity:.4}}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
