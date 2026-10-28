@@ -1,5 +1,5 @@
 :root{
-  --bg:#0B0B0C;--surface:#141416;--surface2:#1B1B1E;--ink:#F4F3EF;--muted:#9B9EA4;
+  --bg:#08080A;--surface:#0C0C0E;--surface2:#141416;--ink:#F4F3EF;--muted:#9B9EA4;
   --line:#2A2A2E;--accent:#FFD400;--accent-dim:#8A7412;--accent-soft:rgba(255,212,0,.12);
 }
 *{box-sizing:border-box}
@@ -42,7 +42,7 @@ section.first{border-top:0}
 .draftbar{border:1px dashed var(--accent-dim);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--muted);margin:14px 0 0}
 .draftbar b{color:var(--accent)}
 /* header */
-header{position:sticky;top:0;z-index:40;background:rgba(11,11,12,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:40;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr{display:flex;align-items:center;gap:28px;padding:24px 0}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .logo img{height:46px;width:auto;display:block}
@@ -202,7 +202,7 @@ details.faq p{color:var(--muted);font-size:15.5px;margin:12px 0 0}
 .cta{text-align:center;padding:86px 0}
 .cta h2{font:700 clamp(28px,3.6vw,42px)/1.12 "Space Grotesk",sans-serif;margin:0 auto 16px;max-width:24ch}
 .cta .lead{margin:0 auto 30px;text-align:center}
-footer{background:var(--bg);border-top:1px solid var(--line);padding:46px 0 94px;color:var(--muted);font-size:14px;position:relative;z-index:37}
+footer{background:#000;border-top:1px solid var(--line);padding:46px 0 94px;color:var(--muted);font-size:14px;position:relative;z-index:37}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
 .footer-grid h4{font:600 12px/1 "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin:0 0 14px}
 .footer-grid a{display:block;text-decoration:none;color:var(--muted);margin-bottom:8px}
@@ -1555,7 +1555,7 @@ body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206
 
 /* bottom frame — identical to the header: same height, colour, opacity 80% */
 html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:94px;pointer-events:none;z-index:36;transition:opacity .35s ease;
-  background:rgba(11,11,12,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:rgba(0,0,0,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-top:1px solid var(--line)}
 
 html.footer-in::after{opacity:0}
