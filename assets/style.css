@@ -42,7 +42,7 @@ section.first{border-top:0}
 .draftbar{border:1px dashed var(--accent-dim);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--muted);margin:14px 0 0}
 .draftbar b{color:var(--accent)}
 /* header */
-header{position:sticky;top:0;z-index:40;background:rgba(11,11,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:40;background:rgba(11,11,12,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr{display:flex;align-items:center;gap:28px;padding:14px 0}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
 .logo img{height:46px;width:auto;display:block}
@@ -202,14 +202,14 @@ details.faq p{color:var(--muted);font-size:15.5px;margin:12px 0 0}
 .cta{text-align:center;padding:86px 0}
 .cta h2{font:700 clamp(28px,3.6vw,42px)/1.12 "Space Grotesk",sans-serif;margin:0 auto 16px;max-width:24ch}
 .cta .lead{margin:0 auto 30px;text-align:center}
-footer{border-top:1px solid var(--line);padding:46px 0 clamp(120px,16vh,170px);color:var(--muted);font-size:14px}
+footer{border-top:0;padding:46px 0 clamp(120px,16vh,170px);color:var(--muted);font-size:14px}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
 .footer-grid h4{font:600 12px/1 "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin:0 0 14px}
 .footer-grid a{display:block;text-decoration:none;color:var(--muted);margin-bottom:8px}
 .footer-grid a:hover{color:var(--accent)}
 .footer-brand img{height:34px;width:auto;display:block;margin-bottom:14px}
 .footer-brand p{margin:0;max-width:34ch;font-size:14px;color:var(--muted)}
-.footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:13px}
+.footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:34px;padding-top:20px;border-top:0;font-size:13px}
 /* modal */
 .overlay{position:fixed;inset:0;background:rgba(4,4,5,.8);backdrop-filter:blur(6px);z-index:80;display:none;align-items:flex-start;justify-content:center;padding:40px 18px;overflow:auto}
 .overlay.on{display:flex}
@@ -1551,7 +1551,7 @@ body::after{inset:0;background:radial-gradient(130% 100% at 6% -12%,rgba(255,206
 @media(max-width:760px){body::before{background-position:28% 0;background-size:auto 115%}body::after{opacity:.8}}
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 
-/* bottom frame — same look as the header */
-html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:clamp(64px,9vh,96px);pointer-events:none;z-index:36;
-  background:rgba(11,11,12,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+/* bottom frame — identical to the header: same height, colour, opacity 80% */
+html::after{content:"";position:fixed;left:0;right:0;bottom:0;height:74px;pointer-events:none;z-index:36;
+  background:rgba(11,11,12,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-top:1px solid var(--line)}
