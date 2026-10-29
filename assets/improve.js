@@ -158,7 +158,8 @@
     var email = mailEl ? mailEl.value.trim() : '';
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { if (err) err.textContent = t('improve.express.errEmail'); return false; }
     if (err) err.textContent = '';
-    var ep = (window.CONFIG && CONFIG.crm && CONFIG.crm.endpoint) || (window.CONFIG && CONFIG.express && CONFIG.express.endpoint) || '';
+    var C = window.SOLO_CONFIG || window.CONFIG || {};
+    var ep = (C.crm && C.crm.endpoint) || (C.express && C.express.endpoint) || (C.submit && C.submit.endpoint) || '';
     if (!ep) { showExpressNotice(); return false; }
     var btn = document.querySelector('#expressForm button[type="submit"]');
     if (btn) { btn.disabled = true; btn.textContent = t('improve.express.sending'); }
