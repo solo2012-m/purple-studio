@@ -95,6 +95,11 @@
 <script src="../assets/config.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+(function () {
+  var q = new URLSearchParams(location.search).get('site');
+  var f = document.getElementById('anUrl');
+  if (q && f) { f.value = /^https?:\/\//i.test(q) ? q : 'https://' + q; }
+})();
 document.getElementById('anForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var url = document.getElementById('anUrl').value.trim();
@@ -104,10 +109,11 @@ document.getElementById('anForm').addEventListener('submit', function (e) {
   if (!url || !email || !ok) { btn.textContent = 'Izpolnite vsa polja'; return; }
   var ep = (window.SOLO_CONFIG && SOLO_CONFIG.crm && SOLO_CONFIG.crm.endpoint) || '';
   btn.disabled = true; btn.textContent = 'Pošiljam…';
+  var plang = (document.documentElement.lang || 'sl').slice(0, 2).toLowerCase();
   var payload = {
     type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
-    message: 'Prošnja za brezplačno analizo: ' + url,
-    page: '/pages/brezplacna-analiza.html', lang: 'sl',
+    message: (plang === 'ru' ? 'Запрос на бесплатную диагностику: ' : 'Prošnja za brezplačno analizo: ') + url,
+    page: '/pages/brezplacna-analiza.html', lang: plang === 'ru' ? 'ru' : 'sl',
     marketingConsent: true
   };
   fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })

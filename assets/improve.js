@@ -152,18 +152,30 @@
   window.submitExpress = function (e) {
     e.preventDefault();
     var input = document.getElementById('expressUrl'), err = document.getElementById('expressErr');
+    var mailEl = document.getElementById('expressEmail');
     var url = normalizeUrl(input ? input.value : '');
     if (!validUrl(url)) { if (err) err.textContent = t('improve.express.errUrl'); return false; }
+    var email = mailEl ? mailEl.value.trim() : '';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { if (err) err.textContent = t('improve.express.errEmail'); return false; }
     if (err) err.textContent = '';
-    if (window.CONFIG && CONFIG.express && CONFIG.express.enabled && CONFIG.express.endpoint) {
-      try {
-        window.fetch(CONFIG.express.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: url, concern: (document.getElementById('expressConcern') || {}).value || '', lang: lang() }) })
-          .then(function (r) { return r.json(); })
-          .then(function (d) { renderExpressResults(d); })
-          .catch(function () { showExpressNotice(); });
-        return false;
-      } catch (ex) {}
-    }
+    var ep = (window.CONFIG && CONFIG.crm && CONFIG.crm.endpoint) || (window.CONFIG && CONFIG.express && CONFIG.express.endpoint) || '';
+    if (!ep) { showExpressNotice(); return false; }
+    var btn = document.querySelector('#expressForm button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = t('improve.express.sending'); }
+    var concern = (document.getElementById('expressConcern') || {}).value || '';
+    try {
+      window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
+          message: concern ? ('Ekspresna preveritev: ' + concern) : 'Ekspresna preveritev strani',
+          page: location.pathname, lang: lang(), marketingConsent: false }) })
+        .catch(function () {})
+        .finally(function () {
+          var n = document.getElementById('expressNotice');
+          if (n) { n.hidden = false; n.innerHTML = '<p>' + esc(t('improve.express.ok')) + '</p>'; }
+          if (btn) { btn.disabled = false; btn.textContent = t('improve.express.btn'); }
+        });
+      return false;
+    } catch (ex) {}
     showExpressNotice();
     return false;
   };
