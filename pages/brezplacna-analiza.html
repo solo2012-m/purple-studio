@@ -33,51 +33,51 @@
   <div class="wrap hdr">
     <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
     <nav>
-      <a href="../index.html#solutions">Rešitve</a>
-      <a href="../index.html#process">Postopek</a>
-      <a href="../index.html#works">Projekti</a>
-      <a href="../index.html#faq">Vprašanja</a>
+      <a href="../index.html#solutions" data-i18n="nav.solutions">Rešitve</a>
+      <a href="../index.html#process" data-i18n="nav.process">Postopek</a>
+      <a href="../index.html#works" data-i18n="nav.works">Projekti</a>
+      <a href="../index.html#faq" data-i18n="nav.faq">Vprašanja</a>
     </nav>
-    <a class="btn ghost sm" href="../index.html" style="margin-left:auto">Nazaj</a>
+    <a class="btn ghost sm" href="../index.html" style="margin-left:auto" data-i18n="nav.back">Nazaj</a>
   </div>
 </header>
 
 <main>
 <div class="an-wrap">
   <section class="an-hero">
-    <span class="eyebrow">Brezplačno · brez obveznosti</span>
-    <h1>Kaj vaša stran pove strankam?</h1>
-    <p>Vnesite naslov strani. Preverimo hitrost, mobilno različico, varnost, osnovno SEO in ali lahko obiskovalec sploh odda povpraševanje. Rezultat: tri stvari, ki jih je najprej smiselno popraviti, in predlog naslednjega koraka.</p>
+    <span class="eyebrow" data-i18n="an.eyebrow">Brezplačno · brez obveznosti</span>
+    <h1 data-i18n="an.h1">Kaj vaša stran pove strankam?</h1>
+    <p data-i18n="an.lead">Vnesite naslov strani. Preverimo hitrost, mobilno različico, varnost, osnovno SEO in ali lahko obiskovalec sploh odda povpraševanje. Rezultat: tri stvari, ki jih je najprej smiselno popraviti, in predlog naslednjega koraka.</p>
   </section>
 
   <section class="an-card">
     <form id="anForm" novalidate>
       <div class="row">
-        <label for="anUrl">Naslov vaše strani</label>
+        <label for="anUrl" data-i18n="an.lblUrl">Naslov vaše strani</label>
         <input id="anUrl" type="url" name="site" placeholder="https://vase-podjetje.si" required>
       </div>
       <div class="row">
-        <label for="anEmail">E-pošta za odgovor</label>
+        <label for="anEmail" data-i18n="an.lblEmail">E-pošta za odgovor</label>
         <input id="anEmail" type="email" name="email" placeholder="ime@podjetje.si" required>
       </div>
       <div class="row" style="display:flex;gap:10px;align-items:flex-start">
         <input id="anConsent" type="checkbox" required style="margin-top:4px">
-        <label for="anConsent" style="text-transform:none;letter-spacing:0;font-size:13.5px;color:var(--muted)">Strinjam se, da se moji podatki uporabijo za pripravo analize in odgovor. Podatkov ne posredujemo tretjim osebam.</label>
+        <label for="anConsent" style="text-transform:none;letter-spacing:0;font-size:13.5px;color:var(--muted)" data-i18n="an.consent">Strinjam se, da se moji podatki uporabijo za pripravo analize in odgovor. Podatkov ne posredujemo tretjim osebam.</label>
       </div>
-      <button class="btn" type="submit" id="anBtn">Pošlji za analizo</button>
-      <p class="an-note">Povzetek pošljemo na e-pošto v enem delovnem dnevu. Brez klicev in brez obveznosti.</p>
-      <div class="an-ok" id="anOk">Hvala! Analizo pripravljamo — odgovor bo prišel na vaš e-naslov.</div>
+      <button class="btn" type="submit" id="anBtn" data-i18n="an.btn">Pošlji za analizo</button>
+      <p class="an-note" data-i18n="an.note">Povzetek pošljemo na e-pošto v enem delovnem dnevu. Brez klicev in brez obveznosti.</p>
+      <div class="an-ok" id="anOk" data-i18n="an.ok">Hvala! Analizo pripravljamo — odgovor bo prišel na vaš e-naslov.</div>
     </form>
   </section>
 
   <section style="padding-bottom:60px">
-    <h2 class="h2">Kaj preverimo</h2>
+    <h2 class="h2" data-i18n="an.what">Kaj preverimo</h2>
     <div class="an-list">
-      <div><b>Hitrost in telefon</b> — koliko časa stran potrebuje, da se naloži, in ali je uporabna na majhnem zaslonu.</div>
-      <div><b>Tehnika in varnost</b> — certifikat, preusmeritve, robots, sitemap, varnostne glave.</div>
-      <div><b>Jasnost ponudbe</b> — ali obiskovalec v prvih sekundah razume, kaj ponujate in koliko stane.</div>
-      <div><b>Zajem strank</b> — ali lahko odda povpraševanje ali rezervira termin, in kam ta zahteva pride.</div>
-      <div><b>Pravna osnova</b> — politika zasebnosti, piškotki, podatki podjetja.</div>
+      <div data-i18n-html="an.i1"><b>Hitrost in telefon</b> — koliko časa stran potrebuje, da se naloži, in ali je uporabna na majhnem zaslonu.</div>
+      <div data-i18n-html="an.i2"><b>Tehnika in varnost</b> — certifikat, preusmeritve, robots, sitemap, varnostne glave.</div>
+      <div data-i18n-html="an.i3"><b>Jasnost ponudbe</b> — ali obiskovalec v prvih sekundah razume, kaj ponujate in koliko stane.</div>
+      <div data-i18n-html="an.i4"><b>Zajem strank</b> — ali lahko odda povpraševanje ali rezervira termin, in kam ta zahteva pride.</div>
+      <div data-i18n-html="an.i5"><b>Pravna osnova</b> — politika zasebnosti, piškotki, podatki podjetja.</div>
     </div>
   </section>
 </div>
@@ -87,33 +87,109 @@
   <div class="wrap">
     <div class="footer-bottom" style="border-top:1px solid var(--line)">
       <span>© <span id="year"></span> Solo.POV</span>
-      <span><a href="zasebnost.html" style="color:var(--muted)">Zasebnost</a> · <a href="pogoji.html" style="color:var(--muted)">Pogoji</a></span>
+      <span><a href="zasebnost.html" style="color:var(--muted)" data-i18n="footer.privacy">Zasebnost</a> · <a href="pogoji.html" style="color:var(--muted)" data-i18n="footer.terms">Pogoji</a></span>
     </div>
   </div>
 </footer>
 
 <script src="../assets/config.js"></script>
 <script>
+var AN_I18N = {
+  sl: {
+    'doc.title': 'Brezplačna analiza spletne strani — Solo.POV',
+    'doc.desc': 'Brezplačna analiza spletne strani: hitrost, mobilna različica, varnost, zajem strank. Tri stvari, ki jih je treba popraviti, in predlog naslednjega koraka.',
+    'nav.solutions': 'Rešitve', 'nav.process': 'Postopek', 'nav.works': 'Projekti', 'nav.faq': 'Vprašanja', 'nav.back': 'Nazaj',
+    'an.eyebrow': 'Brezplačno · brez obveznosti',
+    'an.h1': 'Kaj vaša stran pove strankam?',
+    'an.lead': 'Vnesite naslov strani. Preverimo hitrost, mobilno različico, varnost, osnovno SEO in ali lahko obiskovalec sploh odda povpraševanje. Rezultat: tri stvari, ki jih je najprej smiselno popraviti, in predlog naslednjega koraka.',
+    'an.lblUrl': 'Naslov vaše strani',
+    'an.lblEmail': 'E-pošta za odgovor',
+    'an.consent': 'Strinjam se, da se moji podatki uporabijo za pripravo analize in odgovor. Podatkov ne posredujemo tretjim osebam.',
+    'an.btn': 'Pošlji za analizo',
+    'an.note': 'Povzetek pošljemo na e-pošto v enem delovnem dnevu. Brez klicev in brez obveznosti.',
+    'an.ok': 'Hvala! Analizo pripravljamo — odgovor bo prišel na vaš e-naslov.',
+    'an.what': 'Kaj preverimo',
+    'an.i1': '<b>Hitrost in telefon</b> — koliko časa stran potrebuje, da se naloži, in ali je uporabna na majhnem zaslonu.',
+    'an.i2': '<b>Tehnika in varnost</b> — certifikat, preusmeritve, robots, sitemap, varnostne glave.',
+    'an.i3': '<b>Jasnost ponudbe</b> — ali obiskovalec v prvih sekundah razume, kaj ponujate in koliko stane.',
+    'an.i4': '<b>Zajem strank</b> — ali lahko odda povpraševanje ali rezervira termin, in kam ta zahteva pride.',
+    'an.i5': '<b>Pravna osnova</b> — politika zasebnosti, piškotki, podatki podjetja.',
+    'footer.privacy': 'Zasebnost', 'footer.terms': 'Pogoji',
+    'form.fill': 'Izpolnite vsa polja', 'form.sending': 'Pošiljam…',
+    'ph.url': 'https://vase-podjetje.si', 'ph.email': 'ime@podjetje.si'
+  },
+  ru: {
+    'doc.title': 'Бесплатная диагностика сайта — Solo.POV',
+    'doc.desc': 'Бесплатная проверка сайта: скорость, мобильная версия, безопасность, приём заявок. Три главных исправления и следующий шаг.',
+    'nav.solutions': 'Решения', 'nav.process': 'Как работаем', 'nav.works': 'Проекты', 'nav.faq': 'Вопросы', 'nav.back': 'Назад',
+    'an.eyebrow': 'Бесплатно · без обязательств',
+    'an.h1': 'Что ваш сайт говорит клиентам?',
+    'an.lead': 'Введите адрес сайта. Проверим скорость, мобильную версию, безопасность, базовое SEO и может ли посетитель оставить заявку. Результат: три вещи, которые стоит исправить в первую очередь, и предложение следующего шага.',
+    'an.lblUrl': 'Адрес вашего сайта',
+    'an.lblEmail': 'Почта для ответа',
+    'an.consent': 'Согласен, что мои данные используют для подготовки анализа и ответа. Данные не передаём третьим лицам.',
+    'an.btn': 'Отправить на анализ',
+    'an.note': 'Краткий отчёт пришлём на почту в течение рабочего дня. Без звонков и обязательств.',
+    'an.ok': 'Спасибо! Готовим анализ — ответ придёт на ваш e-mail.',
+    'an.what': 'Что проверяем',
+    'an.i1': '<b>Скорость и телефон</b> — сколько времени сайт загружается и удобен ли он на маленьком экране.',
+    'an.i2': '<b>Техника и безопасность</b> — сертификат, переадресации, robots, sitemap, заголовки безопасности.',
+    'an.i3': '<b>Ясность предложения</b> — понимает ли посетитель в первые секунды, что вы предлагаете и сколько это стоит.',
+    'an.i4': '<b>Приём заявок</b> — может ли посетитель оставить заявку или записаться и куда она приходит.',
+    'an.i5': '<b>Правовая основа</b> — политика конфиденциальности, cookie, данные компании.',
+    'footer.privacy': 'Конфиденциальность', 'footer.terms': 'Условия',
+    'form.fill': 'Заполните все поля', 'form.sending': 'Отправляю…',
+    'ph.url': 'https://vash-sait.ru', 'ph.email': 'name@company.si'
+  }
+};
+
+function anLang() {
+  var p = new URLSearchParams(location.search).get('lang');
+  var l = p || '';
+  if (!l) { try { l = localStorage.getItem('solo-lang') || ''; } catch (e) {} }
+  return String(l).toLowerCase().indexOf('ru') === 0 ? 'ru' : 'sl';
+}
+
+var ANL = anLang();
+var D = AN_I18N[ANL];
+
+document.documentElement.lang = ANL;
+document.title = D['doc.title'];
+var md = document.querySelector('meta[name="description"]');
+if (md) md.setAttribute('content', D['doc.desc']);
+
+Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function (el) {
+  var k = el.getAttribute('data-i18n');
+  if (D[k]) el.textContent = D[k];
+});
+Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-html]'), function (el) {
+  var k = el.getAttribute('data-i18n-html');
+  if (D[k]) el.innerHTML = D[k];
+});
+
+document.getElementById('anUrl').placeholder = D['ph.url'];
+document.getElementById('anEmail').placeholder = D['ph.email'];
 document.getElementById('year').textContent = new Date().getFullYear();
+
 (function () {
   var q = new URLSearchParams(location.search).get('site');
   var f = document.getElementById('anUrl');
   if (q && f) { f.value = /^https?:\/\//i.test(q) ? q : 'https://' + q; }
 })();
+
 document.getElementById('anForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var url = document.getElementById('anUrl').value.trim();
   var email = document.getElementById('anEmail').value.trim();
   var ok = document.getElementById('anConsent').checked;
   var btn = document.getElementById('anBtn');
-  if (!url || !email || !ok) { btn.textContent = 'Izpolnite vsa polja'; return; }
+  if (!url || !email || !ok) { btn.textContent = D['form.fill']; return; }
   var ep = (window.SOLO_CONFIG && SOLO_CONFIG.crm && SOLO_CONFIG.crm.endpoint) || '';
-  btn.disabled = true; btn.textContent = 'Pošiljam…';
-  var plang = (document.documentElement.lang || 'sl').slice(0, 2).toLowerCase();
+  btn.disabled = true; btn.textContent = D['form.sending'];
   var payload = {
     type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
-    message: (plang === 'ru' ? 'Запрос на бесплатную диагностику: ' : 'Prošnja za brezplačno analizo: ') + url,
-    page: '/pages/brezplacna-analiza.html', lang: plang === 'ru' ? 'ru' : 'sl',
+    message: (ANL === 'ru' ? 'Запрос на бесплатную диагностику: ' : 'Prošnja za brezplačno analizo: ') + url,
+    page: '/pages/brezplacna-analiza.html', lang: ANL,
     marketingConsent: true
   };
   fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })

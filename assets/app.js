@@ -478,7 +478,7 @@
     h += '</ul></div>';
     h += '<div class="qres-block"><h4>' + esc(ui('resultNext')) + '</h4><p>' + esc(r.next) + '</p></div>';
     if (quiz.branch === 'b' || quiz.branch === 'c') {
-      var durl = 'pages/brezplacna-analiza.html' + (quiz.url ? '?site=' + encodeURIComponent(quiz.url) : '');
+      var durl = 'pages/brezplacna-analiza.html?lang=' + lang + (quiz.url ? '&site=' + encodeURIComponent(quiz.url) : '');
       h += '<div class="qres-block qres-diag"><h4>' + esc(ui('resDiagTitle')) + '</h4><p>' + esc(ui('resDiagText')) + '</p>' +
            '<a class="btn ghost sm" href="' + durl + '">' + esc(ui('resDiagBtn')) + '</a></div>';
     }

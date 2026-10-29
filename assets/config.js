@@ -25,7 +25,8 @@ window.SOLO_CONFIG = {
     create:  'pages/izdelava-spletnih-strani.html',
     improve: 'pages/izboljsanje-spletnih-strani.html',
     ai:      'pages/ai-avtomatizacija.html',
-    ads:     'pages/reklama-in-promocija.html'
+    ads:     'pages/reklama-in-promocija.html',
+    analiza: 'pages/brezplacna-analiza.html'
   },
   /* Resnični projekti. Prazen seznam = prikaže se pošteno obvestilo "v pripravi".
      Primer vnosa:
