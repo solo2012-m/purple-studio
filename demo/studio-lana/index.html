@@ -234,10 +234,18 @@ document.getElementById('slForm').addEventListener('submit', function (e) {
   if (!name || !contact || !consent) { btn.textContent = 'Izpolnite vsa polja'; return; }
   var ep = (window.SOLO_CONFIG && SOLO_CONFIG.crm && SOLO_CONFIG.crm.endpoint) || '';
   btn.disabled = true; btn.textContent = 'Pošiljam…';
+  var isMail = contact.indexOf('@') > -1;
   var payload = {
-    type: 'booking', source: 'demo-studio-lana', service: document.getElementById('slService').value,
-    master: document.getElementById('slMaster').value, date: document.getElementById('slDate').value,
-    time: document.getElementById('slTime').value, name: name, contact: contact,
+    type: 'booking', source: 'demo-studio-lana',
+    service: document.getElementById('slService').value,
+    master: document.getElementById('slMaster').value,
+    date: document.getElementById('slDate').value, time: document.getElementById('slTime').value,
+    name: name,
+    email: isMail ? contact : '',
+    telegram: isMail ? '' : contact,
+    message: 'Demo rezervacija: ' + document.getElementById('slService').value +
+      ' · ' + document.getElementById('slMaster').value +
+      ' · ' + document.getElementById('slDate').value + ' ob ' + document.getElementById('slTime').value,
     page: '/demo/studio-lana/', lang: 'sl', marketingConsent: false
   };
   fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
