@@ -57,9 +57,9 @@ function doPost(e) {
     var telegram = clean(lead.telegram || lead.tg || '');
     var phone = clean(lead.phone || lead.tel || '');
     var contact = telegram || phone;
-    var lang = (String(lead.lang || 'sl').toLowerCase().indexOf('ru') === 0) ? 'ru' : 'sl';
     var service = clean(lead.service || lead.interest || lead.branchTitle || lead.type || '');
     var message = clean(lead.message || lead.notes || lead.sporocilo || '');
+    var lang = pickLang_(lead.lang, name, message);
     var utm = utmString(lead.utm || {});
     var page = clean(lead.page || lead.url || '');
 
@@ -156,6 +156,15 @@ function notifyOwner_(name, email, contact, lang, service, message, utm, page) {
   try {
     MailApp.sendEmail(OWNER_EMAIL, 'SOLO.POV — заявка: ' + (name || email || 'без имени'), body);
   } catch (err) {}
+}
+
+/**
+ * Язык письма: явный lang=ru, иначе кириллица в имени/сообщении, иначе sl.
+ */
+function pickLang_(explicit, name, message) {
+  if (String(explicit || '').toLowerCase().indexOf('ru') === 0) return 'ru';
+  if (/[\u0400-\u04FF]/.test(String(name || '') + ' ' + String(message || ''))) return 'ru';
+  return 'sl';
 }
 
 function paramsToObject(p) {
