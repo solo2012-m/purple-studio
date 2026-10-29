@@ -60,24 +60,24 @@ window.SOLO_CONFIG = {
   ],
   submit: {
     enabled: false,
-    endpoint: ''
+    endpoint: 'https://script.google.com/macros/s/AKfycbwFOHDz0V1GQfeEJ3EfqwqW4uLaiHlnDdRKB1RgkcKiPpExPYb6FKc3nUlvJ2xPRDW7/exec'
   },
   /* Prihodnja hitra diagnoza in obdelava zahtev za izboljšave. Trenutno izklopljeno. */
   express: {
     enabled: false,
-    endpoint: ''
+    endpoint: 'https://script.google.com/macros/s/AKfycbwFOHDz0V1GQfeEJ3EfqwqW4uLaiHlnDdRKB1RgkcKiPpExPYb6FKc3nUlvJ2xPRDW7/exec'
   },
   improve: {
     enabled: false,
-    endpoint: ''
+    endpoint: 'https://script.google.com/macros/s/AKfycbwFOHDz0V1GQfeEJ3EfqwqW4uLaiHlnDdRKB1RgkcKiPpExPYb6FKc3nUlvJ2xPRDW7/exec'
   },
   ai: {
     enabled: false,
-    endpoint: ''
+    endpoint: 'https://script.google.com/macros/s/AKfycbwFOHDz0V1GQfeEJ3EfqwqW4uLaiHlnDdRKB1RgkcKiPpExPYb6FKc3nUlvJ2xPRDW7/exec'
   },
   /* Prihodnja CRM / zbirka potencialnih strank. Trenutno izklopljeno. */
   crm: {
     enabled: true,
-    endpoint: 'https://script.google.com/macros/s/AKfycbySsK0ke-H_p0atwXPSfOYVm805fbdB2Jy1Gh4nPNp9rJoHFEXbgdXVpGIZqibddzFY/exec'
+    endpoint: 'https://script.google.com/macros/s/AKfycbwFOHDz0V1GQfeEJ3EfqwqW4uLaiHlnDdRKB1RgkcKiPpExPYb6FKc3nUlvJ2xPRDW7/exec'
   }
 };
