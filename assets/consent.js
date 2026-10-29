@@ -33,8 +33,10 @@
     d.setAttribute('aria-label', 'Cookies');
     d.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:720px;margin:0 auto;padding:16px 18px;border-radius:14px;background:#141018;color:#f3eefc;border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 40px rgba(0,0,0,.45);font:14px/1.5 system-ui,sans-serif;display:flex;gap:12px;flex-wrap:wrap;align-items:center';
     d.innerHTML = '<div style="flex:1 1 320px">' + t.text + ' <a href="/pages/zasebnost.html" style="color:#c9b6ff">' + t.more + '</a></div>' +
-      '<button type="button" data-c="1" style="padding:9px 16px;border-radius:10px;border:0;background:#7c5cff;color:#fff;font:inherit;cursor:pointer">' + t.yes + '</button>' +
-      '<button type="button" data-c="0" style="padding:9px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#f3eefc;font:inherit;cursor:pointer">' + t.no + '</button>';
+      '<div style="display:flex;gap:10px;flex:1 1 240px">' +
+      '<button type="button" data-c="1" style="flex:1 1 0;min-width:0;padding:11px 16px;border-radius:10px;border:1px solid transparent;background:#7c5cff;color:#fff;font:inherit;cursor:pointer">' + t.yes + '</button>' +
+      '<button type="button" data-c="0" style="flex:1 1 0;min-width:0;padding:11px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#f3eefc;font:inherit;cursor:pointer">' + t.no + '</button>' +
+      '</div>';
     d.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-c]');
       if (!b) return;
