@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Solo.Pov</title>
-<meta name="description" content="">
+<title>Solo.Pov — spletne strani in AI</title>
+<meta name="description" content="Izdelava, izboljšanje in razvoj spletnih strani za mala podjetja. Od prve ideje do avtomatizacije.">
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,8 @@
 <meta property="og:url" content="https://solopov.si/">
 <meta property="og:image" content="https://solopov.si/assets/img/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var m=location.search.match(/[?&]lang=(sl|ru)(?:&|$)/);var s=null;try{s=localStorage.getItem('solo-lang');}catch(e){}var l=m?m[1]:(s||'sl');if(l!=='sl'){document.documentElement.lang=l;document.documentElement.className=(document.documentElement.className+' pre-lang').trim();}}catch(e){}})();</script>
+<style>html.pre-lang [data-i18n],html.pre-lang [data-i18n-html]{visibility:hidden}</style>
 </head>
 <body>
 
@@ -43,43 +45,43 @@
       </span>
     </a>
     <nav>
-      <a href="/index.html" data-i18n="nav.home"></a>
-      <a href="#solutions" data-i18n="nav.solutions"></a>
-      <a href="#process" data-i18n="nav.process"></a>
-      <a href="#telegram" data-i18n="nav.telegram"></a>
-      <a href="#works" data-i18n="nav.works"></a>
-      <a href="#faq" data-i18n="nav.faq"></a>
+      <a href="/index.html" data-i18n="nav.home">Domov</a>
+      <a href="#solutions" data-i18n="nav.solutions">Rešitve</a>
+      <a href="#process" data-i18n="nav.process">Postopek</a>
+      <a href="#telegram" data-i18n="nav.telegram">Telegram</a>
+      <a href="#works" data-i18n="nav.works">Projekti</a>
+      <a href="#faq" data-i18n="nav.faq">Vprašanja</a>
     </nav>
     <div class="langbox">
       <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
       <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
     </div>
-    <button class="btn sm" onclick="SOLO.openContact()" data-i18n="cta.talk"></button>
+    <button class="btn sm" onclick="SOLO.openContact()" data-i18n="cta.talk">Pogovorimo se</button>
   </div>
 </header>
 
 <section class="first" style="padding-top:0">
   <div class="wrap hero">
     <div>
-      <span class="eyebrow" data-i18n="hero.eyebrow"></span>
-      <h1><span data-i18n="hero.h1a"></span><br><span data-i18n="hero.h1b"></span><br><span class="acc" data-i18n="hero.h1c"></span></h1>
-      <p class="sub" data-i18n="hero.sub"></p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Solo.Pov · spletne strani in AI</span>
+      <h1><span data-i18n="hero.h1a">Vaše podjetje.</span><br><span data-i18n="hero.h1b">Vaša stran.</span><br><span class="acc" data-i18n="hero.h1c">Več možnosti.</span></h1>
+      <p class="sub" data-i18n="hero.sub">Izdelamo strani od začetka, izboljšamo obstoječe in pomagamo upravljati z njimi s pomočjo AI — brez tehničnih skrbi.</p>
       <div class="actions">
-        <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn"></button>
-        <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="cta.talk"></button>
+        <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn">Izberite rešitev</button>
+        <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="cta.talk">Pogovorimo se</button>
       </div>
     </div>
     <div class="picker">
-      <h3 data-i18n="picker.title"></h3>
-      <p class="picker-lead" data-i18n="picker.lead"></p>
+      <h3 data-i18n="picker.title">Katera rešitev ustreza vašemu podjetju?</h3>
+      <p class="picker-lead" data-i18n="picker.lead">Izberite svojo situacijo — vprašalnik se odpre takoj. Na voljo je kratek osebni izbor rešitve.</p>
       <p class="type-line" aria-live="polite"><span id="typeLine"></span><i class="caret" id="typeCaret" aria-hidden="true"></i></p>
       <div class="pick-grid" id="heroPicks">
-        <button type="button" class="pick" data-branch="a"><span data-i18n="picker.o1"></span></button>
-        <button type="button" class="pick" data-branch="b"><span data-i18n="picker.o2"></span></button>
-        <button type="button" class="pick" data-branch="c"><span data-i18n="picker.o3"></span></button>
-        <button type="button" class="pick" data-branch="d"><span data-i18n="picker.o4"></span></button>
+        <button type="button" class="pick" data-branch="a"><span data-i18n="picker.o1">Nimam spletne strani</span></button>
+        <button type="button" class="pick" data-branch="b"><span data-i18n="picker.o2">Želim obnoviti stran</span></button>
+        <button type="button" class="pick" data-branch="c"><span data-i18n="picker.o3">Stran imam, a premalo povpraševanj</span></button>
+        <button type="button" class="pick" data-branch="d"><span data-i18n="picker.o4">Želim avtomatizirati delo</span></button>
       </div>
-      <small class="meta" data-i18n="picker.meta"></small>
+      <small class="meta" data-i18n="picker.meta">Približno 1 minuta • Brez klicev • Prilagojeno vaši nalogi</small>
     </div>
   </div>
 </section>
@@ -88,38 +90,38 @@
   <div class="wrap">
     <div class="card" style="padding:26px 26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between">
       <div style="flex:1 1 340px;min-width:240px">
-        <h2 class="h2" style="margin-top:0" data-i18n="analiza.title"></h2>
-        <p class="lead" style="margin:0" data-i18n="analiza.text"></p>
+        <h2 class="h2" style="margin-top:0" data-i18n="analiza.title">Brezplačna analiza vaše strani</h2>
+        <p class="lead" style="margin:0" data-i18n="analiza.text">Preverimo hitrost, mobilno različico, varnost in ali lahko obiskovalec odda povpraševanje. Povzetek s tremi najpomembnejšimi popravki — na e-pošto.</p>
       </div>
-      <a class="btn" href="pages/brezplacna-analiza.html" data-route="analiza" data-i18n="analiza.btn"></a>
+      <a class="btn" href="pages/brezplacna-analiza.html" data-route="analiza" data-i18n="analiza.btn">Preverite svojo stran</a>
     </div>
   </div>
 </section>
 
 <section id="solutions">
   <div class="wrap">
-    <h2 class="h2" data-i18n="s3.title"></h2>
-    <p class="lead" data-i18n="s3.lead"></p>
+    <h2 class="h2" data-i18n="s3.title">Naše rešitve</h2>
+    <p class="lead" data-i18n="s3.lead">Od izdelave prve strani do avtomatizacije in pridobivanja strank.</p>
     <div class="grid g4">
       <a class="card solution-card" href="#" data-route="create">
-        <h3 data-i18n="s3.a.t"></h3><p data-i18n="s3.a.d"></p>
-        <span class="solution-highlight solution-highlight--price" data-i18n="s3.a.price"></span>
-        <span class="more" data-i18n="s3.a.more"></span>
+        <h3 data-i18n="s3.a.t">Izdelava spletnih strani</h3><p data-i18n="s3.a.d">Od preproste strani storitev do polnopravne strani podjetja. Plačilo po potrditvi končne strani za standardna paketa START in BUSINESS.</p>
+        <span class="solution-highlight solution-highlight--price" data-i18n="s3.a.price">Od 300 €</span>
+        <span class="more" data-i18n="s3.a.more">Poglej pakete →</span>
       </a>
       <a class="card solution-card improve-card" href="#" data-route="improve">
-        <h3 data-i18n="s3.b.t"></h3><p data-i18n="s3.b.d"></p>
-        <span class="solution-highlight"><b data-i18n="s3.b.adv"></b><small data-i18n="s3.b.free"></small></span>
-        <span class="more" data-i18n="s3.b.more"></span>
+        <h3 data-i18n="s3.b.t">Izboljšanje spletnih strani</h3><p data-i18n="s3.b.d">Odpravimo napake, obnovimo videz in dodamo funkcije. Brezplačen hitri pregled strani.</p>
+        <span class="solution-highlight"><b data-i18n="s3.b.adv">Dodelave od 30 €</b><small data-i18n="s3.b.free">Brezplačen hiter pregled strani</small></span>
+        <span class="more" data-i18n="s3.b.more">Izboljšajte stran →</span>
       </a>
       <a class="card solution-card" href="#" data-route="ai">
-        <h3 data-i18n="s3.c.t"></h3><p data-i18n="s3.c.d"></p>
-        <span class="solution-highlight" data-i18n="s3.c.adv"></span>
-        <span class="more" data-i18n="s3.c.more"></span>
+        <h3 data-i18n="s3.c.t">AI-asistent in avtomatizacija</h3><p data-i18n="s3.c.d">Upravljajte stran prek Telegrama: dodajajte storitve, posodabljajte informacije in objavljajte članke. Avtomatizirajte povpraševanja in ponavljajoče se naloge.</p>
+        <span class="solution-highlight" data-i18n="s3.c.adv">Vaša stran. Vaš Telegram. Vaš AI-pomočnik.</span>
+        <span class="more" data-i18n="s3.c.more">Poglej možnosti →</span>
       </a>
       <a class="card solution-card ads-card" href="#" data-route="ads">
-        <h3 data-i18n="s3.d.t"></h3><p data-i18n="s3.d.d"></p>
-        <span class="solution-highlight" data-i18n="s3.d.adv"></span>
-        <span class="more" data-i18n="s3.d.more"></span>
+        <h3 data-i18n="s3.d.t">Oglaševanje in promocija</h3><p data-i18n="s3.d.d">Nastavimo Google Ads, oglaševanje na Facebooku in Instagramu, izboljšamo iskalno vidnost in povežemo analitiko. Pomagamo privabiti potencialne stranke.</p>
+        <span class="solution-highlight" data-i18n="s3.d.adv">Od oglaševanja do iskalne promocije</span>
+        <span class="more" data-i18n="s3.d.more">Pridobite stranke →</span>
       </a>
     </div>
   </div>
@@ -128,8 +130,8 @@
 <section id="process" class="process-section">
   <div class="wrap">
     <div class="process-head">
-      <h2 class="h2" data-i18n="s4.title"></h2>
-      <p class="lead" data-i18n="s4.lead"></p>
+      <h2 class="h2" data-i18n="s4.title">Kako delamo</h2>
+      <p class="lead" data-i18n="s4.lead">Jasen proces. Pregledna cena. Nadzor nad rezultatom v vsaki fazi.</p>
     </div>
     <div class="principles" id="principles">
       <article class="principle">
@@ -137,50 +139,50 @@
           <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 9 9 0 0 1-3.2-.6L3 21l1.9-5.6a8 8 0 0 1-.9-3.6A8.4 8.4 0 0 1 12.5 3.5 8.4 8.4 0 0 1 21 11.5z"/><path d="M8.5 11.5h.01M12.5 11.5h.01M16.5 11.5h.01"/></svg></span>
           <span class="principle-num" aria-hidden="true">01</span>
         </div>
-        <h3 data-i18n="s4.p1.t"></h3>
-        <p data-i18n="s4.p1.d"></p>
+        <h3 data-i18n="s4.p1.t">Povejte nam</h3>
+        <p data-i18n="s4.p1.d">Opišite nalogo v vprašalniku ali sporočilu. Brez obveznih klicev in zapletenih tehničnih razlag.</p>
       </article>
       <article class="principle">
         <div class="principle-top">
           <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v4.7l3 1.8"/></svg></span>
           <span class="principle-num" aria-hidden="true">02</span>
         </div>
-        <h3 data-i18n="s4.p2.t"></h3>
-        <p data-i18n="s4.p2.d"></p>
+        <h3 data-i18n="s4.p2.t">Predlagamo</h3>
+        <p data-i18n="s4.p2.d">Predlagali bomo rešitev ter pred začetkom projekta uskladili obseg dela, ceno in roke.</p>
       </article>
       <article class="principle">
         <div class="principle-top">
           <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 6 12v5.5h5.5l8.5-8.5-5.5-5.5z"/><path d="M12.5 5.5 18 11"/><path d="M4 21h9"/></svg></span>
           <span class="principle-num" aria-hidden="true">03</span>
         </div>
-        <h3 data-i18n="s4.p3.t"></h3>
-        <p data-i18n="s4.p3.d"></p>
+        <h3 data-i18n="s4.p3.t">Izvedemo</h3>
+        <p data-i18n="s4.p3.d">Izdelamo stran, izvedemo izboljšave, nastavimo AI ali oglaševanje v skladu z dogovorjeno nalogo.</p>
       </article>
       <article class="principle">
         <div class="principle-top">
           <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.2 2.5 2.5 4.9-5"/></svg></span>
           <span class="principle-num" aria-hidden="true">04</span>
         </div>
-        <h3 data-i18n="s4.p4.t"></h3>
-        <p data-i18n="s4.p4.d"></p>
+        <h3 data-i18n="s4.p4.t">Preverimo</h3>
+        <p data-i18n="s4.p4.d">Pokažemo rezultat, preverimo delovanje in vnesemo usklajene popravke.</p>
       </article>
       <article class="principle">
         <div class="principle-top">
           <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9 17.5 20 6.5"/><path d="M20 12v6.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-13A1.5 1.5 0 0 1 5.5 4H12"/></svg></span>
           <span class="principle-num" aria-hidden="true">05</span>
         </div>
-        <h3 data-i18n="s4.p5.t"></h3>
-        <p data-i18n="s4.p5.d"></p>
+        <h3 data-i18n="s4.p5.t">Predamo in nadaljujemo</h3>
+        <p data-i18n="s4.p5.d">Predamo rezultat in potrebne dostope. Po želji pomagamo pri podpori, razvoju in promociji.</p>
       </article>
     </div>
     <div class="pay-promise">
-      <h3 data-i18n="s4.pay.t"></h3>
-      <p class="pay-text" data-i18n="s4.pay.d"></p>
-      <p class="pay-note" data-i18n="s4.pay.note"></p>
+      <h3 data-i18n="s4.pay.t">Najprej stran. Potem plačilo.*</h3>
+      <p class="pay-text" data-i18n="s4.pay.d">Stran izdelamo in vam pokažemo končni rezultat na testnem naslovu. Delo pregledate, mi pa vnesemo dogovorjene popravke. Po potrditvi plačate izdelavo, mi pa stran objavimo in predamo dogovorjene dostope.</p>
+      <p class="pay-note" data-i18n="s4.pay.note">*Pogoj velja za standardna projekta START in BUSINESS. Domena in plačljive zunanje storitve se obračunajo posebej. Za zahtevnejše in individualne projekte se plačilni pogoji dogovorijo vnaprej.</p>
     </div>
     <div class="process-cta">
       <button type="button" class="btn ghost process-btn" onclick="SOLO.startQuiz()">
-        <span data-i18n="s4.cta"></span><span class="arr" aria-hidden="true">&rarr;</span>
+        <span data-i18n="s4.cta">Povejte nam o svoji nalogi</span><span class="arr" aria-hidden="true">&rarr;</span>
       </button>
     </div>
   </div>
@@ -188,12 +190,12 @@
 
 <section id="telegram">
   <div class="wrap">
-    <h2 class="h2" data-i18n="s5.title"></h2>
-    <p class="lead" data-i18n="s5.lead"></p>
+    <h2 class="h2" data-i18n="s5.title">Upravljajte stran prek Telegrama</h2>
+    <p class="lead" data-i18n="s5.lead">Dodajajte storitve, spreminjajte informacije in upravljajte vsebino strani z običajnimi sporočili. AI pripravi spremembe, vi pa potrdite rezultat.</p>
     <div id="telegramHome"></div>
-    <p class="ai-demo-note" data-i18n="s5.demo.note"></p>
+    <p class="ai-demo-note" data-i18n="s5.demo.note">Predstavitev na podlagi delovnih scenarijev; ni posnetek zaslona klepeta.</p>
     <div class="actions center" style="margin-top:26px">
-      <a class="btn" href="pages/ai-avtomatizacija.html" data-route="ai" data-i18n="s5.cta"></a>
+      <a class="btn" href="pages/ai-avtomatizacija.html" data-route="ai" data-i18n="s5.cta">Poglej možnosti AI-asistenta →</a>
     </div>
   </div>
 </section>
@@ -202,8 +204,8 @@
 
 <section id="works">
   <div class="wrap">
-    <h2 class="h2" data-i18n="s7.title"></h2>
-    <p class="lead" data-i18n="s7.lead"></p>
+    <h2 class="h2" data-i18n="s7.title">Naši projekti</h2>
+    <p class="lead" data-i18n="s7.lead">Resnični projekti, ki jih upravljamo in razvijamo.</p>
     <div id="worksBox">
       <div class="works-grid">
         <a class="work-card" href="https://zelenipomocnik.si/" target="_blank" rel="noopener">
@@ -213,10 +215,10 @@
           </div>
           <div class="work-body">
             <div class="work-head"><h3>Zeleni pomočnik</h3><span class="work-arrow" aria-hidden="true">&#8599;</span></div>
-            <div class="work-field" data-i18n="s7.p1.field"></div>
-            <p class="work-task" data-i18n="s7.p1.task"></p>
-            <div class="work-tags"><span data-i18n="s7.tag.site"></span><span>SL &middot; DE &middot; EN</span></div>
-            <span class="work-link"><span data-i18n="s7.open"></span><span class="ar" aria-hidden="true">&rarr;</span></span>
+            <div class="work-field" data-i18n="s7.p1.field">Čiščenje in barvanje streh ter fasad</div>
+            <p class="work-task" data-i18n="s7.p1.task">Spletna stran storitev čiščenja in barvanja streh ter fasad. Strani storitev, obrazci za povpraševanje, večjezičnost, posodabljanje vsebine in razvoj s pomočjo AI.</p>
+            <div class="work-tags"><span data-i18n="s7.tag.site">Spletna stran</span><span>SL &middot; DE &middot; EN</span></div>
+            <span class="work-link"><span data-i18n="s7.open">Odpri stran</span><span class="ar" aria-hidden="true">&rarr;</span></span>
           </div>
         </a>
         <a class="work-card" href="https://solopovamakeup.si/index.html" target="_blank" rel="noopener">
@@ -226,43 +228,43 @@
           </div>
           <div class="work-body">
             <div class="work-head"><h3>Solopova Makeup</h3><span class="work-arrow" aria-hidden="true">&#8599;</span></div>
-            <div class="work-field" data-i18n="s7.p2.field"></div>
-            <p class="work-task" data-i18n="s7.p2.task"></p>
-            <div class="work-tags"><span data-i18n="s7.tag.site"></span><span>SL &middot; EN &middot; RU</span></div>
-            <span class="work-link"><span data-i18n="s7.open"></span><span class="ar" aria-hidden="true">&rarr;</span></span>
+            <div class="work-field" data-i18n="s7.p2.field">Vizažistka · Maribor</div>
+            <p class="work-task" data-i18n="s7.p2.task">Spletna stran vizažistke. Predstavitev storitev, nastavitev trajanja storitev, spletne rezervacije in upravljanje vsebine.</p>
+            <div class="work-tags"><span data-i18n="s7.tag.site">Spletna stran</span><span>SL &middot; EN &middot; RU</span></div>
+            <span class="work-link"><span data-i18n="s7.open">Odpri stran</span><span class="ar" aria-hidden="true">&rarr;</span></span>
           </div>
         </a>
       </div>
     </div>
-    <div class="note" data-i18n="s7.demo.note"></div>
+    <div class="note" data-i18n="s7.demo.note">Povezave vodijo na žive strani. Prikazujemo le projekte, ki resnično obstajajo.</div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <h2 class="h2" data-i18n="s8.title"></h2>
+    <h2 class="h2" data-i18n="s8.title">Pogosta vprašanja</h2>
     <div style="margin-top:30px">
-      <details class="faq"><summary data-i18n="s8.q1"></summary><p data-i18n="s8.a1"></p></details>
-      <details class="faq"><summary data-i18n="s8.q2"></summary><p data-i18n="s8.a2"></p></details>
-      <details class="faq"><summary data-i18n="s8.q3"></summary><p data-i18n="s8.a3"></p></details>
-      <details class="faq"><summary data-i18n="s8.q5"></summary><p data-i18n="s8.a5"></p></details>
-      <details class="faq"><summary data-i18n="s8.q6"></summary><p data-i18n="s8.a6"></p></details>
-      <details class="faq"><summary data-i18n="s8.q7"></summary><p data-i18n="s8.a7"></p></details>
-      <details class="faq"><summary data-i18n="s8.q10"></summary><p data-i18n="s8.a10"></p></details>
+      <details class="faq"><summary data-i18n="s8.q1">Koliko stane izdelava spletne strani?</summary><p data-i18n="s8.a1">Cena je odvisna od obsega in zahtevnosti projekta. Po kratkem pogovoru pripravimo individualno oceno, ki jo potrdimo pred začetkom dela.</p></details>
+      <details class="faq"><summary data-i18n="s8.q2">Koliko časa traja izdelava?</summary><p data-i18n="s8.a2">Rok se dogovorimo pred začetkom dela. Pri manjši strani gre običajno za nekaj dni do dveh tednov, odvisno od vsebine in hitrosti potrditev.</p></details>
+      <details class="faq"><summary data-i18n="s8.q3">Kaj pa, če nimam fotografij in besedil?</summary><p data-i18n="s8.a3">To ni ovira. Pomagamo pri strukturi in besedilih, za fotografije pa predlagamo ustrezne rešitve. Uporabimo lahko tudi vaše gradivo, če ga imate.</p></details>
+      <details class="faq"><summary data-i18n="s8.q5">Komu pripada stran po plačilu?</summary><p data-i18n="s8.a5">Vam. Domena, gostovanje in dostopi so na vaše ime, po zaključku pa prejmete popoln nadzor.</p></details>
+      <details class="faq"><summary data-i18n="s8.q6">Ali je treba plačevati mesečno?</summary><p data-i18n="s8.a6">Ni nujno. Izdelava je enkratno plačilo, mesečno vzdrževanje pa je smiselno le, če želite redne posodobitve in razvoj.</p></details>
+      <details class="faq"><summary data-i18n="s8.q7">Ali bo stran prinesla več strank?</summary><p data-i18n="s8.a7">Stran je temelj, ne zagotovilo. Vpliva na zaupanje in doseg, število strank pa je odvisno tudi od ponudbe, trga in promocije. O tem govorimo odkrito.</p></details>
+      <details class="faq"><summary data-i18n="s8.q10">Kako deluje AI-asistent prek Telegrama?</summary><p data-i18n="s8.a10">Zamišljeno je, da spremembo opišete v navadnem sporočilu, asistent pripravi predogled, vi pa jo potrdite ali zavrnete. Funkcija je v razvoju, prikaz na strani je ilustracija.</p></details>
     </div>
     <div class="actions">
-      <a class="btn ghost" href="faq.html" data-i18n="s8.all"></a>
+      <a class="btn ghost" href="faq.html" data-i18n="s8.all">Vsa vprašanja</a>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
-    <h2 data-i18n="s9.title"></h2>
-    <p class="lead" data-i18n="s9.lead"></p>
+    <h2 data-i18n="s9.title">Povejte nam, kaj potrebujete. Pomagali bomo izbrati rešitev.</h2>
+    <p class="lead" data-i18n="s9.lead">Kratka anketa — nekaj vprašanj in predlog.</p>
     <div class="actions center">
-      <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn"></button>
-      <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="cta.talk"></button>
+      <button class="btn" onclick="SOLO.startQuiz()" data-i18n="picker.btn">Izberite rešitev</button>
+      <button class="btn ghost" onclick="SOLO.openContact()" data-i18n="cta.talk">Pogovorimo se</button>
     </div>
   </div>
 </section>
@@ -272,31 +274,31 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/img/logo-mark.png" alt="Solo.Pov">
-        <p data-i18n="footer.desc"></p>
+        <p data-i18n="footer.desc">Spletne strani, izboljšave in AI-avtomatizacija za mala podjetja.</p>
       </div>
       <div>
-        <h4 data-i18n="footer.solutions"></h4>
-        <a href="pages/izdelava-spletnih-strani.html" data-i18n="s3.a.t"></a>
-        <a href="pages/izboljsanje-spletnih-strani.html" data-i18n="s3.b.t"></a>
-        <a href="pages/ai-avtomatizacija.html" data-i18n="s3.c.t"></a>
-        <a href="pages/reklama-in-promocija.html" data-i18n="s3.d.t"></a>
+        <h4 data-i18n="footer.solutions">Rešitve</h4>
+        <a href="pages/izdelava-spletnih-strani.html" data-i18n="s3.a.t">Izdelava spletnih strani</a>
+        <a href="pages/izboljsanje-spletnih-strani.html" data-i18n="s3.b.t">Izboljšanje spletnih strani</a>
+        <a href="pages/ai-avtomatizacija.html" data-i18n="s3.c.t">AI-asistent in avtomatizacija</a>
+        <a href="pages/reklama-in-promocija.html" data-i18n="s3.d.t">Oglaševanje in promocija</a>
         <a href="pages/brezplacna-analiza.html">Brezplačna analiza</a>
       </div>
       <div id="footcontact">
-        <h4 data-i18n="footer.contact"></h4>
+        <h4 data-i18n="footer.contact">Kontakt</h4>
         <div id="footlinks"></div>
       </div>
       <div class="fc">
-        <h4 data-i18n="lang.label"></h4>
+        <h4 data-i18n="lang.label">Jezik</h4>
         <a href="?lang=sl" onclick="SOLO.setLang('sl');return false;">Slovenščina</a>
         <a href="?lang=ru" onclick="SOLO.setLang('ru');return false;">Русский</a>
-        <a href="faq.html" data-i18n="s8.all"></a>
-        <a href="privacy.html" data-i18n="footer.privacy"></a>
+        <a href="faq.html" data-i18n="s8.all">Vsa vprašanja</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Politika zasebnosti</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span id="footlegal"></span>
-      <span>&copy; <span id="year"></span> <span data-i18n="brand.name"></span>. <span data-i18n="footer.rights"></span></span>
+      <span>&copy; <span id="year"></span> <span data-i18n="brand.name">Solo.Pov</span>. <span data-i18n="footer.rights">Vse pravice pridržane.</span></span>
     </div>
   </div>
 </footer>

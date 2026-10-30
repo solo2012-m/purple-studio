@@ -81,6 +81,7 @@
       var href = CONFIG.routes && CONFIG.routes[r[z].getAttribute('data-route')];
       if (href) r[z].setAttribute('href', href + '?lang=' + lang);
     }
+    document.documentElement.classList.remove('pre-lang');
     buildContacts();
   }
 
