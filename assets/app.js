@@ -66,11 +66,11 @@
 
   function applyI18n() {
     var n = document.querySelectorAll('[data-i18n]');
-    for (var i = 0; i < n.length; i++) n[i].textContent = t(n[i].getAttribute('data-i18n'));
+    for (var i = 0; i < n.length; i++) { var tv = t(n[i].getAttribute('data-i18n')); if (n[i].textContent !== tv) n[i].textContent = tv; }
     var h = document.querySelectorAll('[data-i18n-html]');
-    for (var j = 0; j < h.length; j++) h[j].innerHTML = t(h[j].getAttribute('data-i18n-html'));
+    for (var j = 0; j < h.length; j++) { var hv = t(h[j].getAttribute('data-i18n-html')); if (h[j].innerHTML !== hv) h[j].innerHTML = hv; }
     var p = document.querySelectorAll('[data-i18n-ph]');
-    for (var q = 0; q < p.length; q++) p[q].setAttribute('placeholder', t(p[q].getAttribute('data-i18n-ph')));
+    for (var q = 0; q < p.length; q++) { var pv = t(p[q].getAttribute('data-i18n-ph')); if (p[q].getAttribute('placeholder') !== pv) p[q].setAttribute('placeholder', pv); }
     document.title = t('meta.title');
     var md = document.querySelector('meta[name="description"]');
     if (md) md.setAttribute('content', t('meta.desc'));

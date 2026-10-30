@@ -1584,3 +1584,8 @@ html::before{content:"";position:fixed;inset:-6vmax;z-index:-1;pointer-events:no
   .actions.center{align-items:stretch}
   .create-hero .actions .btn{flex:1 1 100%}
 }
+
+/* CLS: reserve the two-line height of the hero typing line on narrow screens.
+   Measured max height: 42px (2 lines) up to 389px for SL/RU, up to 419px for RU. */
+@media (max-width:389px){.picker p.type-line{min-height:42px}}
+@media (min-width:390px) and (max-width:419px){html[lang="ru"] .picker p.type-line{min-height:42px}}
