@@ -91,6 +91,7 @@
       var c = CONFIG.contact || {};
       var parts = [];
       if (c.telegram) parts.push('<a href="' + c.telegram + '" rel="noopener" target="_blank">Telegram</a>');
+      if (c.facebook) parts.push('<a href="' + c.facebook + '" rel="noopener" target="_blank">Facebook</a>');
       if (c.email) parts.push('<a href="mailto:' + c.email + '">' + c.email + '</a>');
       if (c.phone) parts.push('<a href="tel:' + c.phone + '">' + c.phone + '</a>');
       if (!parts.length) parts.push('<span style="color:var(--muted);font-size:13.5px">' + (lang === 'ru' ? 'Контакты появятся после подтверждения.' : 'Kontakti bodo objavljeni po potrditvi.') + '</span>');

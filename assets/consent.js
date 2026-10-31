@@ -1,8 +1,9 @@
-/* Solo.Pov — soglasje za piškotke + Google Analytics (naloži se šele po privolitvi) */
+/* Solo.Pov — soglasje za piškotke + Google Analytics + Meta Pixel (naloži se šele po privolitvi) */
 (function () {
   var KEY = 'solo_consent_v1';
   var cfg = window.SOLO_CONFIG || {};
   var gaId = (cfg.analytics && cfg.analytics.ga4) || '';
+  var pixelId = (cfg.analytics && cfg.analytics.metaPixel) || '';
   var lang = (document.documentElement.lang || 'sl').slice(0, 2);
 
   function loadGA() {
@@ -18,14 +19,30 @@
     window.gtag('config', gaId, { anonymize_ip: true });
   }
 
+  /* Meta Pixel: brez zahteve do Facebooka pred soglasjem. */
+  function loadMeta() {
+    if (!pixelId || window.__soloFbLoaded) return;
+    window.__soloFbLoaded = true;
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', pixelId, {}, { autoConfig: false });
+    window.fbq('track', 'PageView');
+  }
+
   function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
 
   function banner() {
     if (stored()) return;
     var T = {
-      sl: { text: 'Uporabljamo nujne piškotke za delovanje strani. Analitične piškotke naložimo le z vašim soglasjem.', yes: 'Sprejmi', no: 'Zavrni', more: 'Politika zasebnosti' },
-      ru: { text: 'Мы используем обязательные cookie для работы сайта. Аналитические cookie подключаем только с вашего согласия.', yes: 'Принять', no: 'Отклонить', more: 'Политика конфиденциальности' }
+      sl: { text: 'Uporabljamo nujne piškotke za delovanje strani. Analitične in oglaševalske piškotke (Google Analytics, Meta) naložimo le z vašim soglasjem.', yes: 'Sprejmi', no: 'Zavrni', more: 'Politika zasebnosti' },
+      ru: { text: 'Мы используем обязательные cookie для работы сайта. Аналитические и рекламные cookie (Google Analytics, Meta) подключаем только с вашего согласия.', yes: 'Принять', no: 'Отклонить', more: 'Политика конфиденциальности' }
     };
     var t = T[lang] || T.sl;
     var d = document.createElement('div');
@@ -42,16 +59,23 @@
       if (!b) return;
       var ok = b.getAttribute('data-c') === '1';
       store(ok ? 'granted' : 'denied');
-      if (ok) loadGA();
+      if (ok) { loadGA(); loadMeta(); }
       d.remove();
     });
     document.body.appendChild(d);
   }
 
+  var FB_EVENTS = { generate_lead: 'Lead', click_telegram: 'Contact', click_email: 'Contact', click_phone: 'Contact' };
+
   window.soloTrack = function (name, params) {
     try {
       if (window.__soloGaLoaded && typeof window.gtag === 'function') {
         window.gtag('event', name, params || {});
+      }
+    } catch (e) {}
+    try {
+      if (window.__soloFbLoaded && typeof window.fbq === 'function' && FB_EVENTS[name]) {
+        window.fbq('track', FB_EVENTS[name], params && params.form ? { content_name: params.form } : {});
       }
     } catch (e) {}
   };
@@ -65,7 +89,7 @@
     else if (/^tel:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_phone', {}); }
   }, true);
 
-  if (stored() === 'granted') loadGA();
+  if (stored() === 'granted') { loadGA(); loadMeta(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', banner);
   else banner();
 })();

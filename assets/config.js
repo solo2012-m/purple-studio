@@ -10,6 +10,7 @@ window.SOLO_CONFIG = {
   contact: {
     telegram: 'https://t.me/solo_pov',
     email: 'info@solopov.si',
+    facebook: 'https://www.facebook.com/people/SoloPov/61595780889754/',
     phone: ''
   },
   legal: {
@@ -19,7 +20,9 @@ window.SOLO_CONFIG = {
     privacyUrl: '/pages/zasebnost.html'
   },
   analytics: {
-    ga4: 'G-1CY1DLCCV9'
+    ga4: 'G-1CY1DLCCV9',
+    /* Meta Pixel ID (Events Manager). Prazen niz = pixel se ne nalaga. */
+    metaPixel: ''
   },
   routes: {
     create:  'pages/izdelava-spletnih-strani.html',
