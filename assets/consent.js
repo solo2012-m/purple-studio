@@ -31,6 +31,7 @@
       t = b.createElement(e); t.async = !0; t.src = v;
       s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('set', 'autoConfig', false, pixelId);
     window.fbq('init', pixelId, {}, { autoConfig: false });
     window.fbq('track', 'PageView');
   }
