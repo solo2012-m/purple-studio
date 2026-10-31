@@ -65,7 +65,7 @@
     document.body.appendChild(d);
   }
 
-  var FB_EVENTS = { generate_lead: 'Lead', click_telegram: 'Contact', click_email: 'Contact', click_phone: 'Contact' };
+  var FB_EVENTS = { generate_lead: 'Lead', quiz_start: 'QuizStart', click_telegram: 'Contact', click_email: 'Contact', click_phone: 'Contact' };
 
   window.soloTrack = function (name, params) {
     try {
@@ -75,7 +75,10 @@
     } catch (e) {}
     try {
       if (window.__soloFbLoaded && typeof window.fbq === 'function' && FB_EVENTS[name]) {
-        window.fbq('track', FB_EVENTS[name], params && params.form ? { content_name: params.form } : {});
+        var p = {};
+        if (params && params.form) p.content_name = params.form;
+        if (params && params.branch) p.content_category = params.branch;
+        window.fbq('track', FB_EVENTS[name], p);
       }
     } catch (e) {}
   };
@@ -84,9 +87,9 @@
     var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (/^https?:\/\/(t\.me|telegram\.me)\//i.test(href)) { if (window.soloTrack) window.soloTrack('click_telegram', {}); }
-    else if (/^mailto:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_email', {}); }
-    else if (/^tel:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_phone', {}); }
+    if (/^https?:\/\/(t\.me|telegram\.me)\//i.test(href)) { if (window.soloTrack) window.soloTrack('click_telegram', { form: 'telegram' }); }
+    else if (/^mailto:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_email', { form: 'email' }); }
+    else if (/^tel:/i.test(href)) { if (window.soloTrack) window.soloTrack('click_phone', { form: 'phone' }); }
   }, true);
 
   if (stored() === 'granted') { loadGA(); loadMeta(); }

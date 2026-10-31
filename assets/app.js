@@ -265,6 +265,7 @@
 
   function startQuiz(branch) {
     quiz = { open: false, branch: (branch && quizPack().branches[branch]) ? branch : null, step: 0, answers: {}, url: '', mode: 'quiz' };
+    if (window.soloTrack) window.soloTrack('quiz_start', { branch: quiz.branch || '' });
     openModal(); renderQuiz();
   }
 
@@ -617,7 +618,11 @@
     if (ep) {
       try {
         window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
-          .then(function () { if (window.soloTrack) window.soloTrack('generate_lead', { form: 'contact' }); setModal(sentHtml()); })
+          .then(function () {
+            var kind = (lead && lead.type === 'quiz') ? 'anketa' : 'kontakt';
+            if (window.soloTrack) window.soloTrack('generate_lead', { form: kind, branch: (lead && lead.branch) || '' });
+            setModal(sentHtml());
+          })
           .catch(function () { setModal(notReadyHtml(text)); });
         return;
       } catch (e) {}
