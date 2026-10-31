@@ -22,7 +22,7 @@ window.SOLO_CONFIG = {
   analytics: {
     ga4: 'G-1CY1DLCCV9',
     /* Meta Pixel ID (Events Manager). Prazen niz = pixel se ne nalaga. */
-    metaPixel: ''
+    metaPixel: '1697308898638290'
   },
   routes: {
     create:  'pages/izdelava-spletnih-strani.html',
