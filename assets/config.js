@@ -4,8 +4,8 @@
 window.SOLO_CONFIG = {
   langs: {
     default: 'sl',
-    available: ['sl', 'ru'],
-    planned: ['en', 'de', 'hr']
+    available: ['sl', 'ru', 'en', 'de'],
+    planned: ['hr']
   },
   contact: {
     telegram: 'https://t.me/solo_pov',

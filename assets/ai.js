@@ -61,8 +61,8 @@
     return hh + ':' + (mm < 10 ? '0' : '') + mm;
   }
   function botLabel() { return lang() === 'ru' ? 'бот' : 'bot'; }
-  function dayLabel() { return lang() === 'ru' ? 'Сегодня' : 'Danes'; }
-  function inputLabel() { return lang() === 'ru' ? 'Сообщение' : 'Sporočilo'; }
+  function dayLabel() { return lang() === 'ru' ? 'Сегодня' : lang() === 'en' ? 'Today' : lang() === 'de' ? 'Heute' : 'Danes'; }
+  function inputLabel() { return lang() === 'ru' ? 'Сообщение' : lang() === 'en' ? 'Message' : lang() === 'de' ? 'Nachricht' : 'Sporočilo'; }
 
   function phoneHTML(item, idx) {
     var h = '<div class="tgm-phone" data-phone="' + idx + '">';
@@ -117,7 +117,7 @@
       var t = d.tariffs[i], sel = state.ai === t.id;
       h += '<div class="ai-tariff ai-selectable' + (sel ? ' sel' : '') + (t.id === 'ai-control' ? ' rec' : '') + '" data-ai="' + t.id + '" role="button" tabindex="0" aria-pressed="' + sel + '" onclick="selectAITariff(\'' + t.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectAITariff(\'' + t.id + '\')}">';
       if (t.badge) h += '<span class="ai-tariff-badge' + (t.id === 'ai-control' ? ' rec' : '') + '">' + esc(t.badge) + '</span>';
-      if (sel) h += '<span class="ai-sel-badge">' + esc(lang() === 'ru' ? 'Выбрано' : 'Izbrano') + '</span>';
+      if (sel) h += '<span class="ai-sel-badge">' + esc(lang() === 'ru' ? 'Выбрано' : lang() === 'en' ? 'Selected' : lang() === 'de' ? 'Ausgewählt' : 'Izbrano') + '</span>';
       h += '<div class="ai-tariff-name">' + esc(t.name) + '</div><div class="ai-tariff-price">' + esc(t.price) + '</div><ul>';
       for (var j = 0; j < t.features.length; j++) h += '<li>' + esc(t.features[j]) + '</li>';
       h += '</ul></div>';
@@ -169,7 +169,7 @@
       h += '<div class="ai-auto-card' + (sel ? ' sel' : '') + '" data-auto="' + c.id + '" role="button" tabindex="0" aria-pressed="' + sel + '" onclick="toggleAutomation(\'' + c.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();toggleAutomation(\'' + c.id + '\')}">';
       h += '<span class="ai-auto-ico">' + (ICONS[c.id] || '') + '</span>';
       h += '<span class="ai-auto-check" aria-hidden="true">' + (sel ? '✓' : '') + '</span>';
-      h += '<div class="ai-auto-title"><b>' + esc(c.title) + '</b><button type="button" class="ai-info" aria-label="' + esc(lang() === 'ru' ? 'Подробнее' : 'Več') + '" aria-expanded="false" onclick="event.stopPropagation();showAITip(this)" onmouseenter="showAITip(this)" onfocus="showAITip(this)" onmouseleave="hideAITip()" onkeydown="event.stopPropagation()">i</button></div>';
+      h += '<div class="ai-auto-title"><b>' + esc(c.title) + '</b><button type="button" class="ai-info" aria-label="' + esc(lang() === 'ru' ? 'Подробнее' : lang() === 'en' ? 'More' : lang() === 'de' ? 'Mehr' : 'Več') + '" aria-expanded="false" onclick="event.stopPropagation();showAITip(this)" onmouseenter="showAITip(this)" onfocus="showAITip(this)" onmouseleave="hideAITip()" onkeydown="event.stopPropagation()">i</button></div>';
       h += '<p>' + esc(c.desc) + '</p></div>';
     }
     box.innerHTML = h;
@@ -226,7 +226,7 @@
     var d = D().form, h = '<h3>' + esc(d.summaryTitle) + '</h3>', count = 0;
     if (state.interest) {
       count++;
-      var interestLabel = lang() === 'ru' ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev';
+      var interestLabel = lang() === 'ru' ? 'Бесплатная демонстрация' : lang() === 'en' ? 'Free demo' : lang() === 'de' ? 'Kostenlose Demo' : 'Brezplačna predstavitev';
       h += '<div class="ai-sum-row"><span><small>' + esc(d.aiLabel) + '</small><b>' + esc(interestLabel) + '</b></span><button type="button" class="ai-sum-remove" onclick="removeSelection(\'interest\')" aria-label="' + esc(d.remove) + '">&times;</button></div>';
     }
     if (state.ai) {
@@ -319,8 +319,8 @@
     if (!res) return;
     if (form) form.hidden = true;
     res.hidden = false;
-    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : 'Hvala!') : d.notSentTitle) + '</h3>';
-    if (sent) res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : 'Zahteva je poslana.') + '</p>';
+    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : lang() === 'en' ? 'Thank you!' : lang() === 'de' ? 'Danke!' : 'Hvala!') : d.notSentTitle) + '</h3>';
+    if (sent) res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : lang() === 'en' ? 'Request sent.' : lang() === 'de' ? 'Anfrage gesendet.' : 'Zahteva je poslana.') + '</p>';
     else {
       res.innerHTML += '<div class="notice">' + d.notSentText + '</div><pre class="copyout" id="aiCopyout">' + esc(text) + '</pre>';
       res.innerHTML += '<div class="mnav"><button type="button" class="link" onclick="backAIForm()">' + esc(d.back) + '</button><button type="button" class="btn" id="aiCopyBtn" onclick="copyAI()">' + esc(d.copy) + '</button></div>';
@@ -386,7 +386,7 @@
 
   window.renderAI = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : 'Solo.Pov — AI-asistent in avtomatizacija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : lang() === 'en' ? 'Solo.Pov — AI assistant and automation' : lang() === 'de' ? 'Solo.Pov — KI-Assistent und Automatisierung' : 'Solo.Pov — AI-asistent in avtomatizacija';
     renderHero(); renderAISection(); renderAutomation(); renderRequest(); renderFAQ(); renderCross();
   };
 

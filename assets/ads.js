@@ -32,7 +32,7 @@
     h += '<div class="ads-scenarios">';
     for (var i = 0; i < d.scenarios.length; i++) {
       var s = d.scenarios[i];
-      h += '<a class="ads-scenario" href="#' + (s.id === 'start' ? 'catalog' : 'issues') + '" onclick="return adsGo(event,\'' + (s.id === 'start' ? 'catalog' : 'issues') + '\')"><b>' + esc(s.title) + '</b><p>' + esc(s.desc) + '</p><span class="ads-link">' + esc(lang() === 'ru' ? 'Перейти →' : 'Naprej →') + '</span></a>';
+      h += '<a class="ads-scenario" href="#' + (s.id === 'start' ? 'catalog' : 'issues') + '" onclick="return adsGo(event,\'' + (s.id === 'start' ? 'catalog' : 'issues') + '\')"><b>' + esc(s.title) + '</b><p>' + esc(s.desc) + '</p><span class="ads-link">' + esc(lang() === 'ru' ? 'Перейти →' : lang() === 'en' ? 'Next →' : lang() === 'de' ? 'Weiter →' : 'Naprej →') + '</span></a>';
     }
     h += '</div>';
     $('adsHero').innerHTML = h;
@@ -41,7 +41,7 @@
   function optionCard(x) {
     var sel = !!state.options[x.opt.id], h = '';
     h += '<div class="ads-option' + (sel ? ' sel' : '') + '" data-opt="' + x.opt.id + '" role="button" tabindex="0" aria-pressed="' + sel + '" onclick="toggleOption(\'' + x.opt.id + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();toggleOption(\'' + x.opt.id + '\')}">';
-    if (sel) h += '<span class="ads-sel">' + esc(lang() === 'ru' ? 'Выбрано' : 'Izbrano') + '</span>';
+    if (sel) h += '<span class="ads-sel">' + esc(lang() === 'ru' ? 'Выбрано' : lang() === 'en' ? 'Selected' : lang() === 'de' ? 'Ausgewählt' : 'Izbrano') + '</span>';
     h += '<span class="ads-type">' + esc(typeLabel(x.opt.type)) + '</span>';
     h += '<b>' + esc(x.opt.title) + '</b>';
     if (x.opt.tip) h += '<small class="ads-geo-tip">' + esc(x.opt.tip) + '</small>';
@@ -221,8 +221,8 @@
   function showAdsResult(sent, text) {
     var d = D().form, form = $('adsForm'), res = $('adsResult'); if (!res) return;
     if (form) form.hidden = true; res.hidden = false;
-    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : 'Hvala!') : d.notSentTitle) + '</h3>';
-    if (sent) res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : 'Zahteva je poslana.') + '</p>';
+    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : lang() === 'en' ? 'Thank you!' : lang() === 'de' ? 'Danke!' : 'Hvala!') : d.notSentTitle) + '</h3>';
+    if (sent) res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : lang() === 'en' ? 'Request sent.' : lang() === 'de' ? 'Anfrage gesendet.' : 'Zahteva je poslana.') + '</p>';
     else res.innerHTML += '<div class="notice">' + d.notSentText + '</div><pre class="copyout" id="adsCopyout">' + esc(text) + '</pre><div class="mnav"><button type="button" class="link" onclick="backAdsForm()">' + esc(d.back) + '</button><button type="button" class="btn" id="adsCopyBtn" onclick="copyAds()">' + esc(d.copy) + '</button></div>';
     res.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -249,7 +249,7 @@
 
   window.renderAds = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : 'Solo.Pov — Oglaševanje in promocija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : lang() === 'en' ? 'Solo.Pov — Advertising and promotion' : lang() === 'de' ? 'Solo.Pov — Werbung und Promotion' : 'Solo.Pov — Oglaševanje in promocija';
     renderHero(); renderCatalog(); renderIssues(); renderRequest(); renderProcess(); renderFAQ();
   };
   document.addEventListener('DOMContentLoaded', function () { window.renderAds(); });

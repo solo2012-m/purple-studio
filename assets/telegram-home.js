@@ -9,8 +9,8 @@
   function D() { var d = window.SOLO_AI || {}; return d[lang()] || d.sl; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function botLabel() { return lang() === 'ru' ? 'бот' : 'bot'; }
-  function dayLabel() { return lang() === 'ru' ? 'Сегодня' : 'Danes'; }
-  function inputLabel() { return lang() === 'ru' ? 'Сообщение' : 'Sporočilo'; }
+  function dayLabel() { return lang() === 'ru' ? 'Сегодня' : lang() === 'en' ? 'Today' : lang() === 'de' ? 'Heute' : 'Danes'; }
+  function inputLabel() { return lang() === 'ru' ? 'Сообщение' : lang() === 'en' ? 'Message' : lang() === 'de' ? 'Nachricht' : 'Sporočilo'; }
   function msgTime(i) {
     var t = 10 * 60 + 24 + i * 2, hh = Math.floor(t / 60) % 24, mm = t % 60;
     return hh + ':' + (mm < 10 ? '0' : '') + mm;

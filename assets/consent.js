@@ -43,7 +43,9 @@
     if (stored()) return;
     var T = {
       sl: { text: 'Uporabljamo nujne piškotke za delovanje strani. Analitične in oglaševalske piškotke (Google Analytics, Meta) naložimo le z vašim soglasjem.', yes: 'Sprejmi', no: 'Zavrni', more: 'Politika zasebnosti' },
-      ru: { text: 'Мы используем обязательные cookie для работы сайта. Аналитические и рекламные cookie (Google Analytics, Meta) подключаем только с вашего согласия.', yes: 'Принять', no: 'Отклонить', more: 'Политика конфиденциальности' }
+      ru: { text: 'Мы используем обязательные cookie для работы сайта. Аналитические и рекламные cookie (Google Analytics, Meta) подключаем только с вашего согласия.', yes: 'Принять', no: 'Отклонить', more: 'Политика конфиденциальности' },
+      en: { text: 'We use essential cookies to make the site work. Analytics and advertising cookies (Google Analytics, Meta) are loaded only with your consent.', yes: 'Accept', no: 'Decline', more: 'Privacy policy' },
+      de: { text: 'Wir verwenden notwendige Cookies für den Betrieb der Website. Analyse- und Werbe-Cookies (Google Analytics, Meta) laden wir nur mit Ihrer Einwilligung.', yes: 'Akzeptieren', no: 'Ablehnen', more: 'Datenschutzerklärung' }
     };
     var t = T[lang] || T.sl;
     var d = document.createElement('div');

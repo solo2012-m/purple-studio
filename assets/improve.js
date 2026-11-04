@@ -23,7 +23,7 @@
   function t(k) { return (window.SOLO && SOLO.t) ? SOLO.t(k) : ''; }
   function data() { var d = window.SOLO_IMPROVE || {}; return d[lang()] || d.sl; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  function money(n) { return n == null ? (lang() === 'ru' ? 'Индивидуально' : 'Individualno') : (lang() === 'ru' ? 'от ' : 'od ') + n + ' €'; }
+  function money(n) { return n == null ? (lang() === 'ru' ? 'Индивидуально' : lang() === 'en' ? 'Individual' : lang() === 'de' ? 'Individuell' : 'Individualno') : (lang() === 'ru' ? 'от ' : lang() === 'en' ? 'from ' : lang() === 'de' ? 'ab ' : 'od ') + n + ' €'; }
   function selected() {
     var all = data().services, out = [];
     for (var i = 0; i < all.length; i++) if (state.services[all[i].id]) out.push(all[i]);
@@ -133,7 +133,7 @@
     state.services = {};
     state.type = 'audit';
     var c = document.getElementById('reqComment');
-    if (c && !c.value) c.value = lang() === 'ru' ? 'Профессиональный аудит сайта.' : 'Profesionalna revizija strani.';
+    if (c && !c.value) c.value = lang() === 'ru' ? 'Профессиональный аудит сайта.' : lang() === 'en' ? 'Professional website audit.' : lang() === 'de' ? 'Professionelles Website-Audit.' : 'Profesionalna revizija strani.';
     renderRequest();
     var req = document.getElementById('request');
     if (req) req.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -189,7 +189,7 @@
     var n = document.getElementById('expressNotice');
     if (!n) return;
     n.hidden = false;
-    n.innerHTML = '<b>' + esc(lang() === 'ru' ? 'Результат проверки' : 'Rezultat pregleda') + '</b><p>' + esc(lang() === 'ru' ? 'Показатели получены.' : 'Kazalniki so pridobljeni.') + '</p>';
+    n.innerHTML = '<b>' + esc(lang() === 'ru' ? 'Результат проверки' : lang() === 'en' ? 'Audit result' : lang() === 'de' ? 'Prüfungsergebnis' : 'Rezultat pregleda') + '</b><p>' + esc(lang() === 'ru' ? 'Показатели получены.' : lang() === 'en' ? 'Metrics received.' : lang() === 'de' ? 'Kennzahlen erhalten.' : 'Kazalniki so pridobljeni.') + '</p>';
   }
 
   function buildText(type, url, services, comment, email, consent) {
@@ -263,9 +263,9 @@
     if (!res) return;
     if (form) form.hidden = true;
     res.hidden = false;
-    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : 'Hvala!') : t('improve.request.notSentTitle')) + '</h3>';
+    res.innerHTML = '<h3>' + esc(sent ? (lang() === 'ru' ? 'Спасибо!' : lang() === 'en' ? 'Thank you!' : lang() === 'de' ? 'Danke!' : 'Hvala!') : t('improve.request.notSentTitle')) + '</h3>';
     if (sent) {
-      res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : 'Zahteva je poslana.') + '</p>';
+      res.innerHTML += '<p>' + esc(lang() === 'ru' ? 'Заявка отправлена.' : lang() === 'en' ? 'Request sent.' : lang() === 'de' ? 'Anfrage gesendet.' : 'Zahteva je poslana.') + '</p>';
     } else {
       res.innerHTML += '<div class="notice">' + t('improve.request.notSentText') + '</div>';
       res.innerHTML += '<pre class="copyout" id="improveCopyout">' + esc(text) + '</pre>';

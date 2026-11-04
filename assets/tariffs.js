@@ -263,18 +263,18 @@
     var d = data(), t = byId(state.tariff);
     if (!t) { var el = document.getElementById('tariffs'); if (el) el.scrollIntoView({ behavior: 'smooth' }); return; }
     var addons = selectedAddons(), lines = [];
-    lines.push((lang() === 'ru' ? 'Тариф' : 'Paket') + ': ' + t.name + ' — ' + (t.price == null ? t.priceLabel : (d.ui.from + ' ' + money(t.price))));
+    lines.push((lang() === 'ru' ? 'Тариф' : lang() === 'en' ? 'Package' : lang() === 'de' ? 'Paket' : 'Paket') + ': ' + t.name + ' — ' + (t.price == null ? t.priceLabel : (d.ui.from + ' ' + money(t.price))));
     if (addons.length) {
       var parts = [];
       for (var i = 0; i < addons.length; i++) parts.push(addons[i].title + ' — ' + (addons[i].individual ? d.ui.individual : d.ui.from + ' ' + money(addons[i].price)));
-      lines.push((lang() === 'ru' ? 'Дополнительно' : 'Dodatno') + ': ' + parts.join('; '));
+      lines.push((lang() === 'ru' ? 'Дополнительно' : lang() === 'en' ? 'Extras' : lang() === 'de' ? 'Zusatz' : 'Dodatno') + ': ' + parts.join('; '));
     }
     if (t.price != null) {
       var total = t.price;
       for (var j = 0; j < addons.length; j++) if (!addons[j].individual) total += addons[j].price;
       lines.push(d.ui.calcTotal + ': ' + money(total));
     } else {
-      lines.push((lang() === 'ru' ? 'Стоимость' : 'Cena') + ': ' + d.ui.calcCustom);
+      lines.push((lang() === 'ru' ? 'Стоимость' : lang() === 'en' ? 'Price' : lang() === 'de' ? 'Preis' : 'Cena') + ': ' + d.ui.calcCustom);
     }
     lines.push(d.ui.calcNote);
     SOLO.openContact();

@@ -45,7 +45,7 @@
   ]
 }
 </script>
-<script>(function(){try{var m=location.search.match(/[?&]lang=(sl|ru)(?:&|$)/);var s=null;try{s=localStorage.getItem('solo-lang');}catch(e){}var l=m?m[1]:(s||'sl');if(l!=='sl'){document.documentElement.lang=l;document.documentElement.className=(document.documentElement.className+' pre-lang').trim();}}catch(e){}})();</script>
+<script>(function(){try{var m=location.search.match(/[?&]lang=(sl|ru|en|de)(?:&|$)/);var s=null;try{s=localStorage.getItem('solo-lang');}catch(e){}var l=m?m[1]:(s||'sl');if(l!=='sl'){document.documentElement.lang=l;document.documentElement.className=(document.documentElement.className+' pre-lang').trim();}}catch(e){}})();</script>
 <style>html.pre-lang [data-i18n],html.pre-lang [data-i18n-html]{visibility:hidden}</style>
 </head>
 <body>
@@ -83,6 +83,8 @@
     <div class="langbox">
       <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl')">SL</button>
       <button type="button" data-lang-btn="ru" onclick="SOLO.setLang('ru')">RU</button>
+      <button type="button" data-lang-btn="en" onclick="SOLO.setLang('en')">EN</button>
+      <button type="button" data-lang-btn="de" onclick="SOLO.setLang('de')">DE</button>
     </div>
     <button class="btn sm" onclick="SOLO.openContact()" data-i18n="cta.talk">Pogovorimo se</button>
   </div>
