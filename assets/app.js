@@ -71,9 +71,10 @@
     for (var j = 0; j < h.length; j++) { var hv = t(h[j].getAttribute('data-i18n-html')); if (h[j].innerHTML !== hv) h[j].innerHTML = hv; }
     var p = document.querySelectorAll('[data-i18n-ph]');
     for (var q = 0; q < p.length; q++) { var pv = t(p[q].getAttribute('data-i18n-ph')); if (p[q].getAttribute('placeholder') !== pv) p[q].setAttribute('placeholder', pv); }
-    document.title = t('meta.title');
+    var pm = (window.SOLO_PAGE_META && window.SOLO_PAGE_META[lang]) || null;
+    document.title = (pm && pm.title) || t('meta.title');
     var md = document.querySelector('meta[name="description"]');
-    if (md) md.setAttribute('content', t('meta.desc'));
+    if (md) md.setAttribute('content', (pm && pm.desc) || t('meta.desc'));
     var b = document.querySelectorAll('[data-lang-btn]');
     for (var k = 0; k < b.length; k++) b[k].classList.toggle('on', b[k].getAttribute('data-lang-btn') === lang);
     var r = document.querySelectorAll('[data-route]');

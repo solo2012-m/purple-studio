@@ -422,7 +422,7 @@
 
   window.renderAI = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : lang() === 'en' ? 'Solo.Pov — AI assistant and automation' : lang() === 'de' ? 'Solo.Pov — KI-Assistent und Automatisierung' : 'SOLO.POV — AI-asistent in avtomatizacija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : lang() === 'en' ? 'Solo.Pov — AI assistant and automation' : lang() === 'de' ? 'Solo.Pov — KI-Assistent und Automatisierung' : 'AI-asistent in avtomatizacija poslovanja | SOLO.POV';
     renderHero(); renderAISection(); renderAutomation(); renderRequest(); renderFAQ(); renderCross();
   };
 

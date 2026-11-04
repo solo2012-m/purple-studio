@@ -1,6 +1,8 @@
 window.SOLO_I18N = {
   "sl": {
     "meta.title": "SOLO.POV — Izdelava spletnih strani",
+    "nav.ads": "Oglaševanje",
+    "footer.privacy": "Politika zasebnosti",
     "create.nav.home": "Domov",
     "create.nav.create": "Izdelava",
     "create.nav.improve": "Izboljšave",
@@ -29,7 +31,7 @@ window.SOLO_I18N = {
     "mock.phone.cta": "Pokličite",
     "mock.nav.services": "Storitve",
     "price.eyebrow": "Paketi",
-    "price.title": "Izberite ustrezen paket",
+    "price.title": "Izdelava spletne strani za vaše podjetje",
     "price.lead": "Spletne strani od 300 €. Pregledni pogoji. Plačilo po potrditvi končnega izdelka.",
     "price.adv1": "Predogled pred plačilom.",
     "price.adv2": "Dogovorjena cena.",

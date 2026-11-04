@@ -292,7 +292,7 @@
 
   window.renderAds = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : lang() === 'en' ? 'Solo.Pov — Advertising and promotion' : lang() === 'de' ? 'Solo.Pov — Werbung und Promotion' : 'SOLO.POV — Oglaševanje in promocija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : lang() === 'en' ? 'Solo.Pov — Advertising and promotion' : lang() === 'de' ? 'Solo.Pov — Werbung und Promotion' : 'Oglaševanje in promocija na Googlu in Facebooku | SOLO.POV';
     renderHero(); renderCatalog(); renderIssues(); renderRequest(); renderProcess(); renderFAQ();
   };
   document.addEventListener('DOMContentLoaded', function () { window.renderAds(); });

@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>SOLO.POV — Izboljšanje spletnih strani</title>
+<meta name="robots" content="index,follow">
+<title>Izboljšanje in prenova spletne strani | SOLO.POV</title>
+<meta name="description" content="Izboljšamo obstoječo spletno stran: hitrost, prikaz na telefonu, napake in manjkajoče funkcije. Brezplačen hiter pregled in jasna cena dodelav.">
+<link rel="canonical" href="https://solopov.si/pages/izboljsanje-spletnih-strani.html">
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261028-dark1">
+<link rel="stylesheet" href="../assets/style.css?v=20261104-stage3">
 </head>
 <body class="create-page improve-page">
 
@@ -17,10 +19,10 @@
   <div class="wrap hdr">
     <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="Solo.Pov" width="1216" height="551"></a>
     <nav>
-      <a href="../index.html" data-i18n="create.nav.home"></a>
-      <a href="izdelava-spletnih-strani.html" data-i18n="create.nav.create"></a>
-      <a href="izboljsanje-spletnih-strani.html" style="color:var(--ink)" data-i18n="create.nav.improve"></a>
-      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai"></a>
+      <a href="../index.html" data-i18n="create.nav.home">Domov</a>
+      <a href="izdelava-spletnih-strani.html" data-i18n="create.nav.create">Izdelava</a>
+      <a href="izboljsanje-spletnih-strani.html" style="color:var(--ink)" data-i18n="create.nav.improve">Izboljšave</a>
+      <a href="ai-avtomatizacija.html" data-i18n="create.nav.ai">AI in avtomatizacija</a>
     </nav>
     <div class="langbox" style="margin-left:auto">
       <button type="button" data-lang-btn="sl" onclick="SOLO.setLang('sl');renderImprove()">SL</button>
@@ -35,19 +37,19 @@
 <main>
 <section class="improve-hero">
   <div class="wrap">
-    <span class="eyebrow" data-i18n="improve.eyebrow"></span>
-    <h1 class="pricing-title" data-i18n="improve.title"></h1>
-    <p class="pricing-lead" data-i18n="improve.sub"></p>
+    <span class="eyebrow" data-i18n="improve.eyebrow">SOLO.POV · izboljšanje strani</span>
+    <h1 class="pricing-title" data-i18n="improve.title">Vaša spletna stran lahko deluje bolje</h1>
+    <p class="pricing-lead" data-i18n="improve.sub">Ni vedno treba izdelati nove spletne strani. Včasih je dovolj odpraviti napake, osvežiti videz, izboljšati hitrost ali dodati manjkajoče funkcije.</p>
     <div class="entry-grid">
       <a class="entry-card" href="#services">
-        <b data-i18n="improve.entry.a.t"></b>
-        <span class="entry-desc" data-i18n="improve.entry.a.d"></span>
-        <i data-i18n="improve.entry.a.cta"></i>
+        <b data-i18n="improve.entry.a.t">Vem, kaj želim spremeniti</b>
+        <span class="entry-desc" data-i18n="improve.entry.a.d">Izberite potrebne dodelave in poglejte okvirne cene.</span>
+        <i data-i18n="improve.entry.a.cta">Na storitve</i>
       </a>
       <button type="button" class="entry-card" onclick="openExpress()">
-        <b data-i18n="improve.entry.b.t"></b>
-        <span class="entry-desc" data-i18n="improve.entry.b.d"></span>
-        <i data-i18n="improve.entry.b.cta"></i>
+        <b data-i18n="improve.entry.b.t">Ne vem, kaj je treba izboljšati</b>
+        <span class="entry-desc" data-i18n="improve.entry.b.d">Začnite z brezplačnim hitrim pregledom spletne strani.</span>
+        <i data-i18n="improve.entry.b.cta">Na pregled</i>
       </button>
     </div>
   </div>
@@ -56,30 +58,30 @@
 <section id="express" class="improve-section improve-section--short">
   <div class="wrap">
     <div class="express-panel">
-      <span class="eyebrow" data-i18n="improve.express.eyebrow"></span>
-      <h2 data-i18n="improve.express.title"></h2>
-      <p class="section-lead" data-i18n="improve.express.desc"></p>
+      <span class="eyebrow" data-i18n="improve.express.eyebrow">Brezplačno</span>
+      <h2 data-i18n="improve.express.title">Brezplačen hiter pregled vaše spletne strani</h2>
+      <p class="section-lead" data-i18n="improve.express.desc">Preverimo osnovne tehnične kazalnike in pokažemo, na kaj je vredno biti pozoren. To je hiter predhodni pregled, ne pa celovita tehnična revizija.</p>
       <form id="expressForm" onsubmit="return submitExpress(event)">
         <div class="grid g2">
           <div class="field">
-            <label data-i18n="improve.express.urlLabel"></label>
+            <label data-i18n="improve.express.urlLabel">Naslov vaše spletne strani</label>
             <input type="text" id="expressUrl" inputmode="url" placeholder="https://primer.si" data-i18n-ph="improve.express.urlPh">
           </div>
           <div class="field">
-            <label data-i18n="improve.express.concernLabel"></label>
+            <label data-i18n="improve.express.concernLabel">Kaj vas skrbi?</label>
             <textarea id="expressConcern" rows="3" data-i18n-ph="improve.express.concernPh"></textarea>
           </div>
           <div class="field">
-            <label data-i18n="improve.express.emailLabel"></label>
+            <label data-i18n="improve.express.emailLabel">E-pošta za odgovor</label>
             <input type="email" id="expressEmail" inputmode="email" data-i18n-ph="improve.express.emailPh">
           </div>
         </div>
         <div class="qerr" id="expressErr"></div>
-        <button type="submit" class="btn" data-i18n="improve.express.btn"></button>
+        <button type="submit" class="btn" data-i18n="improve.express.btn">Preverite stran</button>
       </form>
       <div class="notice express-notice" id="expressNotice" hidden>
-        <p data-i18n="improve.express.notReady"></p>
-        <button type="button" class="btn ghost sm" onclick="requestFromExpress()" data-i18n="improve.express.requestBtn"></button>
+        <p data-i18n="improve.express.notReady">Samodejni pregled je v pripravi. Za zdaj lahko zaprosite za brezplačno predhodno oceno.</p>
+        <button type="button" class="btn ghost sm" onclick="requestFromExpress()" data-i18n="improve.express.requestBtn">Zaprosite za oceno</button>
       </div>
     </div>
   </div>
@@ -88,11 +90,11 @@
 <section id="services" class="improve-section">
   <div class="wrap">
     <div class="improve-head">
-      <h2 data-i18n="improve.catalog.title"></h2>
-      <p class="section-lead" data-i18n="improve.catalog.sub"></p>
+      <h2 data-i18n="improve.catalog.title">Kaj želite izboljšati?</h2>
+      <p class="section-lead" data-i18n="improve.catalog.sub">Izberite potrebna dela. Okvirno ceno potrdimo po pregledu vaše spletne strani.</p>
     </div>
-    <div id="serviceGrid" class="service-grid"></div>
-    <p class="catalog-note" data-i18n="improve.catalog.note"></p>
+    <div id="serviceGrid" class="service-grid"><div class="seo-static"><ul><li><b>Sprememba besedil, fotografij in kontaktov</b> — od 30 €</li><li><b>Odprava manjše tehnične napake</b> — od 35 €</li><li><b>Dodajanje novega bloka na stran</b> — od 50 €</li><li><b>Izdelava dodatne strani</b> — od 70 €</li><li><b>Nastavitev obrazca za povpraševanje</b> — od 70 €</li><li><b>Popravek mobilnega prikaza</b> — od 80 €</li><li><b>Optimizacija hitrosti nalaganja</b> — od 90 €</li><li><b>Osnovna SEO-optimizacija</b> — od 100 €</li><li><b>Dodajanje jezika</b> — od 100 €</li><li><b>Povezava s spletnim rezervacijskim sistemom</b> — od 120 €</li><li><b>Prenova posamezne spletne strani</b> — od 150 €</li><li><b>Celovita posodobitev</b> — individualno</li></ul></div></div>
+    <p class="catalog-note" data-i18n="improve.catalog.note">Navedene cene so najnižje okvirne vrednosti. Končna cena je odvisna od platforme, dostopov, zahtevnosti spletne strani in obsega dela.</p>
   </div>
 </section>
 
@@ -100,35 +102,35 @@
   <div class="wrap">
     <div class="request-panel">
       <div class="request-head">
-        <h2 data-i18n="improve.request.title"></h2>
+        <h2 data-i18n="improve.request.title">Vaša zahteva za izboljšanje spletne strani</h2>
         <span class="request-type" id="requestType"></span>
       </div>
       <div id="selectedList" class="selected-list"></div>
-      <p class="request-warning" data-i18n="improve.request.warning"></p>
-      <h3 class="request-form-title" data-i18n="improve.request.formTitle"></h3>
+      <p class="request-warning" data-i18n="improve.request.warning">Končna cena se določi po pregledu spletne strani in obsega dela.</p>
+      <h3 class="request-form-title" data-i18n="improve.request.formTitle">Povejte, kaj je treba spremeniti</h3>
 
       <form id="improveForm" onsubmit="return submitImprove(event)">
         <div class="grid g2">
           <div class="field">
-            <label data-i18n="improve.request.siteLabel"></label>
+            <label data-i18n="improve.request.siteLabel">Naslov strani</label>
             <input type="text" id="reqUrl" inputmode="url" data-i18n-ph="improve.request.sitePh">
           </div>
           <div class="field">
-            <label data-i18n="improve.request.emailLabel"></label>
+            <label data-i18n="improve.request.emailLabel">E-pošta za odgovor</label>
             <input type="email" id="reqEmail" data-i18n-ph="improve.request.emailPh">
           </div>
         </div>
         <div class="field">
-          <label data-i18n="improve.request.commentLabel"></label>
+          <label data-i18n="improve.request.commentLabel">Opišite svoje želje</label>
           <textarea id="reqComment" rows="3" data-i18n-ph="improve.request.commentPh"></textarea>
         </div>
-        <label class="check"><input type="checkbox" id="reqConsent"><span data-i18n="improve.request.consent"></span></label>
-        <small class="consent-note" data-i18n="improve.request.consentNote"></small>
-        <a class="privacy-link" href="../privacy.html" target="_blank" rel="noopener" data-i18n="footer.privacy"></a>
-        <p class="request-help" data-i18n="improve.request.help"></p>
+        <label class="check"><input type="checkbox" id="reqConsent"><span data-i18n="improve.request.consent">Želim prejemati koristne nasvete in nove možnosti od SOLO.POV</span></label>
+        <small class="consent-note" data-i18n="improve.request.consentNote">Občasno bomo pošiljali priporočila in novice. Odjava je mogoča kadarkoli.</small>
+        <a class="privacy-link" href="../privacy.html" target="_blank" rel="noopener" data-i18n="footer.privacy">Politika zasebnosti</a>
+        <p class="request-help" data-i18n="improve.request.help">Ogledali bomo vašo spletno stran, ocenili potrebne izboljšave ter predlagali ceno in roke. Pošiljanje zahteve vas k ničemur ne zavezuje.</p>
         <div class="qerr" id="reqErr"></div>
-        <button type="submit" class="btn" id="improveSubmit" data-i18n="improve.request.submit"></button>
-        <small class="meta" data-i18n="improve.request.note"></small>
+        <button type="submit" class="btn" id="improveSubmit" data-i18n="improve.request.submit">Pridobite oceno</button>
+        <small class="meta" data-i18n="improve.request.note">Pošiljanje zahtev še ni povezano. Prikazali bomo besedilo, ki ga lahko kopirate.</small>
       </form>
       <div id="improveResult" class="request-result" hidden></div>
     </div>
@@ -138,17 +140,17 @@
 <section class="improve-section improve-section--short">
   <div class="wrap">
     <div class="audit-panel">
-      <span class="eyebrow" data-i18n="improve.audit.eyebrow"></span>
-      <h2 data-i18n="improve.audit.title"></h2>
-      <p class="section-lead" data-i18n="improve.audit.sub"></p>
+      <span class="eyebrow" data-i18n="improve.audit.eyebrow">Plačljiva revizija</span>
+      <h2 data-i18n="improve.audit.title">Potrebujete globljo analizo?</h2>
+      <p class="section-lead" data-i18n="improve.audit.sub">Izvedli bomo profesionalno revizijo vaše spletne strani, preučili tehnično stanje, vidnost v iskalnikih, konkurenco in pripravili načrt izboljšav.</p>
       <div id="auditDirections" class="audit-directions"></div>
       <details class="audit-details">
-        <summary data-i18n="improve.audit.detailsTitle"></summary>
+        <summary data-i18n="improve.audit.detailsTitle">Kaj vključuje profesionalna revizija?</summary>
         <ul id="auditDetailsList" class="audit-list"></ul>
       </details>
-      <p class="audit-price" data-i18n="improve.audit.price"></p>
-      <button type="button" class="btn" onclick="startAudit()" data-i18n="improve.audit.btn"></button>
-      <small class="meta" data-i18n="improve.audit.note"></small>
+      <p class="audit-price" data-i18n="improve.audit.price">Individualno — po določitvi obsega analize.</p>
+      <button type="button" class="btn" onclick="startAudit()" data-i18n="improve.audit.btn">Naročite profesionalno revizijo</button>
+      <small class="meta" data-i18n="improve.audit.note">Orodja in obseg analize uskladimo pred začetkom dela.</small>
     </div>
   </div>
 </section>
@@ -169,10 +171,11 @@
 
 <script src="../assets/config.js?v=20261104-stage2"></script>
 <script src="../assets/lead-submit.js?v=20261104-stage2"></script>
-<script src="../assets/i18n.js?v=20261104-stage2"></script>
-<script src="../assets/concept-i18n.js?v=20261024-ai"></script>
-<script src="../assets/improve-i18n.js?v=20261104-stage2"></script>
-<script src="../assets/app.js?v=20261104-stage2"></script>
+<script src="../assets/i18n.js?v=20261104-stage3"></script>
+<script src="../assets/concept-i18n.js?v=20261104-stage3"></script>
+<script src="../assets/improve-i18n.js?v=20261104-stage3"></script>
+<script>window.SOLO_PAGE_META={sl:{title:"Izboljšanje in prenova spletne strani | SOLO.POV",desc:"Izboljšamo obstoječo spletno stran: hitrost, prikaz na telefonu, napake in manjkajoče funkcije. Brezplačen hiter pregled in jasna cena dodelav."}};</script>
+<script src="../assets/app.js?v=20261104-stage3"></script>
 <script src="../assets/improve.js?v=20261104-stage2"></script>
 <script src="../assets/cursor.js"></script>
 <script src="/assets/consent.js?v=20261031-meta3" defer></script>

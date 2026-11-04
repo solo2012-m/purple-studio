@@ -1,5 +1,10 @@
 window.SOLO_I18N = {
   "sl": {
+    "create.nav.home": "Domov",
+    "create.nav.create": "Izdelava",
+    "create.nav.improve": "Izboljšave",
+    "create.nav.ai": "AI in avtomatizacija",
+    "footer.privacy": "Politika zasebnosti",
     "meta.title": "SOLO.POV — Izboljšanje spletnih strani",
     "improve.eyebrow": "SOLO.POV · izboljšanje strani",
     "improve.title": "Vaša spletna stran lahko deluje bolje",
@@ -80,6 +85,11 @@ window.SOLO_I18N = {
     "improve.demo.caption": "Predstavitev, ne resničen primer."
   },
   "ru": {
+    "create.nav.home": "Главная",
+    "create.nav.create": "Создание",
+    "create.nav.improve": "Улучшение",
+    "create.nav.ai": "AI и автоматизация",
+    "footer.privacy": "Политика конфиденциальности",
     "meta.title": "Solo.Pov — Улучшение сайтов",
     "improve.eyebrow": "Solo.Pov · улучшение сайтов",
     "improve.title": "Ваш сайт может работать лучше",
@@ -160,6 +170,11 @@ window.SOLO_I18N = {
     "improve.demo.caption": "Демонстрация, не реальный кейс."
   },
   "en": {
+    "create.nav.home": "Home",
+    "create.nav.create": "Websites",
+    "create.nav.improve": "Improvements",
+    "create.nav.ai": "AI & automation",
+    "footer.privacy": "Privacy policy",
     "meta.title": "Solo.Pov — Improving web pages",
     "improve.eyebrow": "Solo.Pov · page improvement",
     "improve.title": "Your site can perform better",
@@ -240,6 +255,11 @@ window.SOLO_I18N = {
     "improve.demo.caption": "A demo, not a real example."
   },
   "de": {
+    "create.nav.home": "Zuhause",
+    "create.nav.create": "Websites",
+    "create.nav.improve": "Verbesserungen",
+    "create.nav.ai": "KI & Automatisierung",
+    "footer.privacy": "Datenschutzrichtlinie",
     "meta.title": "Solo.Pov – Webseiten verbessern",
     "improve.eyebrow": "Solo.Pov · Seitenverbesserung",
     "improve.title": "Ihre Website kann eine bessere Leistung erbringen",
@@ -323,6 +343,11 @@ window.SOLO_I18N = {
 
 window.SOLO_IMPROVE = {
   "sl": {
+    "create.nav.home": "Domov",
+    "create.nav.create": "Izdelava",
+    "create.nav.improve": "Izboljšave",
+    "create.nav.ai": "AI in avtomatizacija",
+    "footer.privacy": "Politika zasebnosti",
     "services": [
       {
         "id": "content",
@@ -428,6 +453,11 @@ window.SOLO_IMPROVE = {
     ]
   },
   "ru": {
+    "create.nav.home": "Главная",
+    "create.nav.create": "Создание",
+    "create.nav.improve": "Улучшение",
+    "create.nav.ai": "AI и автоматизация",
+    "footer.privacy": "Политика конфиденциальности",
     "services": [
       {
         "id": "content",
@@ -533,6 +563,11 @@ window.SOLO_IMPROVE = {
     ]
   },
   "en": {
+    "create.nav.home": "Home",
+    "create.nav.create": "Websites",
+    "create.nav.improve": "Improvements",
+    "create.nav.ai": "AI & automation",
+    "footer.privacy": "Privacy policy",
     "services": [
       {
         "id": "content",
@@ -638,6 +673,11 @@ window.SOLO_IMPROVE = {
     ]
   },
   "de": {
+    "create.nav.home": "Zuhause",
+    "create.nav.create": "Websites",
+    "create.nav.improve": "Verbesserungen",
+    "create.nav.ai": "KI & Automatisierung",
+    "footer.privacy": "Datenschutzrichtlinie",
     "services": [
       {
         "id": "content",

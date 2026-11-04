@@ -1,7 +1,7 @@
 window.SOLO_I18N = {
   "sl": {
-    "meta.title": "SOLO.POV — spletne strani in AI",
-    "meta.desc": "Izdelava, izboljšanje in razvoj spletnih strani za mala podjetja. Od prve ideje do avtomatizacije.",
+    "meta.title": "Izdelava spletnih strani za mala podjetja | SOLO.POV",
+    "meta.desc": "SOLO.POV izdeluje in izboljšuje spletne strani za mala podjetja v Sloveniji ter uvaja AI-avtomatizacijo in oglaševanje. Od ideje do objave.",
     "brand.name": "SOLO.POV",
     "brand.sub": "spletne strani in AI",
     "nav.home": "Domov",
