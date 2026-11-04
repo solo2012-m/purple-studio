@@ -85,8 +85,8 @@ window.SOLO_ADS = {
           "desc": "Nastavimo oglaševanje prek Meta Ads, da potencialne stranke spoznajo vašo ponudbo in oddajo povpraševanje.",
           "features": [
             "Nastavitev oglaševalskega računa.",
-            "Povezava strani Facebook in računa Instagram.",
-            "Povezava Meta Pixel.",
+            "Povezava Facebook strani in Instagram računa.",
+            "Povezava z orodjem Meta Pixel.",
             "Nastavitev razpoložljivih konverzijskih dogodkov.",
             "Priprava strukture kampanj.",
             "Nastavitev občinstva.",
@@ -112,7 +112,7 @@ window.SOLO_ADS = {
           "id": "seo",
           "letter": "C",
           "title": "SEO in vidnost v AI-iskanju",
-          "desc": "SEO, lokalno SEO in GEO — trije pristopi k iskalni vidnosti.",
+          "desc": "SEO, lokalni SEO in GEO — trije pristopi k iskalni vidnosti.",
           "options": [
             {
               "id": "seo_basic",
@@ -120,9 +120,9 @@ window.SOLO_ADS = {
               "price": "od 100 €",
               "type": "once",
               "features": [
-                "Analiza strukture strani.",
-                "Naslovi in metaopisi.",
-                "Optimizacija obstoječih strani.",
+                "Analiza strukture spletne strani.",
+                "Naslovi in meta opisi.",
+                "Optimizacija obstoječih spletnih strani.",
                 "Iskalne poizvedbe.",
                 "Tehnična priporočila.",
                 "Vsebina in notranje povezave."
@@ -130,7 +130,7 @@ window.SOLO_ADS = {
             },
             {
               "id": "seo_local",
-              "title": "Lokalno SEO",
+              "title": "Lokalni SEO",
               "price": "od 80 €",
               "type": "once",
               "features": [
@@ -159,7 +159,7 @@ window.SOLO_ADS = {
               "note": "GEO ne zagotavlja omemb, citatov ali določenih mest v odgovorih AI. SEO in GEO se delno prekrivata."
             }
           ],
-          "note": "SEO in GEO se delno prekrivata. Ne obljubljamo avtomatskega vstopa v ChatGPT, Gemini ali druge AI-sisteme."
+          "note": "SEO in GEO se delno prekrivata. Ne obljubljamo samodejne uvrstitve v ChatGPT, Gemini ali druge AI-sisteme."
         },
         {
           "id": "analytics",
@@ -171,8 +171,8 @@ window.SOLO_ADS = {
             "Google Tag Manager.",
             "Meta Pixel.",
             "Dogodki oddaje obrazcev.",
-            "Spremljanje dogovorjenih dejanj na strani.",
-            "Povezava Google Ads konverzij.",
+            "Spremljanje dogovorjenih dejanj na spletni strani.",
+            "Povezava konverzij z Google Ads.",
             "Preverjanje pravilnosti prenosa podatkov.",
             "Razumljiva poročila."
           ],
@@ -196,7 +196,7 @@ window.SOLO_ADS = {
               "type": "individual"
             }
           ],
-          "note": "Namestitev orodij in uporaba podatkov morata upoštevati zahteve glede zasebnosti in soglasja obiskovalcev, vključno s pravili GDPR in piškotkov."
+          "note": "Namestitev orodij in uporaba podatkov morata upoštevati zahteve glede zasebnosti in soglasja obiskovalcev, vključno z zahtevami GDPR in pravili o piškotkih."
         }
       ]
     },
@@ -244,7 +244,7 @@ window.SOLO_ADS = {
           "desc": "Dolgoročno delo na organski vidnosti v iskalnikih."
         },
         {
-          "title": "Lokalno SEO",
+          "title": "Lokalni SEO",
           "desc": "Prisotnost podjetja v lokalnih rezultatih in na zemljevidih."
         },
         {
@@ -255,30 +255,30 @@ window.SOLO_ADS = {
       "note": "Ne veste, kaj ustreza vašemu podjetju? Pomagamo izbrati smer glede na cilje, konkurenco in proračun."
     },
     "form": {
-      "title": "Povejte nam o svojem podjetju. Izbrali bomo promocijo.",
-      "desc": "Izberite storitve ali težave zgoraj ali opišite svojo nalogo.",
-      "help": "Preučili bomo vašo nalogo in predlagali ustrezne kanale, predhodno ceno in naslednje korake. Pošiljanje zahteve vas k ničemur ne obvezuje.",
+      "title": "Povejte nam o svojem podjetju. Predlagali bomo promocijo.",
+      "desc": "Izberite storitve ali težave zgoraj oziroma opišite, kaj potrebujete.",
+      "help": "Preučili bomo vaše potrebe in predlagali ustrezne kanale, okvirno ceno in naslednje korake. Pošiljanje zahteve vas k ničemur ne zavezuje.",
       "summaryTitle": "Vaša zahteva SOLO.POV",
       "setup": "Enkratna nastavitev",
       "monthly": "Mesečno spremljanje",
       "individual": "Individualna ocena",
-      "issue": "Dodatna naloga",
-      "none": "Nič ni izbrano — opišite nalogo in predlagali bomo možnost.",
-      "remove": "Odstrani",
-      "siteLabel": "Naslov strani (če obstaja)",
+      "issue": "Dodatna storitev",
+      "none": "Nič ni izbrano — opišite, kaj potrebujete, in predlagali bomo možnost.",
+      "remove": "Odstranite",
+      "siteLabel": "Naslov spletne strani (če obstaja)",
       "sitePh": "https://primer.si",
       "businessLabel": "S čim se ukvarja vaše podjetje?",
       "businessPh": "Na primer: storitve čiščenja fasad in streh.",
-      "regionLabel": "Kje je vaše ciljno občinstvo / regija promocije?",
+      "regionLabel": "Kje je vaše ciljno občinstvo oziroma regija oglaševanja?",
       "regionPh": "Na primer: Ljubljana in okolica.",
       "budgetLabel": "Okvirni oglaševalski proračun (neobvezno)",
       "budgetPh": "Na primer: 300 €/mesec",
       "budgetNote": "Oglaševalski proračun se plača posebej in ni del cene storitev SOLO.POV.",
       "commentLabel": "Dodatne želje",
       "commentPh": "Na primer: želim več povpraševanj za čiščenje fasad v Ljubljani.",
-      "emailLabel": "Email za odgovor",
+      "emailLabel": "E-pošta za odgovor",
       "emailPh": "ime@primer.si",
-      "telegramLabel": "Telegram kontakt (neobvezno)",
+      "telegramLabel": "Kontakt na Telegramu (neobvezno)",
       "telegramPh": "@uporabnisko_ime",
       "consent": "Želim prejemati gradiva in ponudbe SOLO.POV",
       "consentNote": "Neobvezno. Odjava je mogoča kadarkoli.",
@@ -287,12 +287,12 @@ window.SOLO_ADS = {
       "note": "Pošiljanje zahtev še ni povezano. Prikazali bomo besedilo, ki ga lahko kopirate.",
       "notSentTitle": "Pošiljanje še ni povezano",
       "notSentText": "Zahteva <b>ni bila poslana</b>, ker obdelava zahtev še ni povezana. Kopirajte besedilo spodaj in nam ga pošljite.",
-      "copy": "Kopiraj besedilo",
+      "copy": "Kopirajte besedilo",
       "copied": "Kopirano",
       "back": "Nazaj na obrazec",
-      "errEmail": "Vnesite veljaven email.",
-      "errSite": "Vnesite veljaven naslov strani.",
-      "errEmpty": "Izberite storitev ali opišite nalogo."
+      "errEmail": "Vnesite veljaven e-poštni naslov.",
+      "errSite": "Vnesite veljaven naslov spletne strani.",
+      "errEmpty": "Izberite storitev ali opišite, kaj potrebujete."
     },
     "process": {
       "title": "Kako delamo",
@@ -309,16 +309,16 @@ window.SOLO_ADS = {
       "title": "Pogosta vprašanja",
       "items": [
         {
-          "q": "Ali lahko naročim oglaševanje brez izdelave strani?",
-          "a": "Da, če imate stran ali drug kanal, na katerega lahko usmerimo promet."
+          "q": "Ali lahko naročim oglaševanje brez izdelave spletne strani?",
+          "a": "Da, če imate spletno stran ali drug kanal, na katerega lahko usmerimo promet."
         },
         {
           "q": "Kakšen proračun potrebujem za začetek?",
           "a": "Odvisno od panoge, konkurence in ciljev. Predlagali bomo realen okvir in ga uskladili z vami."
         },
         {
-          "q": "Kakšna je razlika med Google Ads in oglaševanjem na Facebooku ter Instagramu?",
-          "a": "Google Ads pogosto zajame ljudi z aktivnim iskanjem, Meta Ads pa omogoča ciljanje po interesih in občinstvih."
+          "q": "Kakšna je razlika med oglaševanjem v Google Ads ter na Facebooku in Instagramu?",
+          "a": "Google Ads pogosto doseže ljudi z aktivnim iskanjem, Meta Ads pa omogoča usmerjanje po interesih in občinstvih."
         },
         {
           "q": "Ali je treba posebej plačati oglaševalski proračun?",
@@ -326,11 +326,11 @@ window.SOLO_ADS = {
         },
         {
           "q": "Kdaj lahko SEO prinese rezultate?",
-          "a": "SEO je dolgoročna dejavnost. Časovni okvir je odvisen od stanja strani, konkurence in obsega dela; zagotovljenih pozicij ne obljubljamo."
+          "a": "SEO je dolgoročna dejavnost. Časovni okvir je odvisen od stanja spletne strani, konkurence in obsega dela; zagotovljenih pozicij ne obljubljamo."
         },
         {
           "q": "Kaj je GEO-promocija?",
-          "a": "GEO je delo na tem, da so informacije o podjetju jasne, celovite in dostopne sistemom generativnega iskanja. Ne zagotavlja omemb ali citatov."
+          "a": "GEO pomeni, da so informacije o podjetju jasne, celovite in dostopne sistemom generativnega iskanja. Ne zagotavlja omemb ali citatov."
         },
         {
           "q": "Ali lahko izboljšate že delujoče oglaševanje?",

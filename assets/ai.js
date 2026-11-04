@@ -264,7 +264,7 @@
 
   function buildText(site, comment, email, telegram, consent) {
     var ru = lang() === 'ru', lines = [];
-    lines.push(ru ? 'Заявка Solo.Pov — AI-ассистент и автоматизация' : 'Povpraševanje Solo.Pov — AI-asistent in avtomatizacija');
+    lines.push(ru ? 'Заявка Solo.Pov — AI-ассистент и автоматизация' : 'Povpraševanje SOLO.POV — AI-asistent in avtomatizacija');
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
     if (state.ai) { var a = aiById(state.ai); if (a) lines.push((ru ? 'Ежемесячная подписка' : 'Mesečna naročnina') + ': ' + a.name + ' — ' + a.price); }
     if (state.interest) lines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + (ru ? 'Бесплатная демонстрация' : 'Brezplačna predstavitev'));
@@ -386,7 +386,7 @@
 
   window.renderAI = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : lang() === 'en' ? 'Solo.Pov — AI assistant and automation' : lang() === 'de' ? 'Solo.Pov — KI-Assistent und Automatisierung' : 'Solo.Pov — AI-asistent in avtomatizacija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — AI-ассистент и автоматизация' : lang() === 'en' ? 'Solo.Pov — AI assistant and automation' : lang() === 'de' ? 'Solo.Pov — KI-Assistent und Automatisierung' : 'SOLO.POV — AI-asistent in avtomatizacija';
     renderHero(); renderAISection(); renderAutomation(); renderRequest(); renderFAQ(); renderCross();
   };
 

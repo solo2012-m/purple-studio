@@ -1,42 +1,42 @@
 window.SOLO_AI = {
   "sl": {
     "hero": {
-      "eyebrow": "Solo.Pov · AI-asistent in avtomatizacija",
+      "eyebrow": "SOLO.POV · AI-asistent in avtomatizacija",
       "title": "Vaša stran. Vaš Telegram. Vaš AI-pomočnik.",
       "sub": [
         "Upravljajte stran s preprostimi sporočili v Telegramu.",
-        "Avtomatizirajte povpraševanja in ponavljajoče se naloge."
+        "Avtomatizirajte obdelavo povpraševanj in ponavljajoče se naloge."
       ],
       "cards": [
         {
           "id": "ai",
           "title": "AI-asistent prek Telegrama",
-          "desc": "Upravljajte stran z običajnimi sporočili. Spreminjajte besedila, dodajajte storitve, fotografije in članke. Rezultat preverite pred objavo.",
-          "cta": "Poglej predstavitev in pakete →"
+          "desc": "Upravljajte spletno stran z običajnimi sporočili. Spreminjajte besedila, dodajajte storitve, fotografije in članke. Rezultat preverite pred objavo.",
+          "cta": "Oglejte si predstavitev in pakete →"
         },
         {
           "id": "automation",
           "title": "Avtomatizacija poslovanja",
-          "desc": "Povežemo stran, povpraševanja, obvestila in delovne storitve. Nastavimo procese, ki se izvajajo samodejno.",
-          "cta": "Poglej katalog avtomatizacij →"
+          "desc": "Povežemo spletno stran, povpraševanja, obvestila in delovna orodja. Nastavimo procese, ki se izvajajo samodejno.",
+          "cta": "Oglejte si katalog avtomatizacij →"
         }
       ]
     },
     "ai": {
       "eyebrow": "AI-asistent",
       "title": "AI-asistent prek Telegrama",
-      "sub": "Upravljajte stran z običajnimi sporočili. Spreminjajte besedila, dodajajte storitve, fotografije in članke ter preverite rezultat pred objavo.",
+      "sub": "Upravljajte spletno stran z običajnimi sporočili. Spreminjajte besedila, dodajajte storitve, fotografije in članke ter preverite rezultat pred objavo.",
       "offer": {
-        "accent": "Preizkusite brezplačno. Plačajte, če vam ustreza.",
+        "accent": "Preizkusite brezplačno. Plačajte šele, če vam ustreza.",
         "cta": "Preizkusite brezplačno →",
-        "note": "Brezplačna predstavitev vam pokaže princip dela. Preizkus na vaši strani se dogovori individualno — po preverjanju tehničnih možnosti in dostopov. Samodejne povezave bota s poljubno stranjo ne obljubljamo."
+        "note": "Brezplačna predstavitev vam pokaže princip dela. Preizkus na vaši spletni strani dogovorimo individualno — po preverjanju tehničnih možnosti in dostopov. Ne obljubljamo samodejne povezave bota s poljubno spletno stranjo."
       },
       "scenarios": {
         "label": "Primeri uporabe",
         "title": "Kako to deluje v praksi",
-        "note": "Običajna sporočila v Telegramu — od naloge do pripravljenega rezultata.",
+        "note": "Običajna sporočila v Telegramu — od želje do pripravljenega rezultata.",
         "afterNote": "AI pripravi spremembe in pokaže rezultat. Objava in druga dovoljena dejanja se izvedejo po vaši potrditvi.",
-        "disclaimer": "Predstavitve temeljijo na resničnih delovnih scenarijih, vendar niso posnetki zaslona klepeta. Podatki so ponazoritveni.",
+        "disclaimer": "Predstavitve temeljijo na resničnih delovnih scenarijih, vendar niso posnetki pogovora. Podatki so ponazoritveni.",
         "items": [
           {
             "id": "service",
@@ -47,19 +47,19 @@ window.SOLO_AI = {
             "messages": [
               {
                 "who": "client",
-                "text": "Dodaj na stran storitev čiščenja žlebov. Pripravi opis in predlagaj ceno."
+                "text": "Dodajte na spletno stran storitev čiščenja žlebov. Pripravite opis in predlagajte ceno."
               },
               {
                 "who": "ai",
-                "text": "Pripravil sem novo storitev:\n\nČiščenje žlebov\n\nČiščenje strešnih žlebov pred listjem, umazanijo in ostanki.\n\nCena — po ogledu.\n\nPokažem predhodno različico?"
+                "text": "Pripravil sem novo storitev:\n\nČiščenje žlebov\n\nČiščenje strešnih žlebov pred listjem, umazanijo in ostanki.\n\nCena po ogledu.\n\nNaj pokažem predogled?"
               },
               {
                 "who": "client",
-                "text": "Da, pokaži."
+                "text": "Da, pokažite."
               },
               {
                 "who": "ai",
-                "text": "Predogled je pripravljen. Objavim?"
+                "text": "Predogled je pripravljen. Naj objavim?"
               },
               {
                 "who": "client",
@@ -67,7 +67,7 @@ window.SOLO_AI = {
               },
               {
                 "who": "ai",
-                "text": "Končano ✓ Storitev je dodana na stran."
+                "text": "Končano ✓ Storitev je dodana na spletno stran."
               }
             ],
             "note": "AI pripravi opis in ceno; objava sledi po vaši potrditvi."
@@ -81,15 +81,15 @@ window.SOLO_AI = {
             "messages": [
               {
                 "who": "client",
-                "text": "Poglej, katere storitve čiščenja streh ponujajo konkurenti in kakšne so njihove cene."
+                "text": "Preverite, katere storitve čiščenja streh ponujajo konkurenti in kakšne so njihove cene."
               },
               {
                 "who": "ai",
-                "text": "Preveril sem razpoložljive ponudbe.\n\nPogosto se pojavljajo:\n• pranje streh;\n• odstranjevanje mahu;\n• zaščitna obdelava.\n\nPo najdenih javnih ponudbah se cene in pogoji razlikujejo.\n\nPripravim novo storitev za vašo stran?"
+                "text": "Preveril sem razpoložljive ponudbe.\n\nPogosto se pojavljajo:\n• pranje streh;\n• odstranjevanje mahu;\n• zaščitna obdelava.\n\nGlede na javno dostopne ponudbe se cene in pogoji razlikujejo.\n\nNaj pripravim novo storitev za vašo spletno stran?"
               },
               {
                 "who": "client",
-                "text": "Da, pripravi."
+                "text": "Da, pripravite."
               },
               {
                 "who": "ai",
@@ -107,11 +107,11 @@ window.SOLO_AI = {
             "messages": [
               {
                 "who": "client",
-                "text": "Spremeni trajanje večernega ličenja na 90 minut."
+                "text": "Spremenite trajanje večernega ličenja na 90 minut."
               },
               {
                 "who": "ai",
-                "text": "Našel sem storitev »Večerno ličenje«.\n\nTrenutno trajanje: 60 minut.\n\nNovo trajanje: 90 minut.\n\nPotrdim spremembo?"
+                "text": "Našel sem storitev »Večerno ličenje«.\n\nTrenutno trajanje: 60 minut.\n\nNovo trajanje: 90 minut.\n\nNaj potrdim spremembo?"
               },
               {
                 "who": "client",
@@ -119,7 +119,7 @@ window.SOLO_AI = {
               },
               {
                 "who": "ai",
-                "text": "Končano ✓ Trajanje je posodobljeno.\n\nPreverim ustrezno nastavitev v koledarju rezervacij?"
+                "text": "Končano ✓ Trajanje je posodobljeno.\n\nNaj preverim še ustrezno nastavitev v koledarju rezervacij?"
               }
             ],
             "note": "Prikaz spremembe storitve; koledarska povezava ni vzpostavljena."
@@ -137,9 +137,9 @@ window.SOLO_AI = {
           "features": [
             "Priprava besedil in opisov.",
             "Predlogi sprememb obstoječe vsebine.",
-            "Ena povezana stran.",
+            "Ena povezana spletna stran.",
             "Predogled pred objavo.",
-            "Omejen obseg zahtev.",
+            "Omejeno število zahtev.",
             "Nastavitev povezave se obračuna posebej."
           ]
         },
@@ -154,7 +154,7 @@ window.SOLO_AI = {
             "Delo s fotografijami in opisi.",
             "Priprava novih kartic storitev.",
             "Dodatni scenariji upravljanja strani.",
-            "Razširjen mesečni limit operacij."
+            "Razširjena mesečna omejitev števila operacij."
           ]
         },
         {
@@ -186,28 +186,28 @@ window.SOLO_AI = {
             "Raziskava javno dostopnih podatkov o konkurentih.",
             "Analiza storitev in ponudb konkurentov.",
             "Priprava novih storitev na podlagi raziskave.",
-            "Predlogi strukture storitev in strani.",
-            "Priprava SEO-usmerjene vsebine.",
-            "Priporočila za razvoj strani.",
+            "Predlogi strukture storitev in spletne strani.",
+            "Priprava vsebine, usmerjene v SEO.",
+            "Priporočila za razvoj spletne strani.",
             "Priprava tematskih člankov.",
             "Do 20 operacij upravljanja in do 3 raziskave na mesec."
           ]
         }
       ],
-      "tariffNote": "Cene in limiti so predhodni. Ne obljubljamo neomejenih dejanj ali neomejenega števila člankov. Zahtevno ročno programiranje ni vključeno. Pred začetkom se dokončno določijo stroški povezave, mesečni limiti, dovoljeni stroški zunanjih AI-storitev in dodatna dela.",
-      "tariffFootnote": "Paket se začne po potrditvi tehnične združljivosti strani in nastavitvi povezave. Avtomatizacija poslovanja je ločena storitev z individualno oceno.",
-      "limitsNote": "Standardna operacija je dogovorjena sprememba vsebine ali nastavitev strani v okviru podprtih funkcij AI-asistenta. Zahtevne spremembe, razvoj novih funkcij in integracije se ocenijo posebej.",
-      "cta": "Izberi AI-asistenta →"
+      "tariffNote": "Cene in omejitve so predhodne. Ne obljubljamo neomejenega števila operacij ali neomejenega števila člankov. Zahtevno ročno programiranje ni vključeno. Pred začetkom se dokončno določijo stroški povezave, mesečne omejitve, dovoljeni stroški zunanjih AI-storitev in dodatna dela.",
+      "tariffFootnote": "Paket se začne po potrditvi tehnične združljivosti spletne strani in nastavitvi povezave. Avtomatizacija poslovanja je ločena storitev z individualno oceno.",
+      "limitsNote": "Standardna operacija je dogovorjena sprememba vsebine ali nastavitev spletne strani v okviru podprtih funkcij AI-asistenta. Zahtevne spremembe, razvoj novih funkcij in integracije se ocenijo posebej.",
+      "cta": "Izberite AI-asistenta →"
     },
     "automation": {
       "eyebrow": "Avtomatizacija poslovanja",
       "title": "Manj ročnega dela. Več avtomatizacije.",
-      "desc": "Povežemo vašo stran z ustreznimi orodji, da se povpraševanja, obvestila in ponavljajoči se procesi izvajajo samodejno.",
+      "desc": "Povežemo vašo spletno stran z ustreznimi orodji, da se povpraševanja, obvestila in ponavljajoči se procesi obdelujejo samodejno.",
       "cards": [
         {
           "id": "telegram",
           "title": "Povpraševanja v Telegram",
-          "desc": "Obvestilo o novem povpraševanju s strani.",
+          "desc": "Obvestilo o novem povpraševanju s spletne strani.",
           "tip": "Ko obiskovalec odda obrazec na strani, lastnik prejme sporočilo v Telegramu s podatki o povpraševanju."
         },
         {
@@ -219,7 +219,7 @@ window.SOLO_AI = {
         {
           "id": "booking",
           "title": "Spletne rezervacije",
-          "desc": "Povezava strani s sistemom za rezervacijo terminov.",
+          "desc": "Povezava spletne strani s sistemom za rezervacijo terminov.",
           "tip": "Obiskovalec izbere prost termin, informacija o rezervaciji pa se prenese v dogovorjeni sistem."
         },
         {
@@ -241,14 +241,14 @@ window.SOLO_AI = {
           "tip": "Pripravljeno gradivo se pregleda in lahko objavi v izbranih razdelkih strani."
         }
       ],
-      "priceNote": "Avtomatizacij ne združujemo v en paket s popustom. Končna cena se določi po oceni naloge.",
+      "priceNote": "Avtomatizacij ne združujemo v en paket s popustom. Končna cena se določi po oceni obsega dela.",
       "prices": [
         {
           "title": "Preprosta avtomatizacija",
           "price": "od 50 €"
         },
         {
-          "title": "Več povezanih dejanj",
+          "title": "Več povezanih korakov",
           "price": "od 150 €"
         },
         {
@@ -256,32 +256,32 @@ window.SOLO_AI = {
           "price": "individualni izračun"
         }
       ],
-      "integrationNote": "Če prek AI-asistenta zahtevate zahtevnejšo integracijo, bot pripravi opis naloge in predlaga, da se obrnete na SOLO.POV za ločeno oceno.",
-      "footnote": "Cene so okvirne. Naročnine zunanjih storitev in stroški API se plačajo posebej, razen če je dogovorjeno drugače.",
+      "integrationNote": "Če potrebujete zahtevnejšo integracijo, bot pripravi opis potrebe in predlaga, da se obrnete na SOLO.POV za ločeno oceno.",
+      "footnote": "Cene so okvirne. Naročnine zunanjih storitev in stroški zunanjih API-jev se plačajo posebej, razen če je dogovorjeno drugače.",
       "cta": "Pogovorimo se o avtomatizaciji →"
     },
     "form": {
       "title": "Povejte nam, kaj potrebujete. Predlagali bomo rešitev.",
-      "desc": "Izberite AI-paket ali avtomatizacijo, ali opišite svojo nalogo. Pripravili bomo predlog.",
-      "help": "Preučili bomo vašo nalogo, preverili tehnično združljivost ter predlagali ustrezen način povezave, ceno in roke. Pošiljanje zahteve vas k ničemur ne obvezuje.",
+      "desc": "Izberite AI-paket ali avtomatizacijo oziroma opišite, kaj potrebujete. Pripravili bomo predlog.",
+      "help": "Preučili bomo vaše potrebe, preverili tehnično združljivost ter predlagali ustrezen način povezave, ceno in roke. Pošiljanje zahteve vas k ničemur ne zavezuje.",
       "summaryTitle": "Vaš izbor SOLO.POV",
       "aiLabel": "AI-asistent",
       "automationLabel": "Avtomatizacija",
       "monthlySection": "Mesečna naročnina",
       "additionalSection": "Dodatna dela",
-      "additionalNote": "Enkratni strošek se določi po oceni naloge in ni vključen v mesečno naročnino.",
+      "additionalNote": "Enkratni strošek se določi po oceni obsega dela in ni vključen v mesečno naročnino.",
       "monthlyLabel": "Predhodni mesečni paket",
       "oneTimeLabel": "Enkratni strošek avtomatizacije",
       "afterEstimate": "določi se po oceni",
-      "none": "Nič ni izbrano — opišite nalogo in predlagali bomo možnost.",
-      "remove": "Odstrani",
-      "siteLabel": "Naslov obstoječe strani (neobvezno)",
+      "none": "Nič ni izbrano — opišite, kaj potrebujete, in predlagali bomo možnost.",
+      "remove": "Odstranite",
+      "siteLabel": "Naslov obstoječe spletne strani (neobvezno)",
       "sitePh": "https://primer.si",
-      "commentLabel": "Kratko opišite nalogo",
-      "commentPh": "Na primer: želim, da nova povpraševanja pridejo v Telegram in da stranka samodejno obvesti o prejemu.",
-      "emailLabel": "Email za odgovor",
+      "commentLabel": "Kratko opišite, kaj potrebujete",
+      "commentPh": "Na primer: želim, da nova povpraševanja pridejo v Telegram in da stranka samodejno prejme potrditev prejema.",
+      "emailLabel": "E-pošta za odgovor",
       "emailPh": "ime@primer.si",
-      "telegramLabel": "Telegram kontakt (neobvezno)",
+      "telegramLabel": "Kontakt na Telegramu (neobvezno)",
       "telegramPh": "@uporabnisko_ime",
       "consent": "Želim prejemati novice in ponudbe SOLO.POV",
       "consentNote": "Neobvezno. Odjava je mogoča kadarkoli.",
@@ -290,27 +290,27 @@ window.SOLO_AI = {
       "note": "Pošiljanje zahtev še ni povezano. Prikazali bomo besedilo, ki ga lahko kopirate.",
       "notSentTitle": "Pošiljanje še ni povezano",
       "notSentText": "Zahteva <b>ni bila poslana</b>, ker obdelava zahtev še ni povezana. Kopirajte besedilo spodaj in nam ga pošljite.",
-      "copy": "Kopiraj besedilo",
+      "copy": "Kopirajte besedilo",
       "copied": "Kopirano",
       "back": "Nazaj na obrazec",
-      "errEmail": "Vnesite veljaven email.",
-      "errUrl": "Vnesite veljaven naslov strani.",
-      "errEmpty": "Izberite paket ali avtomatizacijo, ali opišite nalogo."
+      "errEmail": "Vnesite veljaven e-poštni naslov.",
+      "errUrl": "Vnesite veljaven naslov spletne strani.",
+      "errEmpty": "Izberite paket ali avtomatizacijo oziroma opišite, kaj potrebujete."
     },
     "faq": {
       "title": "Pogosta vprašanja",
       "items": [
         {
-          "q": "Ali potrebujem novo stran za povezavo AI?",
-          "a": "Ni vedno treba. Možnost je odvisna od obstoječe strani, njene platforme in dostopov."
+          "q": "Ali potrebujem novo spletno stran za povezavo z AI?",
+          "a": "Ni vedno treba. Možnost je odvisna od obstoječe spletne strani, njene platforme in dostopov."
         },
         {
-          "q": "Ali AI lahko sam spremeni mojo stran?",
+          "q": "Ali lahko AI samostojno spremeni mojo spletno stran?",
           "a": "AI pripravi spremembe in predogled. Objava se izvede po vaši potrditvi in v okviru nastavljenih pravic."
         },
         {
           "q": "Kako poteka brezplačna predstavitev?",
-          "a": "Prikažemo princip dela na demo primerih. Preizkus na vaši strani se dogovori individualno po preverjanju tehničnih možnosti in dostopov."
+          "a": "Prikažemo princip dela na zgledih. Preizkus na vaši spletni strani dogovorimo individualno po preverjanju tehničnih možnosti in dostopov."
         },
         {
           "q": "Kaj vključuje nastavitev povezave?",
@@ -321,8 +321,8 @@ window.SOLO_AI = {
           "a": "Ne. Avtomatizacija poslovanja je ločena storitev z individualno nastavitvijo in oceno."
         },
         {
-          "q": "Kaj, če nimam strani?",
-          "a": "Najprej lahko izdelamo stran, nato povežemo AI-asistenta ali avtomatizacijo."
+          "q": "Kaj pa, če nimam spletne strani?",
+          "a": "Najprej lahko izdelamo spletno stran, nato povežemo AI-asistenta ali avtomatizacijo."
         }
       ]
     },
@@ -330,11 +330,11 @@ window.SOLO_AI = {
       "title": "Potrebujete še kaj?",
       "links": [
         {
-          "label": "Izdelava strani →",
+          "label": "Izdelava spletnih strani →",
           "href": "izdelava-spletnih-strani.html"
         },
         {
-          "label": "Izboljšanje strani →",
+          "label": "Izboljšanje spletnih strani →",
           "href": "izboljsanje-spletnih-strani.html"
         },
         {

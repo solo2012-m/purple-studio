@@ -133,7 +133,7 @@
     state.services = {};
     state.type = 'audit';
     var c = document.getElementById('reqComment');
-    if (c && !c.value) c.value = lang() === 'ru' ? 'Профессиональный аудит сайта.' : lang() === 'en' ? 'Professional website audit.' : lang() === 'de' ? 'Professionelles Website-Audit.' : 'Profesionalna revizija strani.';
+    if (c && !c.value) c.value = lang() === 'ru' ? 'Профессиональный аудит сайта.' : lang() === 'en' ? 'Professional website audit.' : lang() === 'de' ? 'Professionelles Website-Audit.' : 'Profesionalna revizija spletne strani.';
     renderRequest();
     var req = document.getElementById('request');
     if (req) req.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -167,7 +167,7 @@
     try {
       window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
-          message: concern ? ('Ekspresna preveritev: ' + concern) : 'Ekspresna preveritev strani',
+          message: concern ? ('Ekspresna preveritev: ' + concern) : 'Ekspresna preveritev spletne strani',
           page: location.pathname, lang: lang(), marketingConsent: false }) })
         .catch(function () {})
         .finally(function () {
@@ -194,7 +194,7 @@
 
   function buildText(type, url, services, comment, email, consent) {
     var ru = lang() === 'ru', lines = [];
-    lines.push(ru ? 'Заявка Solo.Pov — улучшение сайта' : 'Povpraševanje Solo.Pov — izboljšanje strani');
+    lines.push(ru ? 'Заявка Solo.Pov — улучшение сайта' : 'Povpraševanje SOLO.POV — izboljšanje strani');
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
     lines.push((ru ? 'Язык' : 'Jezik') + ': ' + lang().toUpperCase());
     lines.push((ru ? 'Тип запроса' : 'Vrsta zahteve') + ': ' + t(typeKey()));

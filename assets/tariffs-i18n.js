@@ -6,11 +6,11 @@ window.SOLO_TARIFFS = {
         "name": "START",
         "price": 300,
         "priceLabel": "od 300 €",
-        "desc": "Za eno glavno ponudbo, specialista ali manjše podjetje.",
+        "desc": "Za eno glavno storitev, specialista ali manjše podjetje.",
         "features": [
           "Enostranska spletna stran.",
-          "Odziven dizajn na osnovi pripravljene strukture.",
-          "Nekaj smiselnih sklopov na eni strani.",
+          "Odzivno oblikovanje na osnovi pripravljene strukture.",
+          "Nekaj ključnih vsebinskih sklopov na eni strani.",
           "Preprost obrazec za povpraševanje.",
           "Kontakti in gumbi za stik.",
           "Zemljevid, če je potreben.",
@@ -28,14 +28,14 @@ window.SOLO_TARIFFS = {
         "priceLabel": "od 600 €",
         "desc": "Za podjetje z več dejavnostmi.",
         "features": [
-          "Do pet strani.",
-          "Prilagojen dizajn.",
-          "Mobilna prilagoditev.",
-          "Obrazci za povpraševanja.",
+          "Do pet spletnih strani.",
+          "Oblikovanje po meri.",
+          "Prikaz na mobilnih napravah.",
+          "Obrazci za povpraševanje.",
           "Galerija ali portfelj.",
-          "Osnovna SEO priprava vsake strani.",
+          "Osnovna SEO priprava vsake spletne strani.",
           "Nastavitev osnovne analitike.",
-          "Pomoč pri Google Business Profile v dogovorjenem obsegu.",
+          "Pomoč pri nastavitvi Google Business Profile v dogovorjenem obsegu.",
           "Trije krogi popravkov."
         ],
         "includes": [
@@ -49,14 +49,14 @@ window.SOLO_TARIFFS = {
         "name": "PRO",
         "price": 1000,
         "priceLabel": "od 1 000 €",
-        "desc": "Za podjetje, ki želi stran razvijati.",
+        "desc": "Za podjetje, ki želi spletno stran razvijati.",
         "features": [
-          "Do deset strani.",
+          "Do deset spletnih strani.",
           "Razširjena struktura in dizajn.",
-          "Do dve jezikovni različici.",
-          "Razdelek s članki.",
+          "Do dveh jezikovnih različic.",
+          "Razdelek za članke.",
           "Napredni obrazci.",
-          "Analitika in sledenje dogovorjenih konverzij.",
+          "Analitika in spremljanje dogovorjenih konverzij.",
           "Ena preprosta integracija.",
           "Štirje krogi popravkov."
         ],
@@ -77,11 +77,11 @@ window.SOLO_TARIFFS = {
         "desc": "Za trgovine, portale, rezervacije in posebne funkcije.",
         "features": [
           "Spletne trgovine.",
-          "Osebni portali.",
-          "Zahtevni sistemi rezervacij.",
+          "Uporabniški portali.",
+          "Zahtevni sistemi za rezervacije.",
           "Nestandardne funkcije.",
           "Spletne aplikacije.",
-          "Cena po pogovoru.",
+          "Cena po dogovoru.",
           "Krogi popravkov po dogovoru."
         ],
         "includes": [],
@@ -96,7 +96,7 @@ window.SOLO_TARIFFS = {
       ],
       "rows": [
         {
-          "label": "Število strani",
+          "label": "Število spletnih strani",
           "values": [
             "1",
             "do 5",
@@ -104,7 +104,7 @@ window.SOLO_TARIFFS = {
           ]
         },
         {
-          "label": "Dizajn",
+          "label": "Oblikovanje",
           "values": [
             "Osnovna struktura",
             "Prilagojen",
@@ -213,7 +213,7 @@ window.SOLO_TARIFFS = {
     "addons": [
       {
         "id": "page",
-        "title": "Dodatna stran",
+        "title": "Dodatna spletna stran",
         "price": 50
       },
       {
@@ -233,7 +233,7 @@ window.SOLO_TARIFFS = {
       },
       {
         "id": "booking",
-        "title": "Spletna rezervacija prek pripravljene storitve",
+        "title": "Spletna rezervacija prek pripravljene rešitve",
         "price": 120
       },
       {
@@ -285,7 +285,7 @@ window.SOLO_TARIFFS = {
       "payNote": "Brez predplačila za izdelavo pri standardnih paketih START in BUSINESS. Za PRO in individualne projekte se pogoji dogovorijo posebej. Domena in plačljive storitve se plačajo posebej.",
       "payDetailsTitle": "Podrobni pogoji plačila in predaje strani",
       "payDetails": [
-        "Domeno priporočamo, da registrirate na ime lastnika podjetja.",
+        "Priporočamo, da domeno registrirate na ime lastnika podjetja.",
         "Naročnik lahko domeno kupi sam ali zaprosi za pomoč.",
         "Po plačilu predamo dogovorjene dostope in gradivo.",
         "Pravice do kode, oblikovanja in drugega gradiva se določijo s pogoji naročila.",
@@ -295,8 +295,8 @@ window.SOLO_TARIFFS = {
       "payNote1": "Za standardna projekta START in BUSINESS predplačilo za izdelavo ni potrebno.",
       "payNote2": "Za zahtevne in individualne projekte se pogoji plačila določijo posebej.",
       "payNote3": "Domena in plačljive zunanje storitve se plačajo posebej.",
-      "rightsTitle": "Domena in pravice do strani",
-      "rightsLead": "Domeno priporočamo, da takoj registrirate na ime naročnika. Po plačilu predamo dogovorjene dostope in gradivo strani.",
+      "rightsTitle": "Domena in pravice do spletne strani",
+      "rightsLead": "Priporočamo, da domeno takoj registrirate na ime naročnika. Po plačilu predamo dogovorjene dostope in gradivo strani.",
       "rightsBullets": [
         "Naročnik lahko domeno kupi sam ali zaprosi SOLO.POV za pomoč pri registraciji.",
         "Predamo dostope in gradivo, dogovorjeno v naročilu.",
@@ -304,30 +304,30 @@ window.SOLO_TARIFFS = {
         "Pogoji predaje pravic so zapisani v pogodbi ali dogovorjenem naročilu."
       ],
       "payExtra": [
-        "Izdelava strani se plača ločeno od rednega vzdrževanja.",
+        "Izdelava spletne strani se plača ločeno od rednega vzdrževanja.",
         "Dodatne spremembe nad dogovorjenim obsegom se obračunajo posebej.",
         "Pogoji podpore se dogovorijo posebej."
       ],
-      "calcNote": "Predračun je orientacijski. Končno ceno in roke potrdimo pred začetkom dela.",
+      "calcNote": "Predračun je okviren. Končno ceno in roke potrdimo pred začetkom dela.",
       "revInfoLabel": "Pojasnilo o krogih popravkov",
-      "revHintDesktop": "Pomaknite se na ⓘ ali kliknite, da izveste, kako se upoštevajo krogi popravkov.",
+      "revHintDesktop": "Pomaknite se do ⓘ ali kliknite, da izveste, kako se upoštevajo krogi popravkov.",
       "revHintMobile": "Kliknite ⓘ za pojasnilo.",
       "revTooltip": [
-        "En krog popravkov je en dogovorjen paket pripomb naročnika po pregledu različice strani.",
-        "Na primer, zamenjati fotografijo, popraviti besedilo, premakniti blok in uskladiti videz — vse to je lahko del enega kroga.",
-        "Odprava tehničnih napak in neskladij z dogovorjenim naročilom ni omejena s številom krogov in se ne zaračuna dodatno.",
+        "En krog popravkov je en dogovorjen sklop pripomb naročnika po pregledu različice strani.",
+        "Na primer: zamenjava fotografije, popravek besedila, premik bloka in uskladitev videza — vse to je lahko del enega kroga.",
+        "Odprava tehničnih napak in neskladij z dogovorjenim naročilom ni omejena s številom krogov in se ne zaračunava dodatno.",
         "Nove strani, dodatne funkcije in bistvene spremembe potrjene zasnove se dogovorijo posebej."
       ],
       "calcCustom": "Individualni izračun",
       "calcIndividual": "+ individualna ocena",
-      "discuss": "Pogovorimo se o izbranem",
+      "discuss": "Pogovorimo se o izbiri",
       "unsure": "Ne vem, kaj izbrati",
       "choose": "Izberite paket",
-      "compareMobile": "Prikaži paket",
+      "compareMobile": "Prikažite paket",
       "addonsNote": "Končna cena je odvisna od obsega in tehničnih zahtev.",
       "paymentTitle": "O plačilu",
       "payment": [
-        "Izdelava strani se plača ločeno od rednega vzdrževanja.",
+        "Izdelava spletne strani se plača ločeno od rednega vzdrževanja.",
         "Domena in plačljive zunanje storitve se lahko plačajo dodatno.",
         "Končno ceno in roke potrdimo pred začetkom dela.",
         "Dodatne spremembe nad dogovorjenim obsegom se obračunajo posebej.",

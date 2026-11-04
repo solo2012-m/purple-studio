@@ -1,8 +1,8 @@
 window.SOLO_I18N = {
   "sl": {
-    "meta.title": "Solo.Pov — spletne strani in AI",
+    "meta.title": "SOLO.POV — spletne strani in AI",
     "meta.desc": "Izdelava, izboljšanje in razvoj spletnih strani za mala podjetja. Od prve ideje do avtomatizacije.",
-    "brand.name": "Solo.Pov",
+    "brand.name": "SOLO.POV",
     "brand.sub": "spletne strani in AI",
     "nav.home": "Domov",
     "nav.solutions": "Rešitve",
@@ -11,21 +11,21 @@ window.SOLO_I18N = {
     "nav.works": "Projekti",
     "nav.faq": "Vprašanja",
     "cta.talk": "Pogovorimo se",
-    "analiza.title": "Brezplačna analiza vaše strani",
-    "analiza.text": "Preverimo hitrost, mobilno različico, varnost in ali lahko obiskovalec odda povpraševanje. Povzetek s tremi najpomembnejšimi popravki — na e-pošto.",
-    "analiza.btn": "Preverite svojo stran",
-    "resDiag.title": "Brezplačna diagnostika strani",
-    "resDiag.text": "Stran že imate? Poglejmo, kaj je najprej smiselno popraviti.",
-    "resDiag.btn": "Zaženi diagnostiko",
+    "analiza.title": "Brezplačna analiza vaše spletne strani",
+    "analiza.text": "Preverimo hitrost, mobilno prilagoditev, varnost in ali lahko obiskovalec odda povpraševanje. Povzetek s tremi najpomembnejšimi popravki — na e-pošto.",
+    "analiza.btn": "Preverite svojo spletno stran",
+    "resDiag.title": "Brezplačna analiza spletne strani",
+    "resDiag.text": "Spletno stran že imate? Poglejmo, kaj je najprej smiselno popraviti.",
+    "resDiag.btn": "Zaženite analizo",
     "lang.label": "Jezik",
-    "hero.eyebrow": "Solo.Pov · spletne strani in AI",
+    "hero.eyebrow": "SOLO.POV · spletne strani in AI",
     "hero.h1a": "Vaše podjetje.",
     "hero.h1b": "Vaša stran.",
     "hero.h1c": "Več možnosti.",
-    "hero.sub": "Izdelamo strani od začetka, izboljšamo obstoječe in pomagamo upravljati z njimi s pomočjo AI — brez tehničnih skrbi.",
+    "hero.sub": "Izdelamo spletne strani od začetka, izboljšamo obstoječe in pomagamo upravljati z njimi s pomočjo AI — brez tehničnih skrbi.",
     "picker.title": "Katera rešitev ustreza vašemu podjetju?",
-    "picker.lead": "Izberite svojo situacijo — vprašalnik se odpre takoj. Na voljo je kratek osebni izbor rešitve.",
-    "picker.meta": "Približno 1 minuta • Brez klicev • Prilagojeno vaši nalogi",
+    "picker.lead": "Izberite, kaj potrebujete. Z nekaj vprašanji vam pomagamo izbrati pravo rešitev.",
+    "picker.meta": "Približno 1 minuta • Brez telefonskih klicev • Prilagojeno vašim potrebam",
     "picker.o1": "Nimam spletne strani",
     "picker.o2": "Želim obnoviti stran",
     "picker.o3": "Stran imam, a premalo povpraševanj",
@@ -35,7 +35,7 @@ window.SOLO_I18N = {
     "picker.type": "Našli bomo rešitev prav za vaše podjetje.",
     "picker.hint": "Izberite eno od možnosti.",
     "s2.title": "Prepoznate svojo situacijo?",
-    "s2.lead": "Izberite svojo situacijo — odpre se ustrezna veja kratke ankete.",
+    "s2.lead": "Izberite, kaj potrebujete — odpre se ustrezna veja kratkega vprašalnika.",
     "s2.c1.t": "Še nimam spletne strani",
     "s2.c1.d": "Potrebujem stran od začetka.",
     "s2.c2.t": "Moja stran je zastarela",
@@ -47,19 +47,19 @@ window.SOLO_I18N = {
     "s3.title": "Naše rešitve",
     "s3.lead": "Od izdelave prve strani do avtomatizacije in pridobivanja strank.",
     "s3.a.t": "Izdelava spletnih strani",
-    "s3.a.d": "Od preproste strani storitev do polnopravne strani podjetja. Plačilo po potrditvi končne strani za standardna paketa START in BUSINESS.",
+    "s3.a.d": "Od preproste predstavitvene strani do celovite spletne strani podjetja. Plačilo po potrditvi končne različice za standardna paketa START in BUSINESS.",
     "s3.a.price": "Od 300 €",
     "s3.a.adv": "Plačilo po potrditvi končnega izdelka*",
-    "s3.a.more": "Poglej pakete →",
+    "s3.a.more": "Oglejte si pakete →",
     "s3.a.note": "*Za standardna projekta START in BUSINESS.",
     "s3.a.g1": "Sodoben videz in mobilna različica",
     "s3.a.g2": "Jasna struktura in besedila",
     "s3.a.g3": "Preprost način, da vas stranka kontaktira",
     "s3.a.g4": "Osnova za nadaljnji razvoj",
     "s3.b.t": "Izboljšanje spletnih strani",
-    "s3.b.d": "Odpravimo napake, obnovimo videz in dodamo funkcije. Brezplačen hitri pregled strani.",
+    "s3.b.d": "Odpravimo napake, osvežimo videz in dodamo funkcije. Brezplačen hiter pregled spletne strani.",
     "s3.b.adv": "Dodelave od 30 €",
-    "s3.b.free": "Brezplačen hiter pregled strani",
+    "s3.b.free": "Brezplačen hiter pregled spletne strani",
     "s3.b.a2": "Brezplačen predhodni pregled strani.",
     "s3.b.a3": "Individualen pristop k zahtevnim projektom.",
     "s3.b.more": "Izboljšajte stran →",
@@ -68,50 +68,50 @@ window.SOLO_I18N = {
     "s3.b.g3": "Boljša vidnost in več povpraševanj",
     "s3.b.g4": "Nove strani, funkcije in jeziki",
     "s3.c.t": "AI-asistent in avtomatizacija",
-    "s3.c.d": "Upravljajte stran prek Telegrama: dodajajte storitve, posodabljajte informacije in objavljajte članke. Avtomatizirajte povpraševanja in ponavljajoče se naloge.",
+    "s3.c.d": "Upravljajte spletno stran prek Telegrama: dodajajte storitve, posodabljajte informacije in objavljajte članke. Avtomatizirajte obdelavo povpraševanj in ponavljajoče se naloge.",
     "s3.c.adv": "Vaša stran. Vaš Telegram. Vaš AI-pomočnik.",
-    "s3.c.more": "Poglej možnosti →",
+    "s3.c.more": "Oglejte si možnosti →",
     "s3.d.t": "Oglaševanje in promocija",
-    "s3.d.d": "Nastavimo Google Ads, oglaševanje na Facebooku in Instagramu, izboljšamo iskalno vidnost in povežemo analitiko. Pomagamo privabiti potencialne stranke.",
+    "s3.d.d": "Nastavimo Google Ads, oglaševanje na Facebooku in Instagramu, izboljšamo iskalno vidnost in povežemo analitiko. Pomagamo pridobiti potencialne stranke.",
     "s3.d.adv": "Od oglaševanja do iskalne promocije",
     "s3.d.more": "Pridobite stranke →",
     "s3.c.g1": "AI-asistent prek Telegrama",
     "s3.c.g2": "Dodajanje storitev in člankov",
     "s3.c.g3": "Predogled pred objavo",
-    "s3.c.g4": "Avtomatizacija povpraševanj",
+    "s3.c.g4": "Avtomatizacija obdelave povpraševanj",
     "s3.benefits": "Kaj dobite",
     "s3.more": "Podrobneje",
     "nav.ads": "Oglaševanje",
     "s4.title": "Kako delamo",
     "s4.lead": "Jasen proces. Pregledna cena. Nadzor nad rezultatom v vsaki fazi.",
     "s4.p1.t": "Povejte nam",
-    "s4.p1.d": "Opišite nalogo v vprašalniku ali sporočilu. Brez obveznih klicev in zapletenih tehničnih razlag.",
+    "s4.p1.d": "Opišite, kaj potrebujete, v vprašalniku ali sporočilu. Brez obveznih telefonskih klicev in zapletenih tehničnih razlag.",
     "s4.p2.t": "Predlagamo",
     "s4.p2.d": "Predlagali bomo rešitev ter pred začetkom projekta uskladili obseg dela, ceno in roke.",
     "s4.p3.t": "Izvedemo",
-    "s4.p3.d": "Izdelamo stran, izvedemo izboljšave, nastavimo AI ali oglaševanje v skladu z dogovorjeno nalogo.",
+    "s4.p3.d": "Izdelamo spletno stran, izvedemo izboljšave, nastavimo AI ali oglaševanje v skladu z dogovorjenim obsegom dela.",
     "s4.p4.t": "Preverimo",
     "s4.p4.d": "Pokažemo rezultat, preverimo delovanje in vnesemo usklajene popravke.",
     "s4.p5.t": "Predamo in nadaljujemo",
     "s4.p5.d": "Predamo rezultat in potrebne dostope. Po želji pomagamo pri podpori, razvoju in promociji.",
     "s4.pay.t": "Najprej stran. Potem plačilo.*",
-    "s4.pay.d": "Stran izdelamo in vam pokažemo končni rezultat na testnem naslovu. Delo pregledate, mi pa vnesemo dogovorjene popravke. Po potrditvi plačate izdelavo, mi pa stran objavimo in predamo dogovorjene dostope.",
+    "s4.pay.d": "Spletno stran izdelamo in vam pokažemo končno različico na testnem naslovu. Delo pregledate, mi pa vnesemo dogovorjene popravke. Po potrditvi plačate izdelavo, mi pa spletno stran objavimo in predamo dogovorjene dostope.",
     "s4.pay.note": "*Pogoj velja za standardna projekta START in BUSINESS. Domena in plačljive zunanje storitve se obračunajo posebej. Za zahtevnejše in individualne projekte se plačilni pogoji dogovorijo vnaprej.",
-    "s4.cta": "Povejte nam o svoji nalogi",
-    "s5.title": "Upravljajte stran prek Telegrama",
-    "s5.lead": "Dodajajte storitve, spreminjajte informacije in upravljajte vsebino strani z običajnimi sporočili. AI pripravi spremembe, vi pa potrdite rezultat.",
-    "s5.cta": "Poglej možnosti AI-asistenta →",
-    "s5.demo.note": "Predstavitev na podlagi delovnih scenarijev; ni posnetek zaslona klepeta.",
-    "s5.demo.title": "Poskusite sami: kako deluje Solo.Pov AI",
+    "s4.cta": "Povejte nam, kaj potrebujete",
+    "s5.title": "Upravljajte spletno stran prek Telegrama",
+    "s5.lead": "Dodajajte storitve, spreminjajte informacije in upravljajte vsebino spletne strani z običajnimi sporočili. AI pripravi spremembe, vi pa potrdite rezultat.",
+    "s5.cta": "Oglejte si možnosti AI-asistenta →",
+    "s5.demo.note": "Predstavitev na podlagi delovnih scenarijev; ni posnetek pogovora.",
+    "s5.demo.title": "Poskusite sami: kako deluje SOLO.POV AI",
     "s5.demo.btn": "Dodaj novo storitev",
     "s5.demo.again": "Ponovi",
     "s5.demo.step1": "AI pripravi",
     "s5.demo.step2": "Predogled",
     "s5.demo.wait": "Pripravljam ...",
     "s5.who.me": "Stranka",
-    "s5.who.ai": "Solo.Pov AI",
+    "s5.who.ai": "SOLO.POV AI",
     "s5.m1": "Dodaj na stran novo storitev — čiščenje kavčev. Cena od 60 €.",
-    "s5.m2": "Pripravil sem opis in novo kartico storitve. Poglejte predogled. Objavim?",
+    "s5.m2": "Pripravil sem opis in novo kartico storitve. Poglejte predogled. Naj objavim?",
     "s5.m3": "Da, objavi.",
     "s5.m4": "Sprememba je pripravljena za objavo. V tem prikazu se ne objavi na resnični strani.",
     "s5.site.title": "Storitve podjetja",
@@ -125,8 +125,8 @@ window.SOLO_I18N = {
     "s5.card.t": "Kaj to prinese",
     "s5.card.l1": "Spremembe brez razvijalca in brez nadzorne plošče",
     "s5.card.l2": "Najprej predogled, šele nato objava",
-    "s5.card.l3": "Vaše potrditve, brez samodejnih sprememb",
-    "s5.card.l4": "Povpraševanja s strani pridejo v isti klepet",
+    "s5.card.l3": "Spremembe se objavijo šele po vaši potrditvi",
+    "s5.card.l4": "Povpraševanja s spletne strani pridejo v isti klepet",
     "s6.title": "Kaj vas skrbi?",
     "s6.lead": "Najpogostejši pomisleki in kako jih rešujemo.",
     "s6.f1": "Ne vem, koliko bo stalo",
@@ -135,30 +135,30 @@ window.SOLO_I18N = {
     "s6.r2": "Projekt pokažemo v predogledu, preden je objavljen.",
     "s6.f3": "Ne razumem se v tehnologijo",
     "s6.r3": "Tehnični del prevzamemo mi, vi govorite o svojem poslu.",
-    "s6.f4": "Kaj pa, če potem ne bom mogel ničesar spremeniti",
+    "s6.f4": "Kaj pa, če potem ne bom mogel ničesar spremeniti?",
     "s6.r4": "Predamo dostope in ponudimo preprosto upravljanje.",
-    "s6.f5": "Kaj pa, če razvijalec izgine",
+    "s6.f5": "Kaj pa, če razvijalec izgine?",
     "s6.r5": "Ponujamo podporo po vnaprej dogovorjenih pogojih.",
     "s7.title": "Naši projekti",
-    "s7.lead": "Resnični projekti, ki jih upravljamo in razvijamo.",
+    "s7.lead": "Projekti strank, ki jih upravljamo in razvijamo.",
     "s7.p1.field": "Čiščenje in barvanje streh ter fasad",
     "s7.p1.task": "Spletna stran storitev čiščenja in barvanja streh ter fasad. Strani storitev, obrazci za povpraševanje, večjezičnost, posodabljanje vsebine in razvoj s pomočjo AI.",
     "s7.p2.field": "Vizažistka · Maribor",
     "s7.p2.task": "Spletna stran vizažistke. Predstavitev storitev, nastavitev trajanja storitev, spletne rezervacije in upravljanje vsebine.",
     "s7.tag.site": "Spletna stran",
     "s7.open": "Odpri stran",
-    "s7.demo.note": "Povezave vodijo na žive strani. Prikazujemo le projekte, ki resnično obstajajo.",
+    "s7.demo.note": "Povezave vodijo na delujoče spletne strani. Prikazujemo le projekte, ki dejansko obstajajo.",
     "s8.title": "Pogosta vprašanja",
     "s8.all": "Vsa vprašanja",
     "s8.q1": "Koliko stane izdelava spletne strani?",
     "s8.a1": "Cena je odvisna od obsega in zahtevnosti projekta. Po kratkem pogovoru pripravimo individualno oceno, ki jo potrdimo pred začetkom dela.",
     "s8.q2": "Koliko časa traja izdelava?",
-    "s8.a2": "Rok se dogovorimo pred začetkom dela. Pri manjši strani gre običajno za nekaj dni do dveh tednov, odvisno od vsebine in hitrosti potrditev.",
+    "s8.a2": "Rok se dogovorimo pred začetkom dela. Pri manjši spletni strani gre običajno za nekaj dni do dveh tednov, odvisno od vsebine in hitrosti potrjevanja.",
     "s8.q3": "Kaj pa, če nimam fotografij in besedil?",
     "s8.a3": "To ni ovira. Pomagamo pri strukturi in besedilih, za fotografije pa predlagamo ustrezne rešitve. Uporabimo lahko tudi vaše gradivo, če ga imate.",
     "s8.q4": "Ali bom lahko sam spreminjal informacije?",
     "s8.a4": "Da. Pokazali vam bomo, kako urejati vsebino, ali pa spremembe opravimo namesto vas.",
-    "s8.q5": "Komu pripada stran po plačilu?",
+    "s8.q5": "Komu pripada spletna stran po plačilu?",
     "s8.a5": "Vam. Domena, gostovanje in dostopi so na vaše ime, po zaključku pa prejmete popoln nadzor.",
     "s8.q6": "Ali je treba plačevati mesečno?",
     "s8.a6": "Ni nujno. Izdelava je enkratno plačilo, mesečno vzdrževanje pa je smiselno le, če želite redne posodobitve in razvoj.",
@@ -169,13 +169,13 @@ window.SOLO_I18N = {
     "s8.q9": "Ali je mogoča večjezična stran?",
     "s8.a9": "Da. Stran pripravimo v več jezikih, na primer v slovenščini, ruščini, angleščini ali nemščini.",
     "s8.q10": "Kako deluje AI-asistent prek Telegrama?",
-    "s8.a10": "Zamišljeno je, da spremembo opišete v navadnem sporočilu, asistent pripravi predogled, vi pa jo potrdite ali zavrnete. Funkcija je v razvoju, prikaz na strani je ilustracija.",
+    "s8.a10": "Spremembo preprosto opišete v sporočilu, asistent pripravi predogled, vi pa jo potrdite ali zavrnete. Funkcija je v razvoju; prikaz na strani je ilustrativen.",
     "s8.q11": "Ali lahko naročim samo vzdrževanje?",
     "s8.a11": "Da. Če stran že imate in deluje, se lahko dogovorimo samo za vzdrževanje in razvoj.",
     "s8.q12": "Ali se je treba sestati ali je dovolj dopisovanje?",
     "s8.a12": "Dovolj je dopisovanje. Delo poteka prek sporočil, sestanek ni pogoj.",
     "s9.title": "Povejte nam, kaj potrebujete. Pomagali bomo izbrati rešitev.",
-    "s9.lead": "Kratka anketa — nekaj vprašanj in predlog.",
+    "s9.lead": "Kratek vprašalnik — nekaj vprašanj in predlog.",
     "footer.desc": "Spletne strani, izboljšave in AI-avtomatizacija za mala podjetja.",
     "footer.solutions": "Rešitve",
     "footer.contact": "Kontakt",
@@ -185,7 +185,7 @@ window.SOLO_I18N = {
     "footer.privacy": "Politika zasebnosti",
     "quiz.entry.title": "Kakšna je vaša situacija?",
     "quiz.back": "Nazaj",
-    "quiz.close": "Zapri",
+    "quiz.close": "Zaprite",
     "quiz.next": "Naprej",
     "quiz.step": "Vprašanje {n} od {t}",
     "quiz.multi": "Možnih je več odgovorov.",
@@ -200,10 +200,10 @@ window.SOLO_I18N = {
     "quiz.f.contact.ph": "@uporabniskoime ali e-pošta",
     "quiz.f.notes": "Dodatne želje",
     "quiz.f.notes.ph": "Kar želite dodati",
-    "quiz.submit": "Pošlji",
+    "quiz.submit": "Pošljite",
     "quiz.notready.t": "Oddaja še ni povezana",
     "quiz.notready.p": "Povpraševanje <b>ni bilo poslano</b>, ker povezava še ni nastavljena. Spodaj je pripravljeno besedilo, ki ga lahko kopirate in nam ga pošljete.",
-    "quiz.copy": "Kopiraj besedilo",
+    "quiz.copy": "Kopirajte besedilo",
     "quiz.copied": "Kopirano",
     "quiz.close2": "V redu",
     "quiz.rec.a": "Izdelava spletne strani",
@@ -851,53 +851,53 @@ window.SOLO_I18N = {
 
 window.SOLO_QUIZ = {
   "sl": {
-    "entryTitle": "Podberimo rešitev za vaše podjetje",
+    "entryTitle": "Izberimo rešitev za vaše podjetje",
     "entryLead": "Odgovorite na nekaj preprostih vprašanj in prejmite osebno priporočilo, prilagojeno vašim ciljem.",
     "ui": {
-      "step": "Vprašanje {n} iz {t}",
+      "step": "Vprašanje {n} od {t}",
       "multi": "Izberete lahko več odgovorov.",
       "back": "Nazaj",
-      "next": "Nadaljuj",
-      "close": "Zapri",
-      "start": "Začni znova",
-      "urlTitle": "Naslov vaše strani",
-      "urlLead": "Vnesite naslov vaše strani, da bomo lahko pozneje opravili predhodno diagnostiko.",
+      "next": "Nadaljujte",
+      "close": "Zaprite",
+      "start": "Začnite znova",
+      "urlTitle": "Naslov vaše spletne strani",
+      "urlLead": "Vnesite naslov vaše spletne strani, da bomo lahko pozneje opravili predhodno analizo.",
       "urlPh": "npr. www.primer.si",
-      "urlSkip": "Nadaljuj brez naslova",
+      "urlSkip": "Nadaljujte brez naslova",
       "urlErr": "Vnesite veljaven naslov, npr. www.primer.si",
       "urlSaved": "Naslov strani je shranjen. Predhodno priporočilo za zdaj temelji na vaših odgovorih. Tehnična diagnostika bo na voljo pozneje.",
       "resultTitle": "Vaš predhodni rezultat je pripravljen!",
       "resultRec": "Predlagana rešitev",
       "resultWhy": "Zakaj vam ustreza",
-      "resultInc": "Priporočamo, da predvidite",
+      "resultInc": "Priporočamo, da vključite",
       "resultNext": "Naslednji korak",
-      "resDiagTitle": "Brezplačna diagnostika strani",
-      "resDiagText": "Stran že imate? Poglejmo, kaj je najprej smiselno popraviti.",
-      "resDiagBtn": "Zaženi diagnostiko",
+      "resDiagTitle": "Brezplačna analiza spletne strani",
+      "resDiagText": "Spletno stran že imate? Poglejmo, kaj je najprej smiselno popraviti.",
+      "resDiagBtn": "Zaženite analizo",
       "emailTitle": "Želite podroben načrt za vaše podjetje?",
-      "emailLead": "Pripravili bomo priporočila o strukturi, funkcijah in naslednjih korakih glede na vaše odgovore. Email uporabimo samo za pošiljanje tega načrta.",
-      "emailLabel": "Vaš email",
+      "emailLead": "Pripravili bomo priporočila za strukturo, funkcije in naslednje korake na podlagi vaših odgovorov. E-pošto uporabimo samo za pošiljanje tega načrta.",
+      "emailLabel": "Vaš e-poštni naslov",
       "emailPh": "ime@primer.si",
       "emailBtn": "Prejmite podroben načrt",
-      "emailConsent": "Strinjam se s prejemom obvestil o storitvah Solo.Pov. Oglaševalskih sporočil ne pošiljamo brez ločenega soglasja.",
-      "emailNote": "Email ni obvezen za ogled predhodnega rezultata.",
-      "emailPurpose": "Email uporabimo za pošiljanje načrta in stik v zvezi z vašim povpraševanjem.",
+      "emailConsent": "Strinjam se s prejemom obvestil o storitvah SOLO.POV. Oglaševalskih sporočil ne pošiljamo brez ločenega soglasja.",
+      "emailNote": "E-pošta ni obvezna za ogled predhodnega rezultata.",
+      "emailPurpose": "E-pošto uporabimo za pošiljanje načrta in za stik v zvezi z vašim povpraševanjem.",
       "industryLabel": "S čim se ukvarja vaše podjetje?",
-      "industryPh": "Na primer: avtoservis, gradbeništvo, salon za nego.",
+      "industryPh": "Na primer: avtoservis, gradbeništvo, kozmetični salon.",
       "industryRecommended": "priporočamo",
       "notesLabel": "Kaj še moramo vedeti? (neobvezno)",
-      "notesPh": "Na kratko opišite svoje podjetje, želje, naloge ali težave z obstoječo stranjo.",
+      "notesPh": "Na kratko opišite svoje podjetje, želje, cilje ali težave z obstoječo spletno stranjo.",
       "planHelp": "Te informacije nam pomagajo pripraviti natančnejša priporočila prav za vaše podjetje.",
       "consentLabel": "Želim prejemati koristne nasvete in nove možnosti od SOLO.POV",
-      "consentNote": "Občasno bomo pošiljali priporočila, novice o AI-orodjih in predloge za ustvarjanje ter razvoj strani. Odjava je mogoča kadarkoli.",
+      "consentNote": "Občasno bomo pošiljali priporočila, novice o AI-orodjih in predloge za izdelavo in razvoj spletnih strani. Odjava je mogoča kadar koli.",
       "privacy": "Politika zasebnosti",
-      "resultNote": "Na podlagi vaših odgovorov lahko sklepamo o možnih vzrokih. To je predhodno priporočilo; tehnična diagnostika še ni bila opravljena.",
+      "resultNote": "Na podlagi vaših odgovorov lahko sklepamo o možnih vzrokih. To je predhodno priporočilo; tehnična analiza še ni bila opravljena.",
       "sentTitle": "Hvala!",
       "sentText": "Vaša zahteva je bila poslana.",
-      "emailErr": "Vnesite veljaven email naslov.",
+      "emailErr": "Vnesite veljaven e-poštni naslov.",
       "notReadyTitle": "Pošiljanje še ni povezano",
       "notReadyText": "Zahteva <b>ni bila poslana</b>, ker povezava še ni nastavljena. Spodaj je pripravljeno besedilo, ki ga lahko kopirate in nam pošljete.",
-      "copy": "Kopiraj besedilo",
+      "copy": "Kopirajte besedilo",
       "copied": "Kopirano",
       "ok": "Razumem",
       "summary": "Povzetek vaše situacije",
@@ -916,14 +916,14 @@ window.SOLO_QUIZ = {
               "Stran bo najprej predstavljala podjetje in storitve — pomembna sta jasna struktura in zaupanje.",
               "Želite spletno prodajo — potrebujete katalog, košarico in varen zaključek nakupa.",
               "Potrebujete prijave ali rezervacije — ključen je preprost koledar in potrditev termina.",
-              "Možnosti še raziskujete — začnimo z majhno, jasno stranjo, ki jo je mogoče nadgraditi."
+              "Možnosti še raziskujete — začnimo z majhno, jasno spletno stranjo, ki jo je mogoče nadgraditi."
             ],
             "o": [
-              "Da me stranke najdejo in pustijo povpraševanje.",
+              "Da me stranke najdejo in oddajo povpraševanje.",
               "Da predstavim podjetje in njegove storitve.",
               "Da prodajam izdelke na spletu.",
               "Da se stranke lahko prijavijo ali rezervirajo termin.",
-              "Zaenkrat ne vem, želim razumeti možnosti."
+              "Zaenkrat ne vem — želim razumeti možnosti."
             ]
           },
           {
@@ -944,7 +944,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q3",
-            "q": "Katere možnosti potrebujete?",
+            "q": "Kaj naj spletna stran vključuje?",
             "multi": true,
             "exclusive": 5,
             "why": [
@@ -982,7 +982,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q5",
-            "q": "Kdaj načrtujete zagon strani?",
+            "q": "Kdaj nameravate objaviti spletno stran?",
             "why": [
               "Zagon želite čim prej — predlagamo kratko, jasno prvo različico.",
               "Zagon načrtujete v mesecu dni — časa je dovolj za skrbno pripravo.",
@@ -999,7 +999,7 @@ window.SOLO_QUIZ = {
         ],
         "res": {
           "leads": {
-            "t": "Enostranska stran s povpraševanjem",
+            "t": "Enostranska spletna stran s povpraševanjem",
             "inc": [
               "Jasen prvi zaslon z glavno storitvijo in klicem k dejanju.",
               "Obrazec za povpraševanje in vidni kontakt.",
@@ -1009,7 +1009,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo, da skupaj določimo strukturo in glavno sporočilo strani."
           },
           "presentation": {
-            "t": "Večstranska predstavitvena stran",
+            "t": "Večstranska predstavitvena spletna stran",
             "inc": [
               "Domača stran s ključnimi storitvami.",
               "Ločene strani za posamezne storitve.",
@@ -1029,7 +1029,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo, da določimo obseg izdelkov in način plačila."
           },
           "booking": {
-            "t": "Stran s spletno rezervacijo",
+            "t": "Spletna stran z rezervacijami",
             "inc": [
               "Koledar razpoložljivih terminov.",
               "Obrazec za rezervacijo.",
@@ -1039,7 +1039,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo, da opišete termine in pravila rezervacije."
           },
           "multi": {
-            "t": "Večstranska stran storitev",
+            "t": "Večstranska spletna stran storitev",
             "inc": [
               "Domača stran s pregledom storitev.",
               "Ločene strani za vsako storitev.",
@@ -1049,7 +1049,7 @@ window.SOLO_QUIZ = {
             "next": "Predlagamo, da razdelimo storitve v smiselne sklope in določimo prednost."
           },
           "unknown": {
-            "t": "Majhna začetna stran",
+            "t": "Majhna začetna spletna stran",
             "inc": [
               "Enostaven prvi zaslon z osnovnimi informacijami.",
               "Kontakt in obrazec za povpraševanje.",
@@ -1061,7 +1061,7 @@ window.SOLO_QUIZ = {
         }
       },
       "b": {
-        "title": "Vaša stran je zastarela",
+        "title": "Vaša spletna stran je zastarela",
         "urlAtEnd": true,
         "baseWhy": "Obstoječe gradivo in zgodovino strani lahko uporabimo, zato prenova ne pomeni vedno začetka od nič.",
         "steps": [
@@ -1104,7 +1104,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q3",
-            "q": "Kaj želite dodatno izboljšati?",
+            "q": "Kaj želite še izboljšati?",
             "multi": true,
             "exclusive": 5,
             "why": [
@@ -1126,7 +1126,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q4",
-            "q": "Ali imate dostop do upravljanja strani?",
+            "q": "Ali imate dostop do urejanja spletne strani?",
             "why": [
               "Popoln dostop pomeni, da lahko prenovo izvedemo brez posrednikov.",
               "Delni dostop je dovolj za večino sprememb, manjkajoče bomo preverili.",
@@ -1143,7 +1143,7 @@ window.SOLO_QUIZ = {
         ],
         "res": {
           "modernize": {
-            "t": "Modernizacija obstoječe strani",
+            "t": "Posodobitev obstoječe spletne strani",
             "inc": [
               "Nov videz in boljša uporaba na telefonu.",
               "Hitrejše nalaganje in tehnični pregled.",
@@ -1153,7 +1153,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo, da najprej pregledamo obstoječo stran in potrdimo, kaj ohraniti."
           },
           "renew": {
-            "t": "Celovita prenova strani",
+            "t": "Celovita prenova spletne strani",
             "inc": [
               "Nova struktura in vsebina strani.",
               "Sodoben videz in mobilna različica.",
@@ -1165,13 +1165,13 @@ window.SOLO_QUIZ = {
         }
       },
       "c": {
-        "title": "Stran ima premalo povpraševanj",
+        "title": "Spletna stran prejme premalo povpraševanj",
         "urlAtEnd": true,
         "baseWhy": "Priporočilo temelji na vaših odgovorih; za natančne ugotovitve bo potreben pregled obstoječe strani.",
         "steps": [
           {
             "id": "q1",
-            "q": "Katera situacija najbolje opisuje vašo stran?",
+            "q": "Katera situacija najbolje opisuje vašo spletno stran?",
             "why": [
               "Obiskovalcev skoraj ni — najprej je treba ugotoviti, ali stran sploh doseže pravo občinstvo.",
               "Obiskovalci so, povpraševanj pa malo — možna vzroka sta vsebina ali pot do povpraševanja. To je treba preveriti.",
@@ -1210,17 +1210,17 @@ window.SOLO_QUIZ = {
             "q": "Kaj lahko obiskovalec naredi na strani?",
             "multi": true,
             "why": [
-              "Obiskovalec lahko pusti povpraševanje — preverili bomo, kako vidno in preprosto je to.",
+              "Obiskovalec lahko odda povpraševanje — preverili bomo, kako vidno in preprosto je to.",
               "Obiskovalec lahko pokliče ali napiše — kontakt mora biti viden na vsakem koraku.",
-              "Na strani je mogoče kupiti ali plačati — preverili bomo pot do nakupa.",
-              "Na strani se je mogoče prijaviti na storitev — preverili bomo rezervacijski tok.",
+              "Na spletni strani je mogoče kupiti ali plačati — preverili bomo pot do nakupa.",
+              "Na spletni strani se je mogoče prijaviti na storitev — preverili bomo rezervacijski tok.",
               "Stran je trenutno samo informativna — treba je dodati jasen naslednji korak."
             ],
             "o": [
-              "Pusti povpraševanje.",
+              "Odda povpraševanje.",
               "Pokliče ali napiše.",
               "Kupi ali plača.",
-              "Prijavi se na storitev.",
+              "Rezervira storitev.",
               "Samo pogleda informacije."
             ]
           },
@@ -1247,7 +1247,7 @@ window.SOLO_QUIZ = {
         ],
         "res": {
           "visibility": {
-            "t": "Tehnična diagnostika in vidnost",
+            "t": "Tehnična analiza in vidnost",
             "inc": [
               "Pregled hitrosti in delovanja na telefonu.",
               "Osnovni tehnični SEO pregled.",
@@ -1267,7 +1267,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo pregled poti od prvega obiska do povpraševanja."
           },
           "sales": {
-            "t": "Optimizacija zaupanja in prodaje",
+            "t": "Krepitev zaupanja in prodaje",
             "inc": [
               "Jasnejša predstavitev ponudbe in cen.",
               "Dokazila zaupanja: izkušnje, proces, garancije.",
@@ -1277,7 +1277,7 @@ window.SOLO_QUIZ = {
             "next": "Predlagamo, da skupaj pregledamo, kje se obiskovalci ustavijo pred naročilom."
           },
           "diagnostics": {
-            "t": "Diagnostika in merjenje",
+            "t": "Analiza in merjenje",
             "inc": [
               "Vzpostavitev osnovnega merjenja obiska.",
               "Pregled virov obiskovalcev.",
@@ -1333,7 +1333,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q3",
-            "q": "Katere pripomočke že uporabljate?",
+            "q": "Katera orodja že uporabljate?",
             "multi": true,
             "exclusive": 4,
             "why": [
@@ -1353,7 +1353,7 @@ window.SOLO_QUIZ = {
           },
           {
             "id": "q4",
-            "q": "Kako vam je najlažje upravljati procese?",
+            "q": "Kako najlažje upravljate s procesi?",
             "why": [
               "Telegram je preprost, če želite ukrepati s telefona.",
               "Nadzorna plošča je pregledna, če želite videti več podatkov na enem mestu.",
@@ -1380,7 +1380,7 @@ window.SOLO_QUIZ = {
             "next": "Priporočamo, da izberemo eno skupino vprašanj in preizkusimo odgovore."
           },
           "content": {
-            "t": "AI-upravljanje vsebine strani",
+            "t": "AI-upravljanje vsebine spletne strani",
             "inc": [
               "Preprosto posodabljanje besedil in cen.",
               "Priprava osnutkov novic in opisov.",
@@ -1412,7 +1412,7 @@ window.SOLO_QUIZ = {
           "combined": {
             "t": "Kombinirana avtomatizacija",
             "inc": [
-              "Ena povezava med stranjo, obrazci in obvestili.",
+              "Ena povezava med spletno stranjo, obrazci in obvestili.",
               "Samodejna obdelava ponavljajočih se korakov.",
               "Pregled in potrditev pomembnih dejanj.",
               "Postopno uvajanje brez velikega projekta naenkrat."

@@ -338,7 +338,7 @@
 
   function entryHtml() {
     var p = quizPack(), keys = ['a', 'b', 'c', 'd'];
-    var h = '<div class="qnum">Solo.Pov</div>';
+    var h = '<div class="qnum">SOLO.POV</div>';
     h += '<div class="qtitle">' + esc(p.entryTitle) + '</div>';
     h += '<p class="qhint">' + esc(p.entryLead) + '</p><div class="opts">';
     for (var i = 0; i < keys.length; i++) {
@@ -468,7 +468,7 @@
   function resultHtml() {
     var br = quizPack().branches[quiz.branch];
     var data = resultData(), r = data.res, h = '';
-    h += '<div class="qnum">Solo.Pov</div><div class="prog"><i style="width:100%"></i></div>';
+    h += '<div class="qnum">SOLO.POV</div><div class="prog"><i style="width:100%"></i></div>';
     h += '<div class="qtitle">' + esc(ui('resultTitle')) + '</div>';
     h += '<div class="qres">';
     h += '<div class="qres-block"><h4>' + esc(ui('resultRec')) + '</h4><p class="qres-title">' + esc(r.t) + '</p></div>';
@@ -570,7 +570,7 @@
 
   function buildText(kind, email, consent, industry, notes) {
     var L = lang === 'ru', lines = [], br = quiz.branch ? quizPack().branches[quiz.branch] : null;
-    lines.push((L ? 'Заявка Solo.Pov' : 'Povpraševanje Solo.Pov') + (kind === 'plan' ? (L ? ' — подробный план' : ' — podroben načrt') : ''));
+    lines.push((L ? 'Заявка Solo.Pov' : 'Povpraševanje SOLO.POV') + (kind === 'plan' ? (L ? ' — подробный план' : ' — podroben načrt') : ''));
     lines.push((L ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(L ? 'ru-RU' : 'sl-SI'));
     lines.push((L ? 'Язык' : 'Jezik') + ': ' + lang.toUpperCase());
     if (br) {
@@ -591,7 +591,7 @@
     }
     if (industry) lines.push((L ? 'Сфера деятельности' : 'Dejavnost') + ': ' + industry);
     if (notes) lines.push((L ? 'Дополнительно' : 'Dodatne informacije') + ': ' + notes);
-    if (email) lines.push((L ? 'Email' : 'Email') + ': ' + email);
+    if (email) lines.push((L ? 'Email' : 'E-pošta') + ': ' + email);
     lines.push((L ? 'Согласие на маркетинговые сообщения' : 'Soglasje za marketinška obvestila') + ': ' + (consent ? (L ? 'да' : 'da') : (L ? 'нет' : 'ne')));
     lines.push((L ? 'Версия текста согласия' : 'Različica besedila soglasja') + ': ' + CONSENT_VERSION);
     if (consent) lines.push((L ? 'Дата согласия' : 'Datum soglasja') + ': ' + new Date().toISOString());
@@ -599,7 +599,7 @@
   }
 
   function notReadyHtml(text) {
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(ui('notReadyTitle')) + '</div>';
+    var h = '<div class="qnum">SOLO.POV</div><div class="qtitle">' + esc(ui('notReadyTitle')) + '</div>';
     h += '<div class="notice">' + ui('notReadyText') + '</div>';
     h += '<pre class="copyout" id="copyout">' + esc(text) + '</pre>';
     h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('ok')) + '</button>';
@@ -608,7 +608,7 @@
   }
 
   function sentHtml() {
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(ui('sentTitle')) + '</div>';
+    var h = '<div class="qnum">SOLO.POV</div><div class="qtitle">' + esc(ui('sentTitle')) + '</div>';
     h += '<div class="notice">' + esc(ui('sentText')) + '</div>';
     h += '<div class="mnav"><span></span><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
     return h;
@@ -634,7 +634,7 @@
     return '<div class="field"><label>' + esc(t(labelKey)) + '</label><input type="text" id="' + id + '" data-i18n-ph="' + phKey + '"' + (req ? ' required' : '') + ' placeholder="' + esc(t(phKey)) + '"></div>';
   }
   function contactFormHtml() {
-    var h = '<div class="qnum">Solo.Pov</div><div class="qtitle">' + esc(t('cta.talk')) + '</div>';
+    var h = '<div class="qnum">SOLO.POV</div><div class="qtitle">' + esc(t('cta.talk')) + '</div>';
     h += '<form id="contactForm" onsubmit="return SOLO.submitContact(event)">';
     h += field('c-business', 'quiz.f.business', 'quiz.f.business.ph', false);
     h += field('c-contact', 'quiz.f.contact', 'quiz.f.contact.ph', true);

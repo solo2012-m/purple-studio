@@ -170,7 +170,7 @@
 
   function buildText(site, business, region, budget, comment, email, telegram, consent) {
     var ru = lang() === 'ru', lines = [];
-    lines.push(ru ? 'Заявка Solo.Pov — реклама и продвижение' : 'Povpraševanje Solo.Pov — oglaševanje in promocija');
+    lines.push(ru ? 'Заявка Solo.Pov — реклама и продвижение' : 'Povpraševanje SOLO.POV — oglaševanje in promocija');
     lines.push((ru ? 'Дата' : 'Datum') + ': ' + new Date().toLocaleString(ru ? 'ru-RU' : 'sl-SI'));
     var sel = selectedOptions();
     if (sel.length) {
@@ -249,7 +249,7 @@
 
   window.renderAds = function () {
     syncHeader();
-    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : lang() === 'en' ? 'Solo.Pov — Advertising and promotion' : lang() === 'de' ? 'Solo.Pov — Werbung und Promotion' : 'Solo.Pov — Oglaševanje in promocija';
+    document.title = lang() === 'ru' ? 'Solo.Pov — Реклама и продвижение' : lang() === 'en' ? 'Solo.Pov — Advertising and promotion' : lang() === 'de' ? 'Solo.Pov — Werbung und Promotion' : 'SOLO.POV — Oglaševanje in promocija';
     renderHero(); renderCatalog(); renderIssues(); renderRequest(); renderProcess(); renderFAQ();
   };
   document.addEventListener('DOMContentLoaded', function () { window.renderAds(); });
