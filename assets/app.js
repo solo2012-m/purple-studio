@@ -500,7 +500,7 @@
     var purl = (CONFIG.legal && CONFIG.legal.privacyUrl) ? CONFIG.legal.privacyUrl : 'privacy.html';
     h += '<a class="privacy-link" href="' + esc(purl) + '" target="_blank" rel="noopener">' + esc(ui('privacy')) + '</a>';
     h += '<div class="qerr" id="emailErr"></div>';
-    h += '<button type="button" class="btn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
+    h += '<button type="button" class="btn" id="planBtn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
     h += '<small class="meta">' + esc(ui('emailNote')) + '</small>';
     h += '</div>';
     h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(ui('start')) + '</button>';
@@ -615,19 +615,28 @@
   }
   function deliver(text, lead) {
     var ep = (CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
-    if (ep) {
-      try {
-        window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead || { lang: lang, text: text }) })
-          .then(function () {
-            var kind = (lead && lead.type === 'quiz') ? 'anketa' : 'kontakt';
-            if (window.soloTrack) window.soloTrack('generate_lead', { form: kind, branch: (lead && lead.branch) || '' });
-            setModal(sentHtml());
-          })
-          .catch(function () { setModal(notReadyHtml(text)); });
-        return;
-      } catch (e) {}
+    var isContact = !!(lead && lead.type === 'contact');
+    var err = el(isContact ? 'contactErr' : 'emailErr');
+    var btn = el(isContact ? 'contactBtn' : 'planBtn');
+    if (btn && btn.disabled) return;
+    if (!ep || typeof window.soloSubmitLead !== 'function') {
+      if (err) err.textContent = ui('sendErr');
+      return;
     }
-    setModal(notReadyHtml(text));
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
+    window.soloSubmitLead(ep, lead || { lang: lang, text: text }).then(function () {
+      var kind = (lead && lead.type === 'quiz') ? 'anketa' : 'kontakt';
+      if (window.soloTrack) window.soloTrack('generate_lead', { form: kind, branch: (lead && lead.branch) || '' });
+      setModal(sentHtml());
+    }).catch(function () {
+      if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); }
+      if (err) {
+        err.textContent = ui('sendErr');
+        err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        setModal(notReadyHtml(text));
+      }
+    });
   }
 
   function field(id, labelKey, phKey, req) {
@@ -639,8 +648,9 @@
     h += field('c-business', 'quiz.f.business', 'quiz.f.business.ph', false);
     h += field('c-contact', 'quiz.f.contact', 'quiz.f.contact.ph', true);
     h += '<div class="field"><label>' + esc(t('quiz.f.notes')) + '</label><textarea rows="4" id="c-notes" data-i18n-ph="quiz.f.notes.ph"></textarea></div>';
+    h += '<div class="qerr" id="contactErr"></div>';
     h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(t('picker.btn')) + '</button>';
-    h += '<button type="submit" class="btn">' + esc(t('quiz.submit')) + '</button></div></form>';
+    h += '<button type="submit" class="btn" id="contactBtn">' + esc(t('quiz.submit')) + '</button></div></form>';
     return h;
   }
   function val(id) { var e = el(id); return e ? e.value.replace(/^\s+|\s+$/g, '') : ''; }
@@ -648,11 +658,17 @@
     e.preventDefault();
     var f = el('contactForm');
     if (f && !f.checkValidity()) { f.reportValidity(); return false; }
+    var cBusiness = val('c-business'), cNotes = val('c-notes'), cContact = val('c-contact');
+    var noteLines = [];
+    if (cBusiness) noteLines.push((lang === 'ru' ? 'Бизнес' : 'Dejavnost') + ': ' + cBusiness);
+    if (cNotes) noteLines.push((lang === 'ru' ? 'Пожелания' : 'Želje') + ': ' + cNotes);
     var leadC = {
       type: 'contact', id: 'lead_' + Date.now(), date: new Date().toISOString(),
-      lang: lang, branch: '', interest: '', branchTitle: '',
-      email: '', contact: val('c-contact'), industry: val('c-business'),
-      notes: val('c-notes'), answers: [], utm: utmParams(), status: 'new'
+      lang: lang, branch: '', interest: '', branchTitle: 'Hiter kontakt',
+      email: '', contact: cContact, industry: cBusiness,
+      notes: noteLines.join('\n'),
+      answers: [{ question: (lang === 'ru' ? 'Контакт' : 'Kontakt'), answers: [cContact] }],
+      utm: utmParams(), status: 'new'
     };
     deliver(buildText('contact', '', false, val('c-business'), val('c-notes')), leadC); return false;
   }

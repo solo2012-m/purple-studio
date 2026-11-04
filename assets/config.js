@@ -85,3 +85,6 @@ window.SOLO_CONFIG = {
     endpoint: 'https://script.google.com/macros/s/AKfycbwHLxBkbmfv8vw9XelsQdwY2Lkzm9cOUlm-c7wTqhR7dO12eMoEZjU-xiGonSz64vsr/exec'
   }
 };
+
+/* Združljivost: nekateri moduli berejo window.CONFIG. */
+window.CONFIG = window.SOLO_CONFIG;

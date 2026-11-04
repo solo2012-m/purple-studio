@@ -21,6 +21,7 @@
 .an-card .row{margin:0 0 16px}
 .an-card .btn{width:100%;margin-top:6px;padding:16px 20px;font-size:16px}
 .an-note{color:var(--muted);font-size:13px;margin-top:12px}
+.an-err{color:#ff8a8a;font-size:14px;margin:12px 0 0}
 .an-list{display:grid;gap:12px;margin:18px 0 0}
 .an-list div{border-left:2px solid var(--accent);padding-left:14px;color:var(--muted);font-size:15px}
 .an-list b{color:var(--ink)}
@@ -66,6 +67,7 @@
         <label for="anConsent" style="text-transform:none;letter-spacing:0;font-size:13.5px;color:var(--muted)" data-i18n="an.consent">Strinjam se, da se moji podatki uporabijo za pripravo analize in odgovor. Podatkov ne posredujemo tretjim osebam.</label>
       </div>
       <button class="btn" type="submit" id="anBtn" data-i18n="an.btn">Pošljite zahtevo za brezplačno analizo</button>
+      <p class="an-err" id="anErr" role="alert" hidden></p>
       <p class="an-note" data-i18n="an.note">Povzetek pošljemo na e-pošto v enem delovnem dnevu. Brez telefonskih klicev in brez obveznosti.</p>
       <div class="an-ok" id="anOk" data-i18n="an.ok">Hvala! Analizo pripravljamo — odgovor boste prejeli na vaš e-poštni naslov.</div>
     </form>
@@ -93,7 +95,8 @@
   </div>
 </footer>
 
-<script src="../assets/config.js"></script>
+<script src="../assets/config.js?v=20261104-stage2"></script>
+<script src="../assets/lead-submit.js?v=20261104-stage2"></script>
 <script>
 var AN_I18N = {
   sl: {
@@ -117,6 +120,9 @@ var AN_I18N = {
     'an.i5': '<b>Pravna osnova</b> — politika zasebnosti, piškotki, podatki o podjetju.',
     'footer.privacy': 'Zasebnost', 'footer.terms': 'Pogoji',
     'form.fill': 'Izpolnite vsa polja', 'form.sending': 'Pošiljam…',
+    'form.errUrl': 'Vnesite veljaven naslov spletne strani, npr. https://vase-podjetje.si.',
+    'form.errEmail': 'Vnesite veljaven e-poštni naslov.',
+    'form.errSend': 'Pošiljanje ni uspelo. Preverite povezavo in poskusite znova.',
     'ph.url': 'https://vase-podjetje.si', 'ph.email': 'ime@podjetje.si'
   },
   ru: {
@@ -140,6 +146,9 @@ var AN_I18N = {
     'an.i5': '<b>Правовая основа</b> — политика конфиденциальности, cookie, данные компании.',
     'footer.privacy': 'Конфиденциальность', 'footer.terms': 'Условия',
     'form.fill': 'Заполните все поля', 'form.sending': 'Отправляю…',
+    'form.errUrl': 'Укажите корректный адрес сайта, например https://vash-sait.ru.',
+    'form.errEmail': 'Укажите корректный e-mail.',
+    'form.errSend': 'Не удалось отправить. Проверьте соединение и попробуйте ещё раз.',
     'ph.url': 'https://vash-sait.ru', 'ph.email': 'name@company.si'
   }
 };
@@ -184,22 +193,40 @@ document.getElementById('anForm').addEventListener('submit', function (e) {
   var email = document.getElementById('anEmail').value.trim();
   var ok = document.getElementById('anConsent').checked;
   var btn = document.getElementById('anBtn');
-  if (!url || !email || !ok) { btn.textContent = D['form.fill']; return; }
+  var err = document.getElementById('anErr');
+  if (btn.disabled) return;
+  err.hidden = true; err.textContent = '';
+  if (!url || !email || !ok) { err.textContent = D['form.fill']; err.hidden = false; return; }
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  if (!/^https?:\/\/([a-z0-9-]+\.)+[a-z]{2,63}(:\d{1,5})?([\/?#][^\s]*)?$/i.test(url)) {
+    err.textContent = D['form.errUrl']; err.hidden = false; return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    err.textContent = D['form.errEmail']; err.hidden = false; return;
+  }
   var ep = (window.SOLO_CONFIG && SOLO_CONFIG.crm && SOLO_CONFIG.crm.endpoint) || '';
+  if (!ep) { err.textContent = D['form.errSend']; err.hidden = false; return; }
   btn.disabled = true; btn.textContent = D['form.sending'];
+  var nowIso = new Date().toISOString();
   var payload = {
-    type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
+    id: 'lead_' + Date.now(), date: nowIso,
+    type: 'analiza', service: 'Brezplačna analiza',
+    interest: 'seo_leads', branchTitle: 'Brezplačna analiza spletne strani',
+    siteUrl: url, email: email, contact: email,
     message: (ANL === 'ru' ? 'Запрос на бесплатную диагностику: ' : 'Prošnja za brezplačno analizo: ') + url,
+    notes: (ANL === 'ru' ? 'Бесплатная диагностика: ' : 'Brezplačna analiza: ') + url,
+    answers: [{ question: (ANL === 'ru' ? 'Сайт' : 'Spletna stran'), answers: [url] }],
     page: '/pages/brezplacna-analiza.html', lang: ANL,
-    marketingConsent: true
+    marketingConsent: false, status: 'new'
   };
-  fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-    .then(function () { if (window.soloTrack) window.soloTrack('generate_lead', { form: 'brezplacna-analiza' }); })
-    .catch(function () {})
-    .finally(function () {
-      btn.style.display = 'none';
-      document.getElementById('anOk').style.display = 'block';
-    });
+  window.soloSubmitLead(ep, payload).then(function () {
+    if (window.soloTrack) window.soloTrack('generate_lead', { form: 'brezplacna-analiza' });
+    btn.style.display = 'none';
+    document.getElementById('anOk').style.display = 'block';
+  }).catch(function () {
+    btn.disabled = false; btn.textContent = D['an.btn'];
+    err.textContent = D['form.errSend']; err.hidden = false;
+  });
 });
 </script>
 <script src="/assets/consent.js" defer></script>

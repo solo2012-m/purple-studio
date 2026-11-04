@@ -191,11 +191,42 @@
     return lines.join('\n');
   }
   function buildLead(site, business, region, budget, comment, email, telegram, consent) {
-    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), options: selectedOptions().map(function (x) { return x.opt.id; }), issues: selectedIssues().map(function (x) { return x.id; }), siteUrl: site, business: business, region: region, budget: budget, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
+    var sel = selectedOptions(), iss = selectedIssues();
+    var ru = lang() === 'ru';
+    var noteLines = [], answers = [];
+    if (sel.length) {
+      var labels = sel.map(function (x) { return optLabel(x) + ' — ' + x.opt.price; });
+      noteLines.push((ru ? 'Выбранные услуги' : 'Izbrane storitve') + ': ' + labels.join('; '));
+      answers.push({ question: (ru ? 'Выбранные услуги' : 'Izbrane storitve'), answers: labels });
+    }
+    if (iss.length) {
+      var ilabels = iss.map(function (x) { return x.label; });
+      noteLines.push((ru ? 'Дополнительные задачи' : 'Dodatne naloge') + ': ' + ilabels.join('; '));
+      answers.push({ question: (ru ? 'Дополнительные задачи' : 'Dodatne naloge'), answers: ilabels });
+    }
+    if (business) noteLines.push((ru ? 'Бизнес' : 'Dejavnost') + ': ' + business);
+    if (region) noteLines.push((ru ? 'Регион' : 'Regija') + ': ' + region);
+    if (budget) noteLines.push((ru ? 'Рекламный бюджет' : 'Oglaševalski proračun') + ': ' + budget);
+    if (comment) noteLines.push((ru ? 'Пожелания' : 'Želje') + ': ' + comment);
+    if (telegram) noteLines.push('Telegram: ' + telegram);
+    return {
+      id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(),
+      type: 'ads', interest: 'seo_leads', branchTitle: 'Oglaševanje in promocija',
+      options: sel.map(function (x) { return x.opt.id; }),
+      issues: iss.map(function (x) { return x.id; }),
+      siteUrl: site, business: business, region: region, budget: budget,
+      comment: comment, email: email, telegram: telegram,
+      contact: telegram || email,
+      notes: noteLines.join('\n'), answers: answers,
+      marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION,
+      consentDate: consent ? new Date().toISOString() : null, status: 'new'
+    };
   }
 
   window.submitAds = function (e) {
     e.preventDefault();
+    var submitBtn = document.querySelector('#adsForm button[type="submit"]');
+    if (submitBtn && submitBtn.disabled) return false;
     var d = D().form, err = $('adsErr');
     var site = normUrl(($('adsSite') || {}).value || '');
     var business = ($('adsBusiness') || {}).value || '';
@@ -214,9 +245,21 @@
     return false;
   };
   function deliverAds(text, lead) {
-    var ep = (window.CONFIG && CONFIG.ads && CONFIG.ads.enabled && CONFIG.ads.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
-    if (ep) { try { fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) }).then(function (r) { showAdsResult(r && r.ok, text); }).catch(function () { showAdsResult(false, text); }); return; } catch (ex) {} }
-    showAdsResult(false, text);
+    var ep = (window.CONFIG && CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (window.CONFIG && CONFIG.ads && CONFIG.ads.enabled && CONFIG.ads.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
+    var err = $('adsErr'), btn = document.querySelector('#adsForm button[type="submit"]');
+    if (btn && btn.disabled) return;
+    if (!ep || typeof window.soloSubmitLead !== 'function') {
+      if (err) err.textContent = D().form.errSend;
+      return;
+    }
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
+    window.soloSubmitLead(ep, lead).then(function () {
+      if (window.soloTrack) window.soloTrack('generate_lead', { form: 'ads' });
+      showAdsResult(true, text);
+    }).catch(function () {
+      if (err) err.textContent = D().form.errSend;
+      if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); }
+    });
   }
   function showAdsResult(sent, text) {
     var d = D().form, form = $('adsForm'), res = $('adsResult'); if (!res) return;

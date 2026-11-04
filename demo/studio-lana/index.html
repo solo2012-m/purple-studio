@@ -166,6 +166,7 @@
         <label for="slConsent" style="text-transform:none;letter-spacing:0;font-size:13.5px;margin:0">Strinjam se, da salon uporabi podatke za potrditev in izvedbo termina.</label>
       </div>
       <button class="btn" type="submit" id="slBtn">Rezerviraj termin</button>
+      <p id="slErr" role="alert" hidden style="color:#ff8a8a;font-size:14px;margin-top:10px"></p>
       <div class="sl-ok" id="slOk">Hvala! Termin je zabeležen — potrditev prejmete v nekaj minutah.</div>
     </form>
   </div>
@@ -225,7 +226,8 @@
   </div>
 </footer>
 
-<script src="/assets/config.js"></script>
+<script src="/assets/config.js?v=20261104-stage2"></script>
+<script src="/assets/lead-submit.js?v=20261104-stage2"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 document.getElementById('slForm').addEventListener('submit', function (e) {
@@ -234,29 +236,47 @@ document.getElementById('slForm').addEventListener('submit', function (e) {
   var contact = document.getElementById('slPhone').value.trim();
   var consent = document.getElementById('slConsent').checked;
   var btn = document.getElementById('slBtn');
+  var err = document.getElementById('slErr');
+  if (btn.disabled) return;
+  if (err) { err.hidden = true; err.textContent = ''; }
   if (!name || !contact || !consent) { btn.textContent = 'Izpolnite vsa polja'; return; }
   var ep = (window.SOLO_CONFIG && SOLO_CONFIG.crm && SOLO_CONFIG.crm.endpoint) || '';
+  if (!ep || typeof window.soloSubmitLead !== 'function') {
+    if (err) { err.textContent = 'Pošiljanje ni uspelo. Poskusite znova.'; err.hidden = false; }
+    return;
+  }
   btn.disabled = true; btn.textContent = 'Pošiljam…';
   var isMail = contact.indexOf('@') > -1;
+  var service = document.getElementById('slService').value;
+  var master = document.getElementById('slMaster').value;
+  var bookingDate = document.getElementById('slDate').value;
+  var bookingTime = document.getElementById('slTime').value;
   var payload = {
+    id: 'lead_' + Date.now(), date: new Date().toISOString(),
     type: 'booking', source: 'demo-studio-lana',
-    service: document.getElementById('slService').value,
-    master: document.getElementById('slMaster').value,
-    date: document.getElementById('slDate').value, time: document.getElementById('slTime').value,
+    interest: 'site_creation', branchTitle: 'Rezervacija — Studio Lana (demo)',
+    service: service, master: master, bookingDate: bookingDate, time: bookingTime,
     name: name,
     email: isMail ? contact : '',
     telegram: isMail ? '' : contact,
-    message: 'Demo rezervacija: ' + document.getElementById('slService').value +
-      ' · ' + document.getElementById('slMaster').value +
-      ' · ' + document.getElementById('slDate').value + ' ob ' + document.getElementById('slTime').value,
-    page: '/demo/studio-lana/', lang: 'sl', marketingConsent: false
+    contact: contact,
+    notes: 'Rezervacija: ' + service + ' · ' + master + ' · ' + bookingDate + ' ob ' + bookingTime +
+      '\nIme: ' + name + (isMail ? '' : ' · Telegram: ' + contact),
+    answers: [
+      { question: 'Storitev', answers: [service] },
+      { question: 'Mojster', answers: [master] },
+      { question: 'Termin', answers: [bookingDate + ' ob ' + bookingTime] }
+    ],
+    message: 'Demo rezervacija: ' + service + ' · ' + master + ' · ' + bookingDate + ' ob ' + bookingTime,
+    page: '/demo/studio-lana/', lang: 'sl', marketingConsent: false, status: 'new'
   };
-  fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-    .catch(function () {})
-    .finally(function () {
-      btn.style.display = 'none';
-      document.getElementById('slOk').style.display = 'block';
-    });
+  window.soloSubmitLead(ep, payload).then(function () {
+    btn.style.display = 'none';
+    document.getElementById('slOk').style.display = 'block';
+  }).catch(function () {
+    btn.disabled = false; btn.textContent = 'Rezerviraj termin';
+    if (err) { err.textContent = 'Pošiljanje ni uspelo. Preverite povezavo in poskusite znova.'; err.hidden = false; }
+  });
 });
 </script>
 </body>

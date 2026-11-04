@@ -160,24 +160,34 @@
     if (err) err.textContent = '';
     var C = window.SOLO_CONFIG || window.CONFIG || {};
     var ep = (C.crm && C.crm.endpoint) || (C.express && C.express.endpoint) || (C.submit && C.submit.endpoint) || '';
-    if (!ep) { showExpressNotice(); return false; }
     var btn = document.querySelector('#expressForm button[type="submit"]');
+    if (btn && btn.disabled) return false;
+    if (!ep || typeof window.soloSubmitLead !== 'function') {
+      if (err) err.textContent = t('improve.express.errSend');
+      return false;
+    }
     if (btn) { btn.disabled = true; btn.textContent = t('improve.express.sending'); }
     var concern = (document.getElementById('expressConcern') || {}).value || '';
-    try {
-      window.fetch(ep, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ type: 'analiza', service: 'Brezplačna analiza', siteUrl: url, email: email,
-          message: concern ? ('Ekspresna preveritev: ' + concern) : 'Ekspresna preveritev spletne strani',
-          page: location.pathname, lang: lang(), marketingConsent: false }) })
-        .catch(function () {})
-        .finally(function () {
-          var n = document.getElementById('expressNotice');
-          if (n) { n.hidden = false; n.innerHTML = '<p>' + esc(t('improve.express.ok')) + '</p>'; }
-          if (btn) { btn.disabled = false; btn.textContent = t('improve.express.btn'); }
-        });
-      return false;
-    } catch (ex) {}
-    showExpressNotice();
+    var nowIso = new Date().toISOString();
+    window.soloSubmitLead(ep, {
+      id: 'lead_' + Date.now(), date: nowIso,
+      type: 'analiza', service: 'Brezplačna analiza',
+      interest: 'site_redesign', branchTitle: 'Brezplačen hiter pregled spletne strani',
+      siteUrl: url, email: email, contact: email,
+      message: concern ? ('Ekspresna preveritev: ' + concern) : 'Ekspresna preveritev spletne strani',
+      notes: 'Hitri pregled: ' + url + (concern ? (' — ' + concern) : ''),
+      answers: [{ question: 'Spletna stran', answers: [url] }, { question: 'Skrb', answers: [concern || '—'] }],
+      page: location.pathname, lang: lang(), marketingConsent: false, status: 'new'
+    })
+      .then(function () {
+        var n = document.getElementById('expressNotice');
+        if (n) { n.hidden = false; n.innerHTML = '<p>' + esc(t('improve.express.ok')) + '</p>'; }
+        if (btn) { btn.disabled = false; btn.textContent = t('improve.express.btn'); }
+      })
+      .catch(function () {
+        if (err) err.textContent = t('improve.express.errSend');
+        if (btn) { btn.disabled = false; btn.textContent = t('improve.express.btn'); }
+      });
     return false;
   };
   function showExpressNotice() {
@@ -211,15 +221,28 @@
   }
 
   function buildLead(type, url, services, comment, email, consent) {
+    var noteLines = [];
+    if (services.length) {
+      noteLines.push('Izbrana dela: ' + services.map(function (s) { return s.title + ' — ' + money(s.price); }).join('; '));
+    }
+    if (comment) noteLines.push('Komentar: ' + comment);
+    var answers = [];
+    if (services.length) answers.push({ question: 'Izbrana dela', answers: services.map(function (s) { return s.title + ' — ' + money(s.price); }) });
+    if (comment) answers.push({ question: 'Komentar', answers: [comment] });
     return {
       id: 'lead_' + Date.now(),
       date: new Date().toISOString(),
       lang: lang(),
       type: type,
+      interest: 'site_redesign',
+      branchTitle: t(typeKey()),
       siteUrl: url,
+      email: email,
+      contact: email,
       services: services.map(function (s) { return { id: s.id, title: s.title, price: s.price }; }),
       comment: comment,
-      email: email,
+      notes: noteLines.join('\n'),
+      answers: answers,
       marketingConsent: !!consent,
       consentTextVersion: CONSENT_VERSION,
       consentDate: consent ? new Date().toISOString() : null,
@@ -229,6 +252,8 @@
 
   window.submitImprove = function (e) {
     e.preventDefault();
+    var submitBtn = document.querySelector('#improveForm button[type="submit"]');
+    if (submitBtn && submitBtn.disabled) return false;
     var err = document.getElementById('reqErr');
     var url = normalizeUrl((document.getElementById('reqUrl') || {}).value || '');
     var comment = (document.getElementById('reqComment') || {}).value || '';
@@ -245,17 +270,30 @@
     return false;
   };
 
+  function improveBusy(busy) {
+    var btn = document.querySelector('#improveForm button[type="submit"]');
+    if (!btn) return;
+    btn.disabled = busy;
+    btn.setAttribute('aria-busy', busy ? 'true' : 'false');
+    btn.textContent = busy ? t('improve.request.sending') : t('improve.request.submit');
+  }
   function deliverImprove(text, lead) {
-    var ep = (window.CONFIG && CONFIG.improve && CONFIG.improve.enabled && CONFIG.improve.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
-    if (ep) {
-      try {
-        window.fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
-          .then(function (r) { if (r && r.ok) { if (window.soloTrack) window.soloTrack('generate_lead', { form: 'improve' }); showImproveResult(true, text); } else showImproveResult(false, text); })
-          .catch(function () { showImproveResult(false, text); });
-        return;
-      } catch (ex) {}
+    var ep = (window.CONFIG && CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (window.CONFIG && CONFIG.improve && CONFIG.improve.enabled && CONFIG.improve.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
+    var err = document.getElementById('reqErr');
+    if (!ep || typeof window.soloSubmitLead !== 'function') {
+      if (err) err.textContent = t('improve.request.errSend');
+      improveBusy(false);
+      return;
     }
-    showImproveResult(false, text);
+    improveBusy(true);
+    window.soloSubmitLead(ep, lead).then(function () {
+      if (window.soloTrack) window.soloTrack('generate_lead', { form: 'improve' });
+      improveBusy(false);
+      showImproveResult(true, text);
+    }).catch(function () {
+      if (err) err.textContent = t('improve.request.errSend');
+      improveBusy(false);
+    });
   }
 
   function showImproveResult(sent, text) {

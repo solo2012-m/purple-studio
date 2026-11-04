@@ -292,7 +292,8 @@ window.SOLO_ADS = {
       "back": "Nazaj na obrazec",
       "errEmail": "Vnesite veljaven e-poštni naslov.",
       "errSite": "Vnesite veljaven naslov spletne strani.",
-      "errEmpty": "Izberite storitev ali opišite, kaj potrebujete."
+      "errEmpty": "Izberite storitev ali opišite, kaj potrebujete.",
+      "errSend": "Pošiljanje ni uspelo. Preverite povezavo in poskusite znova."
     },
     "process": {
       "title": "Kako delamo",
@@ -636,7 +637,8 @@ window.SOLO_ADS = {
       "back": "Вернуться к форме",
       "errEmail": "Укажите корректный email.",
       "errSite": "Укажите корректный адрес сайта.",
-      "errEmpty": "Выберите услугу или опишите задачу."
+      "errEmpty": "Выберите услугу или опишите задачу.",
+      "errSend": "Не удалось отправить. Проверьте соединение и попробуйте ещё раз."
     },
     "process": {
       "title": "Как мы работаем",
@@ -980,7 +982,8 @@ window.SOLO_ADS = {
       "back": "Back to the form",
       "errEmail": "Please enter a valid email.",
       "errSite": "Please enter a valid page address.",
-      "errEmpty": "Select a service or describe a task."
+      "errEmpty": "Select a service or describe a task.",
+      "errSend": "Sending failed. Check your connection and try again."
     },
     "process": {
       "title": "How we work",
@@ -1324,7 +1327,8 @@ window.SOLO_ADS = {
       "back": "Zurück zum Formular",
       "errEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
       "errSite": "Bitte geben Sie eine gültige Seitenadresse ein.",
-      "errEmpty": "Wählen Sie eine Dienstleistung aus oder beschreiben Sie eine Aufgabe."
+      "errEmpty": "Wählen Sie eine Dienstleistung aus oder beschreiben Sie eine Aufgabe.",
+      "errSend": "Senden fehlgeschlagen. Prüfen Sie die Verbindung und versuchen Sie es erneut."
     },
     "process": {
       "title": "Wie wir arbeiten",

@@ -283,11 +283,42 @@
     return lines.join('\n');
   }
   function buildLead(site, comment, email, telegram, consent) {
-    return { id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(), ai: state.ai, interest: state.interest, automations: selectedAutomations().map(function (a) { return a.id; }), siteUrl: site, comment: comment, email: email, telegram: telegram, marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION, consentDate: consent ? new Date().toISOString() : null, status: 'new' };
+    var tariff = state.ai ? aiById(state.ai) : null;
+    var autos = selectedAutomations();
+    var ru = lang() === 'ru';
+    var noteLines = [], answers = [];
+    if (tariff) {
+      noteLines.push((ru ? 'Ежемесячная подписка' : 'Mesečna naročnina') + ': ' + tariff.name + ' — ' + tariff.price);
+      answers.push({ question: 'AI', answers: [tariff.name + ' — ' + tariff.price] });
+    }
+    if (state.interest) {
+      noteLines.push((ru ? 'Интерес' : 'Zanimanje') + ': ' + (ru ? 'Бесплатная презентация' : 'Brezplačna predstavitev'));
+      answers.push({ question: (ru ? 'Интерес' : 'Zanimanje'), answers: [ru ? 'Бесплатная презентация' : 'Brezplačna predstavitev'] });
+    }
+    if (autos.length) {
+      var titles = autos.map(function (x) { return x.title; });
+      noteLines.push((ru ? 'Дополнительные работы' : 'Dodatna dela') + ': ' + titles.join('; '));
+      answers.push({ question: (ru ? 'Дополнительные работы' : 'Dodatna dela'), answers: titles });
+    }
+    if (comment) noteLines.push((ru ? 'Задача' : 'Komentar') + ': ' + comment);
+    if (telegram) noteLines.push('Telegram: ' + telegram);
+    return {
+      id: 'lead_' + Date.now(), date: new Date().toISOString(), lang: lang(),
+      type: 'ai', interest: 'ai_automation', branchTitle: 'AI-asistent in avtomatizacija',
+      ai: state.ai, demoInterest: state.interest,
+      automations: autos.map(function (x) { return x.id; }),
+      siteUrl: site, comment: comment, email: email, telegram: telegram,
+      contact: telegram || email,
+      notes: noteLines.join('\n'), answers: answers,
+      marketingConsent: !!consent, consentTextVersion: CONSENT_VERSION,
+      consentDate: consent ? new Date().toISOString() : null, status: 'new'
+    };
   }
 
   window.submitAI = function (e) {
     e.preventDefault();
+    var submitBtn = document.querySelector('#aiForm button[type="submit"]');
+    if (submitBtn && submitBtn.disabled) return false;
     var d = D().form, err = $('aiErr');
     var site = normUrl(($('aiSite') || {}).value || '');
     var comment = ($('aiComment') || {}).value || '';
@@ -303,16 +334,21 @@
     return false;
   };
   function deliverAI(text, lead) {
-    var ep = (window.CONFIG && CONFIG.ai && CONFIG.ai.enabled && CONFIG.ai.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
-    if (ep) {
-      try {
-        window.fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) })
-          .then(function (r) { showAIResult(r && r.ok, text); })
-          .catch(function () { showAIResult(false, text); });
-        return;
-      } catch (ex) {}
+    var ep = (window.CONFIG && CONFIG.crm && CONFIG.crm.enabled && CONFIG.crm.endpoint) || (window.CONFIG && CONFIG.ai && CONFIG.ai.enabled && CONFIG.ai.endpoint) || (window.CONFIG && CONFIG.submit && CONFIG.submit.enabled && CONFIG.submit.endpoint);
+    var err = $('aiErr'), btn = document.querySelector('#aiForm button[type="submit"]');
+    if (btn && btn.disabled) return;
+    if (!ep || typeof window.soloSubmitLead !== 'function') {
+      if (err) err.textContent = D().form.errSend;
+      return;
     }
-    showAIResult(false, text);
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); }
+    window.soloSubmitLead(ep, lead).then(function () {
+      if (window.soloTrack) window.soloTrack('generate_lead', { form: 'ai' });
+      showAIResult(true, text);
+    }).catch(function () {
+      if (err) err.textContent = D().form.errSend;
+      if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); }
+    });
   }
   function showAIResult(sent, text) {
     var d = D().form, form = $('aiForm'), res = $('aiResult');

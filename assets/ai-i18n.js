@@ -295,7 +295,8 @@ window.SOLO_AI = {
       "back": "Nazaj na obrazec",
       "errEmail": "Vnesite veljaven e-poštni naslov.",
       "errUrl": "Vnesite veljaven naslov spletne strani.",
-      "errEmpty": "Izberite paket ali avtomatizacijo oziroma opišite, kaj potrebujete."
+      "errEmpty": "Izberite paket ali avtomatizacijo oziroma opišite, kaj potrebujete.",
+      "errSend": "Pošiljanje ni uspelo. Preverite povezavo in poskusite znova."
     },
     "faq": {
       "title": "Pogosta vprašanja",
@@ -640,7 +641,8 @@ window.SOLO_AI = {
       "back": "Вернуться к форме",
       "errEmail": "Укажите корректный email.",
       "errUrl": "Укажите корректный адрес сайта.",
-      "errEmpty": "Выберите тариф или автоматизацию либо опишите задачу."
+      "errEmpty": "Выберите тариф или автоматизацию либо опишите задачу.",
+      "errSend": "Не удалось отправить. Проверьте соединение и попробуйте ещё раз."
     },
     "faq": {
       "title": "Частые вопросы",
@@ -985,7 +987,8 @@ window.SOLO_AI = {
       "back": "Back to the form",
       "errEmail": "Please enter a valid email.",
       "errUrl": "Please enter a valid page address.",
-      "errEmpty": "Select a package or automation, or describe a task."
+      "errEmpty": "Select a package or automation, or describe a task.",
+      "errSend": "Sending failed. Check your connection and try again."
     },
     "faq": {
       "title": "Frequently asked questions",
@@ -1330,7 +1333,8 @@ window.SOLO_AI = {
       "back": "Zurück zum Formular",
       "errEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
       "errUrl": "Bitte geben Sie eine gültige Seitenadresse ein.",
-      "errEmpty": "Wählen Sie ein Paket oder eine Automatisierung aus oder beschreiben Sie eine Aufgabe."
+      "errEmpty": "Wählen Sie ein Paket oder eine Automatisierung aus oder beschreiben Sie eine Aufgabe.",
+      "errSend": "Senden fehlgeschlagen. Prüfen Sie die Verbindung und versuchen Sie es erneut."
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
