@@ -10,7 +10,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261104-stage3">
+<link rel="stylesheet" href="../assets/style.css?v=20261119-konv3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SOLO.POV">
+<meta property="og:title" content="Brezplačna analiza vaše spletne strani — SOLO.POV">
+<meta property="og:description" content="Preverimo hitrost, mobilno različico, varnost, osnovni SEO in ali lahko obiskovalec odda povpraševanje. Trije glavni popravki na e-pošto v enem delovnem dnevu.">
+<meta property="og:url" content="https://solopov.si/pages/brezplacna-analiza.html">
+<meta property="og:image" content="https://solopov.si/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 .an-wrap{max-width:760px;margin:0 auto;padding:0 20px}
 .an-hero{padding:64px 0 28px}
@@ -26,14 +33,21 @@
 .an-list{display:grid;gap:12px;margin:18px 0 0}
 .an-list div{border-left:2px solid var(--accent);padding-left:14px;color:var(--muted);font-size:15px}
 .an-list b{color:var(--ink)}
+.an-lang{display:flex;gap:4px;margin-left:auto}
+.an-lang button{background:none;border:1px solid transparent;border-radius:999px;color:var(--muted);font:600 13px Inter,sans-serif;min-width:44px;min-height:44px;cursor:pointer}
+.an-lang button.on{color:var(--accent);border-color:var(--line)}
+.an-contacts{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;padding:18px 0 4px}
+.an-contacts a{color:var(--ink);text-decoration:none;padding:10px 0}
+.an-contacts a:hover{color:var(--accent)}
+@media(max-width:680px){.an-hdr nav{display:none}.an-hero{padding:36px 0 20px}}
 .an-ok{display:none;border:1px solid rgba(255,212,0,.45);background:rgba(255,212,0,.08);border-radius:12px;padding:16px 18px;margin-top:16px;font-size:15px}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap hdr">
-    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png" alt="SOLO.POV" width="1216" height="551"></a>
+  <div class="wrap hdr an-hdr">
+    <a class="logo" href="../index.html"><img src="../assets/img/logo-mark.png?v=2" alt="SOLO.POV" width="1216" height="551"></a>
     <nav>
       <a href="../index.html" data-i18n="nav.home">Domov</a>
       <a href="../index.html#solutions" data-i18n="nav.solutions">Rešitve</a>
@@ -41,7 +55,9 @@
       <a href="../index.html#works" data-i18n="nav.works">Projekti</a>
       <a href="../index.html#faq" data-i18n="nav.faq">Vprašanja</a>
     </nav>
-    <a class="btn ghost sm" href="../index.html" style="margin-left:auto" data-i18n="nav.back">Nazaj</a>
+    <div class="an-lang" role="group" aria-label="Jezik">
+      <button type="button" data-l="sl">SL</button><button type="button" data-l="ru">RU</button><button type="button" data-l="en">EN</button><button type="button" data-l="de">DE</button>
+    </div>
   </div>
 </header>
 
@@ -89,6 +105,12 @@
 
 <footer>
   <div class="wrap">
+    <div class="an-contacts">
+      <a href="mailto:info@solopov.si">info@solopov.si</a>
+      <a href="https://t.me/solo_pov" target="_blank" rel="noopener">Telegram</a>
+      <a id="anWa" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+      <a href="https://www.facebook.com/people/SoloPov/61595780889754/" target="_blank" rel="noopener">Facebook</a>
+    </div>
     <div class="footer-bottom" style="border-top:1px solid var(--line)">
       <span>© <span id="year"></span> SOLO.POV</span>
       <span><a href="zasebnost.html" style="color:var(--muted)" data-i18n="footer.privacy">Zasebnost</a> · <a href="pogoji.html" style="color:var(--muted)" data-i18n="footer.terms">Pogoji</a></span>
@@ -96,8 +118,8 @@
   </div>
 </footer>
 
-<script src="../assets/config.js?v=20261104-stage2"></script>
-<script src="../assets/lead-submit.js?v=20261104-stage2"></script>
+<script src="../assets/config.js?v=20261119-konv3"></script>
+<script src="../assets/lead-submit.js?v=20261119-konv3"></script>
 <script>
 var AN_I18N = {
   sl: {
@@ -112,7 +134,7 @@ var AN_I18N = {
     'an.consent': 'Strinjam se, da se moji podatki uporabijo za pripravo analize in odgovor. Podatkov ne posredujemo tretjim osebam.',
     'an.btn': 'Pošljite zahtevo za brezplačno analizo',
     'an.note': 'Povzetek pošljemo na e-pošto v enem delovnem dnevu. Brez telefonskih klicev in brez obveznosti.',
-    'an.ok': 'Hvala! Analizo pripravljamo — odgovor boste prejeli na vaš e-poštni naslov.',
+    'an.ok': 'Hvala! Analizo pripravljamo. Tri najpomembnejše popravke vam pošljemo na e-pošto v enem delovnem dnevu. Če sporočila ne vidite, preverite mapo z neželeno pošto.',
     'an.what': 'Kaj preverimo',
     'an.i1': '<b>Hitrost in mobilna prilagoditev</b> — koliko časa spletna stran potrebuje za nalaganje in ali je uporabna na majhnem zaslonu.',
     'an.i2': '<b>Tehnika in varnost</b> — certifikat, preusmeritve, robots, sitemap, varnostne glave.',
@@ -138,7 +160,7 @@ var AN_I18N = {
     'an.consent': 'Согласен, что мои данные используют для подготовки анализа и ответа. Данные не передаём третьим лицам.',
     'an.btn': 'Отправить на анализ',
     'an.note': 'Краткий отчёт пришлём на почту в течение рабочего дня. Без звонков и обязательств.',
-    'an.ok': 'Спасибо! Готовим анализ — ответ придёт на ваш e-mail.',
+    'an.ok': 'Спасибо! Готовим анализ. Три главные правки пришлём на e-mail в течение одного рабочего дня. Если письма нет, проверьте папку «Спам».',
     'an.what': 'Что проверяем',
     'an.i1': '<b>Скорость и телефон</b> — сколько времени сайт загружается и удобен ли он на маленьком экране.',
     'an.i2': '<b>Техника и безопасность</b> — сертификат, переадресации, robots, sitemap, заголовки безопасности.',
@@ -150,15 +172,70 @@ var AN_I18N = {
     'form.errUrl': 'Укажите корректный адрес сайта, например https://vash-sait.ru.',
     'form.errEmail': 'Укажите корректный e-mail.',
     'form.errSend': 'Не удалось отправить. Проверьте соединение и попробуйте ещё раз.',
-    'ph.url': 'https://vash-sait.ru', 'ph.email': 'name@company.si'
+    'ph.url': 'https://vash-sait.si', 'ph.email': 'name@company.si'
+  },
+  en: {
+    'doc.title': 'Free website check | SOLO.POV',
+    'doc.desc': 'Free website check: speed, mobile version, security, basic SEO and lead capture. The three most important fixes by email within one business day.',
+    'nav.home': 'Home', 'nav.solutions': 'Solutions', 'nav.process': 'Process', 'nav.works': 'Projects', 'nav.faq': 'FAQ',
+    'an.eyebrow': 'Free · no obligation',
+    'an.h1': 'How well does your website work?',
+    'an.lead': 'Enter your website address. We check speed, the mobile version, security, basic SEO and whether a visitor can actually send an inquiry. Result: the three things worth fixing first and a suggested next step.',
+    'an.lblUrl': 'Your website address',
+    'an.lblEmail': 'Your email address',
+    'an.consent': 'I agree that my data is used to prepare the check and reply. We do not share data with third parties.',
+    'an.btn': 'Request a free check',
+    'an.note': 'We send the summary by email within one business day. No phone calls, no obligation.',
+    'an.ok': 'Thank you! We are preparing your check. We will email you the three most important fixes within one business day. If you don\'t see our email, please check your spam folder.',
+    'an.what': 'What we check',
+    'an.i1': '<b>Speed and mobile</b> — how long the page takes to load and whether it is usable on a small screen.',
+    'an.i2': '<b>Technical and security</b> — certificate, redirects, robots, sitemap, security headers.',
+    'an.i3': '<b>Clarity of the offer</b> — whether a visitor understands in the first seconds what you offer and what it costs.',
+    'an.i4': '<b>Lead capture</b> — whether a visitor can send an inquiry or book an appointment, and where that inquiry arrives.',
+    'an.i5': '<b>Legal basics</b> — privacy policy, cookies, company details.',
+    'footer.privacy': 'Privacy', 'footer.terms': 'Terms',
+    'form.fill': 'Please fill in all fields', 'form.sending': 'Sending…',
+    'form.errUrl': 'Enter a valid website address, e.g. https://your-company.com.',
+    'form.errEmail': 'Enter a valid email address.',
+    'form.errSend': 'Sending failed. Check your connection and try again.',
+    'ph.url': 'https://your-company.com', 'ph.email': 'name@company.com'
+  },
+  de: {
+    'doc.title': 'Kostenlose Website-Analyse | SOLO.POV',
+    'doc.desc': 'Kostenlose Website-Analyse: Geschwindigkeit, mobile Version, Sicherheit, SEO-Grundlagen und Anfragen. Die drei wichtigsten Korrekturen per E-Mail innerhalb eines Werktags.',
+    'nav.home': 'Start', 'nav.solutions': 'Lösungen', 'nav.process': 'Ablauf', 'nav.works': 'Projekte', 'nav.faq': 'Fragen',
+    'an.eyebrow': 'Kostenlos · unverbindlich',
+    'an.h1': 'Wie gut funktioniert Ihre Website?',
+    'an.lead': 'Geben Sie die Adresse Ihrer Website ein. Wir prüfen Geschwindigkeit, mobile Version, Sicherheit, SEO-Grundlagen und ob ein Besucher überhaupt eine Anfrage senden kann. Ergebnis: die drei Punkte, die sich zuerst zu verbessern lohnen, und ein Vorschlag für den nächsten Schritt.',
+    'an.lblUrl': 'Adresse Ihrer Website',
+    'an.lblEmail': 'Ihre E-Mail-Adresse',
+    'an.consent': 'Ich bin einverstanden, dass meine Daten für die Analyse und die Antwort verwendet werden. Wir geben keine Daten an Dritte weiter.',
+    'an.btn': 'Kostenlose Analyse anfordern',
+    'an.note': 'Die Zusammenfassung senden wir innerhalb eines Werktags per E-Mail. Ohne Anrufe und unverbindlich.',
+    'an.ok': 'Vielen Dank! Wir bereiten die Analyse vor. Die drei wichtigsten Korrekturen senden wir Ihnen innerhalb eines Werktags per E-Mail. Falls Sie keine E-Mail sehen, prüfen Sie bitte den Spam-Ordner.',
+    'an.what': 'Was wir prüfen',
+    'an.i1': '<b>Geschwindigkeit und Mobilgeräte</b> — wie lange die Seite lädt und ob sie auf einem kleinen Bildschirm gut nutzbar ist.',
+    'an.i2': '<b>Technik und Sicherheit</b> — Zertifikat, Weiterleitungen, robots, Sitemap, Sicherheits-Header.',
+    'an.i3': '<b>Klarheit des Angebots</b> — ob ein Besucher in den ersten Sekunden versteht, was Sie anbieten und was es kostet.',
+    'an.i4': '<b>Anfragen</b> — ob ein Besucher eine Anfrage senden oder einen Termin buchen kann und wo diese Anfrage ankommt.',
+    'an.i5': '<b>Rechtliche Grundlagen</b> — Datenschutzerklärung, Cookies, Unternehmensangaben.',
+    'footer.privacy': 'Datenschutz', 'footer.terms': 'Bedingungen',
+    'form.fill': 'Bitte füllen Sie alle Felder aus', 'form.sending': 'Wird gesendet…',
+    'form.errUrl': 'Geben Sie eine gültige Website-Adresse ein, z. B. https://ihr-unternehmen.de.',
+    'form.errEmail': 'Geben Sie eine gültige E-Mail-Adresse ein.',
+    'form.errSend': 'Senden fehlgeschlagen. Prüfen Sie die Verbindung und versuchen Sie es erneut.',
+    'ph.url': 'https://ihr-unternehmen.de', 'ph.email': 'name@firma.de'
   }
 };
+AN_I18N.sl['nav.home'] = 'Domov';
+AN_I18N.ru['nav.home'] = 'Главная';
 
 function anLang() {
   var p = new URLSearchParams(location.search).get('lang');
   var l = p || '';
   if (!l) { try { l = localStorage.getItem('solo-lang') || ''; } catch (e) {} }
-  return String(l).toLowerCase().indexOf('ru') === 0 ? 'ru' : 'sl';
+  l = String(l).toLowerCase().slice(0, 2);
+  return AN_I18N[l] ? l : 'sl';
 }
 
 var ANL = anLang();
@@ -181,6 +258,31 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-html]'), func
 document.getElementById('anUrl').placeholder = D['ph.url'];
 document.getElementById('anEmail').placeholder = D['ph.email'];
 document.getElementById('year').textContent = new Date().getFullYear();
+
+(function () {
+  var wa = window.SOLO_CONFIG && SOLO_CONFIG.contact && SOLO_CONFIG.contact.whatsapp;
+  var a = document.getElementById('anWa');
+  if (wa && a) { a.href = wa; a.hidden = false; }
+})();
+
+/* Preklop jezika: zapomnimo izbiro (kot na domači strani) in znova naložimo stran. */
+Array.prototype.forEach.call(document.querySelectorAll('.an-lang button'), function (b) {
+  var l = b.getAttribute('data-l');
+  if (l === ANL) { b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); }
+  b.addEventListener('click', function () {
+    try { localStorage.setItem('solo-lang', l); } catch (e) {}
+    var sp = new URLSearchParams(location.search);
+    sp.set('lang', l);
+    var site = document.getElementById('anUrl').value.trim();
+    if (site) sp.set('site', site);
+    location.search = sp.toString();
+  });
+});
+/* Povezave v glavi ohranijo izbrani jezik. */
+Array.prototype.forEach.call(document.querySelectorAll('.an-hdr nav a, .an-hdr .logo'), function (a) {
+  var h = a.getAttribute('href');
+  if (ANL !== 'sl' && h && h.indexOf('../index.html') === 0) a.setAttribute('href', h.replace('../index.html', '../index.html?lang=' + ANL));
+});
 
 (function () {
   var q = new URLSearchParams(location.search).get('site');
@@ -230,6 +332,6 @@ document.getElementById('anForm').addEventListener('submit', function (e) {
   });
 });
 </script>
-<script src="/assets/consent.js" defer></script>
+<script src="/assets/consent.js?v=20261119-konv3" defer></script>
 </body>
 </html>

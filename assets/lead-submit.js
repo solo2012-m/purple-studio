@@ -4,7 +4,40 @@
 (function () {
   'use strict';
 
+  /* UTM oznake iz prve strani obiska hranimo v sessionStorage,
+     da jih ne izgubimo ob prehodu na drugo stran (npr. z domače na analizo). */
+  var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+  function readUtm() {
+    var out = {}, found = false;
+    UTM_KEYS.forEach(function (k) {
+      var m = new RegExp('[?&]' + k + '=([^&]+)').exec(window.location.search);
+      if (m) { out[k] = decodeURIComponent(m[1].replace(/\+/g, ' ')); found = true; }
+    });
+    return found ? out : null;
+  }
+  (function () {
+    var cur = readUtm();
+    try {
+      if (cur) sessionStorage.setItem('solo-utm', JSON.stringify(cur));
+      if (!sessionStorage.getItem('solo-ref') && document.referrer && document.referrer.indexOf(location.host) === -1) {
+        sessionStorage.setItem('solo-ref', document.referrer.slice(0, 200));
+      }
+    } catch (e) {}
+  })();
+  window.soloUtm = function () {
+    var cur = readUtm();
+    if (cur) return cur;
+    try { var s = sessionStorage.getItem('solo-utm'); if (s) return JSON.parse(s) || {}; } catch (e) {}
+    return {};
+  };
+  window.soloReferrer = function () {
+    try { return sessionStorage.getItem('solo-ref') || ''; } catch (e) { return ''; }
+  };
+
   window.soloSubmitLead = function (endpoint, payload, timeoutMs) {
+    payload = payload || {};
+    if (!payload.utm || !Object.keys(payload.utm).length) payload.utm = window.soloUtm();
+    if (!payload.referrer) payload.referrer = window.soloReferrer();
     if (!endpoint) return Promise.reject(new Error('missing-endpoint'));
     var ms = timeoutMs || 20000;
     var ctrl = null, timer = null;
