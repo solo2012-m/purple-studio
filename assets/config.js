@@ -11,7 +11,9 @@ window.SOLO_CONFIG = {
     telegram: 'https://t.me/solo_pov',
     email: 'info@solopov.si',
     facebook: 'https://www.facebook.com/people/SoloPov/61595780889754/',
-    phone: ''
+    phone: '',
+    /* WhatsApp: celotna povezava, npr. 'https://wa.me/386XXXXXXXX'. Prazno = ni prikazano. */
+    whatsapp: ''
   },
   legal: {
     companyName: 'ZEPO, Mykhailo Solopov s.p.',

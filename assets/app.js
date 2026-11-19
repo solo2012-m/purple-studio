@@ -92,6 +92,7 @@
       var c = CONFIG.contact || {};
       var parts = [];
       if (c.telegram) parts.push('<a href="' + c.telegram + '" rel="noopener" target="_blank">Telegram</a>');
+      if (c.whatsapp) parts.push('<a href="' + c.whatsapp + '" rel="noopener" target="_blank">WhatsApp</a>');
       if (c.facebook) parts.push('<a href="' + c.facebook + '" rel="noopener" target="_blank">Facebook</a>');
       if (c.email) parts.push('<a href="mailto:' + c.email + '">' + c.email + '</a>');
       if (c.phone) parts.push('<a href="tel:' + c.phone + '">' + c.phone + '</a>');
@@ -473,6 +474,12 @@
     h += '<div class="qtitle">' + esc(ui('resultTitle')) + '</div>';
     h += '<div class="qres">';
     h += '<div class="qres-block"><h4>' + esc(ui('resultRec')) + '</h4><p class="qres-title">' + esc(r.t) + '</p></div>';
+    var price = ui('price' + String(quiz.branch).toUpperCase());
+    if (price) h += '<div class="qres-block qres-price"><h4>' + esc(ui('priceLabel')) + '</h4><p class="qres-title">' + esc(price) + '</p><small>' + esc(ui('priceNote')) + '</small></div>';
+    h += '</div>';
+    if (quiz.url) h += '<div class="notice small">' + esc(ui('urlSaved')) + '</div>';
+    h += emailBoxHtml();
+    h += '<div class="qres">';
     var whys = whyList();
     h += '<div class="qres-block"><h4>' + esc(ui('resultWhy')) + '</h4><ul>';
     for (var i = 0; i < whys.length; i++) h += '<li>' + esc(whys[i]) + '</li>';
@@ -481,31 +488,35 @@
     for (var j = 0; j < r.inc.length; j++) h += '<li>' + esc(r.inc[j]) + '</li>';
     h += '</ul></div>';
     h += '<div class="qres-block"><h4>' + esc(ui('resultNext')) + '</h4><p>' + esc(r.next) + '</p></div>';
-    if (quiz.branch === 'b' || quiz.branch === 'c') {
+    if ((quiz.branch === 'b' || quiz.branch === 'c') && !quiz.url) {
       var durl = 'pages/brezplacna-analiza.html?lang=' + lang + (quiz.url ? '&site=' + encodeURIComponent(quiz.url) : '');
       h += '<div class="qres-block qres-diag"><h4>' + esc(ui('resDiagTitle')) + '</h4><p>' + esc(ui('resDiagText')) + '</p>' +
            '<a class="btn ghost sm" href="' + durl + '">' + esc(ui('resDiagBtn')) + '</a></div>';
     }
     h += '</div>';
     h += '<p class="result-note">' + esc(ui('resultNote')) + '</p>';
-    if (quiz.url) h += '<div class="notice small">' + esc(ui('urlSaved')) + '</div>';
-    h += '<div class="emailbox">';
-    h += '<h4>' + esc(ui('emailTitle')) + '</h4><p class="qhint">' + esc(ui('emailLead')) + '</p>';
-    h += '<div class="field"><label>' + esc(ui('industryLabel')) + ' <span class="rec-badge">' + esc(ui('industryRecommended')) + '</span></label><input type="text" id="planIndustry" placeholder="' + esc(ui('industryPh')) + '"></div>';
-    h += '<div class="field"><label>' + esc(ui('notesLabel')) + '</label><textarea rows="3" id="planNotes" placeholder="' + esc(ui('notesPh')) + '"></textarea></div>';
-    h += '<small class="meta plan-help">' + esc(ui('planHelp')) + '</small>';
-    h += '<div class="field"><label>' + esc(ui('emailLabel')) + '</label><input type="email" id="planEmail" placeholder="' + esc(ui('emailPh')) + '"></div>';
-    h += '<small class="meta email-purpose">' + esc(ui('emailPurpose')) + '</small>';
-    h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('consentLabel')) + '</span></label>';
-    h += '<small class="consent-note">' + esc(ui('consentNote')) + '</small>';
-    var purl = (CONFIG.legal && CONFIG.legal.privacyUrl) ? CONFIG.legal.privacyUrl : 'privacy.html';
-    h += '<a class="privacy-link" href="' + esc(purl) + '" target="_blank" rel="noopener">' + esc(ui('privacy')) + '</a>';
-    h += '<div class="qerr" id="emailErr"></div>';
-    h += '<button type="button" class="btn" id="planBtn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
-    h += '<small class="meta">' + esc(ui('emailNote')) + '</small>';
-    h += '</div>';
     h += '<div class="mnav"><button type="button" class="link" onclick="SOLO.startQuiz()">' + esc(ui('start')) + '</button>';
     h += '<button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
+    return h;
+  }
+
+  /* Obrazec za e-pošto: takoj pod priporočilom, obvezna je samo e-pošta. */
+  function emailBoxHtml() {
+    var h = '<div class="emailbox">';
+    h += '<h4>' + esc(ui('emailTitle')) + '</h4><p class="qhint">' + esc(ui('emailLead')) + '</p>';
+    if (ui('giftText')) h += '<div class="qres-gift">' + ui('giftText') + '</div>';
+    h += '<div class="field"><label for="planEmail">' + esc(ui('emailLabel')) + '</label><input type="text" id="planEmail" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="' + esc(ui('emailPh')) + '" onkeydown="if(event.key===\'Enter\'){event.preventDefault();SOLO.submitPlan();}"></div>';
+    h += '<details class="opt-fields"><summary>' + esc(ui('optFields')) + '</summary>';
+    h += '<div class="field"><label for="planIndustry">' + esc(ui('industryLabel')) + '</label><input type="text" id="planIndustry" placeholder="' + esc(ui('industryPh')) + '"></div>';
+    h += '<div class="field"><label for="planNotes">' + esc(ui('notesLabel')) + '</label><textarea rows="3" id="planNotes" placeholder="' + esc(ui('notesPh')) + '"></textarea></div>';
+    h += '<label class="check"><input type="checkbox" id="planConsent"><span>' + esc(ui('consentLabel')) + '</span></label>';
+    h += '<small class="consent-note">' + esc(ui('consentNote')) + '</small>';
+    h += '</details>';
+    h += '<div class="qerr" id="emailErr"></div>';
+    h += '<button type="button" class="btn" id="planBtn" onclick="SOLO.submitPlan()">' + esc(ui('emailBtn')) + '</button>';
+    var purl = (CONFIG.legal && CONFIG.legal.privacyUrl) ? CONFIG.legal.privacyUrl : 'pages/zasebnost.html';
+    h += '<small class="meta">' + esc(ui('emailPurpose')) + ' <a class="privacy-link" href="' + esc(purl) + '" target="_blank" rel="noopener">' + esc(ui('privacy')) + '</a></small>';
+    h += '</div>';
     return h;
   }
 
@@ -525,12 +536,29 @@
   var CONSENT_VERSION = '2026-10-18';
   function submitPlan() {
     var inp = el('planEmail'), err = el('emailErr');
-    var email = inp ? inp.value.replace(/^\s+|\s+$/g, '') : '';
-    if (!emailValid(email)) { if (err) err.textContent = ui('emailErr'); return; }
+    var raw = inp ? inp.value.replace(/^\s+|\s+$/g, '') : '';
+    var kind = contactKind(raw);
+    if (!kind) { if (err) err.textContent = ui('emailErr'); return; }
+    quiz.contactKind = kind;
+    var email = kind === 'email' ? raw : '';
+    var contact = kind === 'email' ? raw : (kind === 'telegram' ? 'Telegram: ' + (raw.charAt(0) === '@' ? raw : '@' + raw.replace(/^https?:\/\/t\.me\//i, '')) : 'WhatsApp: ' + raw);
     var consent = el('planConsent');
     var on = !!(consent && consent.checked);
     var industry = val('planIndustry'), notes = val('planNotes');
-    deliver(buildText('plan', email, on, industry, notes), buildLead(email, on, industry, notes));
+    var lead = buildLead(email, on, industry, notes);
+    lead.contact = contact;
+    lead.contactChannel = kind;
+    deliver(buildText('plan', email || contact, on, industry, notes), lead);
+  }
+
+  /* Kontakt: e-pošta, Telegram (@ime ali t.me/ime) ali telefonska številka za WhatsApp. */
+  function contactKind(v) {
+    if (!v) return '';
+    if (emailValid(v)) return 'email';
+    if (/^(@|https?:\/\/t\.me\/)[A-Za-z0-9_]{4,32}$/i.test(v)) return 'telegram';
+    var digits = v.replace(/[\s().\/-]/g, '');
+    if (/^\+?\d{8,15}$/.test(digits)) return 'whatsapp';
+    return '';
   }
 
   function buildLead(email, consent, industry, notes) {
@@ -557,6 +585,7 @@
       interest: interest,
       answers: answers,
       siteUrl: quiz.url || '',
+      diagnostika: !!quiz.url,
       industry: industry || '',
       notes: notes || '',
       recommendation: { key: data.variant, title: data.res.t, next: data.res.next },
@@ -611,6 +640,15 @@
   function sentHtml() {
     var h = '<div class="qnum">SOLO.POV</div><div class="qtitle">' + esc(ui('sentTitle')) + '</div>';
     h += '<div class="notice">' + esc(ui('sentText')) + '</div>';
+    if (ui('sent1')) {
+      var byMail = quiz.mode !== 'contact' && (!quiz.contactKind || quiz.contactKind === 'email');
+      var first = (quiz.mode !== 'contact' && !byMail && ui('sentMsg')) ? ui('sentMsg') : ui('sent1');
+      h += '<ul class="sent-steps"><li>' + esc(first) + '</li><li>' + esc(ui('sent2')) + '</li>';
+      if (byMail) h += '<li>' + esc(ui('sent3')) + '</li>';
+      h += '</ul>';
+    }
+    var tg = CONFIG.contact && CONFIG.contact.telegram;
+    if (tg && ui('sentTg')) h += '<a class="btn ghost sm sent-tg" href="' + esc(tg) + '" target="_blank" rel="noopener">' + esc(ui('sentTg')) + '</a>';
     h += '<div class="mnav"><span></span><button type="button" class="link" onclick="SOLO.close()">' + esc(ui('close')) + '</button></div>';
     return h;
   }
@@ -717,6 +755,7 @@
     }
     var m = getParam('quiz');
     if (m && quizPack().branches[m]) startQuiz(m);
+    else if (/[?&]quiz(=|&|$)/.test(location.search)) startQuiz();
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
   });

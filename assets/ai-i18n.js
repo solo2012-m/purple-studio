@@ -735,7 +735,7 @@ window.SOLO_AI = {
             "tab": "Adding a service",
             "project": "Green assistant",
             "bot": "Green assistant",
-            "avatar": "../assets/img/works/zeleni-pomoknik.jpg",
+            "avatar": "../assets/img/works/zeleni-pomocnik.jpg",
             "messages": [
               {
                 "who": "client",
@@ -769,7 +769,7 @@ window.SOLO_AI = {
             "tab": "Competition research",
             "project": "Green assistant",
             "bot": "Green assistant",
-            "avatar": "../assets/img/works/zeleni-pomoknik.jpg",
+            "avatar": "../assets/img/works/zeleni-pomocnik.jpg",
             "messages": [
               {
                 "who": "client",
@@ -1081,7 +1081,7 @@ window.SOLO_AI = {
             "tab": "Einen Dienst hinzufügen",
             "project": "Grüner Assistent",
             "bot": "Grüner Assistent",
-            "avatar": "../assets/img/works/zeleni-pomoknik.jpg",
+            "avatar": "../assets/img/works/zeleni-pomocnik.jpg",
             "messages": [
               {
                 "who": "client",
@@ -1115,7 +1115,7 @@ window.SOLO_AI = {
             "tab": "Wettbewerbsforschung",
             "project": "Grüner Assistent",
             "bot": "Grüner Assistent",
-            "avatar": "../assets/img/works/zeleni-pomoknik.jpg",
+            "avatar": "../assets/img/works/zeleni-pomocnik.jpg",
             "messages": [
               {
                 "who": "client",
