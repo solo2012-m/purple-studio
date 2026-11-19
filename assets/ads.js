@@ -129,7 +129,7 @@
     h += '<div class="field"><label>' + esc(d.commentLabel) + '</label><textarea id="adsComment" rows="3" placeholder="' + esc(d.commentPh) + '"></textarea></div>';
     h += '<div class="field"><label>' + esc(d.telegramLabel) + '</label><input id="adsTelegram" placeholder="' + esc(d.telegramPh) + '"></div>';
     h += '<label class="check"><input type="checkbox" id="adsConsent"><span>' + esc(d.consent) + '</span></label><small class="consent-note">' + esc(d.consentNote) + '</small>';
-    h += '<a class="privacy-link" href="../privacy.html" target="_blank" rel="noopener">' + esc(d.privacy) + '</a>';
+    h += '<a class="privacy-link" href="zasebnost.html" target="_blank" rel="noopener">' + esc(d.privacy) + '</a>';
     h += '<div class="qerr" id="adsErr"></div><button type="submit" class="btn">' + esc(d.submit) + '</button><small class="meta">' + esc(d.note) + '</small></form><div id="adsResult" class="ads-result" hidden></div></div>';
     $('requestBox').innerHTML = h;
     if (old.adsSite || old.adsBusiness || old.adsRegion || old.adsBudget || old.adsComment || old.adsEmail || old.adsTelegram) {

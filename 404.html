@@ -1,7 +1,35 @@
 <!doctype html>
-<html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Solo.Pov — stran ni najdena</title>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stran ni najdena — SOLO.POV</title>
 <meta name="robots" content="noindex">
-<style>body{background:#09080d;color:#f2f0f5;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center}a{color:#8b7bff}</style>
-</head><body><div><h1>404</h1><p>Te strani ni. / Такой страницы нет.</p><p><a href="/">← Solo.Pov</a></p></div><script src="assets/frame.js?v=20261028-frame2" defer></script>
-</body></html>
+<link rel="icon" href="/assets/img/favicon.png">
+<style>
+:root{--bg:#08080A;--surface:#141416;--line:#2A2A2E;--ink:#F4F3EF;--muted:#9B9EA4;--accent:#FFD400}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;text-align:center}
+.box{max-width:520px}
+.code{font:700 64px/1 "Space Grotesk",system-ui,sans-serif;color:var(--accent);margin:0 0 8px}
+h1{font:700 26px/1.2 "Space Grotesk",system-ui,sans-serif;margin:0 0 10px}
+p{color:var(--muted);margin:0 0 24px}
+.btns{display:flex;flex-direction:column;gap:12px}
+a.btn{display:block;min-height:48px;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;background:var(--accent);color:#08080A}
+a.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+a.home{display:inline-block;margin-top:22px;color:var(--muted);padding:10px}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="code">404</div>
+  <h1>Te strani ni.</h1>
+  <p>Morda je povezava zastarela. Tu je, kar ste najverjetneje iskali:</p>
+  <div class="btns">
+    <a class="btn" href="/pages/brezplacna-analiza.html">Brezplačna analiza vaše strani</a>
+    <a class="btn ghost" href="/?quiz">Izberite rešitev — približno 1 minuta</a>
+  </div>
+  <a class="home" href="/">← solopov.si</a>
+</div>
+</body>
+</html>

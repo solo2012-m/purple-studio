@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vprašalnik — SOLO.POV</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://solopov.si/">
+<meta http-equiv="refresh" content="0; url=/?quiz">
+<script>
+(function () {
+  var q = location.search.replace(/^\?/, '');
+  location.replace('/?' + (/(^|&)quiz=/.test(q) ? q : 'quiz' + (q ? '&' + q : '')));
+})();
+</script>
+<style>body{background:#08080A;color:#F4F3EF;font:16px/1.5 Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}a{color:#FFD400}</style>
+</head>
+<body>
+<p><a href="/?quiz">Odprite vprašalnik →</a></p>
+</body>
+</html>
