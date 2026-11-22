@@ -46,7 +46,7 @@ window.SOLO_CONFIG = {
         sl: 'Spletna stran storitev čiščenja in barvanja streh ter fasad. Strani storitev, obrazci za povpraševanje, večjezičnost, posodabljanje vsebine in razvoj s pomočjo AI.',
         ru: 'Сайт услуг по очистке и покраске крыш и фасадов. Страницы услуг, формы заявок, мультиязычность, обновление содержимого и развитие через AI.'
       },
-      img: 'assets/img/works/zeleni-pomocnik.jpg',
+      img: 'assets/img/works/zeleni-pomocnik-full.jpg',
       url: 'https://zelenipomocnik.si/',
       host: 'zelenipomocnik.si',
       tags: ['SL · DE · EN']
@@ -58,7 +58,7 @@ window.SOLO_CONFIG = {
         sl: 'Spletna stran vizažistke. Predstavitev storitev, nastavitev trajanja storitev, spletne rezervacije in upravljanje vsebine.',
         ru: 'Сайт визажиста. Презентация услуг, настройка продолжительности процедур, онлайн-запись и управление содержимым.'
       },
-      img: 'assets/img/works/solopova-makeup.jpg',
+      img: 'assets/img/works/solopova-makeup-full.jpg',
       url: 'https://solopovamakeup.si/index.html',
       host: 'solopovamakeup.si',
       tags: ['SL · EN · RU']

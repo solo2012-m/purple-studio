@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261119-konv3">
+<link rel="stylesheet" href="assets/style.css?v=20261122-motion">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Solo.Pov">
 <meta property="og:title" content="SOLO.POV — spletne strani in AI">
@@ -48,6 +48,7 @@
 </script>
 <script>(function(){try{var m=location.search.match(/[?&]lang=(sl|ru|en|de)(?:&|$)/);var s=null;try{s=localStorage.getItem('solo-lang');}catch(e){}var l=m?m[1]:(s||'sl');if(l!=='sl'){document.documentElement.lang=l;document.documentElement.className=(document.documentElement.className+' pre-lang').trim();}}catch(e){}})();</script>
 <style>html.pre-lang [data-i18n],html.pre-lang [data-i18n-html]{visibility:hidden}</style>
+<script>(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('mx-intro')}catch(e){}})();</script>
 </head>
 <body>
 
@@ -245,7 +246,7 @@
         <a class="work-card" href="https://zelenipomocnik.si/" target="_blank" rel="noopener">
           <div class="work-frame">
             <div class="work-bar"><span class="wd"></span><span class="wd"></span><span class="wd"></span><span class="work-url">zelenipomocnik.si</span></div>
-            <div class="work-shot"><img src="assets/img/works/zeleni-pomocnik.jpg" alt="Zeleni pomočnik — čiščenje streh, fasad in sončnih panelov" width="1200" height="750" loading="lazy"></div>
+            <div class="work-shot"><img src="assets/img/works/zeleni-pomocnik-full.jpg" alt="Zeleni pomočnik — čiščenje streh, fasad in sončnih panelov" width="800" height="2000" loading="lazy"></div>
           </div>
           <div class="work-body">
             <div class="work-head"><h3>Zeleni pomočnik</h3><span class="work-arrow" aria-hidden="true">&#8599;</span></div>
@@ -258,7 +259,7 @@
         <a class="work-card" href="https://solopovamakeup.si/index.html" target="_blank" rel="noopener">
           <div class="work-frame">
             <div class="work-bar"><span class="wd"></span><span class="wd"></span><span class="wd"></span><span class="work-url">solopovamakeup.si</span></div>
-            <div class="work-shot"><img src="assets/img/works/solopova-makeup.jpg" alt="Solopova Makeup — vizažistka v Mariboru" width="1200" height="750" loading="lazy"></div>
+            <div class="work-shot"><img src="assets/img/works/solopova-makeup-full.jpg" alt="Solopova Makeup — vizažistka v Mariboru" width="800" height="2000" loading="lazy"></div>
           </div>
           <div class="work-body">
             <div class="work-head"><h3>Solopova Makeup</h3><span class="work-arrow" aria-hidden="true">&#8599;</span></div>
@@ -346,7 +347,7 @@
   </div>
 </div>
 
-<script src="assets/config.js?v=20261119-konv3"></script>
+<script src="assets/config.js?v=20261122-motion"></script>
 <script src="assets/lead-submit.js?v=20261119-konv3"></script>
 <script src="assets/i18n.js?v=20261119-konv3"></script>
 <script src="assets/ai-i18n.js?v=20261119-konv3"></script>
@@ -375,5 +376,7 @@
   <script src="assets/cursor.js"></script>
 <script src="/assets/consent.js?v=20261119-konv3" defer></script>
 <script src="assets/frame.js?v=20261028-frame2" defer></script>
+<script src="assets/vendor/lenis.min.js?v=1.1.20" defer></script>
+<script src="assets/motion.js?v=20261122" defer></script>
 </body>
 </html>
